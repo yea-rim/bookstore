@@ -73,16 +73,10 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="image/language.png" alt="">
-                <div>English</div>
-                <span class="arrow_carrot-down"></span>
-                <ul>
-                    <li><a href="#">Spanis</a></li>
-                    <li><a href="#">English</a></li>
-                </ul>
+				<a href="${root}/member/join">회원가입</a>
             </div>
             <div class="header__top__right__auth">
-                <a href="#"><i class="fa fa-user"></i> Login</a>
+                <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -139,13 +133,7 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="image/language.png" alt="">
-                                <div>English</div>
-                                <span class="arrow_carrot-down"></span>
-                                <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
-                                </ul>
+                                <a href="${root}/member/join">회원가입</a>
                             </div>
                             <div class="header__top__right__auth">
                                 <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>

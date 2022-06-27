@@ -21,7 +21,7 @@
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
 	<!-- 복사한 뒤 반드시 고쳐야 하는 부분 -->
-	<context:component-scan base-package="com.kh.home" use-default-filters="true">
+	<context:component-scan base-package="com.trio.bookstore" use-default-filters="true">
 		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
 	<!-- 복사한 뒤 반드시 고쳐야 하는 부분 -->
@@ -53,19 +53,12 @@
 		<property name="maxWaitMillis" value="${database.max-wait}"></property>
 	</bean>
 	
-	<!-- 
-		스프링에서 제공하는 JDBC 도구
-		- 연결/종료가 필요하므로 기존에 등록한 연결도구를 참조(ref) 설정
-	 -->
+	<!-- 스프링에서 제공하는 JDBC 도구 -->
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<property name="dataSource" ref="dbcpSource"></property>
 	</bean>
 	
-	<!-- 
-		mybatis를 사용하기 위한 도구
-		- SqlSessionFactoryBean : 스프링에서 SqlSessionFactory를 생성하기 위한 도구
-		- SqlSessionTemplate : 스프링에서 SqlSession을 생성하기 위한 도구
-	 -->
+	<!-- mybatis를 사용하기 위한 도구 -->
 	<bean id="factory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dbcpSource"></property>
 		<property name="configLocation" value="classpath:/mybatis/mybatis-config.xml"></property>
@@ -82,23 +75,13 @@
 	<!-- 암호화 도구 -->
 	<bean id="passwordEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
 		
-	<!-- 
-		트랜잭션(transaction) 설정 
-		- 묶음 처리되어야 하는 DB 작업에 대한 선언 및 관리
-		- 전부 다 되거나 안되거나 해야 하는 경우(일부분만 되면 안되는 경우)
-		- <tx:annotation-driven/> 으로 @Transactional 애노테이션 활성화
-		- "transactionManager"라는 ID를 가지는 트랜잭션 관리 객체를 등록
-			- org.springframework.jdbc.datasource.DataSourceTransactionManager
-		- 묶음 처리하고 싶은 메소드에 @Transactional 애노테이션을 추가
-	-->
+	<!-- 트랜잭션(transaction) 설정 	-->
 	<tx:annotation-driven/>
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dbcpSource"></property>
 	</bean>
 	
-	<!-- 
-		이메일 전송 도구
-	-->
+	<!-- 이메일 전송 도구 -->
 	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="${email.host}"></property>
 		<property name="port" value="${email.port}"></property>
@@ -125,7 +108,6 @@
 	-->
 	<context:property-placeholder location="classpath:/properties/**/*.properties"/>
 	 
-		
 </beans>
 
 

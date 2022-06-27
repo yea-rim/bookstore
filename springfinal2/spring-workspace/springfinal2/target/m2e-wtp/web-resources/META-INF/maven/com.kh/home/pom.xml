@@ -29,9 +29,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<!-- 복사한 뒤 반드시 고쳐야 하는 부분 -->
-	<groupId>com.kh</groupId>
-	<artifactId>home</artifactId>
-	<name>springhome</name>
+	<groupId>com.trio</groupId>
+	<artifactId>bookstore</artifactId>
+	<name>bookstore</name>
 	<!-- 복사한 뒤 반드시 고쳐야 하는 부분 -->	
 	
 	<packaging>war</packaging>
