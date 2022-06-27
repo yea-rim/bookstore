@@ -247,6 +247,5 @@
     <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
 
-
     <section>
         <article>
