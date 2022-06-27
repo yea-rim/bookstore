@@ -244,7 +244,7 @@
     <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
     <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script> 
     <script src="${pageContext.request.contextPath}/js/main.js"></script>
 
 
