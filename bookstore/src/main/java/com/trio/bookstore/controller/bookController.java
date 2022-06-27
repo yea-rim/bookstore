@@ -9,6 +9,6 @@ public class bookController {
 	
 	@RequestMapping("/list")
 	public String list() {
-		return "book/list";
+		return "book/list";  
 	}
 }
