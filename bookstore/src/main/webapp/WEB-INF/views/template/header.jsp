@@ -62,7 +62,7 @@
     <div class="humberger__menu__overlay"></div>
     <div class="humberger__menu__wrapper">
         <div class="humberger__menu__logo">
-            <a href="#"><img src="${pageContext.request.contextPath}/image/logo.png" alt=""></a>
+            <a href="${root}/"><img src="${pageContext.request.contextPath}/image/logo.png" alt=""></a>
         </div>
         <div class="humberger__menu__cart">
             <ul>
@@ -160,13 +160,13 @@
             <div class="row">
                 <div class="col-lg-3">
                     <div class="header__logo">
-                        <a href="${root}/index.html"><img src="${pageContext.request.contextPath}/image/logo.png"alt=""></a>
+                        <a href="${root}/"><img src="${pageContext.request.contextPath}/image/logo.png"alt=""></a>
                     </div>
                 </div>
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="${root}/index.html">홈</a></li>
+                            <li class="active"><a href="${root}/board/list">공지게시판</a></li>
                             <li><a href="./shop-grid.html">도서관</a></li>
                             <li><a href="${root }/book/list">북스토어</a></li>
                             <li><a href="./blog.html">중고 거래</a>

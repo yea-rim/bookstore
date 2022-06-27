@@ -65,17 +65,7 @@ public class BoardDaoImpl implements BoardDao {
 	public int write(BoardDto boardDto) {
 		int boardNo = sqlSession.selectOne("board.sequence");
 		boardDto.setBoardNo(boardNo);
-		//추가 계산
-		if(boardDto.getSuperNo() == 0) {//새글
-			boardDto.setGroupNo(boardNo);
-			//설정 안해도 나머지(superNo, depth)는 0이다(객체 생성시 초기화됨)
-		}
-		else {//답글
-			BoardDto originDto = sqlSession.selectOne("board.one", boardDto.getSuperNo());
-			boardDto.setGroupNo(originDto.getGroupNo());//그룹번호 똑같이
-			//superNo는 이미 설정되어 있음
-			boardDto.setDepth(originDto.getDepth()+1);//차수 1 증가
-		}
+
 		sqlSession.insert("board.write", boardDto);
 		return boardNo;
 	}
