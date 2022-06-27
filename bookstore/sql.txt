@@ -18,10 +18,11 @@ member_joindate date default sysdate not null,
 member_logindate date
 );
 
--- 도서 테이블 (book)
+-- 도서 테이블 생성
+drop table book;
 create table book(
 book_no number primary key,
-book_title varchar2(150),
+book_title varchar2(300),
 book_isbn number,
 book_image varchar2(150),
 book_auth varchar2(100),
@@ -31,6 +32,7 @@ book_description varchar2(150),
 book_type number
 );
 
+<<<<<<< HEAD
 
 -- 첨부파일 테이블 (attachment)
 create table attachment (
@@ -69,3 +71,21 @@ reply_time date default sysdate not null,
 reply_target references board(board_no) on delete cascade
 );
 create sequence reply_seq;
+=======
+--쇼핑몰(도서) 테이블 생성
+drop table store;
+create table store(
+store_no number references book(book_no) on delete cascade,
+store_price number not null check(store_price >= 0),
+store_amount number not null check(store_amount >= 0)
+);
+
+--중고거래(도서) 테이블 생성
+create table used(
+used_no number primary key,
+used_book_no number references book(book_no) on delete cascade,
+used_price number not null check(used_price >= 0),
+used_amount number not null check(used_amount >= 0),
+used_status char(1) check(used_status in ('상','중','하'))
+);
+>>>>>>> refs/remotes/origin/main
