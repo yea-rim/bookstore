@@ -18,7 +18,7 @@ member_joindate date default sysdate not null,
 member_logindate date
 );
 
--- 도서 테이블 (book)
+-- 도서 테이블 (book)  
 create table book(
 book_no number primary key,
 book_title varchar2(150),
