@@ -12,7 +12,7 @@
 <head>
 <meta charset="UTF-8">
 
-    <title>수업용 홈페이지</title>
+    <title>BookStore</title>
 
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
@@ -204,43 +204,32 @@
                     <div class="hero__categories">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
-                            <span>All departments</span>
+                            <span>도서 분야보기</span>
                         </div>
                         <ul>
-                            <li><a href="#">Fresh Meat</a></li>
-                            <li><a href="#">Vegetables</a></li>
-                            <li><a href="#">Fruit & Nut Gifts</a></li>
-                            <li><a href="#">Fresh Berries</a></li>
-                            <li><a href="#">Ocean Foods</a></li>
-                            <li><a href="#">Butter & Eggs</a></li>
-                            <li><a href="#">Fastfood</a></li>
-                            <li><a href="#">Fresh Onion</a></li>
-                            <li><a href="#">Papayaya & Crisps</a></li>
-                            <li><a href="#">Oatmeal</a></li>
-                            <li><a href="#">Fresh Bananas</a></li>
+                            <li><a href="#">소설</a></li>
+                            <li><a href="#">자기계발</a></li>
+                            <li><a href="#">시/에세이</a></li>
+                            <li><a href="#">인문</a></li>
+                            <li><a href="#">컴퓨터</a></li>
+                            <li><a href="#">참고서</a></li>
+                            <li><a href="#">어린이</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">만화</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-9">
                     <div class="hero__search">
-                        <div class="hero__search__form">
+                        <div class="hero__search__form w-100">
                             <form action="#">
                                 <div class="hero__search__categories">
                                     All Categories
                                     <span class="arrow_carrot-down"></span>
                                 </div>
-                                <input type="text" placeholder="What do yo u need?">
+                                <input type="text" placeholder="무슨 도서를 찾으시나요?">
                                 <button type="submit" class="site-btn">검색</button>
                             </form>
-                        </div>
-                        <div class="hero__search__phone">
-                            <div class="hero__search__phone__icon">
-                                <i class="fa fa-phone"></i>
-                            </div>
-                            <div class="hero__search__phone__text">
-                                <h5>0000.0000</h5>
-                                <span>support 24/7 time</span>
-                            </div>
                         </div>
                     </div>
                 </div>
