@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+	<insert id="join" parameterType="MemberDto">
+		insert into member(
+			member_id, member_pw, member_nick, 
+			member_birth, member_email, member_phone, 
+			member_post, member_basic_address, member_detail_address
+		)
+		values(
+			#{memberId}, #{memberPw}, #{memberNick}, 
+			#{memberBirth}, #{memberEmail}, #{memberPhone}, 
+			#{memberPost}, #{memberBasicAddress}, #{memberDetailAddress}
+		)
+	</insert>
+	
+	<select id="complexSearch" resultType="MemberDto" parameterType="Map">
+		<!-- bind를 사용하면 변수를 만들 수 있다 -->
+		<bind name="memberIdExist" value="memberId != null and !memberId.equals('')"/>
+		<bind name="memberNickExist" value="memberNick != null and !memberNick.equals('')"/>
+		<bind name="memberEmailExist" value="memberEmail != null and !memberEmail.equals('')"/>
+		<bind name="memberPhoneExist" value="memberPhone != null and !memberPhone.equals('')"/>
+		<bind name="beginBirthExist" value="beginBirth != null and !beginBirth.equals('')"/>
+		<bind name="endBirthExist" value="endBirth != null and !endBirth.equals('')"/>
+		<bind name="beginJoinExist" value="beginJoin != null and !beginJoin.equals('')"/>
+		<bind name="endJoinExist" value="endJoin != null and !endJoin.equals('')"/>
+		<bind name="minPointExist" value="minPoint != null and !minPoint.equals('')"/>
+		<bind name="maxPointExist" value="maxPoint != null and !maxPoint.equals('')"/>
+		<bind name="memberGradeExist" value="memberGrade != null and memberGrade.size() > 0"/>
+		<bind name="columnExist" value="column != null and !column.equals('')"/>
+		<bind name="orderExist" value="order != null and !order.equals('')"/>
+	
+		select * from member
+		
+		<!-- 조건 필터링 -->
+		<where>
+			<!-- 아이디 -->
+			<if test="memberIdExist">
+				<![CDATA[
+				and instr(member_id, #{memberId}) > 0
+				]]>
+			</if>
+			<!-- 닉네임 -->
+			<if test="memberNickExist">
+				<![CDATA[
+				and instr(member_nick, #{memberNick}) > 0
+				]]>
+			</if>
+			<!-- 이메일 -->
+			<if test="memberEmailExist">
+				<![CDATA[
+				and instr(member_email, #{memberEmail}) > 0
+				]]>
+			</if>
+			<!-- 전화번호 -->
+			<if test="memberPhoneExist">
+				and member_phone = #{memberPhone}
+			</if>
+			<!-- 생년월일 -->
+			<choose>
+				<when test="beginBirthExist and endBirthExist">
+					and to_date(member_birth, 'YYYY-MM-DD') 
+								between 
+									to_date(#{beginBirth}, 'YYYY-MM-DD')
+									and 
+									to_date(#{endBirth}, 'YYYY-MM-DD')
+				</when>
+				<when test="beginBirthExist">
+					<![CDATA[
+						and 
+							to_date(member_birth, 'YYYY-MM-DD') 
+								>= to_date(#{beginBirth}, 'YYYY-MM-DD')
+					]]>
+				</when>
+				<when test="endBirthExist">
+					<![CDATA[
+						and 
+							to_date(member_birth, 'YYYY-MM-DD') 
+								<= to_date(#{endBirth}, 'YYYY-MM-DD')
+					]]>
+				</when>
+			</choose>
+			<!-- 가입일 -->
+			<choose>
+				<when test="beginJoinExist and endJoinExist">
+					and member_joindate 
+						between 
+						to_date(#{beginJoin} || ' ' || '00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+						and
+						to_date(#{endJoin} || ' ' || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				</when>
+				<when test="beginJoinExist">
+					<![CDATA[
+					and member_joindate >= to_date(#{beginJoin} || ' ' || '00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+					]]>
+				</when>
+				<when test="endJoinExist">
+					<![CDATA[
+					and member_joindate <= to_date(#{endJoin} || ' ' || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+					]]>
+				</when>
+			</choose>
+			<!-- 포인트 -->
+			<choose>
+				<when test="minPointExist and maxPointExist">
+					and member_point between #{minPoint} and #{maxPoint}	
+				</when>
+				<when test="minPointExist">
+					<![CDATA[
+					and member_point >= #{minPoint}
+					]]>
+				</when>
+				<when test="maxPointExist">
+					<![CDATA[
+					and member_point <= #{maxPoint}
+					]]>
+				</when>
+			</choose>
+			<!-- 등급 -->
+			<if test="memberGradeExist">
+				and member_grade in
+				<foreach collection="memberGrade" item="grade" open="(" close=")" separator=",">
+					#{grade}
+				</foreach>
+			</if>
+		</where>
+		
+		<!-- 정렬 -->
+		<choose>
+			<when test="columnExist and orderExist">
+				order by ${column} ${order}
+			</when>
+			<when test="columnExist">
+				order by ${column} asc
+			</when>
+		</choose>
+	</select>
+	
+	<select id="complexSearch2" resultType="MemberDto" parameterType="MemberComplexSearchVO">
+		<!-- bind를 사용하면 변수를 만들 수 있다 -->
+		<bind name="memberIdExist" value="memberId != null and !memberId.equals('')"/>
+		<bind name="memberNickExist" value="memberNick != null and !memberNick.equals('')"/>
+		<bind name="memberEmailExist" value="memberEmail != null and !memberEmail.equals('')"/>
+		<bind name="memberPhoneExist" value="memberPhone != null and !memberPhone.equals('')"/>
+		<bind name="beginBirthExist" value="beginBirth != null and !beginBirth.equals('')"/>
+		<bind name="endBirthExist" value="endBirth != null and !endBirth.equals('')"/>
+		<bind name="beginJoinExist" value="beginJoin != null and !beginJoin.equals('')"/>
+		<bind name="endJoinExist" value="endJoin != null and !endJoin.equals('')"/>
+		<bind name="minPointExist" value="minPoint > 0"/>
+		<bind name="maxPointExist" value="maxPoint > 0"/>
+		<bind name="memberGradeExist" value="memberGrade != null and memberGrade.size() > 0"/>
+		<bind name="columnExist" value="column != null and !column.equals('')"/>
+		<bind name="orderExist" value="order != null and !order.equals('')"/>
+	
+		select * from member
+		
+		<!-- 조건 필터링 -->
+		<where>
+			<!-- 아이디 -->
+			<if test="memberIdExist">
+				<![CDATA[
+				and instr(member_id, #{memberId}) > 0
+				]]>
+			</if>
+			<!-- 닉네임 -->
+			<if test="memberNickExist">
+				<![CDATA[
+				and instr(member_nick, #{memberNick}) > 0
+				]]>
+			</if>
+			<!-- 이메일 -->
+			<if test="memberEmailExist">
+				<![CDATA[
+				and instr(member_email, #{memberEmail}) > 0
+				]]>
+			</if>
+			<!-- 전화번호 -->
+			<if test="memberPhoneExist">
+				and member_phone = #{memberPhone}
+			</if>
+			<!-- 생년월일 -->
+			<choose>
+				<when test="beginBirthExist and endBirthExist">
+					and to_date(member_birth, 'YYYY-MM-DD') 
+								between 
+									to_date(#{beginBirth}, 'YYYY-MM-DD')
+									and 
+									to_date(#{endBirth}, 'YYYY-MM-DD')
+				</when>
+				<when test="beginBirthExist">
+					<![CDATA[
+						and 
+							to_date(member_birth, 'YYYY-MM-DD') 
+								>= to_date(#{beginBirth}, 'YYYY-MM-DD')
+					]]>
+				</when>
+				<when test="endBirthExist">
+					<![CDATA[
+						and 
+							to_date(member_birth, 'YYYY-MM-DD') 
+								<= to_date(#{endBirth}, 'YYYY-MM-DD')
+					]]>
+				</when>
+			</choose>
+			<!-- 가입일 -->
+			<choose>
+				<when test="beginJoinExist and endJoinExist">
+					and member_joindate 
+						between 
+						to_date(#{beginJoin} || ' ' || '00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+						and
+						to_date(#{endJoin} || ' ' || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				</when>
+				<when test="beginJoinExist">
+					<![CDATA[
+					and member_joindate >= to_date(#{beginJoin} || ' ' || '00:00:00', 'YYYY-MM-DD HH24:MI:SS')
+					]]>
+				</when>
+				<when test="endJoinExist">
+					<![CDATA[
+					and member_joindate <= to_date(#{endJoin} || ' ' || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+					]]>
+				</when>
+			</choose>
+			<!-- 포인트 -->
+			<choose>
+				<when test="minPointExist and maxPointExist">
+					and member_point between #{minPoint} and #{maxPoint}	
+				</when>
+				<when test="minPointExist">
+					<![CDATA[
+					and member_point >= #{minPoint}
+					]]>
+				</when>
+				<when test="maxPointExist">
+					<![CDATA[
+					and member_point <= #{maxPoint}
+					]]>
+				</when>
+			</choose>
+			<!-- 등급 -->
+			<if test="memberGradeExist">
+				and member_grade in
+				<foreach collection="memberGrade" item="grade" open="(" close=")" separator=",">
+					#{grade}
+				</foreach>
+			</if>
+		</where>
+		
+		<!-- 정렬 -->
+		<choose>
+			<when test="columnExist and orderExist">
+				order by ${column} ${order}
+			</when>
+			<when test="columnExist">
+				order by ${column} asc
+			</when>
+		</choose>
+	</select>
+	
+	<!-- 단일조회 -->
+	<select id="one" resultType="MemberDto" parameterType="String">
+		select * from member where member_id = #{memberId}
+	</select>
+	
+	<!-- 로그인 시간 갱신 -->
+	<update id="updateLastLogin" parameterType="String">
+		update member 
+		set member_logindate = sysdate 
+		where member_id = #{memberId}
+	</update>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="changePassword" parameterType="MemberDto">
+		update member
+		set member_pw = #{memberPw}
+		where member_id = #{memberId}
+	</update>
+	
+	<!-- 아이디 찾기 -->
+	<select id="findId" resultType="String" parameterType="MemberDto">
+		select member_id from member 
+		where 
+			member_nick = #{memberNick}
+			and
+			member_phone = #{memberPhone}
+			and
+			member_birth = #{memberBirth} 
+	</select>
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="exit" parameterType="String">
+		delete member where member_id = #{memberId}
+	</delete>
+	
+	<!-- 정보 변경 -->
+	<update id="changeInformation" parameterType="MemberDto">
+		update member 
+			set
+				member_nick = #{memberNick}, member_birth = #{memberBirth},
+				member_phone = #{memberPhone}, member_email = #{memberEmail},
+				member_post = #{memberPost}, member_basic_address = #{memberBasicAddress},
+				member_detail_address = #{memberDetailAddress}
+			where
+				member_id = #{memberId}
+	</update>
+	
+	<select id="find" resultType="MemberDto" parameterType="MemberDto">
+		select * from member
+		where
+			member_id = #{memberId}
+			and
+			member_nick = #{memberNick}
+			and
+			member_phone = #{memberPhone}
+			and
+			member_birth = #{memberBirth}
+	</select>
+	
+</mapper> 
+
+
+
+
+
+
+
+
