@@ -18,3 +18,17 @@ member_grade varchar2(15) default '일반회원' not null check(member_grade in 
 member_joindate date default sysdate not null,
 member_logindate date
 );
+
+
+//도서 테이블(book)
+create table book(
+book_no number primary key,
+book_title varchar2(150),
+book_isbn number,
+book_image varchar2(150),
+book_auth varchar2(100),
+book_publ varchar2(100),
+book_pub date,
+book_description varchar2(150),
+book_type number
+);
