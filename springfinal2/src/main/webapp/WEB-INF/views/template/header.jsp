@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-  
+
     <title>수업용 홈페이지</title>
 
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -73,10 +73,16 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-				<a href="${root}/member/join">회원가입</a>
+                <img src="image/language.png" alt="">
+                <div>English</div>
+                <span class="arrow_carrot-down"></span>
+                <ul>
+                    <li><a href="#">Spanis</a></li>
+                    <li><a href="#">English</a></li>
+                </ul>
             </div>
             <div class="header__top__right__auth">
-                <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>
+                <a href="#"><i class="fa fa-user"></i> Login</a>
             </div>
         </div>
         <nav class="humberger__menu__nav mobile-menu">
@@ -133,7 +139,13 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <a href="${root}/member/join">회원가입</a>
+                                <img src="image/language.png" alt="">
+                                <div>English</div>
+                                <span class="arrow_carrot-down"></span>
+                                <ul>
+                                    <li><a href="#">Spanis</a></li>
+                                    <li><a href="#">English</a></li>
+                                </ul>
                             </div>
                             <div class="header__top__right__auth">
                                 <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>
