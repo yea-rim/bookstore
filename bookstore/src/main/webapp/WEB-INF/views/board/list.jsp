@@ -30,17 +30,7 @@
 				<tr>
 					<td>${boardDto.boardNo}</td>
 					<td class="left">
-						<c:if test="${boardDto.depth > 0}">
-							<c:forEach var="i" begin="1" end="${boardDto.depth}" step="1">
-								&nbsp;&nbsp;&nbsp;&nbsp;
-							</c:forEach>
-							<img src="${pageContext.request.contextPath}/image/reply.png" width="20" height="20">
-						</c:if>
 					
-						<!-- 말머리 -->
-						<c:if test="${boardDto.boardHead != null}">
-							[${boardDto.boardHead}]
-						</c:if>
 					
 						<!-- 
 							게시글 제목 링크
@@ -60,11 +50,6 @@
 							${boardDto.boardTitle}
 						</a>
 						
-						<!-- 댓글 수 출력 -->
-						<c:if test="${boardDto.boardReplycount > 0}">
-							[${boardDto.boardReplycount}]
-						</c:if>
-					</td>
 
 					<td>
 						<c:choose>

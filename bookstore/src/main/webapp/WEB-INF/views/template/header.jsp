@@ -166,7 +166,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="${root}/index.html">공지게시판</a></li>
+                            <li class="active"><a href="${root}/board/list">공지게시판</a></li>
                             <li><a href="./shop-grid.html">도서관</a></li>
                             <li><a href="#">북스토어</a>
                                 <ul class="header__menu__dropdown">

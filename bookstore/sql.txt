@@ -30,3 +30,42 @@ book_pub date,
 book_description varchar2(150),
 book_type number
 );
+
+
+-- 첨부파일 테이블 (attachment)
+create table attachment (
+attachment_no number primary key,
+attachment_uploadname varchar2(256) not null,
+attachment_savename varchar2(256) not null,
+attachment_type varchar2(256) not null,
+attachment_size number default 0 not null
+);
+create sequence attachment_seq;
+
+-- member 프로필 테이블 (member_profile)
+	create table member_profile (
+	member_id references member(member_id) on delete cascade,
+	attachment_no references attachment(attachment_no) on delete cascade,
+	primary key(member_id, attachment_no)
+	);
+    
+-- 게시판 테이블 (board)
+drop table board;
+create table board(
+board_no number primary key,
+board_title varchar2(300) not null,
+board_content varchar2(4000) not null,
+board_time date default sysdate not null,
+board_readcount number default 0 not null,
+board_writer references member(member_id) on delete set null
+);
+create sequence board_seq;
+
+-- 댓글 테이블 (reply)
+create table reply(
+reply_no number primary key,
+reply_content varchar2(600) not null,
+reply_time date default sysdate not null,
+reply_target references board(board_no) on delete cascade
+);
+create sequence reply_seq;
