@@ -132,12 +132,25 @@
                                 <a href="#"><i class="fa fa-linkedin"></i></a>
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
-                            <div class="header__top__right__language">
-                                <a href="${root}/member/join">회원가입</a>
-                            </div>
-                            <div class="header__top__right__auth">
-                                <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>
-                            </div>
+          <c:choose>
+         <c:when test="${isLogin}">
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+				<a href="${root}/member/mypage">마이페이지</a>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="${root}/member/logout"><i class="fa fa-user"></i> 로그아웃</a>
+            </div>
+             </c:when>
+        	<c:otherwise>
+        	<div class="header__top__right__language">
+				<a href="${root}/member/join">회원가입</a>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>
+            </div>
+				</c:otherwise>
+			</c:choose>
                         </div>
                     </div>
                 </div>
