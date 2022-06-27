@@ -7,7 +7,7 @@ check(regexp_like(member_pw, '[a-z]+') and regexp_like(member_pw, '[A-Z]+')
 			and regexp_like(member_pw, '[0-9]+') and regexp_like(member_pw, '[!@#$]+')),
 member_name varchar2(21) not null check(regexp_like(member_name,'^[가-힣]{2,7}$')),
 member_nick varchar2(30) not null unique check(regexp_like(member_nick, '^[가-힣]{3,10}$')),
-member_email varchar2(100),
+member_email varchar2(100) not null,
 member_phone char(11) not null check(regexp_like(member_phone, '^010[1-9][0-9]{7}$')),
 member_birth char(10) not null,
 member_post varchar2(6),
