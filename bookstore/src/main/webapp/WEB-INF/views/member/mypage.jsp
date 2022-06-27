@@ -70,9 +70,6 @@
 		<h2><a href="information">개인정보 변경</a></h2>
 	</div>
 	<div class="row center m30">
-		<h2><a href="#">포인트 충전</a></h2>
-	</div>
-	<div class="row center m30">
 		<h2><a href="exit">탈퇴하기</a></h2>
 	</div>
 </div>

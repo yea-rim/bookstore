@@ -32,7 +32,7 @@ public class BoardController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	@GetMapping("/list")
+	@GetMapping("/notice_list")
 	public String list(
 				@RequestParam(required = false) String type,
 				@RequestParam(required = false) String keyword,
@@ -65,8 +65,11 @@ public class BoardController {
 		model.addAttribute("endBlock", endBlock);
 		model.addAttribute("lastPage", lastPage);
 		
-		return "board/list";
+		return "board/notice_list";
 	}
+	
+	
+	
 	
 	@GetMapping("/detail")
 	public String detail(
