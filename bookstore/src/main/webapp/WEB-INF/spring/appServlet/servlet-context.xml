@@ -31,11 +31,9 @@
 	 -->
 	<mvc:annotation-driven></mvc:annotation-driven>
 	
-	<!-- 복사한 뒤 반드시 고쳐야 하는 부분 -->
 	<context:component-scan base-package="com.trio.bookstore" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
-	<!-- 복사한 뒤 반드시 고쳐야 하는 부분 -->
 	
 	<!-- 
 		정적 자원(static resource) 위치 지정
@@ -47,8 +45,10 @@
 	 -->
 	<mvc:resources location="/resources/css/" mapping="/css/**"></mvc:resources>
 	<mvc:resources location="/resources/js/" mapping="/js/**"></mvc:resources>
-	<mvc:resources location="/resources/font/" mapping="/font/**"></mvc:resources>
+	<mvc:resources location="/resources/fonts/" mapping="/fonts/**"></mvc:resources>
 	<mvc:resources location="/resources/image/" mapping="/image/**"></mvc:resources>
+	<mvc:resources location="/resources/sass/" mapping="/sass/**"></mvc:resources>
+	<mvc:resources location="/resources/Source/" mapping="/Source/**"></mvc:resources>
 	
 	<mvc:interceptors>
 		<mvc:interceptor>
@@ -76,14 +76,6 @@
 			
 			<ref bean="nonMemberInterceptor"/>
 		</mvc:interceptor>
-		
-		<!-- 테스트용 인터셉터 -->
-		<!-- 
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<ref bean="boardTestInterceptor"/>
-		</mvc:interceptor>
-		 -->
 		 
 	</mvc:interceptors>
 	

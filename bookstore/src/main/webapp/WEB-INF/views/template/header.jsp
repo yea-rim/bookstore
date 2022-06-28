@@ -170,10 +170,9 @@
                             <li><a href="./shop-grid.html">도서관</a></li>
                             <li><a href="${root }/book/list">북스토어</a></li>
                             <li><a href="./blog.html">중고 거래</a>
-                             <ul class="header__menu__dropdown">
-                                    <li><a href="#">중고 판매신청</a></li>
-                                   
-                                </ul>
+		                            <ul class="header__menu__dropdown">
+		                            	<li><a href="#">중고 판매신청</a></li>
+		                            </ul>
                             </li>
                             <li><a href="./contact.html">감상평</a></li>
                         </ul>

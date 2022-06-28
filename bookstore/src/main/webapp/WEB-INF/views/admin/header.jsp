@@ -11,7 +11,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
+ 
     <title>BookStore</title>
 
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
@@ -24,7 +24,19 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main-style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+
+    
+    <!-- Js Plugins -->
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
+    <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script> 
+    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/main.js"></script>
+
 
     <style>
 
@@ -168,13 +180,12 @@
                         <ul>
                             <li class="active"><a href="${root}/board/list">공지게시판</a></li>
                             <li><a href="./shop-grid.html">도서관</a></li>
-                            <li><a href="${root}/book/list">북스토어</a></li>
+                            <li><a href="${root }/book/list">북스토어</a></li>
                             <li><a href="./blog.html">중고 거래</a>
-	                            <ul class="header__menu__dropdown">
-	                            	<li><a href="#">중고 판매신청</a></li>
-	                            	<li><a href="#">아니헤더에안들어가요</a></li>
-	                            	<li><a href="${root}/admin/">잠깐기생하는관리자페이지</a></li>
-	                            </ul>
+                             <ul class="header__menu__dropdown">
+                                    <li><a href="#">중고 판매신청</a></li>
+                                   
+                                </ul>
                             </li>
                             <li><a href="./contact.html">감상평</a></li>
                         </ul>
@@ -196,21 +207,17 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero">
+    <section class="hero hero-normal">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
-                    <div class="hero__categories">
+                    <div class="hero__categories" style="display: block;">
                         <div class="hero__categories__all">
                             <i class="fa fa-bars"></i>
                             <span>도서 분야보기</span>
                         </div>
                         <ul>
-                            <li><a href="#">소설</a>
-<!--                             	<ul> -->
-<!--                             		<li><a href="#">실패한 흔적</a></li> -->
-<!--                             	</ul> -->
-                            </li>
+                            <li><a href="#">소설</a></li>
                             <li><a href="#">자기계발</a></li>
                             <li><a href="#">시/에세이</a></li>
                             <li><a href="#">인문</a></li>
@@ -223,83 +230,8 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search mt-5"></div>
-                    <div class="hero__search mt-5"></div>
-                    <div class="hero__search mt-5">
-                        <div class="hero__search__form w-100 h-1">
-                            <form action="#">
-                                <div class="hero__search__categories">
-                                    검색 카테고리
-                                    <span class="arrow_carrot-down"></span>
-                                </div>
-                                <input type="text" placeholder="무슨 도서를 찾으시나요?">
-                                <button type="submit" class="site-btn">검색</button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <span>검색 조건</span>
-                        </div>
-                        <div class="col-lg-3">
-                            <select name="type1" class="select-primary">
-                                <option value="">도서 분야</option>
-                                <option value="1">소설</option>
-                                <option value="2">자기계발</option>
-                                <option value="3">시/에세이</option>
-                                <option value="4">인문</option>
-                                <option value="5">컴퓨터</option>
-                                <option value="6">참고서</option>
-                                <option value="7">어린이</option>
-                                <option value="8">취미</option>
-                                <option value="9">만화</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3">
-                            <select name="분야" class="select-primary">
-                                <option value="">도서 분야</option>
-                                <option value="1">소설</option>
-                                <option value="2">자기계발</option>
-                                <option value="3">시/에세이</option>
-                                <option value="4">인문</option>
-                                <option value="5">컴퓨터</option>
-                                <option value="6">참고서</option>
-                                <option value="7">어린이</option>
-                                <option value="8">취미</option>
-                                <option value="9">만화</option>
-                            </select>
-                        </div>
-                        <div class="col-lg-3">
-                            <select name="분야" class="select-primary">
-                                <option value="">도서 분야</option>
-                                <option value="1">소설</option>
-                                <option value="2">자기계발</option>
-                                <option value="3">시/에세이</option>
-                                <option value="4">인문</option>
-                                <option value="5">컴퓨터</option>
-                                <option value="6">참고서</option>
-                                <option value="7">어린이</option>
-                                <option value="8">취미</option>
-                                <option value="9">만화</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Hero Section End -->
-    
-    
-    <!-- Js Plugins -->
-    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
-    <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script> 
-    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/main.js"></script>
+                    <div class="hero__search">
+                    	<!-- main 영역 시작 -->
 
     <section>
         <article>
