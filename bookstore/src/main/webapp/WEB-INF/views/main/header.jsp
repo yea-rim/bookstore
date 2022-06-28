@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main-style.css" type="text/css">
 
     <style>
 
@@ -170,10 +170,9 @@
                             <li><a href="./shop-grid.html">도서관</a></li>
                             <li><a href="${root }/book/list">북스토어</a></li>
                             <li><a href="./blog.html">중고 거래</a>
-                             <ul class="header__menu__dropdown">
-                                    <li><a href="#">중고 판매신청</a></li>
-                                   
-                                </ul>
+                            	<ul class="header__menu__dropdown">
+                                 	<li><a href="#">중고 판매신청</a></li>   
+                            	</ul>
                             </li>
                             <li><a href="./contact.html">감상평</a></li>
                         </ul>
@@ -195,7 +194,7 @@
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
-    <section class="hero hero-normal">
+    <section class="hero">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -218,16 +217,65 @@
                     </div>
                 </div>
                 <div class="col-lg-9">
-                    <div class="hero__search">
-                        <div class="hero__search__form w-100">
+                    <div class="hero__search mt-5"></div>
+                    <div class="hero__search mt-5"></div>
+                    <div class="hero__search mt-5">
+                        <div class="hero__search__form w-100 h-1">
                             <form action="#">
                                 <div class="hero__search__categories">
-                                    All Categories
+                                    검색 카테고리
                                     <span class="arrow_carrot-down"></span>
                                 </div>
                                 <input type="text" placeholder="무슨 도서를 찾으시나요?">
                                 <button type="submit" class="site-btn">검색</button>
                             </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-3">
+                            <span>검색 조건</span>
+                        </div>
+                        <div class="col-lg-3">
+                            <select name="type1" class="select-primary">
+                                <option value="">도서 분야</option>
+                                <option value="1">소설</option>
+                                <option value="2">자기계발</option>
+                                <option value="3">시/에세이</option>
+                                <option value="4">인문</option>
+                                <option value="5">컴퓨터</option>
+                                <option value="6">참고서</option>
+                                <option value="7">어린이</option>
+                                <option value="8">취미</option>
+                                <option value="9">만화</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <select name="분야" class="select-primary">
+                                <option value="">도서 분야</option>
+                                <option value="1">소설</option>
+                                <option value="2">자기계발</option>
+                                <option value="3">시/에세이</option>
+                                <option value="4">인문</option>
+                                <option value="5">컴퓨터</option>
+                                <option value="6">참고서</option>
+                                <option value="7">어린이</option>
+                                <option value="8">취미</option>
+                                <option value="9">만화</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3">
+                            <select name="분야" class="select-primary">
+                                <option value="">도서 분야</option>
+                                <option value="1">소설</option>
+                                <option value="2">자기계발</option>
+                                <option value="3">시/에세이</option>
+                                <option value="4">인문</option>
+                                <option value="5">컴퓨터</option>
+                                <option value="6">참고서</option>
+                                <option value="7">어린이</option>
+                                <option value="8">취미</option>
+                                <option value="9">만화</option>
+                            </select>
                         </div>
                     </div>
                 </div>
