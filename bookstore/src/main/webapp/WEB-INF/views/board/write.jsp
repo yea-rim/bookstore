@@ -4,24 +4,12 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<form action="write" method="post">
+<form action="write" method="get">
 
-<c:if test="${superNo != null}">
-	<input type="hidden" name="superNo" value="${superNo}">
-</c:if>
 
 	<div class="container w800 m30">
 	    <div class="row center">
 	        <h1>게시글 작성</h1>
-	    </div>
-	    <div class="row">
-	        <label>말머리</label>
-	        <select name="boardHead" class="form-input fill input-round">
-	            <option value="">선택</option>
-	            <option>정보</option>
-	            <option>유머</option>
-	            <option>공지</option>
-	        </select>
 	    </div>
 	    <div class="row">
 	        <label>제목</label>
