@@ -32,7 +32,7 @@ public class BoardController {
 	@Autowired
 	private MemberDao memberDao;
 	
-	@GetMapping("/notice_list")
+	@GetMapping("/list")
 	public String list(
 				@RequestParam(required = false) String type,
 				@RequestParam(required = false) String keyword,
@@ -65,7 +65,7 @@ public class BoardController {
 		model.addAttribute("endBlock", endBlock);
 		model.addAttribute("lastPage", lastPage);
 		
-		return "board/notice_list";
+		return "board/list";
 	}
 	
 	
@@ -202,17 +202,9 @@ public class BoardController {
 		}
 	}
 	
-	@GetMapping("/write")
-	public String write(
-			@RequestParam(required = false, defaultValue = "0") int superNo,
-			Model model) {
-		if(superNo > 0) {
-			model.addAttribute("superNo", superNo);
-		}
-		return "board/write";
-	}
+
 	
-	@PostMapping("/write")
+	@GetMapping("/write")
 	public String write(@ModelAttribute BoardDto boardDto,
 									HttpSession session,
 									RedirectAttributes attr) {
