@@ -52,7 +52,6 @@
 </head>
 
 <body>
-	<main>
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -66,8 +65,8 @@
         </div>
         <div class="humberger__menu__cart">
             <ul>
-                <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                <li><a href="${root}/"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                <li><a href="${root}/"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
             </ul>
             <div class="header__cart__price">item: <span>$150.00</span></div>
         </div>
@@ -127,10 +126,10 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="header__top__right">
                             <div class="header__top__right__social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-linkedin"></i></a>
-                                <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                                <a href="${root}/"><i class="fa fa-facebook"></i></a>
+                                <a href="${root}/"><i class="fa fa-twitter"></i></a>
+                                <a href="${root}/"><i class="fa fa-linkedin"></i></a>
+                                <a href="${root}/"><i class="fa fa-pinterest-p"></i></a>
                             </div>
           <c:choose>
          <c:when test="${isLogin}">
@@ -156,6 +155,7 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -289,17 +289,3 @@
         </div>
     </section>
     <!-- Hero Section End -->
-    
-    
-    <!-- Js Plugins -->
-    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery.slicknav.js"></script>
-    <script src="${pageContext.request.contextPath}/js/mixitup.min.js"></script> 
-    <script src="${pageContext.request.contextPath}/js/owl.carousel.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/main.js"></script>
-
-    <section>
-        <article>
