@@ -32,7 +32,7 @@ book_description varchar2(150),
 book_type number 
 );
 
-<<<<<<< HEAD
+
 
 -- 첨부파일 테이블 (attachment)
 create table attachment (
@@ -71,7 +71,7 @@ reply_time date default sysdate not null,
 reply_target references board(board_no) on delete cascade
 );
 create sequence reply_seq;
-=======
+
 --쇼핑몰(도서) 테이블 생성
 drop table store;
 create table store(

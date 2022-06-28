@@ -7,7 +7,7 @@
 <div class="container w950 m30">
 	
 	<div class="row center m30">
-		<h1>자유 게시판</h1>
+		<h1>공지 게시판</h1>
 	</div>
 	
 	<div class="row right">
