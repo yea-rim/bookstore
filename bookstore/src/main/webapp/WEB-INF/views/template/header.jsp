@@ -179,7 +179,7 @@
                             <li><a href="./contact.html">감상평</a></li>
                         </ul>
                     </nav>
-                </div>
+                </div>  
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
