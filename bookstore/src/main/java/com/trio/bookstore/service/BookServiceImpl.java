@@ -1,15 +1,13 @@
-package com.trio.bookstore;
+package com.trio.bookstore.service;
 
 import java.net.URI;
 
-import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.web.WebAppConfiguration;
-
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -18,11 +16,12 @@ import com.trio.bookstore.vo.BookVO;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@WebAppConfiguration
-public class BookTest {
+@Service
+public class BookServiceImpl implements BookService {
 
-	@Test
-	public void naver() {
+	@Override
+	public ResponseEntity<BookVO> bookVO() {
+		
 		String query = "9791190977661";
 		
 		URI uri = UriComponentsBuilder
@@ -42,7 +41,7 @@ public class BookTest {
 		HttpEntity<String> entity = new HttpEntity<>("", header);
 		
 		ResponseEntity<BookVO> result = template.exchange(uri, HttpMethod.GET, entity, BookVO.class);
-		log.info("result = {}", result);
-		
+		log.debug("result = {}", result);
+		return result;
 	}
 }

@@ -17,6 +17,6 @@ public class BookVO {
 	private Integer total;
 	private Integer start;
 	private Integer display;
-	private BookItemsVO bookItemsVO;
+	private BookItemsVO[] items;
 
 }

@@ -20,7 +20,7 @@ public class BookItemsVO {
 	private Integer price;
 	private Integer discount;
 	private String publisher;
-	private Integer isbn;
+	private String isbn;
 	private String description;
 	private Date pubdate;
 }
