@@ -1,6 +1,6 @@
 -- 멤버 테이블 (member)
 drop table member;
-create table member(
+create table member( 
 member_id varchar2(20) primary key check(regexp_like(member_id, '^[a-z][a-z0-9]{7,19}$')),
 member_pw varchar2(16) not null 
 check(regexp_like(member_pw, '[a-z]+') and regexp_like(member_pw, '[A-Z]+')
