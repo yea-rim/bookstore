@@ -29,7 +29,7 @@ book_auth varchar2(100),
 book_publ varchar2(100),
 book_pub date,
 book_description varchar2(150),
-book_type number
+book_type number 
 );
 
 
