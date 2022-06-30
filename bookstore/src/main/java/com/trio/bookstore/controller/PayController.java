@@ -14,12 +14,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.trio.bookstore.entity.PayDetailDto;
-import com.trio.bookstore.entity.PayDto;
 import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.repository2.PayDao;
 import com.trio.bookstore.repository2.StoreDao;
 import com.trio.bookstore.service.KakaoPayService;
+import com.trio.bookstore.service.PayService;
 import com.trio.bookstore.vo.KakaoPayApproveRequestVO;
 import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
 import com.trio.bookstore.vo.KakaoPayReadyRequestVO;
@@ -41,6 +40,9 @@ public class PayController {
 	
 	@Autowired
 	private PayDao payDao;
+	
+	@Autowired
+	private PayService payService;
 	
 	
 	@GetMapping("/han")
@@ -117,27 +119,8 @@ public class PayController {
 		requestVO.setPg_token(pg_token);
 		KakaoPayApproveResponseVO responseVO = kakaoPayService.approve(requestVO);
 		
-		//결제 승인 완료 된 후 db에 저장
-		PayDto payDto = PayDto.builder()
-								.payNo(payNo)
-								.payTid(responseVO.getTid())
-								.payName(responseVO.getItem_name())
-								.payTotal(responseVO.getAmount().getTotal())
-							.build();
-		payDao.insertPay(payDto);
+		payService.insert(payNo,responseVO,purchaseList);
 		
-		//purchaseList 내용 뽑음
-		for(PurchaseVO purchaseVO : purchaseList) {
-			StoreDto storeDto = storeDao.find(purchaseVO.getStoreBookNo());
-			PayDetailDto payDetailDto = PayDetailDto.builder()
-										.payNo(payNo)
-										.payDetailName(storeDto.getBookTitle())
-										.payDetailPrice(storeDto.getStorePrice())
-										.payDetailQuantity(purchaseVO.getQuantity())
-								.build();
-			
-			payDao.insertPayDetail(payDetailDto);
-		}
 		return "redirect:finish";
 	}
 	
@@ -146,8 +129,21 @@ public class PayController {
 		return "pay/finish";
 	}
 	
-//	@GetMapping("/pay/cancel")
-//	@GetMapping("/pay/fail")
+	@GetMapping("/pay/cancel")
+	public String payCancel(HttpSession session) {
+		session.removeAttribute("pay");
+		session.removeAttribute("purchase");
+		session.removeAttribute("payNo");
+		return "pay/cancel";
+	}
+	@GetMapping("/pay/fail") 
+	public String payFail(HttpSession session) {
+		session.removeAttribute("pay");
+		session.removeAttribute("purchase");
+		session.removeAttribute("payNo");
+		
+		return "pay/fail";
+	}
 	
 	@GetMapping("/pay2")
 	public String pay2(Model model) {
