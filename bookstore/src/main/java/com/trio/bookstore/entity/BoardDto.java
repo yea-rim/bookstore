@@ -15,4 +15,5 @@ public class BoardDto {
 	private Date boardTime;
 	private int boardReadcount;
 	private String boardWriter;
+	private String boardHead;
 }

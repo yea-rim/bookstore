@@ -7,11 +7,11 @@
 <div class="container w950 m30">
 	
 	<div class="row center m30">
-		<h1>공지 게시판</h1>
+		<h1>1:1문의</h1>
 	</div>
 	
 	<div class="row right">
-		<a href="write" class="link link-btn">글쓰기</a>
+		<a href="qna_write" class="link link-btn">글쓰기</a>
 	</div>		
 	
 	<div class="row">
@@ -25,7 +25,7 @@
 					<th>조회수</th>
 				</tr>
 			</thead>
-				<c:forEach var="boardDto" items="${list}">
+				<c:forEach var="boardDto" items="${list3}">
 				<tr>
 					<td class="left">
 					
@@ -72,22 +72,22 @@
 	
 		<c:if test="${p > 1}">
 			<c:choose>
-				<c:when test="${search}">
-					<a href="list?p=1&s=${s}&type=${type}&keyword=${keyword}">&laquo;</a>
+				<c:when test="${search3}">
+					<a href="qna_list?p=1&s=${s}&type=${type}&keyword=${keyword}">&laquo;</a>
 				</c:when>
 				<c:otherwise>
-					<a href="list?p=1&s=${s}">&laquo;</a>
+					<a href="qna_list?p=1&s=${s}">&laquo;</a>
 				</c:otherwise>
 			</c:choose>
 		</c:if>
 		
 		<c:if test="${startBlock > 1}">
 			<c:choose>
-				<c:when test="${search}">
-					<a href="list?p=${startBlock-1}&s=${s}&type=${type}&keyword=${keyword}">&laquo;</a>
+				<c:when test="${search3}">
+					<a href="qna_list?p=${startBlock-1}&s=${s}&type=${type}&keyword=${keyword}">&laquo;</a>
 				</c:when>
 				<c:otherwise>
-					<a href="list?p=${startBlock-1}&s=${s}">&laquo;</a>
+					<a href="qna_list?p=${startBlock-1}&s=${s}">&laquo;</a>
 				</c:otherwise>
 			</c:choose>
 		</c:if>
@@ -95,23 +95,23 @@
 		<!-- 숫자 링크 영역 -->
 		<c:forEach var="i" begin="${startBlock}" end="${endBlock}" step="1">
 			<c:choose>
-				<c:when test="${search}">
+				<c:when test="${search3}">
 					<c:choose>
 						<c:when test="${i == p}">
-							<a class="active" href="list?p=${i}&s=${s}&type=${type}&keyword=${keyword}">${i}</a>
+							<a class="active" href="qna_list?p=${i}&s=${s}&type=${type}&keyword=${keyword}">${i}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="list?p=${i}&s=${s}&type=${type}&keyword=${keyword}">${i}</a>
+							<a href="qna_list?p=${i}&s=${s}&type=${type}&keyword=${keyword}">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:when>
 				<c:otherwise>
 					<c:choose>
 						<c:when test="${i == p}">
-							<a class="active" href="list?p=${i}&s=${s}">${i}</a>
+							<a class="active" href="qna_list?p=${i}&s=${s}">${i}</a>
 						</c:when>
 						<c:otherwise>
-							<a href="list?p=${i}&s=${s}">${i}</a>
+							<a href="qna_list?p=${i}&s=${s}">${i}</a>
 						</c:otherwise>
 					</c:choose>
 				</c:otherwise>
@@ -121,22 +121,22 @@
 		<!-- 다음 버튼 영역 -->
 		<c:if test="${endBlock < lastPage}">
 			<c:choose>
-				<c:when test="${search}">
-					<a href="list?p=${endBlock+1}&s=${s}&type=${type}&keyword=${keyword}">&gt;</a>
+				<c:when test="${search3}">
+					<a href="qna_list?p=${endBlock+1}&s=${s}&type=${type}&keyword=${keyword}">&gt;</a>
 				</c:when>
 				<c:otherwise>
-					<a href="list?p=${endBlock+1}&s=${s}">&gt;</a>
+					<a href="qna_list?p=${endBlock+1}&s=${s}">&gt;</a>
 				</c:otherwise>
 			</c:choose>
 		</c:if>
 		
 		<c:if test="${p < lastPage}">
 			<c:choose>
-				<c:when test="${search}">
-					<a href="list?p=${lastPage}&s=${s}&type=${type}&keyword=${keyword}">&raquo;</a>
+				<c:when test="${search3}">
+					<a href="qna_list?p=${lastPage}&s=${s}&type=${type}&keyword=${keyword}">&raquo;</a>
 				</c:when>
 				<c:otherwise>
-					<a href="list?p=${lastPage}&s=${s}">&raquo;</a>
+					<a href="qna_list?p=${lastPage}&s=${s}">&raquo;</a>
 				</c:otherwise>
 			</c:choose>
 		</c:if>
@@ -145,7 +145,7 @@
 	
 	<div class="row center">
 		<!-- 검색창 -->
-		<form action="list" method="get">
+		<form action="qna_list" method="get">
 			<select name="type" class="form-input input-round">
 				<option value="board_title" <c:if test="${type == 'board_title'}">selected</c:if>>제목</option>
 				<option value="board_content" <c:if test="${type == 'board_content'}">selected</c:if>>내용</option>

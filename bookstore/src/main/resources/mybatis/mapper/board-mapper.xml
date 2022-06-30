@@ -16,8 +16,72 @@
 		) where rn between #{begin} and #{end}
 	</select>
 	
+		<select id="list2" parameterType="Map" resultType="BoardDto">
+		select * from (
+			select rownum rn, TMP.* from (
+				select * from board_notice 
+				<if test="type != null and keyword != null">
+					<![CDATA[ where instr(${type}, #{keyword}) > 0 	]]>
+				</if>
+				order by board_no desc
+							)TMP
+		) where rn between #{begin} and #{end}
+	</select>
+	
+		<select id="list1" parameterType="Map" resultType="BoardDto">
+		select * from (
+			select rownum rn, TMP.* from (
+				select * from board_review
+				<if test="type != null and keyword != null">
+					<![CDATA[ where instr(${type}, #{keyword}) > 0 	]]>
+				</if>
+				order by board_no desc
+							)TMP
+		) where rn between #{begin} and #{end}
+	</select>
+	
+		<select id="list3" parameterType="Map" resultType="BoardDto">
+		select * from (
+			select rownum rn, TMP.* from (
+			
+				select * from board_qna 
+				<if test="type != null and keyword != null">
+					<![CDATA[ where instr(${type}, #{keyword}) > 0 	]]>
+				</if>
+				order by board_no desc
+							)TMP
+		) where rn between #{begin} and #{end}
+	</select>
+	
 	<select id="count" parameterType="Map" resultType="int">
 		select count(*) from board
+		<if test="type != null and keyword != null">
+			<![CDATA[
+			where instr(${type}, #{keyword}) > 0
+			]]>
+		</if>
+	</select>
+	
+		<select id="count1" parameterType="Map" resultType="int">
+		select count(*) from board_review
+		<if test="type != null and keyword != null">
+			<![CDATA[
+			where instr(${type}, #{keyword}) > 0
+			]]>
+		</if>
+	</select>
+	
+		<select id="count2" parameterType="Map" resultType="int">
+		select count(*) from board_notice
+		<if test="type != null and keyword != null">
+			<![CDATA[
+			where instr(${type}, #{keyword}) > 0
+			]]>
+		</if>
+	</select>
+	
+		<select id="count3" parameterType="Map" resultType="int">
+		select count(*) from board_qna
 		<if test="type != null and keyword != null">
 			<![CDATA[
 			where instr(${type}, #{keyword}) > 0
@@ -54,10 +118,10 @@
 	
 	<insert id="write" parameterType="BoardDto">
 		insert into board(
-			board_no, board_title, board_content, board_writer
+			board_no, board_head, board_title, board_content, board_writer
 		)
 		values(
-			#{boardNo},  #{boardTitle}, #{boardContent}, #{boardWriter}
+			#{boardNo}, #{boardHead}, #{boardTitle}, #{boardContent}, #{boardWriter}
 		)
 	</insert>
 	
