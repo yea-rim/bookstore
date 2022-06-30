@@ -1,16 +1,15 @@
 package com.trio.bookstore.service;
 
 import java.net.URI;
+import java.util.List;
 
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import com.trio.bookstore.vo.BookVO;
 
 import lombok.extern.slf4j.Slf4j;
@@ -40,8 +39,9 @@ public class BookServiceImpl implements BookService {
 		
 		HttpEntity<String> entity = new HttpEntity<>("", header);
 		
-		ResponseEntity<BookVO> result = template.exchange(uri, HttpMethod.GET, entity, BookVO.class);
-		log.debug("result = {}", result);
-		return result;
+		ResponseEntity<BookVO> bookVO = template.exchange(uri, HttpMethod.GET, entity, BookVO.class);
+		log.debug("bookVO = {}", bookVO);
+		return bookVO;
 	}
+
 }

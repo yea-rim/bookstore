@@ -3,7 +3,7 @@ package com.trio.bookstore.vo;
 import lombok.Data;
 
 @Data
-public class SeoulDataVO {
+public class LibDataVO {
 
 	private String xcnts;
 	private String lbrry_se;
