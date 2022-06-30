@@ -4,8 +4,8 @@
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
-<form action="write" method="get">
-
+<form action="write" method="post">
+<input type="hidden" name="boardHead" value="감상평">
 
 	<div class="container w800 m30">
 	    <div class="row center">

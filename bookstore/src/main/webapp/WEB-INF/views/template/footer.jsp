@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="footer__about">
                         <div class="footer__about__logo">
-                            <a href="${root}/"><img src="${pageContext.request.contextPath}/image/logo.png" alt=""></a>
+                            <a href="${root}/"><img src="${pageContext.request.contextPath}/image/footlogo.png" alt="" ></a>
                         </div>
                         <ul>
                             <li>서울특별시 영등포구 선유동2로 57 이레빌딩 (구관) 19F, 20F</li>
@@ -28,7 +28,7 @@ pageEncoding="UTF-8"%>
                             <li><a href="#">개인정보 관리 약정서</a></li>
                         </ul>
                         <ul>
-                            <li><a href="#">1:1 문의</a></li>
+                            <li><a href="${pageContext.request.contextPath}/board/qna_write">1:1 문의</a></li>
                             <li><a href="#">자주 묻는 질문</a></li>
                             <li><a href="#">회원가입</a></li>
                             <li><a href="#">도서관</a></li>
@@ -69,7 +69,7 @@ pageEncoding="UTF-8"%>
     <!-- Footer Section End -->
 
     <!-- Js Plugins -->
-    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>
     <script src="${pageContext.request.contextPath}/js/jquery-ui.min.js"></script>
