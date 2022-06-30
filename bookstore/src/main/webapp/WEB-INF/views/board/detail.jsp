@@ -3,21 +3,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-
 <div class="container w800 m30">
-	<div class="row center m30">
-		<h1>${boardDto.boardNo}번 글 보기</h1>
-	</div>
 	
 	<div class="row">
 		<table class="table table-border">
 			<tr>
 				<td class="left">
 					<h2>
-						<%-- 말머리가 있으면 출력 --%>
-						<c:if test="${boardDto.boardHead != null}">
-						[${boardDto.boardHead}]
-						</c:if>
 						${boardDto.boardTitle}
 					</h2>
 				</td>
@@ -51,14 +43,13 @@
 			<tr>
 				<td class="right">
 					<a href="${pageContext.request.contextPath}/board/write" class="link link-btn">글쓰기</a>
-					<a href="${pageContext.request.contextPath}/board/write?superNo=${boardDto.boardNo}" class="link link-btn">답글</a>
 					
 					<c:if test="${isOwner || isAdmin}">
 					<a href="${pageContext.request.contextPath}/board/edit?boardNo=${boardDto.boardNo}" class="link link-btn">수정</a>
-					<a href="${pageContext.request.contextPath}/board/edit/${boardDto.boardNo}" class="link link-btn">수정</a>
-					<a href="${pageContext.request.contextPath}/board/delete?boardNo=${boardDto.boardNo}" class="link link-btn">삭제</a>
-					<a href="${pageContext.request.contextPath}/board/delete/${boardDto.boardNo}" class="link link-btn">삭제</a>
-					</c:if>
+<!--					<a href="${pageContext.request.contextPath}/board/edit/${boardDto.boardNo}" class="link link-btn">수정</a>
+-->					<a href="${pageContext.request.contextPath}/board/delete?boardNo=${boardDto.boardNo}" class="link link-btn">삭제</a>
+<!-- 			<a href="${pageContext.request.contextPath}/board/delete/${boardDto.boardNo}" class="link link-btn">삭제</a>
+-->							</c:if>
 					<a href="${pageContext.request.contextPath}/board/list" class="link link-btn">목록</a>
 				</td>
 			</tr>

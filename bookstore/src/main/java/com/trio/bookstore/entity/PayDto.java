@@ -8,12 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
-public class BoardDto {
-	private int boardNo;
-	private String boardTitle;
-	private String boardContent;
-	private Date boardTime;
-	private int boardReadcount;
-	private String boardWriter;
-	private String boardHead;
+public class PayDto {
+	private int payNo;
+	private String payMemberId;
+	private String payName;
+	private int payTotal;
+	private Date payTime;
+	private String payTid;
+	
 }
+

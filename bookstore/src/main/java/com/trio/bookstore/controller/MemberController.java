@@ -323,6 +323,7 @@ public class MemberController {
 		return "member/reset_success";
 	}
 	
+	
 }
 
 

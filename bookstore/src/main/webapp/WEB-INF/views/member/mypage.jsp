@@ -72,6 +72,9 @@
 	<div class="row center m30">
 		<h2><a href="exit">탈퇴하기</a></h2>
 	</div>
+	<div class="row center m30">
+	<h2><a href="http://localhost:8080/bookstore/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1문의 내역</a>
+	</div>
 </div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

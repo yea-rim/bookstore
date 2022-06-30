@@ -31,12 +31,76 @@ public class BoardDaoImpl implements BoardDao {
 	}
 	
 	@Override
+	public List<BoardDto> list1(String type, String keyword, int page, int size) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		int end = page * size;
+		int begin = end - (size - 1);
+		param.put("begin", begin);
+		param.put("end", end);
+		
+		return sqlSession.selectList("board.list1", param);
+	}
+	@Override
+	public List<BoardDto> list2(String type, String keyword, int page, int size) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		int end = page * size;
+		int begin = end - (size - 1);
+		param.put("begin", begin);
+		param.put("end", end);
+		
+		return sqlSession.selectList("board.list2", param);
+	}
+	@Override
+	public List<BoardDto> list3(String type, String keyword, int page, int size) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		int end = page * size;
+		int begin = end - (size - 1);
+		param.put("begin", begin);
+		param.put("end", end);
+		
+		return sqlSession.selectList("board.list3", param);
+	}
+	
+	@Override
 	public int count(String type, String keyword) {
 		Map<String, Object> param = new HashMap<>();
 		param.put("type", type);
 		param.put("keyword", keyword);
 		
 		return sqlSession.selectOne("board.count", param);
+	}
+	@Override
+	public int count1(String type, String keyword) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		return sqlSession.selectOne("board.count1", param);
+	}
+	@Override
+	public int count2(String type, String keyword) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		return sqlSession.selectOne("board.count2", param);
+	}
+	@Override
+	public int count3(String type, String keyword) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		return sqlSession.selectOne("board.count3", param);
 	}
 	
 	@Override
