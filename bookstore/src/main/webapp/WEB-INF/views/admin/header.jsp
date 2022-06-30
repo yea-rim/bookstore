@@ -53,6 +53,10 @@
 </script>
 </head>
 
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <body>
     <!-- Page Preloder -->
     <div id="preloder">
@@ -194,7 +198,7 @@
         </div>
     </header>
     <!-- Header Section End -->
-                
+
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
         <div class="container">
