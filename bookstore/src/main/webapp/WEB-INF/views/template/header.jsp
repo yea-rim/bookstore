@@ -135,7 +135,6 @@
                             </div>
           <c:choose>
          <c:when test="${isLogin}">
-        <div class="humberger__menu__widget">
             <div class="header__top__right__language">
             <a href="${root}/member/mypage">마이페이지</a>
             </div>
@@ -156,7 +155,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+            </div>
         <div class="container">
             <div class="row">
                 <div class="col-lg-3">
@@ -167,7 +166,7 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li class="active"><a href="${root}/board/list">공지게시판</a></li>
+                            <li class="active"><a href="${root}/board/notice_list">공지사항</a></li>
                             <li><a href="./shop-grid.html">도서관</a></li>
                             <li><a href="${root }/book/list">북스토어</a></li>
                             <li><a href="./blog.html">중고 거래</a>
@@ -176,7 +175,7 @@
                                    
                                 </ul>
                             </li>
-                            <li><a href="./contact.html">감상평</a></li>
+                            <li><a href="${root}/board/review_list">감상평</a></li>
                         </ul>
                     </nav>
                 </div>  

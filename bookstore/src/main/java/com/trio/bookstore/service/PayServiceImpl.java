@@ -23,12 +23,12 @@ public class PayServiceImpl implements PayService {
 	private StoreDao storeDao;
 	
 	@Transactional
-	@Override
+	@Override 
 	public void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<PurchaseVO> purchaseList) {
 		//결제 승인까지 완료된 현 시점에서 결제 정보들을 DB에 저장
 		PayDto payDto = PayDto.builder()
 														.payNo(payNo)
-														.payTid(responseVO.getTid())
+				 										.payTid(responseVO.getTid())
 														.payName(responseVO.getItem_name())
 														.payTotal(responseVO.getAmount().getTotal())
 													.build();
