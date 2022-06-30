@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="store">
+		
+		<select id = "list" resultType = "StoreDto">
+			select * from store inner join book on book.book_no = store.store_book_no 
+			order by store_book_no
+		</select>
+		<!-- 
+		<select id = "one" resultType="StoreDto" parameterType="int">
+			select * from store where store_book_no = #{storeBookNo}
+		</select>
+		 -->
+		
+		<!-- 쇼핑몰의 도서번호로 도서테이블의 도서명도 같이 뽑기 -->
+		<select id = "one" resultType="StoreDto" parameterType="int">
+				select * from store 
+					inner join book on book.book_no = store.store_book_no 
+						where store_book_no = #{storeBookNo}
+		</select>
+		
+</mapper> 
