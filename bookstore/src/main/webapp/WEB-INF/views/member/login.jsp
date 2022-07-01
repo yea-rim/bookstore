@@ -11,11 +11,27 @@
 	<input type="hidden" name="referer" value="${referer}">
 
     <div class="container w400 m30">
-        <div class="row center">
-            <h1>로그인</h1>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>로그인</h2>
+                        <div class="breadcrumb__option">
+                            <a href="${root}/bookstore/">Home</a>
+                            <span>북스토어</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <label>아이디</label>
+    </section>
+    <!-- Breadcrumb Section End -->
+    
+        <div class="row mt-3">
+            <label class="">아이디</label>
     		<input type="text" name="memberId" required class="form-input fill input-round" autocomplete="off" value="${cookie.saveId.value}">
         </div>
         <div class="row">
