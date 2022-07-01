@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trio.bookstore.entity.BookDto;
-import com.trio.bookstore.repository.BookDao;
+import com.trio.bookstore.repository2.BookDao;
 import com.trio.bookstore.service.BookService;
 import com.trio.bookstore.vo.BookVO;
 

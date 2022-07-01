@@ -164,14 +164,14 @@
 					method:"delete"
 				})
 				.then(()=>{
-					this.dataList.splice(index, 1);
+					this.bookList.splice(index, 1);
 					//+ 알람(외부 API)
 				});
 			},
 			
 			selectItem(index){
 				//선택한 행의 데이터를 현재 데이터로 설정
-				this.bookData = this.dataList[index];
+				this.bookData = this.bookList[index];
 				this.index = index;
 			},
 			

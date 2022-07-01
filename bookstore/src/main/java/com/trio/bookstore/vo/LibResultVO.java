@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LibVO {
+public class LibResultVO {
 
-	private int list_total_count;
-	private LibResultVO[] result;
-	private LibInfoVO[] row;
+	private int code;
+	private String message;
 
 }

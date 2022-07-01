@@ -1,4 +1,4 @@
-package com.trio.bookstore.repository;
+package com.trio.bookstore.repository2;
 
 import java.util.List;
 

@@ -1,9 +1,15 @@
 package com.trio.bookstore.vo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-public class LibDataVO {
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+public class LibInfoVO {
 
 	private String xcnts;
 	private String lbrry_se;
