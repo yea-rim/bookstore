@@ -3,17 +3,18 @@ package com.trio.bookstore.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/book")
+@RequestMapping("/lib")
 @Controller
-public class bookController {
+public class LibController {
 
 	@RequestMapping("/list")
 	public String list() {
-		return "book/list";
+		return "lib/list";
 	}
 
 	@RequestMapping("/detail")
 	public String detail() {
-		return "book/detail";
+		return "lib/detail";
 	}
+
 }
