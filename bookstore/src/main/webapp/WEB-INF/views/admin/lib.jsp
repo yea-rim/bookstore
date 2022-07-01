@@ -22,97 +22,86 @@
 	<div class="col float-container mt-1" id="app">
 		<div class="float-left" style="width:100%; padding:10px;">
 			<div class="row" v-if="isEditMode">
-				<label>도서 번호</label>
-				<input type="text" class="form-input fill" v-model.number="bookData.bookNo" readonly>
+				<label>번호</label>
+				<input type="text" class="form-input fill" v-model.number="currentData.libInfoNo" readonly>
 			</div>
 			<div class="row">
-				<label>제목</label>
-				<input type="text" class="form-input fill" v-model="bookData.bookTitle">
+				<label>이름</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryName">
 			</div>
 			<div class="row">
-				<label>ISBN</label>
-				<input type="text" class="form-input fill" v-model="bookData.bookIsbn">
+				<label>주소</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryAddress">
 			</div>
 			<div class="row">
-				<label>표지</label>
-				<input type="text" class="form-input fill" v-model="bookData.bookImage">
+				<label>구</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryGu">
 			</div>
 			<div class="row">
-				<label>저자</label>
-				<input type="text" class="form-input fill" v-model="bookData.bookAuth">
+				<label>번호</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryTel">
 			</div>
 			<div class="row">
-				<label>출판사</label>
-				<input type="text" class="form-input fill" v-model="bookData.bookPubl">
+				<label>사이트</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryUrl">
 			</div>
 			<div class="row">
-				<label>출판사</label>
-				<input type="text" class="form-input fill" v-model="bookData.bookPub">
+				<label>운영시간</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryTime">
 			</div>
 			<div class="row">
-				<label>대분류</label>
-					<select>
-						<option id="1">소설</option>
-						<option id="2">자기계발</option>
-						<option id="3">시/에세이</option>
-						<option id="4">인문</option>
-						<option id="5">컴퓨터</option>
-						<option id="6">참고서</option>
-						<option id="7">어린이</option>
-						<option id="8">취미</option>
-						<option id="8">만화</option>
-					</select>
+				<label>휴관일</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryCloseDate">
 			</div>
 			<div class="row">
-				<label>소분류</label>
-					<select v-model="bookData.bookType">
-						<option id="1">소설</option>
-						<option id="2">자기계발</option>
-						<option id="3">시/에세이</option>
-						<option id="4">인문</option>
-						<option id="5">컴퓨터</option>
-						<option id="6">참고서</option>
-						<option id="7">어린이</option>
-						<option id="8">취미</option>
-						<option id="8">만화</option>
-					</select>
+				<label>위도</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryXcnts">
 			</div>
 			<div class="row">
-				<button class="btn btn-primary fill" v-on:click="addItem">{{mode}}</button>
+				<label>경도</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryYdnts">
 			</div>
-			<div class="row">
-				<button class="btn btn-secondary fill" v-on:click="clearItem">초기화</button>
+
+			<div class="col">
+				<button class="site-btn m-1 fill" v-on:click="addItem">{{mode}}</button>
+				<button class="site-btn m-1 fill" v-on:click="clearItem">초기화</button>
 			</div>
+			
 		</div>
+		
 		<div class="float-left" style="width:100%">
 			<table class="table table-border">
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th>제목</th>
-						<th>ISBN</th>
-						<th>표지</th>
-						<th>저자</th>
-						<th>출판사</th>
-						<th>출판일</th>
-						<th>분류</th>
+						<th>이름</th>
+						<th>주소</th>
+						<th>구</th>
+						<th>번호</th>
+						<th>사이트</th>
+						<th>운영시간</th>
+						<th>휴관일</th>
+						<th>위도</th>
+						<th>경도</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(book, index) in bookList" v-bind:key="index">
-						<td>{{lib.bookNo}}</td>
-						<td>{{book.bookTitle}}</td>
-						<td>{{book.bookIsbn}}</td>
-						<td>{{book.bookImage}}</td>
-						<td>{{book.bookAuth}}</td>
-						<td>{{book.bookPubl}}</td>
-						<td>{{book.bookPub}}</td>
-						<td>{{book.bookDescription}}</td>
-						<td>{{book.bookType}}</td>
+					<tr v-for="(lib_info, index) in libList" v-bind:key="index">
+						<td>{{lib_info.libInfoNo}}</td>
+						<td>{{lib_info.libraryName}}</td>
+						<td>{{lib_info.libraryAddress}}</td>
+						<td>{{lib_info.libraryGu}}</td>
+						<td>{{lib_info.libraryTel}}</td>
+						<td>{{lib_info.libraryUrl}}</td>
+						<td>{{lib_info.libraryTime}}</td>
+						<td>{{lib_info.libraryCloseDate}}</td>
+						<td>{{lib_info.libraryXcnts}}</td>
+						<td>{{lib_info.libraryYdnts}}</td>
 						<td>
-							<!-- .prevent 를 붙이면 기본 이벤트가 자동 제거(e.preventDefault() 효과) -->
-							<a href="#" v-on:click.prevent="selectItem(index);">선택</a>
-							<a href="#" v-on:click.prevent="deleteItem(index);">삭제</a>
+						
+					<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
+					<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
+
 						</td>
 					</tr>
 				</tbody>
@@ -127,16 +116,17 @@
 		data(){
 			return {
 				libList:[],
-				libData:{
-					bookNo:"",
-					bookTitle:"",
-					bookIsbn:"",
-					bookImage:"",
-					bookAuth:"",
-					bookPubl:"",
-					bookPub:"",
-					bookDescription:"",
-					bookType:"",
+				currentData:{
+					libInfoNo:"",
+					libraryName:"",
+					libraryAddress:"",
+					libraryGu:"",
+					libraryTel:"",
+					libraryUrl:"",
+					libraryTime:"",
+					libraryCloseDate:"",
+					libraryXcnts:"",
+					libraryYdnts:"",
 				},
 				
 				index:-1, //-1이면 등록, 0이상이면 수정
@@ -158,9 +148,9 @@
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
 				if(choice == false) return;
 				
-				const libNo = this.libList[index].libNo;
+				const libInfoNo = this.libList[index].libInfoNo;
 				axios({
-					url:"${pageContext.request.contextPath}/rest/lib/" + libNo,
+					url:"${pageContext.request.contextPath}/rest/lib/" + libInfoNo,
 					method:"delete"
 				})
 				.then(()=>{
@@ -171,20 +161,22 @@
 			
 			selectItem(index){
 				//선택한 행의 데이터를 현재 데이터로 설정
-				this.libData = this.libList[index];
+				this.currentData = this.libList[index];
 				this.index = index;
 			},
 			
 			clearItem(){
 				this.currentData = {
-						bookNo:"",
-						bookTitle:"",
-						bookIsbn:"",
-						bookImage:"",
-						bookAuth:"",
-						bookPubl:"",
-						bookDescription:"",
-						bookType:"",
+						libInfoNo:"",
+						libraryName:"",
+						libraryAddress:"",
+						libraryGu:"",
+						libraryTel:"",
+						libraryUrl:"",
+						libraryTime:"",
+						libraryCloseDate:"",
+						libraryXcnts:"",
+						libraryYdnts:"",
 				}
 				this.index = -1;
 			},
@@ -226,7 +218,6 @@
 					method:"get"
 				})
 				.then((resp)=>{
-					//console.log(resp);
 					console.log(resp.data);
 					this.libList.push(...resp.data);
 				})

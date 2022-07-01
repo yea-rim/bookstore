@@ -4,10 +4,13 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
+import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.entity.LibInfoDto;
 import com.trio.bookstore.error.CannotFindException;
 
+@Repository
 public class LibInfoDaoImpl implements LibInfoDao {
 
 	@Autowired
@@ -42,6 +45,11 @@ public class LibInfoDaoImpl implements LibInfoDao {
 	@Override
 	public List<LibInfoDto> search(String query) {
 		return sqlSession.selectList("lib.search", query);
+	}
+
+	@Override
+	public List<BookDto> findGu(int libInfoGu) {
+		return sqlSession.selectList("lib.findGu", libInfoGu);
 	}
 
 }

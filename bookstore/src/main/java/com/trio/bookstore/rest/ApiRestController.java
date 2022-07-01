@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trio.bookstore.service.BookService;
+import com.trio.bookstore.service.LibInfoService;
 import com.trio.bookstore.vo.BookVO;
+import com.trio.bookstore.vo.LibInfoVO;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
@@ -17,10 +19,19 @@ public class ApiRestController {
 
 	@Autowired
 	private BookService bookService;
+	
+	@Autowired
+	private LibInfoService libInfoService;
 
 	@GetMapping("/api/book")
 	public BookVO bookVO(@RequestParam(required = false) String query) {
 		System.out.println("검색어 = " + query);
 		return bookService.bookVO(query).getBody();
 	}
+	
+//	@GetMapping("api/lib")
+//	public LibInfoVO libInfoVO(@RequestParam(required = false) String query) {
+//		System.out.println("검색어 = " + query);
+//		return libInfoService.libInfoVO(query).getBody();
+//	}
 }

@@ -5,6 +5,10 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book">
 	
+	<select id = "sequence" resultType = "int">
+		select book_seq.nextval from dual
+	</select>
+	
 	<select id="list" resultType="BookDto">
 		select * from book order by book_no asc
 	</select>
@@ -26,7 +30,6 @@
 	<update id="update" parameterType="BookDto">
 		update book
 			set
-				book_no = #{bookNo},
 				book_title = #{bookTitle},
 				book_isbn = #{bookIsbn},
 				book_image = #{bookImage},
@@ -43,6 +46,10 @@
 		select * from book
 		where instr(book_title, #{bookTitle}) > 0
 		order by book_title asc
+	</select>
+	
+	<select id="one" resultType="BookDto" parameterType="int">
+		select * from book where book_no = #{bookNo}
 	</select>
 	
 </mapper> 

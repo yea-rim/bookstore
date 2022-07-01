@@ -19,7 +19,7 @@ public class LibInfoDto {
 	private String libraryUrl;
 	private String libraryTime;
 	private String libraryCloseDate;
-	private int libraryXcnts;
-	private int libraryYdnts;
+	private String libraryXcnts;
+	private String libraryYdnts;
 
 }
