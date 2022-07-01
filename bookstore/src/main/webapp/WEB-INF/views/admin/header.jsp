@@ -203,10 +203,10 @@
     <section class="hero hero-normal">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 text-center">
+                <div class="col-lg-2 text-center">
 					<button class="site-btn m-1" onclick="location.href='book'">도서 관리</button><br>
 					<button class="site-btn m-1" onclick="location.href='lib'">도서관 관리</button><br>
 					<button class="site-btn m-1" onclick="location.href='member'">회원 관리</button><br>
                 </div>
-                <div class="col-lg-9">
+                <div class="col-lg-10">
                     <div class="container-fluid">

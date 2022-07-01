@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 public class LibVO {
 
 	private int list_total_count;
-	private LibResultVO[] result;
+	private LibResultVO RESULT;
 	private LibInfoVO[] row;
 
 }

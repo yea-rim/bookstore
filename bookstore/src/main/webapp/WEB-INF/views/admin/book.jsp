@@ -19,8 +19,32 @@
         </div>
     </section>
 
-	<div class="col float-container mt-1" id="app">
-		<div class="float-left" style="width:100%; padding:10px;">
+	<div class="row float-container mt-1" id="app">
+
+		<div class="col-lg-6" style="width:100%; padding:10px;">
+
+			<div class="row mt-5">
+				<label>ISBN</label>
+				<input type="text" class="form-input fill" v-model="currentData.bookIsbn">
+			</div>
+			
+			<div class="col">
+				<button class="site-btn m-1 fill">ISBN 조회 등록</button>
+			</div>
+			
+						
+			<div class="row mt-5">
+				<label>도서 분류</label>
+				<input type="text" class="form-input fill" v-model="currentData.bookIsbn">
+			</div>
+			
+			<div class="col">
+				<button class="site-btn m-1 fill">등록</button>
+			</div>
+			
+		</div>
+		
+				<div class="col-lg-6" style="width:100%; padding:10px;">
 			<div class="row" v-if="isEditMode">
 				<label>도서 번호</label>
 				<input type="site-text" class="form-input fill" v-model.number="currentData.bookNo" readonly>
@@ -89,6 +113,8 @@
 			</div>
 			
 		</div>
+		
+
 		<div class="float-left" style="width:100%">
 			<table class="table table-border">
 				<thead>
@@ -236,7 +262,7 @@
 					this.bookList.push(...resp.data);
 				})
 //                 axios({
-//                     url:"http://localhost:8080/bookstore/admin/book",
+//                     url:"${pageContext.request.contextPath}/admin/api/book?query=" + query,
 //                     method:"get"
 //                 })
 //                 .then((resp)=>{

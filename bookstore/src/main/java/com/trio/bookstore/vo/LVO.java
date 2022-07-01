@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class LibResultVO {
+public class LVO {
 
-	private int CODE;
-	private String MESSAGE;
+	private LibVO SeoulPublicLibraryInfo;
 
 }

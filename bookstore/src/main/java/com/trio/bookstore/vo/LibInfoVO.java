@@ -11,19 +11,18 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LibInfoVO {
 
-	private String xcnts;
-	private String lbrry_se;
-	private String gu_code;
-	private String tel_no;
-	private String adres;
-	private String lbrry_seq_no;
-	private String hmpg_url;
-	private String code_value;
-	private String lbrry_se_name;
-	private String lbrry_name;
-	private String fdrm_close_date;
-	private String ydnts;
-	private String op_time;
+	private String LBRRY_SEQ_NO;
+	private String LBRRY_NAME;
+	private String GU_CODE;
+	private String CODE_VALUE;
+	private String ADRES;
+	private String TEL_NO;
+	private String HMPG_URL;
+	private String OP_TIME;
+	private String FDRM_CLOSE_DATE;
+	private String LBRRY_SE_NAME;
+	private String XCNTS;
+	private String YDNTS;
 
 }
 

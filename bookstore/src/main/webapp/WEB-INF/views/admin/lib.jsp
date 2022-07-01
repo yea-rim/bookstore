@@ -19,8 +19,22 @@
         </div>
     </section>
 
-	<div class="col float-container mt-1" id="app">
-		<div class="float-left" style="width:100%; padding:10px;">
+	<div class="row float-container mt-1" id="app">
+
+		<div class="col-lg-6" style="width:100%; padding:10px;">
+
+			<div class="row mt-5">
+				<label>도서관명</label>
+				<input type="text" class="form-input fill" v-model="currentData.libraryName">
+			</div>
+			
+			<div class="col">
+				<button class="site-btn m-1 fill">공공데이터 조회 등록</button>
+			</div>
+			
+		</div>
+		
+		<div class="col-lg-6" style="width:100%; padding:10px;">
 			<div class="row" v-if="isEditMode">
 				<label>번호</label>
 				<input type="text" class="form-input fill" v-model.number="currentData.libInfoNo" readonly>
@@ -79,10 +93,7 @@
 						<th>구</th>
 						<th>번호</th>
 						<th>사이트</th>
-						<th>운영시간</th>
-						<th>휴관일</th>
-						<th>위도</th>
-						<th>경도</th>
+
 					</tr>
 				</thead>
 				<tbody>
@@ -93,10 +104,6 @@
 						<td>{{lib_info.libraryGu}}</td>
 						<td>{{lib_info.libraryTel}}</td>
 						<td>{{lib_info.libraryUrl}}</td>
-						<td>{{lib_info.libraryTime}}</td>
-						<td>{{lib_info.libraryCloseDate}}</td>
-						<td>{{lib_info.libraryXcnts}}</td>
-						<td>{{lib_info.libraryYdnts}}</td>
 						<td>
 						
 					<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
@@ -116,6 +123,7 @@
 		data(){
 			return {
 				libList:[],
+
 				currentData:{
 					libInfoNo:"",
 					libraryName:"",
