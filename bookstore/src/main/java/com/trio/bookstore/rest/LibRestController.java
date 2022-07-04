@@ -1,6 +1,5 @@
 package com.trio.bookstore.rest;
 
-import java.net.URISyntaxException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,22 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.entity.LibInfoDto;
 import com.trio.bookstore.repository2.LibInfoDao;
-import com.trio.bookstore.service.LibInfoService;
-import com.trio.bookstore.vo.LibInfoVO;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/rest/lib")
 public class LibRestController {
-
-	@Autowired
-	private LibInfoService libInfoService;
 
 	@Autowired
 	private LibInfoDao libInfoDao;
@@ -52,14 +44,8 @@ public class LibRestController {
 		libInfoDao.delete(libInfoNo);
 	}
 
-	@GetMapping("/gu/{libInfoGu}")
-	public List<BookDto> findStudent(@PathVariable int libInfoGu) {
-		return libInfoDao.findGu(libInfoGu);
-	}
-
-	@GetMapping("/api/{number}")
-	public LibInfoVO bookVO(@RequestParam(required = false) int number) throws URISyntaxException {
-		System.out.println("검색어 = " + number);
-		return libInfoService.libVO(number).getBody();
+	@GetMapping("/search")
+	public List<LibInfoDto> findLib(@PathVariable int libInfoNo) {
+		return libInfoDao.findLib(libInfoNo);
 	}
 }

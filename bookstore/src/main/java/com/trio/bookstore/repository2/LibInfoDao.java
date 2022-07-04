@@ -2,7 +2,6 @@ package com.trio.bookstore.repository2;
 
 import java.util.List;
 
-import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.entity.LibInfoDto;
 
 public interface LibInfoDao {
@@ -17,6 +16,6 @@ public interface LibInfoDao {
 
 	List<LibInfoDto> search(String query);
 
-	List<BookDto> findGu(int libInfoGu);
+	List<LibInfoDto> findLib(int libInfoNo);
 
 }

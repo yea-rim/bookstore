@@ -32,7 +32,7 @@ public class ApiRestController {
 		return bookService.bookVO(query).getBody();
 	}
 	
-	@GetMapping("api/lib")
+	@GetMapping("/api/lib")
 	public LibInfoVO libInfoVO(@RequestParam(required = false) int number) throws URISyntaxException {
 		System.out.println("검색어 = " + number);
 		return libInfoService.libVO(number).getBody();

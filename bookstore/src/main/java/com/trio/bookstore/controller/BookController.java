@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/book")
 @Controller
-public class bookController {
+public class BookController {
 
 	@RequestMapping("/list")
 	public String list() {

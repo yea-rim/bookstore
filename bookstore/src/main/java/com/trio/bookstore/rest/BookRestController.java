@@ -26,39 +26,38 @@ public class BookRestController {
 
 	@Autowired
 	private BookDao bookDao;
-	
+
 	@Autowired
 	private BookService bookService;
-	
+
 	@GetMapping("/")
-	public List<BookDto> list(){
+	public List<BookDto> list() {
 		return bookDao.list();
 	}
-	
+
 	@PostMapping("/")
 	public BookDto insert(@RequestBody BookDto bookDto) {
 		return bookDao.insert(bookDto);
 	}
-	
+
 	@PutMapping("/")
 	public BookDto update(@RequestBody BookDto bookDto) {
 		return bookDao.update(bookDto);
 	}
-	
+
 	@DeleteMapping("/{bookNo}")
 	public void delete(@PathVariable int bookNo) {
 		bookDao.delete(bookNo);
 	}
-	
+
 	@GetMapping("/search/{query}")
 	public List<BookDto> findStudent(@PathVariable String query) {
 		return bookDao.search(query);
 	}
-	
+
 	@GetMapping("/book/{query}")
 	public BookVO bookVO(@RequestParam(required = false) String query) {
 		System.out.println("검색어 = " + query);
 		return bookService.bookVO(query).getBody();
 	}
-	
 }
