@@ -23,4 +23,7 @@ public interface LibInfoService {
 
 	ResponseEntity<LibInfoVO> libVO(int number) throws URISyntaxException;
 
+	ResponseEntity<LibInfoVO> libInfoVO(int number)
+			throws URISyntaxException, JsonMappingException, JsonProcessingException;
+
 }
