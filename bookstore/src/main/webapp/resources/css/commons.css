@@ -645,3 +645,10 @@ ul.menu a {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  background-color: white;
+}

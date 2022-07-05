@@ -36,7 +36,7 @@
 					console.log($("input[name=boardContent]").val());
 				});
 			</script>
-			<input type="hidden" name="boardContent">
+			
 	    </div>
 	    <div class="row">
 	        <button type="submit" class="btn btn-primary fill">수정</button>
