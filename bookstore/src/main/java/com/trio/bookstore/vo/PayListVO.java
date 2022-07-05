@@ -15,4 +15,4 @@ import lombok.NoArgsConstructor;
 public class PayListVO {
 	private PayDto payDto;
 	private List<PayDetailDto> payDetailList;
-}
+} 
