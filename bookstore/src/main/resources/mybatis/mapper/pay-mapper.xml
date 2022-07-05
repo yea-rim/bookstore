@@ -11,13 +11,90 @@
 		
 		<insert id ="insert" parameterType ="PayDto">
 			insert into pay(
-					pay_no,pay_tid,pay_total,pay_name,pay_time
+					pay_no,pay_tid,pay_total,pay_name,pay_time,pay_status
 				)
 				values(
-					#{payNo},#{payTid},#{payTotal},#{payName},sysdate
+					#{payNo},#{payTid},#{payTotal},#{payName},sysdate,'승인'
 				)
 				
 		</insert>
+		
+		<select id = "list" resultType = "PayDto">
+			select * from pay order by pay_no desc
+		</select>
+		
+		<select id="one" resultType="PayDto" parameterType="int">
+		select * from pay where pay_no = #{payNo}
+	</select>
+	
+	<update id = "refresh" parameterType="int">
+		update pay set pay_status = (
+		 select 
+		        case
+		            when "all" = "success" then '승인'
+		            when "all" = "cancel" then '취소'
+		            else '부분취소'
+		        end
+		    from (
+		        select
+		            (select count(*) from pay_detail where pay_no = #{payNo}) "all",
+		            (select count(*) from pay_detail where pay_no = #{payNo} and pay_detail_status = '승인') "success",
+		            (select count(*) from pay_detail where pay_no = #{payNo} and pay_detail_status = '취소') "cancel"
+		        from dual
+		    ) 
+		) where pay_no = #{payNo}
+	</update>
+	
+		<update id="cancelAll" parameterType="int">
+			update pay set pay_status = '취소' where pay_no = #{payNo}
+		</update>
+	
+	
+		<!-- 계층형 조회 -->
+	
+		<resultMap type="PayListVO" id="payMap">
+		<!-- 
+			객체(PaymentDto) 에 대한 매핑 설정 : association 
+			- 자료형은 변수에 맞게 자동 변환되며 불가능할 경우 오류가 발생함
+			- 수동으로 자료형을 지정할 경우 javaType을 설정
+		-->
+		<association property="payDto" javaType="PayDto">
+			<result column="pay_no" property="payNo"/>
+			<result column="pay_tid" property="payTid"/>
+			<result column="pay_total" property="payTotal"/>
+			<result column="pay_name" property="payName"/>
+			<result column="pay_time" property="payTime"/>
+			<result column="pay_status" property="payStatus"/>
+		</association>
+
+		<!-- 
+			컬렉션(List<PaymentDetailDto>에 대한 매핑 설정 : collection 
+			- 컬렉션은 자료형을 두 가지로 설정해야 한다
+				- javaType : 컬렉션의 자료형
+				- ofType : 내용물의 자료형(Generic type)
+			- 내부에는 객체처럼 result를 이용하여 매핑을 수행한다
+			- (반.드.시) 해당 컬렉션을 채우기 위해 필요한 select 구문의 id를 지정해야 한다(select, column)
+		-->
+		<collection property="payDetailList" javaType="List" ofType="PayDetailDto"
+					select="treeSearchSubquery" column="pay_no">
+			<result column="pay_detail_no" property="payDetailNo"/>
+			<result column="pay_no" property="payNo"/>
+			<result column="pay_detail_name" property="payDetailName"/>
+			<result column="pay_detail_quantity" property="payDetailQuantity"/>
+			<result column="pay_detail_price" property="payDetailPrice"/>
+			<result column="pay_detail_status" property="payDetailStatus"/>
+		</collection>
+	</resultMap>
+
+	<select id="treeSearch" resultMap="payMap">
+		select * from pay order by pay_no desc
+	</select>
+	<select id="treeSearchSubquery" resultType="PayDetailDto" parameterType="int">
+		select * from pay_detail 
+		where pay_no = #{payNo}
+		order by pay_detail_no asc
+	</select>
+		
 </mapper> 
 
 
