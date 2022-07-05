@@ -21,7 +21,7 @@ public class PayServiceImpl implements PayService {
 	 
 	@Autowired
 	private StoreDao storeDao;
-	
+	 
 	@Transactional
 	@Override 
 	public void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<PurchaseVO> purchaseList) {

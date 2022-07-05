@@ -13,7 +13,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.trio.bookstore.entity.PayDetailDto;
+import com.trio.bookstore.entity.PayDto;
 import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.repository2.PayDao;
 import com.trio.bookstore.repository2.StoreDao;
@@ -21,6 +24,10 @@ import com.trio.bookstore.service.KakaoPayService;
 import com.trio.bookstore.service.PayService;
 import com.trio.bookstore.vo.KakaoPayApproveRequestVO;
 import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
+import com.trio.bookstore.vo.KakaoPayCancelRequestVO;
+import com.trio.bookstore.vo.KakaoPayCancelResponseVO;
+import com.trio.bookstore.vo.KakaoPayOrderRequestVO;
+import com.trio.bookstore.vo.KakaoPayOrderResponseVO;
 import com.trio.bookstore.vo.KakaoPayReadyRequestVO;
 import com.trio.bookstore.vo.KakaoPayReadyResponseVO;
 import com.trio.bookstore.vo.PurchaseListVO;
@@ -200,5 +207,86 @@ public class PayController {
 
 				return "redirect:"+responseVO.getNext_redirect_pc_url();
 		
+	}
+	
+	@GetMapping("/history")
+	public String history(Model model) {
+		model.addAttribute("list",payDao.list());
+		return "pay/list";
+	}
+	
+	@GetMapping("/more")
+	public String more(@RequestParam int payNo, Model model) throws URISyntaxException {
+		PayDto payDto = payDao.find(payNo);
+		model.addAttribute("payDto",payDto);
+		
+		List<PayDetailDto> payDetailList = payDao.listDetail(payNo);
+		model.addAttribute("payDetailList",payDetailList);
+		
+		KakaoPayOrderResponseVO responseVO = 
+				kakaoPayService.order(KakaoPayOrderRequestVO.builder()
+																			.tid(payDto.getPayTid())
+																		.build());
+			model.addAttribute("responseVO", responseVO);
+
+			return "pay/more";
+	}
+	
+	
+	@GetMapping("/cancel")
+	public String cancelDetail(@RequestParam int payDetailNo) throws URISyntaxException {
+		
+		PayDetailDto payDetailDto = payDao.findDetail(payDetailNo);
+		if(payDetailDto == null) {
+			
+			
+		}
+		PayDto payDto = payDao.find(payDetailDto.getPayNo());
+	
+		//실제 취소
+				KakaoPayCancelRequestVO requestVO = 
+											KakaoPayCancelRequestVO.builder()
+												.tid(payDto.getPayTid())
+												.cancel_amount(payDetailDto.getPayTotal())
+											.build();
+				KakaoPayCancelResponseVO responseVO = kakaoPayService.cancel(requestVO);
+
+				//DB 처리
+				payDao.cancelDetail(payDetailDto);
+
+				return "redirect:more?payNo="+payDetailDto.getPayNo();
+			}
+	
+	@GetMapping("/cancel_all")
+	public String cancelAll(@RequestParam int payNo, RedirectAttributes attr) throws URISyntaxException {
+		PayDto payDto = payDao.find(payNo);
+		if(payDto == null) {
+			
+		}
+		
+		int cancelAmount = payDao.calculateCancelAmountByOracle(payNo);
+		if(cancelAmount == 0) {
+			
+		}
+		KakaoPayCancelRequestVO requestVO = KakaoPayCancelRequestVO.builder()
+				.tid(payDto.getPayTid())
+				.cancel_amount(cancelAmount)
+				.build();
+		
+		KakaoPayCancelResponseVO responseVO = kakaoPayService.cancel(requestVO);
+
+	
+		//보유 DB의 정보 삭제로 수정(pay,pay_detail)
+		payDao.cancelAll(payNo);
+		
+		attr.addAttribute("payNo",payNo);
+		
+		return "redirect:more";
+	}
+	
+	@GetMapping("/history2")
+	public String history2(Model model) {
+		model.addAttribute("list",payDao.treeList());
+		return "pay/list2";
 	}
 }

@@ -4,3 +4,5 @@
 
 <h2><a href ="pay1">단품결제</a></h2>
 <h2><a href ="pay2">묶음결제</a></h2>
+<h2><a href ="history">결제 내역 조회</a></h2>
+<h2><a href ="history2">결제 내역 조회(계층형)</a></h2>
