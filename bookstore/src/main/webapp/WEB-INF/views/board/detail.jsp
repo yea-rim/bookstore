@@ -35,7 +35,23 @@
 			-->
 			<tr height="250">
 				<td valign="top" class="left">
-					<pre>${boardDto.boardContent}</pre>
+				<div class="toast-custom-viewer"></div>
+<script src="https://uicdn.toast.com/editor/3.0.2/toastui-editor-all.min.js"></script>
+    <script>
+        //Viewer용 CDN을 사용할 경우
+        // const editor = new toastui.Editor({
+        //     el : document.querySelector(".toast-custom-viewer"),
+        //     initialValue : "Hello toast ui editor~!"
+        // });
+
+        //전체(ALL)용 CDN을 사용할 경우
+        const editor = toastui.Editor.factory({
+            el : document.querySelector(".toast-custom-viewer"),
+            viewer:true,
+            initialValue : "${boardDto.boardContent}"
+        });
+        
+    </script>
 				</td>
 			</tr>
 			
