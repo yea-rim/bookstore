@@ -14,4 +14,9 @@ public class PayDetailDto {
 	private String payDetailName;
 	private int payDetailQuantity;
 	private int payDetailPrice;
+	private String payDetailStatus;
+	
+	public int getPayTotal() {
+		return this.payDetailPrice * this.payDetailQuantity;
+	}
 }

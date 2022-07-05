@@ -15,6 +15,7 @@ public class PayDto {
 	private int payTotal;
 	private Date payTime;
 	private String payTid;
+	private String payStatus;
 	
 }
 
