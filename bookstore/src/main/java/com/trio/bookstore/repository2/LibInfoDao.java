@@ -17,5 +17,4 @@ public interface LibInfoDao {
 	List<LibInfoDto> search(String query);
 
 	List<LibInfoDto> findLib(int libInfoNo);
-
 }

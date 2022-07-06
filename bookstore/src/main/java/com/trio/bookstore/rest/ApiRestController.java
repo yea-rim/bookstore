@@ -13,7 +13,6 @@ import com.trio.bookstore.service.BookService;
 import com.trio.bookstore.service.LibInfoService;
 import com.trio.bookstore.vo.BookVO;
 import com.trio.bookstore.vo.LibInfoVO;
-import com.trio.bookstore.vo.LibVO;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController

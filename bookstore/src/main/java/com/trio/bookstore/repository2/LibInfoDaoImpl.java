@@ -11,7 +11,6 @@ import com.trio.bookstore.error.CannotFindException;
 
 @Repository
 public class LibInfoDaoImpl implements LibInfoDao {
-
 	@Autowired
 	private SqlSession sqlSession;
 

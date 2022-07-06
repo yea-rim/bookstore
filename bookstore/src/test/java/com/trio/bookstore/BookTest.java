@@ -23,7 +23,7 @@ public class BookTest {
 
 	@Test
 	public void naver() {
-		String query = "9788959893546";
+		String query = "9791189909093";
 		
 		URI uri = UriComponentsBuilder
 				.fromUriString("https://openapi.naver.com")
