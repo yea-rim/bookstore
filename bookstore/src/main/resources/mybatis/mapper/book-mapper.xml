@@ -52,4 +52,25 @@
       select * from book where book_no = #{bookNo}
    </select>
    
+   <!-- 한석 -->
+   <!-- 페이지 네이션 도서 조회구문 -->
+	<select id="Hlist" parameterType="Map" resultType="BookDto" >
+			select * from (
+				select rownum rn, TMP.* from (
+					select * from book 
+					<if test = "type != null and keyword != null">
+						<![CDATA[ where instr(${type}, #{keyword}) > 0 	]]>
+					</if>
+				)TMP
+			) where rn between #{begin} and #{end}
+	</select>
+	
+	<select id="Hcount" parameterType="Map" resultType="int">
+		select count(*) from book
+		<if test = "type != null and keyword != null">
+			<![CDATA[
+				where instr(${type}, #{keyword}) > 0
+			]]>
+		</if>
+	</select>
 </mapper> 
