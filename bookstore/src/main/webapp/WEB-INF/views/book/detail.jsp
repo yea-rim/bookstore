@@ -3,18 +3,17 @@
     
    <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
     
-    
- <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+  <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
+                        <h2>도서 소개 </h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <a href="${pageContext.request.contextPath }">Home</a>
+                            <span>북스토어</span>
+                          
                         </div>
                     </div>
                 </div>
@@ -31,7 +30,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                                src="${pageContext.request.contextPath}/image/product/details/product-details-1.jpg" alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -47,7 +46,7 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <div class="product__details__text">
-                        <h3>Vetgetable’s Package</h3>
+                        <h3>${bookDto.bookTitle }</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -57,17 +56,17 @@
                             <span>(18 reviews)</span>
                         </div>
                         <div class="product__details__price">$50.00</div>
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                            vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                            quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
+                        <p>${bookDto.bookDescription }</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
+                                주문 수량 &nbsp;&nbsp; <div class="pro-qty">                                    
+                               		 <input type="text" value="1">
+                               </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
+                        <br><br>
+                        <a href="#" class="primary-btn">장바구니 담기</a>
+                        <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a>
                         <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
@@ -89,15 +88,15 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
+                                    aria-selected="true">도서 목차</a>
                             </li>
-                            <li class="nav-item">
+                            <!--  li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
                                     aria-selected="false">Information</a>
-                            </li>
+                            </li-->
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
+                                    aria-selected="false">감상평 <span>(1)</span></a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -243,7 +242,7 @@
             </div>
         </div>
     </section>
+    <!-- Related Product Section End -->
     
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     
-    <!-- Related Product Section End -->

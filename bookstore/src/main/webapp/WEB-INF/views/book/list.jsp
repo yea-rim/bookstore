@@ -54,22 +54,26 @@
                             </div>
                         </div>
                     </div>
+                   <!-- 도서 목록 --> 
                     <div class="row">
+                        <c:forEach var = "bookDto" items = "${list }">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/image/product/product-1.jpg">
                                     <ul class="product__item__pic__hover">
                                         <!--  li><a href="${root}/"><i class="fa fa-heart"></i></a></li>-->
-                                        <li><a href="${root}/book/detail"><i class="fa fa-retweet"></i></a></li>
+                                        <li><a href="${root}/book/detail?bookNo=${bookDto.bookNo}"><i class="fa fa-retweet"></i></a></li>
                                         <!--  li><a href="${root}/"><i class="fa fa-shopping-cart"></i></a></li>-->
                                     </ul>
                                 </div>
                                 <div class="product__item__text">
-                                    <h6><a href="${root}/book/detail">니체의 말</a></h6>
+                                    <h6><a href="${root}/book/detail?bookNo=${bookDto.bookNo}">${bookDto.bookTitle }</a></h6>
                                     <h5>$30.00</h5>
                                 </div>
                             </div>
                         </div>
+                        </c:forEach>
+                        <!-- 
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="${pageContext.request.contextPath}/image/product/product-2.jpg">
@@ -235,13 +239,86 @@
                                 </div>
                             </div>
                         </div>
+            -->
                     </div>
+            <!-- 타입이나 키워드 등 검색 조회 늘어나면 수정 할 수도 있음 -->
                     <div class="product__pagination">
-                        <a href="${root}/">1</a>
-                        <a href="${root}/">2</a>
-                        <a href="${root}/">3</a>
+                    <c:if test = "${p > 1 }">
+                        <c:choose>
+							<c:when test = "${search }">
+								<a href = "list?page=1&size=${size}&type=${type}&keyword=${keyword}">&laquo;</a>
+							</c:when>       
+							<c:otherwise>
+								<a href = "list?page=1&size=${size }">&laquo;</a>
+							</c:otherwise>                 	
+                        </c:choose>
+                    </c:if>
+                    
+                    <c:if test="${startBlock > 1}">
+						<c:choose>
+							<c:when test="${search}">
+								<a href="list?page=${startBlock-1}&size=${size}&type=${type}&keyword=${keyword}">&laquo;</a>
+							</c:when>
+							<c:otherwise>
+								<a href="list?page=${startBlock-1}&size=${size}">&laquo;</a>
+							</c:otherwise>
+						</c:choose>
+					</c:if>
+					
+					<!-- 숫자 링크 영역 -->
+					<c:forEach var="i" begin="${startBlock}" end="${endBlock}" step="1">
+						<c:choose>
+							<c:when test="${search}">
+								<c:choose>
+									<c:when test="${i == page}">
+										<a class="active" href="list?page=${i}&size=${s}&type=${type}&keyword=${keyword}">${i}</a>
+									</c:when>
+									<c:otherwise>
+										<a href="list?page=${i}&s=${size}&type=${type}&keyword=${keyword}">${i}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:when>
+							<c:otherwise>
+								<c:choose>
+									<c:when test="${i == page}">
+										<a class="active" href="list?page=${i}&size=${size}">${i}</a>
+									</c:when>
+									<c:otherwise>
+										<a href="list?page=${i}&size=${size}">${i}</a>
+									</c:otherwise>
+								</c:choose>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+                      
+                      <!-- 다음 버튼 영역 -->
+		<c:if test="${endBlock < lastPage}">
+			<c:choose>
+				<c:when test="${search}">
+					<a href="list?page=${endBlock+1}&size=${size}&type=${type}&keyword=${keyword}">&gt;</a>
+				</c:when>
+				<c:otherwise>
+					<a href="list?page=${endBlock+1}&size=${size}">&gt;</a>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
+
+		<c:if test="${page < lastPage}">
+			<c:choose>
+				<c:when test="${search}">
+					<a href="list?page=${lastPage}&size=${size}&type=${type}&keyword=${keyword}">&raquo;</a>
+				</c:when>
+				<c:otherwise>
+					<a href="list?page=${lastPage}&size=${size}">&raquo;</a>
+				</c:otherwise>
+			</c:choose>
+		</c:if>
+                      	<!-- 템플릿 다음버튼 아이콘임(사용하려면 위에코드 수정해서 사용하자
                         <a href="${root}/"><i class="fa fa-long-arrow-right"></i></a>
-                    </div>
+                      	 --> 
+                    </div>	<!-- 페이지네이션  끝div -->
+            
+            
                 </div>
             </div>
         </div>
