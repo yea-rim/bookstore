@@ -17,7 +17,7 @@ member_grade varchar2(15) default '일반회원' not null check(member_grade in 
 member_joindate date default sysdate not null,
 member_logindate date
 );
-
+ 
 -- 도서 테이블 생성
 drop table book;
 create table book(

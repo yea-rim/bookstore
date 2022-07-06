@@ -3465,4 +3465,11 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
+	.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 200px;
+  background-color: white;
+}
 }
