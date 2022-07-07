@@ -17,9 +17,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public class BookServiceImpl implements BookService {
-
+	
 	private String cliendId = "mnmg8WWCvso5cGGE5s8S";
 	private String clientSecret = "v167ciI2ZR";
+	
 	@Override
 	public ResponseEntity<BookVO> bookVO(@RequestParam(required = false) String query) {
 

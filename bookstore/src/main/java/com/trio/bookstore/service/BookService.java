@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.vo.BookVO;
 
-@Service
 public interface BookService {
 
 //	ResponseEntity<BookVO> bookVO();

@@ -20,7 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public abstract class LibInfoServiceImpl implements LibInfoService {
 
 	private String key = "6a4e42514a73697335377672786e73";
-
+	
 	@Override
 	public ResponseEntity<LibInfoVO> libInfoVO(@RequestParam(required = false) int number)
 			throws URISyntaxException, JsonMappingException, JsonProcessingException {

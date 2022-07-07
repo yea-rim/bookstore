@@ -27,9 +27,6 @@ public class BookRestController {
 	@Autowired
 	private BookDao bookDao;
 
-	@Autowired
-	private BookService bookService;
-
 	@GetMapping("/")
 	public List<BookDto> list() {
 		return bookDao.list();
@@ -55,9 +52,4 @@ public class BookRestController {
 		return bookDao.search(query);
 	}
 
-	@GetMapping("/book/{query}")
-	public BookVO bookVO(@RequestParam(required = false) String query) {
-		System.out.println("검색어 = " + query);
-		return bookService.bookVO(query).getBody();
-	}
 }
