@@ -11,13 +11,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.trio.bookstore.vo.LVO;
 import com.trio.bookstore.vo.LibInfoVO;
+import com.trio.bookstore.vo.LibVO;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service
-public abstract class LibInfoServiceImpl implements LibInfoService {
+public class LibInfoServiceImpl implements LibInfoService {
 
 	private String key = "6a4e42514a73697335377672786e73";
 	
@@ -35,5 +37,17 @@ public abstract class LibInfoServiceImpl implements LibInfoService {
 
 		log.debug("LibInfoVO = {}", origin);
 		return libInfoVO(number);
+	}
+	
+	@Override
+	public LibVO getLibVOData() throws URISyntaxException, JsonMappingException, JsonProcessingException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	@Override
+	public ResponseEntity<LVO> libVO(int number) throws URISyntaxException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
