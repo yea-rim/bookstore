@@ -26,11 +26,13 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+           	<div class = "col-lg-1 col-md-1">
+           	</div>
+                <div class="col-lg-2 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="${pageContext.request.contextPath}/image/product/details/product-details-1.jpg" alt="">
+                                src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"  alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -44,9 +46,10 @@
                         </div>
                     </div>
                 </div>
+             
                 <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3>${bookDto.bookTitle }</h3>
+                   <div class="product__details__text" style="padding: 0px 0px 0px 40px;">
+                        <h3> &nbsp;${bookDto.bookTitle }</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -55,7 +58,7 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">$50.00</div>
+                        <div class="product__details__price">${storeDto.storePrice }원</div>
                         <p>${bookDto.bookDescription }</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
