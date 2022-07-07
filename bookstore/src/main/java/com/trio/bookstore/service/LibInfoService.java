@@ -3,7 +3,6 @@ package com.trio.bookstore.service;
 import java.net.URISyntaxException;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
