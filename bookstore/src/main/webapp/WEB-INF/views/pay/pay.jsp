@@ -4,6 +4,7 @@
  <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
      <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+      
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
@@ -39,7 +40,7 @@
                             <tbody>
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="${pageContext.request.contextPath }/image/cart/cart-1.jpg" alt="">
+                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
                                         <h5>Vegetable’s Package</h5>
                                     </td>
                                     <td class="shoping__cart__price">
