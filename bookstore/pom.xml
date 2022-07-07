@@ -11,7 +11,7 @@
 	<artifactId>bookstore</artifactId>
 	<name>bookstore</name>
 
-	<packaging>war</packaging>
+	<packaging>war</packaging> 
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 
 	<!-- 이 문서에서 사용할 변수 -->
@@ -251,7 +251,14 @@
 			<version>3.11.1</version>
 			<scope>test</scope>
 		</dependency>
-
+		
+				<!-- 웹소켓 의존성 -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-websocket</artifactId>
+		    <version>${org.springframework-version}</version>
+		</dependency>
+		
 		<!-- xml을 json 객체로 -->
 		<!-- https://mvnrepository.com/artifact/org.json/json -->
 		<dependency>
@@ -259,8 +266,10 @@
 			<artifactId>json</artifactId>
 			<version>20220320</version>
 		</dependency>
-
+		
 	</dependencies>
+		
+
 
 	<!-- 빌드 시 고려해야할 설정 -->
 	<build>
