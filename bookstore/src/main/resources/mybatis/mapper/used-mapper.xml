@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="used">
+	<!-- 도서번호에 맞는 중고 데이터 전체리스트 -->
+	<select id="list" parameterType="int" resultType="UsedDto">
+		select * from (
+			select rownum rn, TMP.* from(
+				select * from used where used_book_no = #{bookNo} order by used_price asc
+			)TMP
+		) where rn >= 2
+	</select>
+	<!-- 도서번호에 맞는 중고 데이터중 가장 싼거 -->
+	<select id = "cheap" parameterType="int" resultType="UsedDto">
+		select * from (
+			select rownum rn, TMP.* from(
+				select * from used where used_book_no = #{bookNo} order by used_price asc
+			)TMP
+		) where rn = 1
+	</select>
+	
+</mapper> 
+
+
+
+
+
+
+
