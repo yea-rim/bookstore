@@ -122,7 +122,7 @@ public class MemberController {
 			return "redirect:login?error";
 		}
 	}
-
+ 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("login");
