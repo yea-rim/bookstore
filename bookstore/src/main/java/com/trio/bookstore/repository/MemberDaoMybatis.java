@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.vo.MemberComplexSearchVO;
@@ -14,6 +13,7 @@ public class MemberDaoMybatis implements MemberDao{
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
 
 	@Override
 	public void join(MemberDto memberDto) {
@@ -101,6 +101,15 @@ public class MemberDaoMybatis implements MemberDao{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public int idCheck(String memberId) {
+		System.out.println("===> Mybatis로 idCheck");
+		int result = sqlSession.selectOne("member.idCheck", memberId);
+		return result;
+	}
+
+
 	
 }
 

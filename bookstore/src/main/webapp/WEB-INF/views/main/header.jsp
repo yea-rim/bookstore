@@ -27,11 +27,18 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main-style.css" type="text/css">
 
 <style>
-div.fixed {
+@media screen and (max-width: 1079px) {
+  .fixed, .modal_content {
+    display: none;
+  }
+} 
+
+div.fixed{
   position: fixed;
   bottom: 12px;
   right: 12px;
   width: 150px;
+  z-index:8;
 }
 
 div.chat1 {
@@ -46,46 +53,56 @@ div.chat2 {
   right: 0px;
   width: 70px;
 }
-        #modal {
-          display: none;
-          position:relative;
-          width:0;
-          top:0;
-          left:79.1%;
-          height:0;
-          z-index:1;
-        }
+#modal {
+ display: none;
+position:relative;
+width:0;
+top:0;
+left:79.1%;
+height:0;
+z-index:9;
+}
 
-        #modal h2 {
-          margin:0;
-        }
-        #modal button {
+ #modal h2 {
+margin:0;
+ }
+#modal button {
+border:1px solid gray;
+border-radius: 0.25em;
+}
+        
+ #modal .modal_content {
+ position: fixed;
+ width:300px;
+ height:400px;
+ top:53.4%;
+  margin:0;
+ background:#fff;
+ border:1px solid #666;
+ border:1px solid gray;
+ border-radius: 0.5em;
+}
+        
+ #modal .modal_layer {
+ position:fixed;
+ top:0;
+  left:0;
+ width:0;
+ height:0;
+ background:rgba(0, 0, 0, 0.5);
+ z-index:9;
+ } 
+ 
+ .btn-chat {
     border:1px solid gray;
     border-radius: 0.25em;
-        }
-        
-        #modal .modal_content {
-          position: fixed;
-          width:300px;
-          height:400px;
-          top:53.4%;
-          margin:0;
-          background:#fff;
-          border:1px solid #666;
-                    border:1px solid gray;
-   		  border-radius: 0.5em;
-        }
-        
-        #modal .modal_layer {
-          position:fixed;
-          top:0;
-          left:0;
-          width:0;
-          height:0;
-          background:rgba(0, 0, 0, 0.5);
-          z-index:-1;
-        } 
+    padding:0.5em;
 
+    background-color: white;
+	
+    cursor: pointer;
+    width: 300px;
+}
 }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -354,9 +371,7 @@ div.chat2 {
     
 <!-- 챗봇 -->
 	<div class="fixed">	
-	<div id="root">
-		<div id="modal_opne_btn" class="btn-connect"><img src="${pageContext.request.contextPath}/image/chat.jpg" alt=""></div>
-	</div>
+		<div id="modal_opne_btn" class="btn-connect"><img src="${pageContext.request.contextPath}/image/chat.png" alt=""></div>
 </div>
 <div id="modal">
    
@@ -421,7 +436,7 @@ div.chat2 {
 				for(var i=0; i < data.length; i++){
 					//console.log(data[i]);
 					//태그를 만들어서 영역 내에 배치
-					var button = $("<button>").addClass("btn-message")
+					var button = $("<button>").addClass("btn-chat")
 																.text(data[i].chatbotContent)
 																.attr("data-chatbot-no", data[i].chatbotNo);
 					if(data[i].count > 0){//답변이 있을 때만 클릭이벤트를 부여

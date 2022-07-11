@@ -9,10 +9,9 @@ import lombok.NoArgsConstructor;
 
 @Data
 @JsonIgnoreProperties
-public class LibVO {
+public class LibResultVO {
 
-	private int list_total_count;
-	private LibResultVO RESULT;
-	private LibInfoVO[] row;
+	private int CODE;
+	private String MESSAGE;
 
 }
