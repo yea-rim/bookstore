@@ -66,11 +66,13 @@ public class bookController {
 		@RequestParam int bookNo,
 		Model model) {
 		
-		//도서번호에 맞는 쇼핑몰 데이터 가져오기
-		StoreDto storeDto = storeDao.find(bookNo);
-		model.addAttribute(storeDto);
+
 		  
 		//도서테이블 가져오기
+		//도서번호에 맞는 쇼핑몰테이블 데이터 불러오기
+		StoreDto storeDto = storeDao.find(bookNo);
+		model.addAttribute("storeDto",storeDto);
+		//도서번호에 맞는 도서테이블 데이터 불러오기
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
 		return "book/detail";
