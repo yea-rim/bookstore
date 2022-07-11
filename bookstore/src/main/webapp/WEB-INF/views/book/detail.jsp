@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
    <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-    
+ <style>
+ 	.used-pay{
+ 		
+ 	}
+ </style>   
   <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -58,15 +63,37 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${storeDto.storePrice }원</div>
                         <p>${bookDto.bookDescription }</p>
-                        <div class="product__details__quantity">
+						<hr>
+						판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
+						 <!--판매가 주문 수량 -->
+						 &nbsp;  <div class="product__details__quantity">
                             <div class="quantity">
                                 주문 수량 &nbsp;&nbsp; <div class="pro-qty">                                    
-                               		 <input type="text" value="1">
+                               		 <input type="text" value="0">
                                </div>
                             </div>
                         </div>
+                        <hr>
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>
+						<ul class = "used-pay" >
+						<li>
+						더보기+
+						<ul>
+								<c:forEach var="usedDto" items = "${usedList }">
+       							<li>
+       							<div>
+       								중고가 : ${usedDto.usedPrice }원
+       								<input type = "checkbox" name = "usedNo" value = "${usedDto.usedNo }">
+       							</div>
+       							</li>
+       					</c:forEach>
+						</ul>
+					</li>
+				</ul>
+       				
+       					
+                     
                         <br><br>
                         <a href="#" class="primary-btn">장바구니 담기</a>
                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a>
@@ -247,5 +274,16 @@
     </section>
     <!-- Related Product Section End -->
     
+    
+    
+ <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function(){
+		$(".used-pay").children("li").click(function(){
+			//this == <li>
+			$(this).children("ul").slideToggle();
+		});
+	});
+</script>
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     
