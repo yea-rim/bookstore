@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BookDto;
+import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.repository2.BookDao;
-
-import net.bytebuddy.implementation.bytecode.constant.DefaultValue;
+import com.trio.bookstore.repository2.StoreDao;
 
 @RequestMapping("/book")
 @Controller
@@ -21,6 +21,8 @@ public class bookController {
 	@Autowired
 	private BookDao bookDao;
 	
+	@Autowired
+	private StoreDao storeDao;
 	//도서목록 페이지
 	@RequestMapping("/list")
 	public String list(
@@ -64,6 +66,11 @@ public class bookController {
 		@RequestParam int bookNo,
 		Model model) {
 		
+		//도서번호에 맞는 쇼핑몰 데이터 가져오기
+		StoreDto storeDto = storeDao.find(bookNo);
+		model.addAttribute(storeDto);
+		
+		//도서테이블 가져오기
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
 		return "book/detail";
