@@ -22,29 +22,12 @@
 	<div class="row float-container mt-1" id="app">
 
 		<div class="col-lg-6" style="width:100%; padding:10px;">
-
-			<div class="row mt-5">
-				<label>ISBN</label>
-				<input type="text" class="form-input fill" v-model="currentData.bookIsbn">
-			</div>
-			
-			<div class="col">
-				<button class="site-btn m-1 fill">ISBN 조회 등록</button>
-			</div>
-			
-						
-			<div class="row mt-5">
-				<label>도서 분류</label>
-				<input type="text" class="form-input fill" v-model="currentData.bookIsbn">
-			</div>
-			
-			<div class="col">
-				<button class="site-btn m-1 fill">등록</button>
-			</div>
-			
+			<label>ISBN</label>
+			<input type="text" class="form-input fill" v-model.number="currentData.bookIsbn">
+			<button class="site-btn m-1 fill">ISBN 조회 등록</button>
 		</div>
 		
-				<div class="col-lg-6" style="width:100%; padding:10px;">
+		<div class="col-lg-6" style="width:100%; padding:10px;">
 			<div class="row" v-if="isEditMode">
 				<label>도서 번호</label>
 				<input type="site-text" class="form-input fill" v-model.number="currentData.bookNo" readonly>
@@ -78,33 +61,15 @@
 				<label>줄거리</label>
 				<input type="text" class="form-input fill" v-model="currentData.bookDescription">
 			</div>
+
 			<div class="row">
 				<label>대분류</label>
-					<select>
-						<option id="1">소설</option>
-						<option id="2">자기계발</option>
-						<option id="3">시/에세이</option>
-						<option id="4">인문</option>
-						<option id="5">컴퓨터</option>
-						<option id="6">참고서</option>
-						<option id="7">어린이</option>
-						<option id="8">취미</option>
-						<option id="8">만화</option>
-					</select>
+				<select name="sido1" id="sido1"></select>
 			</div>
+
 			<div class="row">
 				<label>소분류</label>
-					<select v-model.number="currentData.bookType">
-						<option id="1">소설</option>
-						<option id="2">자기계발</option>
-						<option id="3">시/에세이</option>
-						<option id="4">인문</option>
-						<option id="5">컴퓨터</option>
-						<option id="6">참고서</option>
-						<option id="7">어린이</option>
-						<option id="8">취미</option>
-						<option id="8">만화</option>
-					</select>
+				<select name="gugun1" id="gugun1"></select>
 			</div>
 			
 			<div class="col">
@@ -113,7 +78,6 @@
 			</div>
 			
 		</div>
-		
 
 		<div class="float-left" style="width:100%">
 			<table class="table table-border">
@@ -121,7 +85,6 @@
 					<tr>
 						<th>번호</th>
 						<th>제목</th>
-						<th>표지</th>
 						<th>저자</th>
 						<th>출판사</th>
 						<th>분류</th>
@@ -132,30 +95,29 @@
 					<tr v-for="(book, index) in bookList" v-bind:key="index">
 						<td>{{book.bookNo}}</td>
 						<td>{{book.bookTitle}}</td>
-						<td>{{book.bookImage}}</td>
 						<td>{{book.bookAuth}}</td>
-						<td>{{book.bookPub}}</td>
+						<td>{{book.bookPubl}}</td>
 						<td>{{book.bookType}}</td>
 						<td>
-
-					<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
-					<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
-
+							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
+							<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
 						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-
+	
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <script>
 	const app = Vue.createApp({
 		data(){
 			return {
-				bookList:[],
 				
+				bookList:[],
+
 				currentData:{
 					bookNo:"",
 					bookTitle:"",
@@ -183,6 +145,7 @@
 			},
 		},
 		methods:{
+			
 			deleteItem(index){
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
 				if(choice == false) return;
@@ -279,4 +242,8 @@
 	});
 	app.mount("#app");
 </script>
+
+    <script src="/bookstore/src/main/webapp/WEB-INF/views/admin/type.js"></script>
+
+
 <jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include>
