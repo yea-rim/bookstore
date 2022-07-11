@@ -8,4 +8,7 @@ import com.trio.bookstore.entity.MemberDto;
 
 public interface MemberService {
 	void join(MemberDto memberDto, MultipartFile memberProfile) throws IllegalStateException, IOException;
+
+	public int idCheck(String memberId);
 }
+

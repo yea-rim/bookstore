@@ -22,4 +22,6 @@ public interface MemberDao {
 	boolean changePassword(MemberDto memberDto);
 	
 	boolean exit(String memberId, String memberPw);
+
+	int idCheck (String memberId);
 }

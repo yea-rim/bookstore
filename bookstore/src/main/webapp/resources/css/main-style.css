@@ -432,7 +432,7 @@ ol {
 	top: 50px;
 	background: #222222;
 	width: 180px;
-	z-index: 5;
+	z-index: 9;
 	padding: 5px 0;
 	-webkit-transition: all, 0.3s;
 	-moz-transition: all, 0.3s;
@@ -573,12 +573,12 @@ ol {
 }
 
 .hero.hero-normal .hero__categories ul {
-/* 	display: none; */
+	display: none;
 	position: absolute;
 	left: 0;
 	top: 46px;
 	width: 100%;
-	z-index: 5;
+	z-index: 9;
 	background: #ffffff;
 }
 
@@ -2997,7 +2997,7 @@ ol {
 		top: 0;
 		height: 100%;
 		overflow-y: auto;
-		z-index: 5;
+		z-index: 99;
 		padding: 30px;
 		padding-top: 50px;
 		opacity: 0;
@@ -3134,7 +3134,7 @@ ol {
 		width: 100%;
 		background: rgba(0, 0, 0, 0.5);
 		content: "";
-		z-index: 5;
+		z-index: 98;
 		visibility: hidden;
 		-webkit-transition: all, 0.6s;
 		-moz-transition: all, 0.6s;
@@ -3255,7 +3255,7 @@ ol {
 		top: 0;
 		height: 100%;
 		overflow-y: auto;
-		z-index: 5;
+		z-index: 99;
 		padding: 30px;
 		padding-top: 50px;
 		opacity: 0;
@@ -3392,7 +3392,7 @@ ol {
 		width: 100%;
 		background: rgba(0, 0, 0, 0.5);
 		content: "";
-		z-index: 5;
+		z-index: 98;
 		visibility: hidden;
 		-webkit-transition: all, 0.6s;
 		-moz-transition: all, 0.6s;
@@ -3465,12 +3465,4 @@ ol {
 	.blog__details__hero__text h2 {
 		font-size: 24px;
 	}
-	.fixed {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  width: 200px;
-  background-color: white;
-}
-
 }

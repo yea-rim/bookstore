@@ -99,7 +99,7 @@ border-radius: 0.25em;
     padding:0.5em;
 
     background-color: white;
-
+	
     cursor: pointer;
     width: 300px;
 }
