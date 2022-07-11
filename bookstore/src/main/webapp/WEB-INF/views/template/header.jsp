@@ -28,9 +28,12 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
-        <style>
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
 
-    </style>
+	<style>
+	    * {font-family: ‘SUIT’, sans-serif;}
+	</style>
+	
     <script>
    /*
       프론트엔드 암호화에 대한 계획
