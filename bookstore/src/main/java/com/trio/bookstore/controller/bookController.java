@@ -1,7 +1,7 @@
 package com.trio.bookstore.controller;
 
 import java.util.List;
-
+  
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -76,5 +76,7 @@ public class bookController {
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
 		return "book/detail";
+		
+		
 	}
 }
