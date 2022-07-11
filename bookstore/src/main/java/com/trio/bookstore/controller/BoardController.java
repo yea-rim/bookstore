@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.trio.bookstore.entity.BoardDto;
@@ -317,7 +316,6 @@ public class BoardController {
 	@GetMapping("/write")
 	public String write(
 			@RequestParam(required = false, defaultValue = "0") int sn,
-			@RequestParam MultipartFile memberProfile,
 			Model model) {
 		if(sn > 0) {
 			model.addAttribute("sn", sn);
