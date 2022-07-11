@@ -40,93 +40,72 @@
 		}
 		
 	    * {font-family: ‘SUIT’, sans-serif;}
-	</style>
-	
-    <script>
-   /*
-      프론트엔드 암호화에 대한 계획
-      - 암호화 알고리즘은 상황에 맞게 선택
-      - input[type=password] 형태의 컬럼을 찾아서 전송 전에 암호화한 값으로 교체
-   */
-   $(function(){
-      $("form").submit(function(){
-         //this == form
-         $(this).find("input[type=password]").each(function(){
-            //this == 입력창
-            var rawData = $(this).val();
-            //var encData = 암호화(rawData);
-            var hash = CryptoJS.SHA1(rawData);//암호화
-            var encData = CryptoJS.enc.Hex.stringify(hash);//문자열화
-            $(this).val(encData);
-         });
-      });
-   });
-=======
-div.chat1 {
-	position: absolute;
-	bottom: 15px;
-	right: 130px;
-	width: 150px;
-}
 
-div.chat2 {
-	position: absolute;
-	bottom: 15px;
-	right: 0px;
-	width: 70px;
-}
-
-#modal {
-	display: none;
-	position: relative;
-	width: 0;
-	top: 0;
-	left: 79.1%;
-	height: 0;
-	z-index: 1;
-}
-
-#modal h2 {
-	margin: 0;
-}
-
-#modal button {
-	border: 1px solid gray;
-	border-radius: 0.25em;
-}
-
-#modal .modal_content {
-	position: fixed;
-	width: 300px;
-	height: 400px;
-	top: 53.4%;
-	margin: 0;
-	background: #fff;
-	border: 1px solid #666;
-	border: 1px solid gray;
-	border-radius: 0.5em;
-}
-
-#modal .modal_layer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 0;
-	height: 0;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: -1;
-}
-
-.btn-chat {
-	border: 1px solid gray;
-	border-radius: 0.25em;
-	padding: 0.5em;
-	background-color: white;
-	cursor: pointer;
-	width: 300px;
-}
-}
+		div.chat1 {
+			position: absolute;
+			bottom: 15px;
+			right: 130px;
+			width: 150px;
+		}
+		
+		div.chat2 {
+			position: absolute;
+			bottom: 15px;
+			right: 0px;
+			width: 70px;
+		}
+		
+		#modal {
+			display: none;
+			position: relative;
+			width: 0;
+			top: 0;
+			left: 79.1%;
+			height: 0;
+			z-index: 1;
+		}
+		
+		#modal h2 {
+			margin: 0;
+		}
+		
+		#modal button {
+			border: 1px solid gray;
+			border-radius: 0.25em;
+		}
+		
+		#modal .modal_content {
+			position: fixed;
+			width: 300px;
+			height: 400px;
+			top: 53.4%;
+			margin: 0;
+			background: #fff;
+			border: 1px solid #666;
+			border: 1px solid gray;
+			border-radius: 0.5em;
+		}
+		
+		#modal .modal_layer {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 0;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: -1;
+		}
+		
+		.btn-chat {
+			border: 1px solid gray;
+			border-radius: 0.25em;
+			padding: 0.5em;
+			background-color: white;
+			cursor: pointer;
+			width: 300px;
+		}
 </style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(function() {
@@ -142,7 +121,6 @@ div.chat2 {
 			});
 		});
 	});
->>>>>>> refs/remotes/origin/main
 </script>
 </head>
 

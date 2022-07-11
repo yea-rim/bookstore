@@ -18,7 +18,7 @@
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
-	        <div id="editor"></div> 
+	        <div id="editor"></div>
 	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 			<script> 
 			
