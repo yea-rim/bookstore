@@ -65,6 +65,7 @@
 			<mvc:exclude-mapping path="/member/exit_finish"/>
 			<mvc:exclude-mapping path="/board/notice_list"/>
 			<mvc:exclude-mapping path="/board/review_list"/>
+			<mvc:exclude-mapping path="/member/idCheck*"/>
 			
 			
 			<ref bean="memberLoginInterceptor"/>

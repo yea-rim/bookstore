@@ -118,6 +118,14 @@ public class MemberDaoEncryption implements MemberDao{
 		return count > 0;
 	}
 	
+	@Override
+	public int idCheck(String memberId) {
+		System.out.println("===> Mybatis로 idCheck");
+		int result = sqlSession.selectOne("member.idCheck", memberId);
+		return result;
+	}
+	
+	
 }
 
 
