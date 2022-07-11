@@ -69,7 +69,7 @@ public class bookController {
 		//도서번호에 맞는 쇼핑몰 데이터 가져오기
 		StoreDto storeDto = storeDao.find(bookNo);
 		model.addAttribute(storeDto);
-		
+		  
 		//도서테이블 가져오기
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
