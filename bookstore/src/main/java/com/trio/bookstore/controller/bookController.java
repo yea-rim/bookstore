@@ -66,7 +66,7 @@ public class bookController {
 		@RequestParam int bookNo,
 		Model model) {
 		
-
+  
 		  
 		//도서테이블 가져오기
 		//도서번호에 맞는 쇼핑몰테이블 데이터 불러오기
