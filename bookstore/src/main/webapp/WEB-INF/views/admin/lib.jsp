@@ -10,7 +10,7 @@
                     <div class="breadcrumb__text">
                         <h2>도서관 관리 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="${root}/admin/">Home</a>
+                            <a href="${root}/bookstore/admin/">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>
@@ -24,12 +24,12 @@
 		<div class="col-lg-6" style="width:100%; padding:10px;">
 
 			<div class="row mt-5">
-				<label>도서관명</label>
-				<input type="text" class="form-input fill" v-model="currentData.libraryName">
+				<label>도서관 번호</label>
+				<input type="text" class="form-input fill" v-model="currentData.libInfoNo">
 			</div>
 			
 			<div class="col">
-				<button class="site-btn m-1 fill">공공데이터 조회 등록</button>
+				<button class="site-btn m-1 fill">공공데이터 조회</button>
 			</div>
 			
 		</div>

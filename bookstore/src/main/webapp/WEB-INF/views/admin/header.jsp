@@ -207,6 +207,10 @@
 					<button class="site-btn m-1" onclick="location.href='book'">도서 관리</button><br>
 					<button class="site-btn m-1" onclick="location.href='lib'">도서관 관리</button><br>
 					<button class="site-btn m-1" onclick="location.href='member'">회원 관리</button><br>
+					<button class="site-btn m-1" onclick="location.href='delivery'">배송 관리</button><br>
+					<button class="site-btn m-1" onclick="location.href='question'">1:1 문의</button><br>
+					<button class="site-btn m-1" onclick="location.href='notice'">공지사항 작성</button><br>
+					<button class="site-btn m-1" onclick="location.href='faq'">faq 작성</button><br>
                 </div>
                 <div class="col-lg-10">
                     <div class="container-fluid">
