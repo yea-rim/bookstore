@@ -8,7 +8,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>공지사항 작성</h2>
+                        <h2>faq 작성</h2>
                         <div class="breadcrumb__option">
                             <a href="${root}/bookstore/admin/">Home</a>
                             <span>관리자 페이지</span>

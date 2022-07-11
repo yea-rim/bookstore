@@ -37,6 +37,7 @@
 				
 			};
 		},
+
 		computed:{
 
 		},
@@ -44,15 +45,7 @@
 
 		},
 		created(){
-				axios({
-					url:"${pageContext.request.contextPath}/rest/book/",
-					method:"get"
-				})
-				.then((resp)=>{
-					//console.log(resp);
-					console.log(resp.data);
-					this.bookList.push(...resp.data);
-				})
+
 		},
 	});
 	app.mount("#app");
