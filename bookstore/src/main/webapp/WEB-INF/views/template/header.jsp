@@ -22,39 +22,46 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
-<!-- Css Styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/main-style.css"
-	type="text/css">
-<style>
-div.fixed {
-	position: fixed;
-	bottom: 12px;
-	right: 12px;
-	width: 150px;
-}
-
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+	
+	<style>
+		div.fixed {
+			position: fixed;
+			bottom: 12px;
+			right: 12px;
+			width: 150px;
+		}
+		
+	    * {font-family: ‘SUIT’, sans-serif;}
+	</style>
+	
+    <script>
+   /*
+      프론트엔드 암호화에 대한 계획
+      - 암호화 알고리즘은 상황에 맞게 선택
+      - input[type=password] 형태의 컬럼을 찾아서 전송 전에 암호화한 값으로 교체
+   */
+   $(function(){
+      $("form").submit(function(){
+         //this == form
+         $(this).find("input[type=password]").each(function(){
+            //this == 입력창
+            var rawData = $(this).val();
+            //var encData = 암호화(rawData);
+            var hash = CryptoJS.SHA1(rawData);//암호화
+            var encData = CryptoJS.enc.Hex.stringify(hash);//문자열화
+            $(this).val(encData);
+         });
+      });
+   });
+=======
 div.chat1 {
 	position: absolute;
 	bottom: 15px;
@@ -135,6 +142,7 @@ div.chat2 {
 			});
 		});
 	});
+>>>>>>> refs/remotes/origin/main
 </script>
 </head>
 

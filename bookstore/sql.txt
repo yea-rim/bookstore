@@ -88,3 +88,17 @@ used_price number not null check(used_price >= 0),
 used_amount number not null check(used_amount >= 0),
 used_status char(1) check(used_status in ('상','중','하'))
 );
+
+-- 도서관 정보 테이블 생성
+create table lib_info(
+lib_info_no number primary key,
+library_name varchar2(60),
+library_address varchar2(150),
+library_gu varchar2(30),
+library_tel char(11),
+library_url varchar2(300),
+library_time varchar2(300),
+library_close_date varchar2(300),
+library_xcnts number,
+library_ydnts number
+);

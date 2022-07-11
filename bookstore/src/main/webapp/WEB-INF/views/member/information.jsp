@@ -6,9 +6,25 @@
 
 <form action="information" method="post">
 	<div class="container w450 m30">
-	    <div class="row center">
-	        <h1>개인정보 변경</h1>
-	    </div>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>개인정보 변경</h2>
+                        <div class="breadcrumb__option">
+                            <a href="${root}/bookstore/">Home</a>
+                            <span>북스토어</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+   
 	    <div class="row">
 	        <label>닉네임</label>
 	        <input type="text" name="memberNick" autocomplete="off" required class="form-input fill input-round" value="${memberDto.memberNick}">

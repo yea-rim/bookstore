@@ -4,60 +4,60 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="lib_info">
-   
-<!--    <select id = "sequence" resultType = "int"> -->
-<!--       select lib_info_seq.nextval from dual -->
-<!--    </select> -->
+	
+<!-- 	<select id = "sequence" resultType = "int"> -->
+<!-- 		select lib_info_seq.nextval from dual -->
+<!-- 	</select> -->
 
-   <select id="list" resultType="LibInfoDto">
-      select * from lib_info order by lib_info_no asc
-   </select>
-   
-   <delete id="delete" parameterType="int">
-      delete lib_info where lib_info_no = #{libInfoNo}
-   </delete>
-   
-   <insert id="insert" parameterType="LibInfoDto">
-      insert into lib_info(
-            lib_info_no, library_name, library_address, library_gu, library_tel,
-            library_url, library_time, library_close_date, library_xcnts, library_ydnts
-         ) values (
-            #{libInfoNo}, #{libraryName}, #{libraryAddress}, #{libraryGu}, #{libraryTel},
-            #{libraryUrl}, #{libraryTime}, #{libraryCloseDate}, #{libraryXcnts}, #{libraryYdnts}
-         )
-   </insert>
-   
-   <update id="update" parameterType="LibInfoDto">
-      update lib_info
-         set
-            lib_info_no = #{linInfoNo},
-            library_name = #{libraryName},
-            library_address = #{libraryAddress},
-            library_gu = #{libraryGu},
-            library_tel = #{libraryTel},
-            library_url = #{libraryUrl},
-            library_time = #{libraryTime},
-            library_close_date = #{libraryCloseDate},
-            library_xcnts = #{libraryXcnts},
-            library_ydnts = #{libraryYdnts},
-         where
-            lib_info_no = #{linInfoNo}
-   </update>
-   
-   <select id="search" resultType="LibInfoDto" parameterType="String">
-      select * from lib_info
-      where instr(library_name, #{libraryName}) > 0
-      order by library_name asc
-   </select>
-   
-   <select id="findLib" resultType="libInfoDto" parameterType="int">
-      select * from lib_info 
-      where instr(lib_info_no, #{libInfoNo}) > 0 
-      order by lib_info_no asc
-   </select>
-   
-   <select id="one" resultType="LibInfoDto" parameterType="int">
-      select * from lib_info where lib_info_no = #{libInfoNo}
-   </select>
-   
+	<select id="list" resultType="LibInfoDto">
+		select * from lib_info order by lib_info_no asc
+	</select>
+	
+	<delete id="delete" parameterType="int">
+		delete lib_info where lib_info_no = #{libInfoNo}
+	</delete>
+	
+	<insert id="insert" parameterType="LibInfoDto">
+		insert into lib_info(
+				lib_info_no, library_name, library_address, library_gu, library_tel,
+				library_url, library_time, library_close_date, library_xcnts, library_ydnts
+			) values (
+				#{libInfoNo}, #{libraryName}, #{libraryAddress}, #{libraryGu}, #{libraryTel},
+				#{libraryUrl}, #{libraryTime}, #{libraryCloseDate}, #{libraryXcnts}, #{libraryYdnts}
+			)
+	</insert>
+	
+	<update id="update" parameterType="LibInfoDto">
+		update lib_info
+			set
+				lib_info_no = #{linInfoNo},
+				library_name = #{libraryName},
+				library_address = #{libraryAddress},
+				library_gu = #{libraryGu},
+				library_tel = #{libraryTel},
+				library_url = #{libraryUrl},
+				library_time = #{libraryTime},
+				library_close_date = #{libraryCloseDate},
+				library_xcnts = #{libraryXcnts},
+				library_ydnts = #{libraryYdnts},
+			where
+				lib_info_no = #{linInfoNo}
+	</update>
+	
+	<select id="search" resultType="LibInfoDto" parameterType="String">
+		select * from lib_info
+		where instr(library_name, #{libraryName}) > 0
+		order by library_name asc
+	</select>
+	
+	<select id="findLib" resultType="libInfoDto" parameterType="int">
+		select * from lib_info 
+		where instr(lib_info_no, #{libInfoNo}) > 0 
+		order by lib_info_no asc
+	</select>
+	
+	<select id="one" resultType="LibInfoDto" parameterType="int">
+		select * from lib_info where lib_info_no = #{libInfoNo}
+	</select>
+	
 </mapper> 

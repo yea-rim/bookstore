@@ -11,15 +11,15 @@ import lombok.NoArgsConstructor;
 @Builder
 public class LibInfoDto {
 
-   private int libInfoNo;
-   private String libraryName;
-   private String libraryAddress;
-   private String libraryGu;
-   private String libraryTel;
-   private String libraryUrl;
-   private String libraryTime;
-   private String libraryCloseDate;
-   private String libraryXcnts;
-   private String libraryYdnts;
+	private int libInfoNo;
+	private String libraryName;
+	private String libraryAddress;
+	private String libraryGu;
+	private String libraryTel;
+	private String libraryUrl;
+	private String libraryTime;
+	private String libraryCloseDate;
+	private String libraryXcnts;
+	private String libraryYdnts;
 
 }
