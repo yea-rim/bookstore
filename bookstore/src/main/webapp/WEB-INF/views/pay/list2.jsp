@@ -4,7 +4,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <h1>모든 거래내역 출력</h1>
-
 <ul class="pay-history">
 	<c:forEach var="payListVO" items="${list}">
 	<li>
