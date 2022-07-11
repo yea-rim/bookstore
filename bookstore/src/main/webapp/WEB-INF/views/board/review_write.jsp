@@ -6,6 +6,7 @@
 
 <form action="write" method="post">
 <input type="hidden" name="boardHead" value="감상평">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 
 	<div class="container w800 m30">
@@ -21,21 +22,48 @@
 	        <div id="editor"></div> 
 	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 			<script> 
+			const Editor = toastui.Editor;
+		    const editor = new Editor({
+		        el: document.querySelector('#editor'),
+		        height: '600px',
+		        initialEditType: 'markdown',
+		        previewStyle: 'markdown',
+		        hooks: {
+		            addImageBlobHook:  async (blob, callback) => {
+		            	var data = new FormData();
+		                
+		                //2. data에 업로드할 파일을 이름을 부여하여 추가
+		                // - 이름은 서버에서 읽을 이름으로 설정
+		                data.append("attachment", blob);
+		                
+		                //3. ajax 요청을 통해 파일 업로드
+		                axios.post("http://localhost:8080/bookstore/upload", data, {
+		                    //multipart 설정
+		                    headers: {
+		                        "Content-Type" : "multipart/form-data"
+		                    }
+		                })
+		            }
+		        }
+		    });
+		    
+		    const uploadImage =  (blob) => {
+		        const formData = new FormData();
+		        formData.append('image', blob);
+		        // 서버로부터 이미지 주소 받아오는거 구현 필요
+		        const url = "http://localhost:8080/bookstore/upload";
+		        return url;
+		    };
+
 			
-				const Editor = toastui.Editor; 
-				const editor = new Editor({ 
-					el: document.querySelector('#editor'),
-					height: '500px',
-					initialEditType: 'markdown',
-					previewStyle: 'markdown'
-				});
-				
-				editor.on("change", function(){
-					var content = editor.getMarkdown();
-					$("input[name=boardContent]").val(content);
-					console.log($("input[name=boardContent]").val());
-				});
+			editor.on("change", function(){
+				var content = editor.getMarkdown();
+				$("input[name=boardContent]").val(content);
+				console.log($("input[name=boardContent]").val());
+			});
+
 			</script>
+	
 			<input type="hidden" name="boardContent">
 	    </div>
 	    <div class="row">

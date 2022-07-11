@@ -27,7 +27,9 @@
 					el: document.querySelector('#editor'),
 					height: '500px',
 					initialEditType: 'markdown',
-					previewStyle: 'markdown'
+					previewStyle: 'markdown',
+					
+					
 				});
 				
 				editor.on("change", function(){
@@ -35,6 +37,7 @@
 					$("input[name=boardContent]").val(content);
 					console.log($("input[name=boardContent]").val());
 				});
+				
 			</script>
 			<input type="hidden" name="boardContent">
 	    </div>

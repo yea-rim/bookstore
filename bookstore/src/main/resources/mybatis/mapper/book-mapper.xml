@@ -4,52 +4,74 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="book">
-	
-	<select id = "sequence" resultType = "int">
-		select book_seq.nextval from dual
+   
+   <select id = "sequence" resultType = "int">
+      select book_seq.nextval from dual
+   </select>
+   
+   <select id="list" resultType="BookDto">
+      select * from book order by book_no asc
+   </select>
+   
+   <delete id="delete" parameterType="int">
+      delete book where book_no = #{bookNo}
+   </delete>
+   
+   <insert id="insert" parameterType="BookDto">
+      insert into book(
+            book_no, book_title, book_isbn, book_image, book_auth,
+            book_publ, book_pub, book_description, book_type
+         ) values (
+            #{bookNo}, #{bookTitle}, #{bookIsbn}, #{bookImage},
+            #{bookAuth}, #{bookPubl}, #{bookPub}, #{bookDescription}, #{bookType}
+         )
+   </insert>
+   
+   <update id="update" parameterType="BookDto">
+      update book
+         set
+            book_title = #{bookTitle},
+            book_isbn = #{bookIsbn},
+            book_image = #{bookImage},
+            book_auth = #{bookAuth},
+            book_publ = #{bookPubl},
+            book_pub = #{bookPub},
+            book_description = #{bookDescription},
+            book_type = #{bookType}
+         where
+            book_no = #{bookNo}
+   </update>
+   
+   <select id="search" resultType="BookDto" parameterType="String">
+      select * from book
+      where instr(book_title, #{bookTitle}) > 0
+      order by book_title asc
+   </select>
+   
+   <select id="one" resultType="BookDto" parameterType="int">
+      select * from book where book_no = #{bookNo}
+   </select>
+   
+   <!-- 한석 -->
+   <!-- 페이지 네이션 도서 조회구문 -->
+	<select id="Hlist" parameterType="Map" resultType="BookDto" >
+			select * from (
+				select rownum rn, TMP.* from (
+					select * from book 
+					<if test = "type != null and keyword != null">
+						<![CDATA[ where instr(${type}, #{keyword}) > 0 	]]>
+					</if>
+				)TMP
+			) where rn between #{begin} and #{end}
 	</select>
 	
-	<select id="list" resultType="BookDto">
-		select * from book order by book_no asc
+	<select id="Hcount" parameterType="Map" resultType="int">
+		select count(*) from book
+		<if test = "type != null and keyword != null">
+			<![CDATA[
+				where instr(${type}, #{keyword}) > 0
+			]]>
+		</if>
 	</select>
-	
-	<delete id="delete" parameterType="int">
-		delete book where book_no = #{bookNo}
-	</delete>
-	
-	<insert id="insert" parameterType="BookDto">
-		insert into book(
-				book_no, book_title, book_isbn, book_image, book_auth,
-				book_publ, book_pub, book_description, book_type
-			) values (
-				#{bookNo}, #{bookTitle}, #{bookIsbn}, #{bookImage},
-				#{bookAuth}, #{bookPubl}, #{bookPub}, #{bookDescription}, #{bookType}
-			)
-	</insert>
-	
-	<update id="update" parameterType="BookDto">
-		update book
-			set
-				book_title = #{bookTitle},
-				book_isbn = #{bookIsbn},
-				book_image = #{bookImage},
-				book_auth = #{bookAuth},
-				book_publ = #{bookPubl},
-				book_pub = #{bookPub},
-				book_description = #{bookDescription},
-				book_type = #{bookType}
-			where
-				book_no = #{bookNo}
-	</update>
-	
-	<select id="search" resultType="BookDto" parameterType="String">
-		select * from book
-		where instr(book_title, #{bookTitle}) > 0
-		order by book_title asc
-	</select>
-	
-	<select id="one" resultType="BookDto" parameterType="int">
-		select * from book where book_no = #{bookNo}
-	</select>
-	
+
 </mapper> 

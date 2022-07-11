@@ -35,4 +35,13 @@ public class MemberServiceImpl implements MemberService{
 		}
 	}
 	
-}
+	@Override
+	public int idCheck(String memberId) {
+		
+		int result = memberDao.idCheck(memberId);
+		return result;
+	}
+	
+
+	}
+	

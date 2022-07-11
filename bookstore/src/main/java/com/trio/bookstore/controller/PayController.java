@@ -57,7 +57,10 @@ public class PayController {
 		return "han";
 	}
 	
-	
+	@GetMapping("/pay")
+	public String pay() {
+		return "pay/pay";
+	}
 	@GetMapping("/pay1")
 	public String pay1(Model model) {
 		model.addAttribute("list",storeDao.list());

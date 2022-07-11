@@ -9,31 +9,37 @@
 <form action="join" method="post" enctype="multipart/form-data">
 	<div class="container w450 m30" id="app">
 	
-    <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>회원 가입</h2>
-                        <div class="breadcrumb__option">
-                            <a href="${root}/bookstore/">Home</a>
-                            <span>북스토어</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-    
-	    <div class="row mt-3">
-	        <label>
-	        아이디
-	        <input type="text" v-model="memberId" v-on:input="memberId = $event.target.value" name="memberId">
-       		 <div>{{memberIdMessage}}</div>
-       		 </label>
+<!--     Breadcrumb Section Begin -->
+<!--     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;"> -->
+<!--         <div class="container"> -->
+<!--             <div class="row"> -->
+<!--                 <div class="col-lg-12 text-center"> -->
+<!--                     <div class="breadcrumb__text"> -->
+<!--                         <h2>회원 가입</h2> -->
+<!--                         <div class="breadcrumb__option"> -->
+<%--                             <a href="${root}/bookstore/">Home</a> --%>
+<!--                             <span>북스토어</span> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </section> -->
+<!--     Breadcrumb Section End -->
+
+	    <div class="row center">
+	        <h1>회원가입</h1>
 	    </div>
+		<div class="row mt-3">
+			<label> 아이디 <input type="text" v-model="memberId"
+				v-on:input="memberId = $event.target.value" name="memberId"
+				class="id-input">
+				<button class="idChk" type="button" id="idChk" onclick="fn_idChk();"
+					value="N">중복체크</button>
+				<div>{{memberIdMessage}}</div>
+			</label>
+		</div>
+
 	    <div class="row">
 	        <label>비밀번호
 	                <input type="password" v-model="memberPw" v-on:input="memberPw = $event.target.value" name="memberPw">
@@ -239,6 +245,26 @@
       
    });
    
+ //아이디 검사
+   function fn_idChk(){
+		var id = $(".id-input").val();
+		  $.ajax({
+		    url : "${pageContext.request.contextPath}/member/idCheck",
+		    type : "post",
+		    dataType : "json",
+		    data : {memberId : id},
+		    success : function(data){
+		      if(data == 1){
+		        alert("중복된 아이디입니다.");
+		      }else if(data == 0){
+		        alert("사용가능한 아이디입니다.");
+		      }else {
+		        alert("이메일을 입력해주세요.");
+		 		     }
+				 }
+		  })
+	}	
+
    
 </script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
