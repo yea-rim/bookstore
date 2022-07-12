@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
 
@@ -61,16 +62,35 @@
 				<label>줄거리</label>
 				<input type="text" class="form-input fill" v-model="currentData.bookDescription">
 			</div>
+			<div class="row">
+				<label>분류</label>
+				<input type="text" class="form-input fill" v-model="currentData.bookType">
+			</div>
 
+			<!-- 오류 해결 필요 -->
 			<div class="row">
 				<label>대분류</label>
-				<select name="sido1" id="sido1"></select>
+				<select id="bigType" onchange="changeType(this.value);">
+					<option disabled selected>대분류를 선택해 주세요.</option>
+					<option value="1">소설</option>
+					<option value="2">자기계발</option>
+					<option value="3">시/에세이</option>
+					<option value="4">인문</option>
+					<option value="5">컴퓨터/IT</option>
+					<option value="6">참고서</option>
+					<option value="7">어린이</option>
+					<option value="8">취미</option>
+					<option value="9">만화</option>
+				</select>
 			</div>
 
 			<div class="row">
 				<label>소분류</label>
-				<select name="gugun1" id="gugun1"></select>
+		     	<select id="smallType">
+		    		<option></option>
+		    	</select>
 			</div>
+
 			
 			<div class="col">
 				<button class="site-btn m-1 fill" @click="addItem">{{mode}}</button>
@@ -110,12 +130,12 @@
 	
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 
 <script>
 	const app = Vue.createApp({
 		data(){
 			return {
-				
 				bookList:[],
 
 				currentData:{
@@ -129,10 +149,21 @@
 					bookDescription:"",
 					bookType:"",
 				},
+								
+				index:-1,
 				
-				index:-1, //-1이면 등록, 0이상이면 수정
+// 				type1 : ["로맨스 소설", "추리 소설", "전쟁/역사 소설", "공포/스릴러 소설", "판타지 소설"],
+// 		        type2 : ["경제/부동산", "시간 관리", "인간 관계", "대화/협상"],
+// 		        type3 = ["한국시", "외국시", "성공 에세이", "여행 에세이", "연애 에세이"],
+// 		        type4 : ["시사/사회", "경제/경영", "종교", "행정/정치"],
+// 		        type5 : ["웹/홈페이지", "컴퓨터입문/활용", "프로그래밍언어", "개발/OS/데이터베이스", "네트워크 보안", "컴퓨터공학"],
+// 		        type6 : ["국어/문학", "외국어", "수학", "고시", "공무원"],
+// 		        type7 : ["어린이"],
+// 		        type8 : ["가정/육아", "건강", "여행", "요리"],
+// 		        type9 : ["학원 만화", "스포츠 만화", "순정 만화", "기타 만화"],
 			};
 		},
+		
 		computed:{
 			mode(){
 				return this.index < 0 ? "등록" : "수정";
@@ -144,6 +175,7 @@
 				return this.mode == "수정";
 			},
 		},
+		
 		methods:{
 			
 			deleteItem(index){
@@ -213,6 +245,40 @@
 					}
 				});
 			},
+			
+// 			typeChange() {
+// 		          var v = this.bigType;
+// 		          var o;
+		          
+// 		          if ( v == 1 ) {
+// 		            o = type1;
+// 		          } else if ( v == 2 ) {
+// 		            o = type2;
+// 		          } else if ( v == 3 ) {
+// 		            o = type3;
+// 		          } else if ( v == 4 ) {
+// 		            o = type4;
+// 		          } else if ( v == 5 ) {
+// 		            o = type5;
+// 		          } else if ( v == 6 ) {
+// 		            o = type6;
+// 		          } else if ( v == 7 ) {
+// 		            o = type7;
+// 		          } else if ( v == 8 ) {
+// 		            o = type8;
+// 		          } else if ( v == 9 ) {
+// 		            o = type9;
+// 		          } else {
+// 		            o = [];
+// 		          }
+		          
+// 		          this.smallType.empty();
+// 		          this.smallType.append( '<option></option>' );
+// 		          for ( var i = 0; i < o.length; i++ ) {
+// 		          	this.smallType.append( '<option>' + o[ i ] + '</option>' );
+// 		          }
+// 		        },
+			
 		},
 		created(){
 				axios({
@@ -224,6 +290,7 @@
 					console.log(resp.data);
 					this.bookList.push(...resp.data);
 				})
+				
 //                 axios({
 //                     url:"${pageContext.request.contextPath}/admin/api/book?query=" + query,
 //                     method:"get"
@@ -243,7 +310,6 @@
 	app.mount("#app");
 </script>
 
-    <script src="/bookstore/src/main/webapp/WEB-INF/views/admin/type.js"></script>
 
 
 <jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include>

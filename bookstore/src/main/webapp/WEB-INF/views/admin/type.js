@@ -1,17 +1,8 @@
-			<div class="row">
-				<label>대분류</label>
-				<select name="sido1" id="sido1"></select>
-			</div>
-
-			<div class="row">
-				<label>소분류</label>
-				<select name="gugun1" id="gugun1"></select>
-			</div>
-			
+	
 (function ($) {
 
 $('document').ready(function() {
-	 var area0 = ["대분류 선택", "소설", "자기계발", "시/에세이", "인문", "컴퓨터/IT", "OS/데이터베이스", "참고서", "어린이", "취미", "만화"];
+	 var area0 = ["대분류 선택", "소설", "자기계발", "시/에세이", "인문", "컴퓨터/IT", "참고서", "어린이", "취미", "만화"];
 	 var area1 = ["로맨스 소설", "추리 소설", "전쟁/역사 소설", "공포/스릴러 소설", "판타지 소설"];
 	 var area2 = ["경제/부동산", "시간 관리", "인간 관계", "대화/협상"];
 	 var area3 = ["한국시", "외국시", "성공 에세이", "여행 에세이", "연애 에세이"];
