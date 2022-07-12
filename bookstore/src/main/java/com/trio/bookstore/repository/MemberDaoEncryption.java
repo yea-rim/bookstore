@@ -125,10 +125,11 @@ public class MemberDaoEncryption implements MemberDao{
 		return result;
 	}
 	
+	// 전체 조회 (관리자)
+	@Override
+	public List<MemberDto> allList() {
+		return sqlSession.selectList("member.allList");
+	}
+	
 	
 }
-
-
-
-
-

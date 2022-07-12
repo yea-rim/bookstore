@@ -10,18 +10,26 @@ import com.trio.bookstore.vo.MemberComplexSearchVO;
 //- 클래스는 인터페이스를 상속받아 실제 처리를 구현
 public interface MemberDao {
 	void join(MemberDto memberDto);
-	
+
 	List<MemberDto> complexSearch(MemberComplexSearchVO vo);
+
 	MemberDto login(String memberId, String memberPw);
+
 	MemberDto info(String memberId);
+
 	String findId(MemberDto memberDto);
-	MemberDto find(MemberDto memberDto);//비밀번호 찾기용
-	
+
+	MemberDto find(MemberDto memberDto);// 비밀번호 찾기용
+
 	boolean changeInformation(MemberDto memberDto);
+
 	boolean changePassword(String memberId, String currentPw, String changePw);
+
 	boolean changePassword(MemberDto memberDto);
-	
+
 	boolean exit(String memberId, String memberPw);
 
-	int idCheck (String memberId);
+	int idCheck(String memberId);
+
+	List<MemberDto> allList();
 }

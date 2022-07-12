@@ -109,7 +109,11 @@ public class MemberDaoMybatis implements MemberDao{
 		return result;
 	}
 
-
+	// 전체 조회 (관리자용)
+	@Override
+	public List<MemberDto> allList() {
+		return sqlSession.selectList("member.allList");
+	}
 	
 }
 

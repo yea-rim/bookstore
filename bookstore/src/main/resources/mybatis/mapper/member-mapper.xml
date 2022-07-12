@@ -360,6 +360,11 @@
 		WHERE member_id = #{memberId}
 
 	</select>
+	
+<!-- 	회원 목록 -->
+	<select id="allList" resultType="list">
+		select * from member desc
+	</select>
 
 
 </mapper> 
