@@ -32,4 +32,6 @@ public interface MemberDao {
 	int idCheck(String memberId);
 
 	List<MemberDto> allList();
+
+	MemberDto update(MemberDto memberDto);
 }

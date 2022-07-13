@@ -14,17 +14,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.trio.bookstore.entity.BoardDto;
-import com.trio.bookstore.entity.CertDto;
 import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.error.CannotFindException;
 import com.trio.bookstore.repository.BoardDao;
-import com.trio.bookstore.repository.CertDao;
 import com.trio.bookstore.repository.MemberDao;
-import com.trio.bookstore.service.EmailService;
 
 @Controller
 @RequestMapping("/board")

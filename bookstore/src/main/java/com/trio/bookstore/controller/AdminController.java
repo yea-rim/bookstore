@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.kh.home.entity.ExamDto;
 import com.trio.bookstore.entity.BoardDto;
-import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
 
@@ -45,11 +43,6 @@ public class AdminController {
 	@RequestMapping("/member")
 	public String member() {
 		return "admin/member";
-	}
-	
-	@GetMapping("/member")
-	public List<MemberDto> list(){
-		return memberDao.allList();
 	}
 
 	@RequestMapping("/delivery")

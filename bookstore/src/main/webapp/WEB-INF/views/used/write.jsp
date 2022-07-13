@@ -9,7 +9,7 @@
 
 	<div class="container w800 m30">
 	    <div class="row center">
-	        <h1>게시글 작성</h1>
+	        <h1>중고 도서 신청</h1>
 	    </div>
 	    <div class="row">
 	        <label>제목</label>

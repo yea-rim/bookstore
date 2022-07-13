@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trio.bookstore.entity.LibInfoDto;
 import com.trio.bookstore.repository2.LibInfoDao;
-import com.trio.bookstore.service.LibInfoService;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController

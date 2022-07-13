@@ -361,11 +361,23 @@
 
 	</select>
 	
-<!-- 	회원 목록 -->
-	<select id="allList" resultType="list">
-		select * from member desc
+	<!-- 회원 목록 (관리자 페이지) -->
+	<select id="allList" resultType="MemberDto">
+		select * from member order by member_joindate asc
 	</select>
 
+	<!-- 정보 수정 (관리자 페이지) -->
+	<update id="adminUpdate" parameterType="MemberDto">
+		update member
+		set
+			member_nick = #{memberNick}
+			member_birth = #{memberBirth}
+			member_phone = #{memberPhone}
+			member_post = #{memberPost}
+			member_basic_address = #{memberBasicAddress}
+			member_detail_address = #{memberDetailAddress}
+		where member_id = #{memberId}
+	</update>
 
 </mapper> 
 

@@ -16,7 +16,7 @@ import com.trio.bookstore.repository2.StoreDao;
 
 @RequestMapping("/book")
 @Controller
-public class bookController {
+public class BookController {
 	
 	@Autowired
 	private BookDao bookDao;

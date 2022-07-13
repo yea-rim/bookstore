@@ -5,12 +5,11 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Repository;
 
 import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.vo.MemberComplexSearchVO;
 
-@Repository
+//@Repository
 public class MemberDaoEncryption implements MemberDao{
 	
 	@Autowired
@@ -129,6 +128,12 @@ public class MemberDaoEncryption implements MemberDao{
 	@Override
 	public List<MemberDto> allList() {
 		return sqlSession.selectList("member.allList");
+	}
+
+	@Override
+	public MemberDto update(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	

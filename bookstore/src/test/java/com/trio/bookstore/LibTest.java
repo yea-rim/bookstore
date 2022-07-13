@@ -7,16 +7,12 @@ import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import com.trio.bookstore.vo.BookVO;
 import com.trio.bookstore.vo.LVO;
-import com.trio.bookstore.vo.LibInfoVO;
 
 import lombok.extern.slf4j.Slf4j;
 

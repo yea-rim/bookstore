@@ -4,11 +4,12 @@ import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.vo.MemberComplexSearchVO;
 
-//@Repository
+@Repository
 public class MemberDaoMybatis implements MemberDao{
 	
 	@Autowired
@@ -115,9 +116,10 @@ public class MemberDaoMybatis implements MemberDao{
 		return sqlSession.selectList("member.allList");
 	}
 	
+	@Override
+	public MemberDto update(MemberDto memberDto) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
-
-
-
-
-
