@@ -7,7 +7,7 @@
  	.used-pay{
  		
  	}
- </style>   
+ </style>
   <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -65,26 +65,36 @@
                         </div>
                         <p>${bookDto.bookDescription }</p>
 						<hr>
+						<!-- 폼 시작!! -->
+						<form action = "${pageContext.request.contextPath }/pay" method = "post">
+						<input type = "hidden" name = "bookNo" value = "${bookDto.bookNo }">
 						판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
+						
 						 <!--판매가 주문 수량 -->
 						 &nbsp;  <div class="product__details__quantity">
                             <div class="quantity">
                                 주문 수량 &nbsp;&nbsp; <div class="pro-qty">                                    
-                               		 <input type="text" value="0">
+                               		 <input type="text" value="0" name = "storeAmount">
                                </div>
                             </div>
                         </div>
+                        <p style="color:red;">* 쇼핑몰 원하시면 중고가 옆에 체크 후 구매버튼</p>
                         <hr>
-                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>
+                        
+                       
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
+                        <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
+                        
 						<ul class = "used-pay" >
 						<li>
 						더보기+
-						<ul>
-								<c:forEach var="usedDto" items = "${usedList }">
+						<ul style = "display: none;">
+								<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+       							
        							<li>
        							<div>
        								중고가 : ${usedDto.usedPrice }원
-       								<input type = "checkbox" name = "usedNo" value = "${usedDto.usedNo }">
+       								<input type = "checkbox" name = "used[${status.index}].usedNo" value = "${usedDto.usedNo}">
        							</div>
        							</li>
        					</c:forEach>
@@ -93,11 +103,14 @@
 				</ul>
        				
        					
-                     
-                        <br><br>
+                    	 
+                  		<br>
                         <a href="#" class="primary-btn">장바구니 담기</a>
-                        <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+						<input type = "submit" class = "primary-btn" value = "바로구매" style="border:none;">
+<%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
+                        <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
+                       	</form>
+                        
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -283,6 +296,7 @@
 			//this == <li>
 			$(this).children("ul").slideToggle();
 		});
+		
 	});
 </script>
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
