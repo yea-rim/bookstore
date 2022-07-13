@@ -94,7 +94,7 @@
        							<li>
        							<div>
        								중고가 : ${usedDto.usedPrice }원
-       								<input type = "checkbox" name = "used[${status.index}].usedNo" value = "${usedDto.usedNo}">
+       								<input type = "checkbox" name = "used[${status.index+1}].usedNo" value = "${usedDto.usedNo}">
        							</div>
        							</li>
        					</c:forEach>
@@ -105,6 +105,9 @@
        					
                     	 
                   		<br>
+                  		<c:if test="${param.error != null}">
+                  			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
+                  			</c:if>
                         <a href="#" class="primary-btn">장바구니 담기</a>
 						<input type = "submit" class = "primary-btn" value = "바로구매" style="border:none;">
 <%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
