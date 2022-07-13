@@ -21,6 +21,13 @@
 		) where rn = 1
 	</select>
 	
+	<!-- 중고번호에 맞는 데이터 단일조회 -->
+	<select id="one" parameterType="int" resultType="UsedDto">
+		select * from used
+		inner join book on book.book_no = used.used_book_no 
+	    where used_no = #{usedNo}
+	
+	</select>
 </mapper> 
 
 
