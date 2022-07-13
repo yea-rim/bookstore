@@ -9,9 +9,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UsedDto {
-	private int usedNo;
-	private int usedBookNo;
-	private int usedPrice;
-	private String usedStatus;
+public class LibDto {
+	private int libBookNo;
+	private int libLibInfoNo;
+	private int libAmount;
 }

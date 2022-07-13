@@ -34,6 +34,21 @@ public class AdminController {
 	public String book() {
 		return "admin/book";
 	}
+	
+	@RequestMapping("/lib-book")
+	public String libBook() {
+		return "admin/lib-book";
+	}
+	
+	@RequestMapping("/store-book")
+	public String storeBook() {
+		return "admin/store-book";
+	}
+	
+	@RequestMapping("/used-book")
+	public String usedBook() {
+		return "admin/used-book";
+	}
 
 	@RequestMapping("/lib")
 	public String lib() {

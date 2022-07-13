@@ -10,7 +10,7 @@
                     <div class="breadcrumb__text">
                         <h2>도서관 관리 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="${root}/bookstore/admin/">Home</a>
+                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>

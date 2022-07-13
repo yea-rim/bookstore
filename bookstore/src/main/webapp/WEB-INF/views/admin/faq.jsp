@@ -11,7 +11,7 @@
                     <div class="breadcrumb__text">
                         <h2>faq 작성</h2>
                         <div class="breadcrumb__option">
-                            <a href="${root}/bookstore/admin/">Home</a>
+                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>
