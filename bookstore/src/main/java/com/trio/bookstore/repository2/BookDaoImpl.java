@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.error.CannotFindException;
+import com.trio.bookstore.vo.LibBookVO;
 
 @Repository
 public class BookDaoImpl implements BookDao {
@@ -47,33 +48,65 @@ public class BookDaoImpl implements BookDao {
 	public List<BookDto> search(String bookTitle) {
 		return sqlSession.selectList("book.search", bookTitle);
 	}
-	
-	//한석 - 도서 조회 구문(페이지네이션) -- 나중에 type이나 keyword 넣게 되면 강사님 코드 참고
+
+	// 한석 - 도서 조회 구문(페이지네이션) -- 나중에 type이나 keyword 넣게 되면 강사님 코드 참고
 	@Override
-	public List<BookDto> list(String type,String keyword,int page, int size) {
+	public List<BookDto> list(String type, String keyword, int page, int size) {
 		Map<String, Object> param = new HashMap<>();
-		param.put("type",type);
-		param.put("keyword", keyword);
-		
-		int end = page * size;
-		int begin = end - (size - 1);
-		
-		param.put("begin", begin);
-		param.put("end",end);
-		
-		return sqlSession.selectList("book.Hlist",param) ;
-	}
-	@Override
-	public int count(String type, String keyword) {
-		Map<String,Object> param = new HashMap<>();
 		param.put("type", type);
 		param.put("keyword", keyword);
-		
-		
-		return sqlSession.selectOne("book.Hcount",param);
+
+		int end = page * size;
+		int begin = end - (size - 1);
+
+		param.put("begin", begin);
+		param.put("end", end);
+
+		return sqlSession.selectList("book.Hlist", param);
 	}
+
+	@Override
+	public int count(String type, String keyword) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+
+		return sqlSession.selectOne("book.Hcount", param);
+	}
+
 	@Override
 	public BookDto find(int bookNo) {
-		return sqlSession.selectOne("book.one",bookNo);
+		return sqlSession.selectOne("book.one", bookNo);
+	}
+
+
+	// 도서관 도서
+	@Override
+	public List<LibBookVO> libList() {
+		return sqlSession.selectList("lib-book.list");
+	}
+
+	@Override
+	public LibBookVO insert(LibBookVO libBookVO) {
+		sqlSession.insert("lib-book.insert", libBookVO);
+		return libBookVO;
+	}
+
+	@Override
+	public LibBookVO update(LibBookVO libBookVO) {
+		int count = sqlSession.update("lib-book.update", libBookVO);
+		if (count == 0)
+			throw new CannotFindException();
+		return sqlSession.selectOne("lib-book.one", libBookVO.getLibBookNo());
+	}
+
+	@Override
+	public void libDelete(int libBookNo) {
+		sqlSession.delete("lib-book.delete", libBookNo);
+	}
+
+	@Override
+	public List<LibBookVO> libSearch(int libBookNo) {
+		return sqlSession.selectList("lib-book.search", libBookNo);
 	}
 }
