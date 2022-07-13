@@ -23,4 +23,9 @@ public List<UsedDto> list(int bookNo) {
 	public UsedDto find(int bookNo) {
 		return sqlSession.selectOne("used.cheap",bookNo);
 	}
+	//중고번호에 맞는 단일조회
+	@Override
+	public UsedDto findUsed(int usedNo) {
+		return sqlSession.selectOne("used.one",usedNo);
+	}
 }

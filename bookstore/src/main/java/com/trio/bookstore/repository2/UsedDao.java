@@ -10,5 +10,7 @@ public interface UsedDao {
 	List<UsedDto> list(int bookNo);
 	//도서번호에 맞는 중고데이터중 가장 싼 중고데이터 가져오기
 	UsedDto find(int bookNo);
+	//중고번호에 맞는 중고데이터 단일조회
+	UsedDto findUsed(int usedNo);
 
 }
