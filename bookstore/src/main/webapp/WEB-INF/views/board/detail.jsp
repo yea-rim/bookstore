@@ -52,6 +52,11 @@
         });
         
     </script>
+    
+    	<div class="row center m30">
+		<img src="${pageContext.request.contextPath}${boardAttachmentUrl}"
+				width="150" class="img img-circle img-shadow">
+	</div>
 				</td>
 			</tr>
 			
