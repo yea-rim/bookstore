@@ -72,7 +72,7 @@
 
 			<div class="row input-group mb-3" v-if="isEditMode">
 			  <span class="input-group-text" id="basic-addon1">도서 번호</span>
-			  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" v-model.number="currentData.bookNo" readonly>
+			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.bookNo" readonly>
 			</div>
 				
 			<div class="row input-group mb-3">
@@ -187,32 +187,32 @@
 		
 		<!-- v-if 영역 -->
 		<!-- 도서관 -->
-		<div class="col-lg-6" style="width:100%; padding:10px;" v-if="openLib">
-			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">도서관명</span>
-			  <input type="text" class="form-control" placeholder="도서관 이름을 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookPubl">
-			</div>
-			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">책 수량</span>
-			  <input type="number" class="form-control" aria-describedby="basic-addon1" v-model="currentData.bookPubl">
-			</div>
-		</div>
+<!-- 		<div class="col-lg-6" style="width:100%; padding:10px;" v-if="openLib"> -->
+<!-- 			<div class="row input-group mb-3"> -->
+<!-- 			  <span class="input-group-text" id="basic-addon1">도서관명</span> -->
+<!-- 			  <input type="text" class="form-control" placeholder="도서관 이름을 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookPubl"> -->
+<!-- 			</div> -->
+<!-- 			<div class="row input-group mb-3"> -->
+<!-- 			  <span class="input-group-text" id="basic-addon1">책 수량</span> -->
+<!-- 			  <input type="number" class="form-control" aria-describedby="basic-addon1" v-model="currentData.bookPubl"> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		
-		<!-- 쇼핑몰 -->
-		<div class="col-lg-6" style="width:100%; padding:10px;" v-if="openStore">
-			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">출판사</span>
-			  <input type="text" class="form-control" placeholder="출판사를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookPubl">
-			</div>
-		</div>
+<!-- 		<!-- 쇼핑몰 --> -->
+<!-- 		<div class="col-lg-6" style="width:100%; padding:10px;" v-if="openStore"> -->
+<!-- 			<div class="row input-group mb-3"> -->
+<!-- 			  <span class="input-group-text" id="basic-addon1">출판사</span> -->
+<!-- 			  <input type="text" class="form-control" placeholder="출판사를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookPubl"> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 		
-		<!-- 중고 -->
-		<div class="col-lg-6" style="width:100%; padding:10px;" v-if="openUsed">
-			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">출판사</span>
-			  <input type="text" class="form-control" placeholder="출판사를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookPubl">
-			</div>
-		</div>
+<!-- 		<!-- 중고 --> -->
+<!-- 		<div class="col-lg-6" style="width:100%; padding:10px;" v-if="openUsed"> -->
+<!-- 			<div class="row input-group mb-3"> -->
+<!-- 			  <span class="input-group-text" id="basic-addon1">출판사</span> -->
+<!-- 			  <input type="text" class="form-control" placeholder="출판사를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookPubl"> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 		<div class="float-left mt-2" style="width:100%">
 			<table class="table table-border">
@@ -240,7 +240,6 @@
 							<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
 						</td>
 					</tr>
-
 				</tbody>
 			</table>
 		</div>
@@ -254,11 +253,6 @@
 	const app = Vue.createApp({
 		data(){
 			return {
-				openLib:false,
-				openStore:false,
-				openUsed:false,
-				
-				bookType1:"",
 				bookList:[],
 
 				currentData:{
@@ -270,7 +264,7 @@
 					bookPubl:"",
 					bookPub:"",
 					bookDescription:"",
-					bookType:0,
+					bookType:"",
 				},		
 				index:-1,
 			};
@@ -309,7 +303,7 @@
 					console.log(this.currentData);
 				});
 			},
-			
+
 			deleteItem(index){
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
 				if(choice == false) return;

@@ -8,11 +8,9 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.trio.bookstore.vo.LVO;
 import com.trio.bookstore.vo.LibInfoVO;
-import com.trio.bookstore.vo.LibVO;
 
 public interface LibInfoService {
 
-	ResponseEntity<LVO> lVO(int number)
-			throws URISyntaxException, JsonMappingException, JsonProcessingException;
+	ResponseEntity<LVO> lVO(int number) throws URISyntaxException, JsonMappingException, JsonProcessingException;
 
 }

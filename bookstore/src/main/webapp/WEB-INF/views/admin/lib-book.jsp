@@ -95,8 +95,8 @@
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th width="30%">제목</th>
-						<th width="30%">도서관</th>
+						<th width="25%">도서관(번호)</th>
+						<th width="35%">제목(도서번호)</th>
 						<th>재고</th>
 						<th>처리</th>
 					</tr>
@@ -155,7 +155,7 @@
 		
 		methods:{
 			
-			// 오류 해결해야 함
+			// 오류 해결해야 함 ~ 하는 중
 // 			findLib(libLibInfoNo){
 // 				const libLibInfoNo = this.libLibInfoNo;
 // 				axios({

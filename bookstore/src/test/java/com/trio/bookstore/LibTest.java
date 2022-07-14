@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.trio.bookstore.vo.LVO;
+import com.trio.bookstore.vo.LibInfoVO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -59,7 +60,7 @@ public class LibTest {
 		log.debug("uri = {}", uri);
 	}
 
-	@Test // 제대로 돌아가는 거
+//	@Test // 제대로 돌아가는 거
 	public void lVO() throws JsonMappingException, JsonProcessingException {
 		int number = 1066;
 		RestTemplate template = new RestTemplate();
@@ -72,5 +73,21 @@ public class LibTest {
 
 		LVO origin = mapper.readValue(text, LVO.class);
 		log.debug("LVO = {}", origin);
+	}
+	
+	@Test // 제대로 돌아가는 거
+	public void libInfoVO() throws JsonMappingException, JsonProcessingException {
+		int number = 1066;
+		RestTemplate template = new RestTemplate();
+
+		String uri = "http://openapi.seoul.go.kr:8088/6a4e42514a73697335377672786e73/json/SeoulPublicLibraryInfo/1/1/"
+				+ number;
+		String text = template.getForObject(uri, String.class);
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
+
+		LVO origin = mapper.readValue(text, LVO.class);
+		log.debug("LVO = {}", origin);
+		log.debug("libInfoVO = {}", origin.getSeoulPublicLibraryInfo().getRow());
 	}
 }
