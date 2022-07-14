@@ -66,7 +66,7 @@
                         <p>${bookDto.bookDescription }</p>
 						<hr>
 						<!-- 폼 시작!! -->
-						<form action = "${pageContext.request.contextPath }/pay" method = "post">
+						<form method = "post">
 						<input type = "hidden" name = "bookNo" value = "${bookDto.bookNo }">
 						판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
 						
@@ -81,7 +81,7 @@
                         <p style="color:red;">* 쇼핑몰 원하시면 중고가 옆에 체크 후 구매버튼</p>
                         <hr>
                         
-                       
+                       <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
                         중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
                         <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
                         
@@ -108,8 +108,9 @@
                   		<c:if test="${param.error != null}">
                   			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
                   			</c:if>
-                        <a href="#" class="primary-btn">장바구니 담기</a>
-						<input type = "submit" class = "primary-btn" value = "바로구매" style="border:none;">
+<!--                         <a href="#" class="primary-btn">장바구니 담기</a> -->
+						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
+						<input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
 <%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
                         <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
                        	</form>

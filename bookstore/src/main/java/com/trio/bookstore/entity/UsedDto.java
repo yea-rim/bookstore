@@ -14,5 +14,6 @@ public class UsedDto {
 
 		//이너조인 사용시 도서테이블의 도서명도 넣기위해 코드짬
 		private String bookTitle;
+		private String bookImage;
 
 }
