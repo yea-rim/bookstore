@@ -72,7 +72,7 @@
 	    </div>
 	    <!-- 
 	    <div class="row">
-	    	<label>게시판 이미지</label><br>
+	    	<label>게시판이미지</label><br>
 	    	<input type="file" name="boardAttachment" class="form-input input-round">	
 	    </div>
 	     -->
