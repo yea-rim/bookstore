@@ -79,34 +79,4 @@ public class BookDaoImpl implements BookDao {
 		return sqlSession.selectOne("book.one", bookNo);
 	}
 
-
-	// 도서관 도서
-	@Override
-	public List<LibBookVO> libList() {
-		return sqlSession.selectList("lib-book.list");
-	}
-
-	@Override
-	public LibBookVO insert(LibBookVO libBookVO) {
-		sqlSession.insert("lib-book.insert", libBookVO);
-		return libBookVO;
-	}
-
-	@Override
-	public LibBookVO update(LibBookVO libBookVO) {
-		int count = sqlSession.update("lib-book.update", libBookVO);
-		if (count == 0)
-			throw new CannotFindException();
-		return sqlSession.selectOne("lib-book.one", libBookVO.getLibBookNo());
-	}
-
-	@Override
-	public void libDelete(int libBookNo) {
-		sqlSession.delete("lib-book.delete", libBookNo);
-	}
-
-	@Override
-	public List<LibBookVO> libSearch(int libBookNo) {
-		return sqlSession.selectList("lib-book.search", libBookNo);
-	}
 }

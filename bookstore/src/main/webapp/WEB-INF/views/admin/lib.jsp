@@ -152,6 +152,26 @@
 			},
 		},
 		methods:{
+			readLib(libInfoNo){
+				const query = this.currentData.libInfoNo;
+				axios({
+					url:"${pageContext.request.contextPath}/admin/api/lib?query=" + query,
+					method:"get",
+					data: this.currentData,
+				})
+				.then((resp)=>{
+	            	console.log(resp.data.items[0].title);
+// 					this.currentData = resp.data.items[0];
+// 					this.currentData.bookTitle = resp.data.items[0].title;
+// 					this.currentData.bookImage = resp.data.items[0].image;
+// 					this.currentData.bookAuth = resp.data.items[0].author;
+// 					this.currentData.bookPubl = resp.data.items[0].publisher;
+// 					this.currentData.bookPub = resp.data.items[0].pubdate;
+// 					this.currentData.bookDescription = resp.data.items[0].description;
+					console.log(this.currentData);
+				});
+			},
+
 			deleteItem(index){
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
 				if(choice == false) return;

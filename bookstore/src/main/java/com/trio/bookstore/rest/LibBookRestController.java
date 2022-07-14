@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trio.bookstore.repository2.BookDao;
-import com.trio.bookstore.vo.LibBookVO;
+import com.trio.bookstore.entity.LibDto;
+import com.trio.bookstore.repository2.LibDao;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
@@ -22,31 +22,31 @@ import com.trio.bookstore.vo.LibBookVO;
 public class LibBookRestController {
 
 	@Autowired
-	private BookDao bookDao;
+	private LibDao libDao;
 
 	@GetMapping("/")
-	public List<LibBookVO> list() {
-		return bookDao.libList();
+	public List<LibDto> list() {
+		return libDao.libList();
 	}
 
 	@PostMapping("/")
-	public LibBookVO insert(@RequestBody LibBookVO libBookVO) {
-		return bookDao.insert(libBookVO);
+	public LibDto insert(@RequestBody LibDto libDto) {
+		return libDao.insert(libDto);
 	}
 
 	@PutMapping("/")
-	public LibBookVO update(@RequestBody LibBookVO libBookVO) {
-		return bookDao.update(libBookVO);
+	public LibDto update(@RequestBody LibDto libDto) {
+		return libDao.update(libDto);
 	}
 
-	@DeleteMapping("/{libBookNo}")
-	public void libDelete(@PathVariable int libBookNo) {
-		bookDao.libDelete(libBookNo);
+	@DeleteMapping("/{libNo}")
+	public void delete(@PathVariable int libNo) {
+		libDao.delete(libNo);
 	}
 
-	@GetMapping("/{libBookNo}")
-	public List<LibBookVO> libSearch(@PathVariable int libBookNo) {
-		return bookDao.libSearch(libBookNo);
+	@GetMapping("/{libLibInfoNo}")
+	public List<LibDto> libSearch(@PathVariable int libLibInfoNo) {
+		return libDao.libSearch(libLibInfoNo);
 	}
 
 }

@@ -16,5 +16,7 @@ public class LibController {
 	public String rental() {
 		return "lib/rental";
 	}
+	
+	
 
 }

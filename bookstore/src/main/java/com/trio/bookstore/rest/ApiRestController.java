@@ -1,5 +1,7 @@
 package com.trio.bookstore.rest;
 
+import java.net.URISyntaxException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.trio.bookstore.service.BookService;
 import com.trio.bookstore.service.LibInfoService;
 import com.trio.bookstore.vo.BookVO;
+import com.trio.bookstore.vo.LVO;
+import com.trio.bookstore.vo.LibInfoVO;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
@@ -29,8 +33,8 @@ public class ApiRestController {
 	}
 	
 //	@GetMapping("/api/lib")
-//	public LibInfoVO libInfoVO(@RequestParam(required = false) int number) throws URISyntaxException {
+//	public LVO libInfoVO(@RequestParam(required = false) int number) throws URISyntaxException {
 //		System.out.println("검색어 = " + number);
-//		return libInfoService.libVO(number).getBody();
+//		return LibInfoService.libVO(number).getBody();
 //	}
 }

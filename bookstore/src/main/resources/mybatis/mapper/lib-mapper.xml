@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lib">
+   
+	<select id = "sequence" resultType = "int">
+      select lib_seq.nextval from dual
+   </select>
+   
+   <select id="list" resultType="LibDto">
+      select * from lib order by lib_no asc
+   </select>
+   
+   <delete id="delete" parameterType="int">
+      delete lib where lib_no = #{libNo}
+   </delete>
+   
+   <insert id="insert" parameterType="LibDto">
+      insert into lib(
+            lib_no, lib_book_no, lib_lib_info_no, lib_amount
+         ) values (
+            #{libNo}, #{libBookNo}, #{libLibInfoNo}, #{libAmount}
+         )
+   </insert>
+   
+   <update id="update" parameterType="LibDto">
+      update lib
+         set
+         	lib_no = #{libNo},
+            lib_book_no = #{libBookNo},
+            lib_lib_info_no = #{libLibInfoNo},
+            lib_amount = #{libAmount}
+         where
+            lib_no = #{libNo}
+   </update>
+   
+   <select id="one" resultType="LibDto" parameterType="int">
+      select * lib where lib_no = #{libNo}
+   </select>
+   
+   <select id="libSearch" resultType="LibDto" parameterType="int">
+      select * from lib
+      where instr(lib_lib_info_no, #{libLibInfoNo}) > 0
+      order by lib_lib_info_no asc
+   </select>
+
+</mapper> 

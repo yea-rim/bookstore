@@ -44,7 +44,7 @@ public class LibRestController {
 		libInfoDao.delete(libInfoNo);
 	}
 
-	@GetMapping("/search")
+	@GetMapping("/{libInfoNo}")
 	public List<LibInfoDto> findLib(@PathVariable int libInfoNo) {
 		return libInfoDao.findLib(libInfoNo);
 	}

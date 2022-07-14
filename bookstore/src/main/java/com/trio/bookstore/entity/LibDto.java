@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class LibDto {
+	private int libNo;
 	private int libBookNo;
 	private int libLibInfoNo;
 	private int libAmount;
