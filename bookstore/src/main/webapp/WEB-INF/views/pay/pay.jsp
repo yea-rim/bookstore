@@ -31,8 +31,8 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th class="shoping__product">도서표지</th>
-                                    <th width = "630px">도서명</th>
+                                    <th class="shoping__product" colspan ="2" width = "65%">상품정보</th>
+<!--                                     <th width = "630px">도서명</th> -->
                                     <th>판매가</th>
                                     <th>수량</th>
                                     <th>Total</th>
