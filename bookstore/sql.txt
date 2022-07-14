@@ -87,6 +87,30 @@ used_amount number not null check(used_amount >= 0),
 used_status char(1) check(used_status in ('상','중','하'))
 );
 
+<<<<<<< HEAD
+--챗봇 테이블 생성
+create table chatbot (
+chatbot_no number primary key,
+chatbot_content varchar2(300) not null,
+super_no references chatbot(chatbot_no) on delete cascade
+);
+create sequence chatbot_seq;
+
+--게시판 파일 업로드 테이블 생성
+create table board_attachment (
+board_no references board(board_no) on delete cascade,
+attachment_no references attachment(attachment_no) on delete cascade,
+primary key(board_no, attachment_no)
+);
+
+--게시판 카테고리별 view
+create view board_notice as select * from board where board_head = '공지';
+create view board_qna as select * from board where board_head = '문의';
+create view board_review as select * from board where board_head = '감상평';
+
+--
+
+=======
 -- 중고거래(도서) 테이블 수정
 alter table used drop column used_status;
 alter table used add used_status char(3) check(used_status in ('상','중','하'));
@@ -118,3 +142,4 @@ create table lib(
 );
 
 -- 대여 테이블 생성
+>>>>>>> refs/remotes/origin/main

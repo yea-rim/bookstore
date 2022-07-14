@@ -122,7 +122,7 @@ public class MemberController {
 			return "redirect:login?error";
 		}
 	}
-
+ 
 	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.removeAttribute("login");
@@ -146,7 +146,7 @@ public class MemberController {
 			model.addAttribute("profileUrl", "/image/user.png");
 		} else {
 			model.addAttribute("profileUrl", "/attachment/download?attachmentNo=" + attachmentNo);
-		}
+		}	
 
 		return "member/mypage";
 	}
