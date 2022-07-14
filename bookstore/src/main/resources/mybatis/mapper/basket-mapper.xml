@@ -4,20 +4,36 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="basket">
-
+	<!-- 장바구니 목록 가져오기(시퀀스번호 오름차순)-->
+	<select id="list" resultType="BasketDto">
+		select * from basket
+	</select>
+	
+<!-- 	시퀀스 번호 생성 -->
+	<select id="sequence" resultType="int">
+		select basket_seq.nextVal from dual;
+	</select>
+	
 	<insert id="insert" parameterType="BasketDto">
-		<bind name = "store" value = "basketBookNo != null and !basketBookNo.equals('')"/>
-		<if test = "store">
+<!-- 		도서번호만 왔을떄 조건식 -->
 		insert into basket(
-		basket_no,basket_member_id,basket_book_no,basket_amount,basket_price,basket_book_title
+		basket_no,basket_member_id,basket_book_no,basket_amount,basket_price,basket_book_title,basket_book_image
 		)
 		values(
-		basket_seq.nextVal,${basketMemberId},${basketBookNo},${basketAmount},${basketPrice},${basketBookTitle}
+		basket_seq.nextVal,#{basketMemberId},#{basketBookNo},#{basketAmount},#{basketPrice},#{basketBookTitle},#{basketBookImage}
 		)		
-		</if>
-		
+
 	</insert>
-	
+		
+		<!-- 		중고 도서 장바구니에 넣는식 -->
+		<insert id = "insert2" parameterType="BasketDto">
+		insert into basket(
+		basket_no,basket_member_id,basket_used_no,basket_amount,basket_price,basket_book_title,basket_book_image
+		)
+		values(
+		basket_seq.nextVal,#{basketMemberId},#{basketUsedNo},#{basketAmount},#{basketPrice},#{basketBookTitle},#{basketBookImage}
+		)		
+		</insert>
 </mapper> 
 
 
