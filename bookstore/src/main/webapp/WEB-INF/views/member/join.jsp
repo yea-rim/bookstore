@@ -8,6 +8,25 @@
 <!-- 프로필 이미지를 추가하기 위해 enctype을 multipart/form-data로 변경 -->
 <form action="join" method="post" enctype="multipart/form-data">
 	<div class="container w450 m30" id="app">
+	
+<!--     Breadcrumb Section Begin -->
+<!--     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;"> -->
+<!--         <div class="container"> -->
+<!--             <div class="row"> -->
+<!--                 <div class="col-lg-12 text-center"> -->
+<!--                     <div class="breadcrumb__text"> -->
+<!--                         <h2>회원 가입</h2> -->
+<!--                         <div class="breadcrumb__option"> -->
+<%--                             <a href="${root}/bookstore/">Home</a> --%>
+<!--                             <span>북스토어</span> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--     </section> -->
+<!--     Breadcrumb Section End -->
+
 	    <div class="row center">
 	        <h1>회원가입</h1>
 	    </div>

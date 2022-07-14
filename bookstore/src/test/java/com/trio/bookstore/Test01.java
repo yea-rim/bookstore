@@ -1,7 +1,5 @@
 package com.trio.bookstore;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.log;
-
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.UUID;
@@ -12,8 +10,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-
-import com.trio.bookstore.vo.KakaoPayReadyResponseVO;
 
 import lombok.extern.slf4j.Slf4j;
 @Slf4j

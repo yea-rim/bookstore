@@ -1,9 +1,6 @@
 package com.trio.bookstore.vo;
 
-import java.sql.Date;
 import java.util.List;
-
-import com.trio.bookstore.entity.MemberDto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

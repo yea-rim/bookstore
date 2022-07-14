@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="used">
+		
+		<select id = "list" resultType = "UsedDto">
+			select * from used inner join book on book.book_no = used.used_book_no
+			order by used_book_no
+		</select>
+		
+		<!-- 도서번호로 도서테이블의 도서명도 같이 뽑기 -->
+		<select id = "one" resultType="UsedDto" parameterType="int">
+				select * from used 
+					inner join book on book.book_no = used.used_book_no
+				where used_book_no = #{usedBookNo}
+		</select>
+		
+		<!-- 예림 -->
+		   
+	   <delete id="delete" parameterType="int">
+	      delete used where used_book_no = #{usedBookNo}
+	   </delete>
+	   
+	   <insert id="insert" parameterType="UsedDto">
+	      insert into used(
+	            used_no, used_book_no, used_price, used_status
+	         ) values (
+	            #{usedNo}, #{usedBookNo}, #{usedPrice}, #{usedStatus}
+	         )
+	   </insert>
+	   
+	      <update id="update" parameterType="UsedDto">
+	      update used
+	         set
+	         	used_no = #{usedNo},
+	         	used_book_no = #{usedBookNo},
+	            used_price = #{usedPrice},
+	            used_status = #{usedStatus}
+	         where
+	            used_no = #{usedNo}
+	   </update>
+
+</mapper> 

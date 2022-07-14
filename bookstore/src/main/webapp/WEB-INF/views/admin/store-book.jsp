@@ -1,0 +1,229 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
+
+<jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
+
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>스토어 관리 페이지</h2>
+                        <div class="breadcrumb__option">
+                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
+                            <span>관리자 페이지</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                    <nav class="text-center header__menu">
+                        <ul>
+                            <li class="active"><a href="${root}/book">도서 관리</a>
+			                    <ul class="header__menu__dropdown">
+									<li><a href="${root}/lib-book">도서관 도서</a></li>
+									<li><a href="${root}/store-book">스토어 도서</a></li>
+									<li><a href="${root}/used-book">중고 도서</a></li>
+			                    </ul>
+			                </li>	
+							<li><a href="${root}/lib">도서관 관리</a></li>
+							<li><a href="${root}/member">회원 관리</a></li>
+							<li><a href="${root}/delivery">배송 관리</a></li>
+							<li><a href="${root}/question">1:1 관리</a></li>
+							<li><a href="${root}/notice">공지사항 관리</a></li>
+							<li><a href="${root}/faq">faq 관리</a></li>
+                        </ul>
+                    </nav>
+
+<div class="container">
+	<div class="row">
+	<div class="col-lg-1"></div>
+	<div class="col-lg-10">
+	<div class="row float-container mt-1" id="app">
+
+		<div class="col-lg-6" style="width:100%; padding:10px;">
+		<div class="row input-group mb-3">
+		  <span class="input-group-text" id="basic-addon1">도서 번호</span>
+		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.storeBookNo" aria-describedby="basic-addon1">
+		</div>
+			<button class="site-btn m-1 fill" v-on:click="findBook()">도서 선택</button>
+		</div>
+
+		<div class="col-lg-6" style="width:100%; padding:10px;">
+
+			<div class="row input-group mb-3" v-if="isEditMode">
+			  <span class="input-group-text" id="basic-addon1">도서 번호</span>
+			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.storeBookNo" readonly>
+			</div>
+				
+			<div class="row input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">도서명</span>
+			  <input type="text" class="form-control" placeholder="도서명이 입력됩니다." aria-describedby="basic-addon1" v-model="currentData.bookTitle" readonly>
+			</div>
+			
+			<div class="row input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">가격</span>
+			  <input type="number" class="form-control" placeholder="가격을 입력하세요." aria-describedby="basic-addon1" v-model="currentData.storePrice">
+			</div>
+			
+			<div class="row input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">수량</span>
+			  <input type="number" class="form-control" placeholder="도서 수량을 입력하세요." aria-describedby="basic-addon1" v-model="currentData.storeAmount">
+			</div>
+
+			<div class="col mt-2">
+				<button class="site-btn m-1 fill" @click="addItem">{{mode}}</button>
+				<button class="site-btn m-1 fill" @click="clearItem">초기화</button>
+			</div>
+		</div>
+
+		<div class="float-left mt-2" style="width:100%">
+			<table class="table table-border">
+				<thead>
+					<tr>
+						<th>도서 번호</th>
+						<th width="35%">도서명</th>
+						<th>가격</th>
+						<th>수량</th>
+						<th>처리</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr v-for="(book, index) in bookList" v-bind:key="index">
+						<td>{{book.storeBookNo}}</td>
+						<td>{{book.bookTitle}}</td>
+						<td>{{book.storePrice}}원</td>
+						<td>{{book.storeAmount}}권</td>
+						<td>
+							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
+							<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
+						</td>
+					</tr>
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
+
+<script>
+	const app = Vue.createApp({
+		data(){
+			return {				
+				bookList:[],
+
+				currentData:{
+					storeBookNo:"",
+					storePrice:"",
+					storeAmount:"",
+					bookTitle:"",
+				},		
+				index:-1,
+			};
+		},
+		
+		computed:{
+			mode(){
+				return this.index < 0 ? "등록" : "수정";
+			},
+			isInsertMode(){
+				return this.mode == "등록";
+			},
+			isEditMode(){
+				return this.mode == "수정";
+			},
+		},
+		
+		methods:{
+
+			findBook(){
+				const number = this.currentData.storeBookNo;
+				axios({
+					url:"${pageContext.request.contextPath}/rest/book/" + number,
+					method:"get",
+					data: this.currentData,
+				})
+				.then((resp)=>{
+					this.currentData.bookTitle = resp.data.bookTitle;
+				});
+			},
+			
+			deleteItem(index){
+				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
+				if(choice == false) return;
+				
+				const storeBookNo = this.bookList[index].storeBookNo;
+				axios({
+					url:"${pageContext.request.contextPath}/rest/store-book/" + storeBookNo,
+					method:"delete"
+				})
+				.then(()=>{
+					this.bookList.splice(index, 1);
+				});
+			},
+			
+			selectItem(index){
+				this.currentData = this.bookList[index];
+				this.index = index;
+			},
+			
+			clearItem(){
+				this.currentData = {
+						storeBookNo:"",
+						storePrice:"",
+						storeAmount:"",
+						bookTitle:"",
+				}
+				this.index = -1;
+			},
+			
+			addItem(){
+				let type;
+				if(this.isInsertMode){ //등록
+					type = "post";
+				}
+				else if(this.isEditMode){ //수정
+					type = "put";
+				}
+				
+				if(!type) return;
+				
+				axios({
+					url:"${pageContext.request.contextPath}/rest/store-book/",
+					method:type,
+					data: this.currentData,
+				})
+				.then((resp)=>{
+					if(this.isInsertMode){
+						this.bookList.push(resp.data);
+						this.clearItem();
+						window.alert("등록 완료!");
+					}
+					else if(this.isEditMode){
+						this.bookList[this.index] = resp.data;
+						window.alert("수정 완료!");
+					}
+				});
+			},
+		},
+		created(){
+				axios({
+					url:"${pageContext.request.contextPath}/rest/store-book/",
+					method:"get"
+				})
+				.then((resp)=>{
+					this.bookList.push(...resp.data);
+					console.log(this.bookList);
+				})
+		},
+	});
+	app.mount("#app");
+</script>
+
+<jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include>

@@ -252,17 +252,22 @@
 			<scope>test</scope>
 		</dependency>
 		
-				<!-- 웹소켓 의존성 -->
+		<!-- 웹소켓 의존성 -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-websocket</artifactId>
 		    <version>${org.springframework-version}</version>
 		</dependency>
 		
-
+		<!-- xml을 json 객체로 -->
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20220320</version>
+		</dependency>
+		
 	</dependencies>
-	
-	
 		
 
 

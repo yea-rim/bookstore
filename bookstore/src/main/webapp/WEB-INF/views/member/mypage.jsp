@@ -4,9 +4,24 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <div class="container w400 m30">
-	<div class="row center m30">
-		<h1>회원 정보</h1>
-	</div>
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>마이페이지</h2>
+                        <div class="breadcrumb__option">
+                            <a href="${root}/bookstore/">Home</a>
+                            <span>북스토어</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
 	
 	<!-- 프로필 이미지 -->
 	<div class="row center m30">

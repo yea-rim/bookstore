@@ -6,10 +6,8 @@ import org.junit.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.web.WebAppConfiguration;
-
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -23,7 +21,7 @@ public class BookTest {
 
 	@Test
 	public void naver() {
-		String query = "9791190977661";
+		String query = "9791189909093";
 		
 		URI uri = UriComponentsBuilder
 				.fromUriString("https://openapi.naver.com")

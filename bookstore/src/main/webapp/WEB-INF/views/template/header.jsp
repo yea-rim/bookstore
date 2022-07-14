@@ -22,104 +22,90 @@
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 
-<!-- Css Styles -->
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/bootstrap.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/font-awesome.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/elegant-icons.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/nice-select.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/jquery-ui.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/owl.carousel.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/slicknav.min.css"
-	type="text/css">
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/main-style.css"
-	type="text/css">
-<style>
-div.fixed {
-	position: fixed;
-	bottom: 12px;
-	right: 12px;
-	width: 150px;
-}
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
+    <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
+	
+	<style>
+		div.fixed {
+			position: fixed;
+			bottom: 12px;
+			right: 12px;
+			width: 150px;
+		}
+		
+	    * {font-family: ‘SUIT’, sans-serif;}
 
-div.chat1 {
-	position: absolute;
-	bottom: 15px;
-	right: 130px;
-	width: 150px;
-}
-
-div.chat2 {
-	position: absolute;
-	bottom: 15px;
-	right: 0px;
-	width: 70px;
-}
-
-#modal {
-	display: none;
-	position: relative;
-	width: 0;
-	top: 0;
-	left: 79.1%;
-	height: 0;
-	z-index: 1;
-}
-
-#modal h2 {
-	margin: 0;
-}
-
-#modal button {
-	border: 1px solid gray;
-	border-radius: 0.25em;
-}
-
-#modal .modal_content {
-	position: fixed;
-	width: 300px;
-	height: 400px;
-	top: 53.4%;
-	margin: 0;
-	background: #fff;
-	border: 1px solid #666;
-	border: 1px solid gray;
-	border-radius: 0.5em;
-}
-
-#modal .modal_layer {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 0;
-	height: 0;
-	background: rgba(0, 0, 0, 0.5);
-	z-index: -1;
-}
-
-.btn-chat {
-	border: 1px solid gray;
-	border-radius: 0.25em;
-	padding: 0.5em;
-	background-color: white;
-	cursor: pointer;
-	width: 300px;
-}
-}
+		div.chat1 {
+			position: absolute;
+			bottom: 15px;
+			right: 130px;
+			width: 150px;
+		}
+		
+		div.chat2 {
+			position: absolute;
+			bottom: 15px;
+			right: 0px;
+			width: 70px;
+		}
+		
+		#modal {
+			display: none;
+			position: relative;
+			width: 0;
+			top: 0;
+			left: 79.1%;
+			height: 0;
+			z-index: 1;
+		}
+		
+		#modal h2 {
+			margin: 0;
+		}
+		
+		#modal button {
+			border: 1px solid gray;
+			border-radius: 0.25em;
+		}
+		
+		#modal .modal_content {
+			position: fixed;
+			width: 300px;
+			height: 400px;
+			top: 53.4%;
+			margin: 0;
+			background: #fff;
+			border: 1px solid #666;
+			border: 1px solid gray;
+			border-radius: 0.5em;
+		}
+		
+		#modal .modal_layer {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 0;
+			height: 0;
+			background: rgba(0, 0, 0, 0.5);
+			z-index: -1;
+		}
+		
+		.btn-chat {
+			border: 1px solid gray;
+			border-radius: 0.25em;
+			padding: 0.5em;
+			background-color: white;
+			cursor: pointer;
+			width: 300px;
+		}
 </style>
+
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script>
 	$(function() {
@@ -256,12 +242,11 @@ div.chat2 {
 					<nav class="header__menu">
 						<ul>
 							<li class="active"><a href="${root}/board/notice_list">공지사항</a></li>
-							<li><a href="./shop-grid.html">도서관</a></li>
-							<li><a href="${root }/book/list">북스토어</a></li>
-							<li><a href="./blog.html">중고 거래</a>
+							<li><a href="${root}/lib/main">도서관</a></li>
+							<li><a href="${root}/book/list">북스토어</a></li>
+							<li><a href="${root}/used/list">중고 거래</a>
 								<ul class="header__menu__dropdown">
-									<li><a href="${root}/">중고 판매신청</a></li>
-
+	                            	<li><a href="${root}/used/write">중고 판매신청</a></li>
 								</ul></li>
 							<li><a href="${root}/board/review_list">감상평</a></li>
 						</ul>
