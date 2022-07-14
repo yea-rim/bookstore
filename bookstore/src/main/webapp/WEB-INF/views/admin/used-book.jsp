@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>도서 관리 페이지</h2>
+                        <h2>중고 관리 페이지</h2>
                         <div class="breadcrumb__option">
                             <a href="http://localhost:8080/bookstore/admin/">Home</a>
                             <span>관리자 페이지</span>
@@ -45,43 +45,38 @@
 	<div class="row float-container mt-1" id="app">
 
 		<div class="col-lg-6" style="width:100%; padding:10px;">
-		<div class="row input-group mb-3 mt-5">
-		  <span class="input-group-text" id="basic-addon1">도서관 번호</span>
-		  <input type="text" class="form-control" placeholder="도서관 번호를 입력하세요." v-model.number="currentData.libLibInfoNo" aria-describedby="basic-addon1">
-		</div>
-			<button class="site-btn m-1 fill" v-on:click="findLib(currentData.libLibInfoNo)">도서관 선택</button>		
 		<div class="row input-group mb-3">
 		  <span class="input-group-text" id="basic-addon1">도서 번호</span>
-		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.libBookNo" aria-describedby="basic-addon1">
+		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.storeBookNo" aria-describedby="basic-addon1">
 		</div>
-			<button class="site-btn m-1 fill" v-on:click="findBook(currentData.libBookNo)">도서 선택</button>
+			<button class="site-btn m-1 fill" v-on:click="findBook()">도서 선택</button>
 		</div>
 
 		<div class="col-lg-6" style="width:100%; padding:10px;">
-	
-			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">도서관 번호</span>
-			  <input type="text" class="form-control" placeholder="도서관 번호를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.libLibInfoNo" readonly>
-			</div>
-			
-			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">도서관명</span>
-			  <input type="text" class="form-control" placeholder="도서관명이 입력됩니다." aria-describedby="basic-addon1" v-model="libName" readonly>
-			</div>
 
 			<div class="row input-group mb-3" v-if="isEditMode">
+			  <span class="input-group-text" id="basic-addon1">중고 번호</span>
+			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.usedNo" readonly>
+			</div>
+			
+			<div class="row input-group mb-3" v-if="isEditMode">
 			  <span class="input-group-text" id="basic-addon1">도서 번호</span>
-			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.libBookNo" readonly>
+			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.usedBookNo">
 			</div>
 				
 			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">도서명</span>
-			  <input type="text" class="form-control" placeholder="도서명이 입력됩니다." aria-describedby="basic-addon1" v-model="bookTitle" readonly>
+			  <input type="text" class="form-control" placeholder="도서명이 입력됩니다." aria-describedby="basic-addon1" v-model="currentData.bookTitle" readonly>
+			</div>
+			
+			<div class="row input-group mb-3">
+			  <span class="input-group-text" id="basic-addon1">가격</span>
+			  <input type="number" class="form-control" placeholder="가격을 입력하세요." aria-describedby="basic-addon1" v-model="currentData.usedPrice">
 			</div>
 			
 			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">수량</span>
-			  <input type="number" class="form-control" placeholder="도서 수량을 입력하세요." aria-describedby="basic-addon1" v-model="currentData.libAmount">
+			  <input type="text" class="form-control" placeholder="도서 상태(상, 중, 하) 입력하세요." aria-describedby="basic-addon1" v-model="currentData.usedStatus">
 			</div>
 
 			<div class="col mt-2">
@@ -94,19 +89,21 @@
 			<table class="table table-border">
 				<thead>
 					<tr>
-						<th>번호</th>
-						<th width="25%">도서관(번호)</th>
-						<th width="35%">제목(도서번호)</th>
-						<th>재고</th>
+						<th>중고 번호</th>
+						<th>도서 번호</th>
+						<th width="35%">도서명</th>
+						<th>가격</th>
+						<th>상태</th>
 						<th>처리</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr v-for="(book, index) in bookList" v-bind:key="index">
-						<td>{{book.libNo}}</td>
-						<td>{{book.libLibInfoNo}}</td>
-						<td>{{book.libBookNo}}</td>
-						<td>{{book.libAmount}}권</td>
+						<td>{{book.usedNo}}</td>
+						<td>{{book.usedBookNo}}</td>
+						<td>{{book.bookTitle}}</td>
+						<td>{{book.usedPrice}}</td>
+						<td>{{book.usedStatus}}권</td>
 						<td>
 							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
 							<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
@@ -125,17 +122,15 @@
 <script>
 	const app = Vue.createApp({
 		data(){
-			return {
-				libName:"",
-				bookTitle:"",
-				
+			return {				
 				bookList:[],
 
 				currentData:{
-					libNo:"",
-					libLibInfoNo:"",
-					libBookNo:"",
-					libAmount:"",
+					usedNo:"",
+					usedBookNo:"",
+					usedPrice:"",
+					usedStatus:"",
+					bookTitle:"",
 				},		
 				index:-1,
 			};
@@ -155,35 +150,29 @@
 		
 		methods:{
 			
-			// 오류 해결해야 함
-// 			findLib(libLibInfoNo){
-// 				const libLibInfoNo = this.libLibInfoNo;
-// 				axios({
-// 					url:"${pageContext.request.contextPath}/rest/lib/" + libLibInfoNo,
-// 					method:"get",
-// 					data: this.libName,
-// 				})
-// 				.then((resp)=>{
-// 	            	this.libData.libName = resp.data[0].libraryName;
-// // 					this.currentData.libBookNo = resp.data[0].libBookNo;
-// // 					this.currentData.libLibInfoNo = resp.data[0].libLibInfoNo;
-// // 					this.currentData.libAmount = resp.data[0].libAmount;
-// 					console.log(this.libName);
-// 				});
-// 			},
+			findBook(){
+				const usedNo = this.currentData.usedNo;
+				axios({
+					url:"${pageContext.request.contextPath}/rest/used-book/" + usedNo,
+					method:"get",
+					data: this.currentData,
+				})
+				.then((resp)=>{
+					this.currentData.bookTitle = resp.data.bookTitle;
+				});
+			},
 			
 			deleteItem(index){
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
 				if(choice == false) return;
 				
-				const libNo = this.bookList[index].libNo;
+				const usedNo = this.bookList[index].usedNo;
 				axios({
-					url:"${pageContext.request.contextPath}/rest/lib-book/" + libNo,
+					url:"${pageContext.request.contextPath}/rest/used-book/" + usedNo,
 					method:"delete"
 				})
 				.then(()=>{
 					this.bookList.splice(index, 1);
-					//+ 알람(외부 API)
 				});
 			},
 			
@@ -194,10 +183,11 @@
 			
 			clearItem(){
 				this.currentData = {
-					libNo:"",
-					libLibInfoNo:"",
-					libBookNo:"",
-					libAmount:"",
+						usedNo:"",
+						usedBookNo:"",
+						usedPrice:"",
+						usedStatus:"",
+						bookTitle:"",
 				}
 				this.index = -1;
 			},
@@ -214,7 +204,7 @@
 				if(!type) return;
 				
 				axios({
-					url:"${pageContext.request.contextPath}/rest/lib-book/",
+					url:"${pageContext.request.contextPath}/rest/used-book/",
 					method:type,
 					data: this.currentData,
 				})
@@ -227,19 +217,18 @@
 					else if(this.isEditMode){
 						this.bookList[this.index] = resp.data;
 						window.alert("수정 완료!");
-						window.alert("수정 완료!");
-						window.alert("수정 완료!");
 					}
 				});
 			},
 		},
 		created(){
 				axios({
-					url:"${pageContext.request.contextPath}/rest/lib-book/",
+					url:"${pageContext.request.contextPath}/rest/used-book/",
 					method:"get"
 				})
 				.then((resp)=>{
 					this.bookList.push(...resp.data);
+					console.log(this.bookList);
 				})
 		},
 	});

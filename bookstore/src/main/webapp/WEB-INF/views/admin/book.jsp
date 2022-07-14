@@ -301,6 +301,7 @@
 					this.currentData.bookPub = resp.data.items[0].pubdate;
 					this.currentData.bookDescription = resp.data.items[0].description;
 					console.log(this.currentData);
+					console.log(resp.data.items[0].price);
 				});
 			},
 
