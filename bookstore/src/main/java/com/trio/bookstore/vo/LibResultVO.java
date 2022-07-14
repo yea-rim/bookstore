@@ -8,7 +8,7 @@ import lombok.Data;
 @JsonIgnoreProperties
 public class LibResultVO {
 
-	private int CODE;
+	private String CODE;
 	private String MESSAGE;
 
 }

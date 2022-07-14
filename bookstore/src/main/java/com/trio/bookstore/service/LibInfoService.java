@@ -12,13 +12,7 @@ import com.trio.bookstore.vo.LibVO;
 
 public interface LibInfoService {
 
-	LibVO getLibVOData() throws URISyntaxException, JsonMappingException, JsonProcessingException;
-
-	ResponseEntity<LVO> libVO(int number) throws URISyntaxException;
-
-//	ResponseEntity<LibInfoVO> libVO(int number) throws URISyntaxException;
-
-	ResponseEntity<LibInfoVO> libInfoVO(int number)
+	ResponseEntity<LVO> lVO(int number)
 			throws URISyntaxException, JsonMappingException, JsonProcessingException;
 
 }
