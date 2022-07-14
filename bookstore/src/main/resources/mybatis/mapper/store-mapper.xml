@@ -19,7 +19,36 @@
 		<select id = "one" resultType="StoreDto" parameterType="int">
 				select * from store 
 					inner join book on book.book_no = store.store_book_no 
-						where store_book_no = #{storeBookNo}
+				where store_book_no = #{storeBookNo}
 		</select>
 		
+		<!-- 예림 -->
+	   <delete id="delete" parameterType="int">
+	      delete store where store_book_no = #{storeBookNo}
+	   </delete>
+	   
+	   <insert id="insert" parameterType="StoreDto">
+	      insert into store(
+	            store_book_no, store_price, store_amount
+	         ) values (
+	            #{storeBookNo}, #{storePrice}, #{storeAmount}
+	         )
+	   </insert>
+	   
+	      <update id="update" parameterType="StoreDto">
+	      update store
+	         set
+	         	store_book_no = #{storeBookNo},
+	            store_price = #{storePrice},
+	            store_amount = #{storeAmount}
+	         where
+	            store_book_no = #{storeBookNo}
+	   </update>
+	   
+	      <select id="search" resultType="StoreDto" parameterType="int">
+	      select * from store
+	      where instr(store_book_no, #{storeBookNo}) > 0
+	      order by store_book_no asc
+	   </select>
+   
 </mapper> 

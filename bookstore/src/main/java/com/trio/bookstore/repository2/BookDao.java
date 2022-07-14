@@ -24,4 +24,6 @@ public interface BookDao {
 
 	BookDto find(int bookNo);
 
+	BookDto bookSearch(int bookNo);
+
 }
