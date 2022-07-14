@@ -102,8 +102,8 @@
 						<td>{{book.usedNo}}</td>
 						<td>{{book.usedBookNo}}</td>
 						<td>{{book.bookTitle}}</td>
-						<td>{{book.usedPrice}}</td>
-						<td>{{book.usedStatus}}권</td>
+						<td>{{book.usedPrice}}원</td>
+						<td>{{book.usedStatus}}</td>
 						<td>
 							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
 							<button class="site-btn m-1" v-on:click="deleteItem(index);">X</button>
@@ -151,9 +151,9 @@
 		methods:{
 			
 			findBook(){
-				const usedNo = this.currentData.usedNo;
+				const number = this.currentData.usedBookNo;
 				axios({
-					url:"${pageContext.request.contextPath}/rest/used-book/" + usedNo,
+					url:"${pageContext.request.contextPath}/rest/book/" + number,
 					method:"get",
 					data: this.currentData,
 				})

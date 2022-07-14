@@ -36,14 +36,28 @@
             lib_no = #{libNo}
    </update>
    
-   <select id="one" resultType="LibDto" parameterType="int">
-      select * lib where lib_no = #{libNo}
+   <!-- 조인 -->
+   <select id="one" resultType="LibDto" parameterType="int">      
+		select * from lib 
+		inner join book on book.book_no = lib.lib_book_no 
+		where lib_book_no = #{libBookNo}
    </select>
    
    <select id="libSearch" resultType="LibDto" parameterType="int">
       select * from lib
       where instr(lib_lib_info_no, #{libLibInfoNo}) > 0
       order by lib_lib_info_no asc
+   </select>
+   
+   <!-- 상혁님이 짜주신 코드!! -->
+   <select id="sh" resultType="LibDto" parameterType="int">
+        select linfo.library_name, b.book_title
+        from lib_info linfo, book b, lib l
+        where l.lib_book_no = b.book_no
+        and
+        linfo.lib_info_no = l.lib_lib_info_no
+        and
+        l.lib_no = #{libNo};
    </select>
 
 </mapper> 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trio.bookstore.entity.BookDto;
+import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.repository2.BookDao;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
@@ -47,6 +48,11 @@ public class BookRestController {
 	@GetMapping("/search/{query}")
 	public List<BookDto> findBook(@PathVariable String query) {
 		return bookDao.search(query);
+	}
+	
+	@GetMapping("/{bookNo}")
+	public BookDto search(@PathVariable int bookNo) {
+		return bookDao.bookSearch(bookNo);
 	}
 
 }

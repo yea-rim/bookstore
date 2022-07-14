@@ -79,4 +79,10 @@ public class BookDaoImpl implements BookDao {
 		return sqlSession.selectOne("book.one", bookNo);
 	}
 
+	@Override
+	public BookDto bookSearch(int bookNo) {
+		return sqlSession.selectOne("book.one", bookNo);
+
+	}
+
 }

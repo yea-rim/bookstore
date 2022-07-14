@@ -44,9 +44,14 @@ public class LibBookRestController {
 		libDao.delete(libNo);
 	}
 
-	@GetMapping("/{libLibInfoNo}")
-	public List<LibDto> libSearch(@PathVariable int libLibInfoNo) {
-		return libDao.libSearch(libLibInfoNo);
+	@GetMapping("/{libNo}")
+	public List<LibDto> libSearch(@PathVariable int libNo) {
+		return libDao.libSearch(libNo);
+	}
+	
+	@GetMapping("/sh/{libNo}")
+	public List<LibDto> shSearch(@PathVariable int libNo) {
+		return libDao.shSearch(libNo);
 	}
 
 }

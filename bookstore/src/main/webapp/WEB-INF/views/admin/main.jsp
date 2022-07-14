@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
 
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">

@@ -95,7 +95,7 @@
 					<tr v-for="(book, index) in bookList" v-bind:key="index">
 						<td>{{book.storeBookNo}}</td>
 						<td>{{book.bookTitle}}</td>
-						<td>{{book.storePrice}}</td>
+						<td>{{book.storePrice}}원</td>
 						<td>{{book.storeAmount}}권</td>
 						<td>
 							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
@@ -145,7 +145,7 @@
 			findBook(){
 				const number = this.currentData.storeBookNo;
 				axios({
-					url:"${pageContext.request.contextPath}/rest/store-book/" + number,
+					url:"${pageContext.request.contextPath}/rest/book/" + number,
 					method:"get",
 					data: this.currentData,
 				})

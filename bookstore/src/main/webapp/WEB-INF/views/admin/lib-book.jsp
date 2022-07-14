@@ -49,12 +49,12 @@
 		  <span class="input-group-text" id="basic-addon1">도서관 번호</span>
 		  <input type="text" class="form-control" placeholder="도서관 번호를 입력하세요." v-model.number="currentData.libLibInfoNo" aria-describedby="basic-addon1">
 		</div>
-			<button class="site-btn m-1 fill" v-on:click="findLib(currentData.libLibInfoNo)">도서관 선택</button>		
+			<button class="site-btn m-1 fill" v-on:click="findLib">도서관 선택</button>		
 		<div class="row input-group mb-3">
 		  <span class="input-group-text" id="basic-addon1">도서 번호</span>
 		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.libBookNo" aria-describedby="basic-addon1">
 		</div>
-			<button class="site-btn m-1 fill" v-on:click="findBook(currentData.libBookNo)">도서 선택</button>
+			<button class="site-btn m-1 fill" v-on:click="findBook">도서 선택</button>
 		</div>
 
 		<div class="col-lg-6" style="width:100%; padding:10px;">
@@ -126,8 +126,6 @@
 	const app = Vue.createApp({
 		data(){
 			return {
-				libName:"",
-				bookTitle:"",
 				
 				bookList:[],
 
@@ -136,7 +134,9 @@
 					libLibInfoNo:"",
 					libBookNo:"",
 					libAmount:"",
-				},		
+					bookTitle:"",
+					libName:"",
+				},
 				index:-1,
 			};
 		},
@@ -155,20 +155,29 @@
 		
 		methods:{
 			
-			// 오류 해결해야 함 ~ 하는 중
-// 			findLib(libLibInfoNo){
-// 				const libLibInfoNo = this.libLibInfoNo;
+			findLib(){
+				const libLibInfoNo = this.currentData.libLibInfoNo;
+				axios({
+					url:"${pageContext.request.contextPath}/rest/lib-book/" + libLibInfoNo,
+					method:"get",
+					data: this.currentData,
+				})
+				.then((resp)=>{
+	            	console.log(resp.data.libraryName);
+// 					this.currentData.libName = resp.data[0].libraryName;
+				});
+			},
+
+// 			findBook(){
+// 				const libBookNo = this.currentData.libBookNo;
 // 				axios({
-// 					url:"${pageContext.request.contextPath}/rest/lib/" + libLibInfoNo,
+// 					url:"${pageContext.request.contextPath}/rest/book/" + libBookNo,
 // 					method:"get",
-// 					data: this.libName,
+// 					data: this.currentData,
 // 				})
 // 				.then((resp)=>{
-// 	            	this.libData.libName = resp.data[0].libraryName;
-// // 					this.currentData.libBookNo = resp.data[0].libBookNo;
-// // 					this.currentData.libLibInfoNo = resp.data[0].libLibInfoNo;
-// // 					this.currentData.libAmount = resp.data[0].libAmount;
-// 					console.log(this.libName);
+// 	            	console.log(resp.data;
+// 					this.currentData.bookTitle = resp.data.seoulPublicLibraryInfo.row[0].lbrry_NAME;
 // 				});
 // 			},
 			

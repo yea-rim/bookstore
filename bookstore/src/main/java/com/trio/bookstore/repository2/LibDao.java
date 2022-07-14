@@ -16,4 +16,6 @@ public interface LibDao {
 
 	List<LibDto> libSearch(int libLibInfoNo);
 
+	List<LibDto> shSearch(int libNo);
+
 }

@@ -37,8 +37,8 @@ public class LibDaoImpl implements LibDao {
 	}
 
 	@Override
-	public List<LibDto> libSearch(int libBookNo) {
-		return sqlSession.selectList("lib.libSearch", libBookNo);
+	public List<LibDto> libSearch(int libNo) {
+		return sqlSession.selectOne("lib.one", libNo);
 	}
 
 	@Override
@@ -46,4 +46,8 @@ public class LibDaoImpl implements LibDao {
 		sqlSession.delete("lib.delete", libNo);
 	}
 
+	@Override
+	public List<LibDto> shSearch(int libNo) {
+		return sqlSession.selectOne("lib.sh", libNo);
+	}
 }
