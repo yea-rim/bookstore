@@ -55,7 +55,7 @@
 			});
 			
 			$("body").append(form);//body에 form 추가
-			form.submit();//form 전송 명령
+			//form.submit();//form 전송 명령
 			
 		});
 	});

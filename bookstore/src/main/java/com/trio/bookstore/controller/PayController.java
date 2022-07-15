@@ -57,10 +57,7 @@ public class PayController {
 		return "han";
 	}
 	
-	@GetMapping("/pay")
-	public String pay() {
-		return "pay/pay";
-	}
+	
 	@GetMapping("/pay1")
 	public String pay1(Model model) {
 		model.addAttribute("list",storeDao.list());
@@ -113,7 +110,7 @@ public class PayController {
 		
 	}
 	
-	@GetMapping("/pay/approve")
+	@GetMapping("/pay/approve2")
 	public String paySuccess(@RequestParam String pg_token, HttpSession session) throws URISyntaxException {
 		KakaoPayApproveRequestVO requestVO =
 								(KakaoPayApproveRequestVO) session.getAttribute("pay");
@@ -134,7 +131,7 @@ public class PayController {
 		return "redirect:finish";
 	}
 	
-	@GetMapping("/pay/finish")
+	@GetMapping("/pay/finish2")
 	public String payFinish() {
 		return "pay/finish";
 	}
@@ -159,7 +156,7 @@ public class PayController {
 	public String pay2(Model model) {
 		model.addAttribute("list",storeDao.list());
 		return "pay2/list";
-	}
+	} 
 	
 	@PostMapping("/pay2_purchase")
 	public String pay2Purchase(@ModelAttribute PurchaseListVO listVO,
