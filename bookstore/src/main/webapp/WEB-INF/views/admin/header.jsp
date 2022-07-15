@@ -7,6 +7,7 @@
 <c:set var="isAdmin" value="${auth == '관리자'}"></c:set>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set>
 
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -196,21 +197,10 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+
     </header>
     <!-- Header Section End -->
 
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-2 text-center">
-					<button class="site-btn m-1" onclick="location.href='book'">도서 관리</button><br>
-					<button class="site-btn m-1" onclick="location.href='lib'">도서관 관리</button><br>
-					<button class="site-btn m-1" onclick="location.href='member'">회원 관리</button><br>
-					<button class="site-btn m-1" onclick="location.href='delivery'">배송 관리</button><br>
-					<button class="site-btn m-1" onclick="location.href='question'">1:1 문의</button><br>
-					<button class="site-btn m-1" onclick="location.href='notice'">공지사항 작성</button><br>
-					<button class="site-btn m-1" onclick="location.href='faq'">faq 작성</button><br>
-                </div>
-                <div class="col-lg-10">
-                    <div class="container-fluid">
+

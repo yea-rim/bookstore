@@ -5,7 +5,10 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor @AllArgsConstructor @Builder
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class UsedDto {
 		private int usedNo;
 		private int usedBookNo;
@@ -15,5 +18,7 @@ public class UsedDto {
 		//이너조인 사용시 도서테이블의 도서명도 넣기위해 코드짬
 		private String bookTitle;
 		private String bookImage;
+		//예림님이 한건가?
+
 
 }

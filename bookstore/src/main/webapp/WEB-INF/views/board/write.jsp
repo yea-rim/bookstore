@@ -17,7 +17,28 @@
 	    </div>
 	    <div class="row">
 	        <label>내용</label>
-	        <textarea name="boardContent" required class="form-input fill input-round" rows="12"></textarea>
+	        <div id="editor"></div>
+	        <script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+			<script> 
+			
+				const Editor = toastui.Editor; 
+				const editor = new Editor({ 
+					el: document.querySelector('#editor'),
+					height: '500px',
+					initialEditType: 'markdown',
+					previewStyle: 'markdown',
+					
+					
+				});
+				
+				editor.on("change", function(){
+					var content = editor.getMarkdown();
+					$("input[name=boardContent]").val(content);
+					console.log($("input[name=boardContent]").val());
+				});
+				
+			</script>
+			<input type="hidden" name="boardContent">
 	    </div>
 	    <div class="row">
 	        <button type="submit" class="btn btn-primary fill">등록</button>

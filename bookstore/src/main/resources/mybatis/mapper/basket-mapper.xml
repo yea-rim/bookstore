@@ -6,7 +6,7 @@
 <mapper namespace="basket">
 	<!-- 장바구니 목록 가져오기(시퀀스번호 오름차순)-->
 	<select id="list" resultType="BasketDto">
-		select * from basket
+		select * from basket order by basket_no asc
 	</select>
 	
 <!-- 	시퀀스 번호 생성 -->

@@ -245,11 +245,11 @@ border-radius: 0.25em;
                     <nav class="header__menu">
                         <ul>
                             <li class="active"><a href="${root}/board/notice_list">공지사항</a></li>
-                            <li><a href="./shop-grid.html">도서관</a></li>
-                            <li><a href="${root}/book/list">북스토어</a></li>
-                            <li><a href="./blog.html">중고 거래</a>
+							<li><a href="${root}/lib/main">도서관</a></li>
+							<li><a href="${root }/book/list">북스토어</a></li>
+							<li><a href="${root}/used/list">중고 거래</a>
 	                            <ul class="header__menu__dropdown">
-	                            	<li><a href="#">중고 판매신청</a></li>
+	                            	<li><a href="${root}/used/write">중고 판매신청</a></li>
 	                            	<li><a href="#">아니헤더에안들어가요</a></li>
 	                            	<li><a href="${root}/admin/">잠깐기생하는관리자페이지</a></li>
 	                            </ul>

@@ -11,13 +11,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trio.bookstore.entity.BookDto;
+import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.repository2.BookDao;
-import com.trio.bookstore.service.BookService;
-import com.trio.bookstore.vo.BookVO;
 
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
@@ -48,8 +46,13 @@ public class BookRestController {
 	}
 
 	@GetMapping("/search/{query}")
-	public List<BookDto> findStudent(@PathVariable String query) {
+	public List<BookDto> findBook(@PathVariable String query) {
 		return bookDao.search(query);
+	}
+	
+	@GetMapping("/{bookNo}")
+	public BookDto search(@PathVariable int bookNo) {
+		return bookDao.bookSearch(bookNo);
 	}
 
 }

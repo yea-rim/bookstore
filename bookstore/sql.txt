@@ -32,8 +32,6 @@ book_description varchar2(150),
 book_type number 
 );
 
-
-
 -- 첨부파일 테이블 (attachment)
 create table attachment (
 attachment_no number primary key,
@@ -89,16 +87,59 @@ used_amount number not null check(used_amount >= 0),
 used_status char(1) check(used_status in ('상','중','하'))
 );
 
+<<<<<<< HEAD
+--챗봇 테이블 생성
+create table chatbot (
+chatbot_no number primary key,
+chatbot_content varchar2(300) not null,
+super_no references chatbot(chatbot_no) on delete cascade
+);
+create sequence chatbot_seq;
+
+--게시판 파일 업로드 테이블 생성
+create table board_attachment (
+board_no references board(board_no) on delete cascade,
+attachment_no references attachment(attachment_no) on delete cascade,
+primary key(board_no, attachment_no)
+);
+
+--게시판 카테고리별 view
+create view board_notice as select * from board where board_head = '공지';
+create view board_qna as select * from board where board_head = '문의';
+create view board_review as select * from board where board_head = '감상평';
+
+--
+
+=======
+-- 중고거래(도서) 테이블 수정
+alter table used drop column used_status;
+alter table used add used_status char(3) check(used_status in ('상','중','하'));
+
 -- 도서관 정보 테이블 생성
 create table lib_info(
-lib_info_no number primary key,
-library_name varchar2(60),
-library_address varchar2(150),
-library_gu varchar2(30),
-library_tel char(11),
-library_url varchar2(300),
-library_time varchar2(300),
-library_close_date varchar2(300),
-library_xcnts number,
-library_ydnts number
+	lib_info_no number primary key,
+	library_name varchar2(60),
+	library_address varchar2(150),
+	library_gu varchar2(30),
+	library_tel char(11),
+	library_url varchar2(300),
+	library_time varchar2(300),
+	library_close_date varchar2(300),
+	library_xcnts number,
+	library_ydnts number
 );
+
+-- 결제 테이블 생성
+
+-- 결제 테이블 수정
+alter table pay add pay_delivery char(1);
+
+-- 도서관 테이블 생성
+create table lib(
+	lib_book_no references book(book_no) on delete cascade,
+	lib_lib_info_no references lib_info(lib_info_no) on delete cascade,
+	lib_amount number
+);
+
+-- 대여 테이블 생성
+>>>>>>> refs/remotes/origin/main

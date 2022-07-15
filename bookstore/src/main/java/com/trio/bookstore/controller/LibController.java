@@ -7,14 +7,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class LibController {
 
-	@RequestMapping("/list")
-	public String list() {
-		return "lib/list";
+	@RequestMapping("/main")
+	public String main() {
+		return "lib/main";
 	}
 
-	@RequestMapping("/detail")
-	public String detail() {
-		return "lib/detail";
+	@RequestMapping("/rental")
+	public String rental() {
+		return "lib/rental";
 	}
+	
+	
 
 }

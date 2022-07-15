@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- 
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
  <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
  <!-- Breadcrumb Section Begin -->
@@ -23,15 +24,14 @@
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
-        <div class="container">
-            <div class="row">
+        <div class="container" id = "app">
+            <div class="row" >
                 <div class="col-lg-12">
                     <div class="shoping__cart__table">
                          <table>
                             <thead>
                                 <tr>
                                     <th class="shoping__product" colspan = "2">상품정보</th>
-<!--                                     <th width = "630px">도서명</th> -->
                                     <th>판매가</th>
                                     <th>수량</th>
                                     <th>합계</th>
@@ -41,18 +41,20 @@
                             <tbody>
                             	
                                 
-                                <tr>
+                                <tr v-for = "(basket, index) dataList" v-bind:key="index">
+                                <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
-                                    </td>
+<!-- 									<img src="{{basket.basketBookImage }}"> -->
+								</td>
+                                    <!-- 책제목 보여주는 칸 -->
                                   	<td  style = "text-align:left" width = "40%">
-										<h5>1</h5>
+<!-- 										<h5>{{basket.basketBookTitle}}</h5> -->
                                   	</td>  
                                     <td class="shoping__cart__price">
-                                       <h5>1</h5>                                   
+                                       <h5>{{basket.basketPrice}}</h5>                                   
                                         </td>
                                     <td class="shoping__cart__quantity">
-                                    	<h5>1</h5>
+                                    	<h5>{{basket.basketAmount}}</h5>
 <!--                                         <div class="quantity"> -->
 <!--                                             <div class="pro-qty"> -->
 <!--                                                 <input type="text" value="1"> -->
@@ -60,7 +62,7 @@
 <!--                                         </div> -->
                                     </td>
                                     <td class = "shoping_cart_quantity">
-                                    	<h5>10000원</h5>
+                                    	<h5>수량</h5>
                                     </td>
                                     <td class="shoping__cart__total">
                                         <h5>선택 버튼</h5>
@@ -121,7 +123,7 @@
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
-                    
+                    dataList:[],
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
@@ -137,6 +139,37 @@
             watch:{
                 
             },
+    		created(){
+//     			ajax 통신을 사용하여 exam list를 불러온다
+//     			1. jquery ajax를 이용하는 방법
+//     			const that = this;
+//     			$.ajax({
+//     				url:"${pageContext.request.contextPath}/rest/exam/",
+//     				type:"get",
+//     				dataType:"json",
+//     				success:function(resp){
+//     					//for(let i=0; i < resp.length; i++){
+//     					//	that.dataList.push(resp[i]);
+//     					//}
+//     					that.dataList.push(...resp);//javascript 전개 연산자(ES6)
+//     				},
+//     				error:function(e){
+//     					console.log("error");
+//     				},
+//     			});
+    			
+//     			2. axios 이용하는 방법
+//     			axios({옵션}).then(성공콜백).catch(에러콜백);
+    				axios({
+    					url:"${pageContext.request.contextPath}/rest/basket/",
+    					method:"get"
+    				})
+    				.then((resp)=>{
+    					//console.log(resp);
+    					//console.log(resp.data);
+    					this.dataList.push(...resp.data);
+    				})
+    		},
         });
         app.mount("#app");
     </script>
