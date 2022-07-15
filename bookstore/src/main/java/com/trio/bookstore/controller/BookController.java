@@ -19,7 +19,7 @@ import com.trio.bookstore.repository2.UsedDao;
 
 @RequestMapping("/book")
 @Controller
-public class bookController {
+public class BookController {
 	
 	@Autowired
 	private UsedDao usedDao;
@@ -90,7 +90,6 @@ public class bookController {
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
 		return "book/detail";
-		
 		
 	}
 }

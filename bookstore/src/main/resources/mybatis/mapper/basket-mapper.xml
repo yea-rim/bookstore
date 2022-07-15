@@ -34,6 +34,11 @@
 		basket_seq.nextVal,#{basketMemberId},#{basketUsedNo},#{basketAmount},#{basketPrice},#{basketBookTitle},#{basketBookImage}
 		)		
 		</insert>
+		<!-- 장바구니 데이터 삭제(장바구니 번호 이용 -->
+		
+		<delete id="delete" parameterType="int">
+				delete basket where basket_no = #{basketNo}		
+		</delete> 
 </mapper> 
 
 
