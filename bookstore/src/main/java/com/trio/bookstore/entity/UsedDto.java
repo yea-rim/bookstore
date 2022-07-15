@@ -10,15 +10,13 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class UsedDto {
-		private int usedNo;
-		private int usedBookNo;
-		private int usedPrice;
-		private String usedStatus;
 
-		//이너조인 사용시 도서테이블의 도서명도 넣기위해 코드짬
-		private String bookTitle;
-		private String bookImage;
-		//예림님이 한건가?
+	private int usedNo;
+	private int usedBookNo;
+	private int usedPrice;
+	private String usedStatus;
 
-
+	// 이너조인 사용시 도서테이블의 도서명도 넣기위해 코드짬
+	private String bookTitle;
+	private String bookImage;
 }
