@@ -59,7 +59,7 @@
                         <c:forEach var = "bookDto" items = "${list }">
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
-                                <div class="product__item__pic set-bg" data-setbg="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+                                <div class="product__item__pic set-bg" data-setbg="${bookDto.bookImage }">
                                     <ul class="product__item__pic__hover">
                                         <!--  li><a href="${root}/"><i class="fa fa-heart"></i></a></li>-->
                                         <li><a href="${root}/book/detail?bookNo=${bookDto.bookNo}"><i class="fa fa-retweet"></i></a></li>
