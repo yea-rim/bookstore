@@ -19,7 +19,7 @@ import com.trio.bookstore.repository2.UsedDao;
 
 @RequestMapping("/book")
 @Controller
-public class bookController {
+public class BookController {
 	
 	@Autowired
 	private UsedDao usedDao;
