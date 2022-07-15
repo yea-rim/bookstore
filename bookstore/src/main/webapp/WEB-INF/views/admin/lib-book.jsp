@@ -10,7 +10,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>도서 관리 페이지</h2>
+                        <h2>도서관 도서 관리 페이지</h2>
                         <div class="breadcrumb__option">
                             <a href="http://localhost:8080/bookstore/admin/">Home</a>
                             <span>관리자 페이지</span>
@@ -49,34 +49,41 @@
 		  <span class="input-group-text" id="basic-addon1">도서관 번호</span>
 		  <input type="text" class="form-control" placeholder="도서관 번호를 입력하세요." v-model.number="currentData.libLibInfoNo" aria-describedby="basic-addon1">
 		</div>
-			<button class="site-btn m-1 fill" v-on:click="findLib">도서관 선택</button>		
+			<button class="site-btn m-1 fill" v-on:click="findLib()">도서관 선택</button>		
 		<div class="row input-group mb-3">
 		  <span class="input-group-text" id="basic-addon1">도서 번호</span>
 		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.libBookNo" aria-describedby="basic-addon1">
 		</div>
-			<button class="site-btn m-1 fill" v-on:click="findBook">도서 선택</button>
+			<button class="site-btn m-1 fill" v-on:click="findBook()">도서 선택</button>
 		</div>
 
 		<div class="col-lg-6" style="width:100%; padding:10px;">
 	
+	
+			<div class="row input-group mb-3" v-if="isEditMode">
+			  <span class="input-group-text" id="basic-addon1">도서관도서 번호</span>
+			  <input type="text" class="form-control" placeholder="도서관도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.libNo" readonly>
+			</div>
+			
+			
 			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">도서관 번호</span>
-			  <input type="text" class="form-control" placeholder="도서관 번호를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.libLibInfoNo" readonly>
+			  <input type="text" class="form-control" placeholder="도서관 번호를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.libLibInfoNo" >
 			</div>
 			
 			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">도서관명</span>
-			  <input type="text" class="form-control" placeholder="도서관명이 입력됩니다." aria-describedby="basic-addon1" v-model="libName" readonly>
+			  <input type="text" class="form-control" placeholder="도서관명이 입력됩니다." aria-describedby="basic-addon1" v-model="currentData.libName" readonly>
 			</div>
 
-			<div class="row input-group mb-3" v-if="isEditMode">
+			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">도서 번호</span>
-			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.libBookNo" readonly>
+			  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." aria-describedby="basic-addon1" v-model.number="currentData.libBookNo" >
 			</div>
 				
 			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">도서명</span>
-			  <input type="text" class="form-control" placeholder="도서명이 입력됩니다." aria-describedby="basic-addon1" v-model="bookTitle" readonly>
+			  <input type="text" class="form-control" placeholder="도서명이 입력됩니다." aria-describedby="basic-addon1" v-model="currentData.bookTitle" readonly>
 			</div>
 			
 			<div class="row input-group mb-3">
@@ -95,8 +102,8 @@
 				<thead>
 					<tr>
 						<th>번호</th>
-						<th width="25%">도서관(번호)</th>
-						<th width="35%">제목(도서번호)</th>
+						<th width="25%">도서관명</th>
+						<th width="35%">도서명</th>
 						<th>재고</th>
 						<th>처리</th>
 					</tr>
@@ -158,28 +165,28 @@
 			findLib(){
 				const libLibInfoNo = this.currentData.libLibInfoNo;
 				axios({
-					url:"${pageContext.request.contextPath}/rest/lib-book/" + libLibInfoNo,
+					url:"${pageContext.request.contextPath}/rest/lib/" + libLibInfoNo,
 					method:"get",
 					data: this.currentData,
 				})
 				.then((resp)=>{
-	            	console.log(resp.data.libraryName);
-// 					this.currentData.libName = resp.data[0].libraryName;
+	            	console.log(resp.data[0].libraryName);
+					this.currentData.libName = resp.data[0].libraryName;
 				});
 			},
 
-// 			findBook(){
-// 				const libBookNo = this.currentData.libBookNo;
-// 				axios({
-// 					url:"${pageContext.request.contextPath}/rest/book/" + libBookNo,
-// 					method:"get",
-// 					data: this.currentData,
-// 				})
-// 				.then((resp)=>{
-// 	            	console.log(resp.data;
-// 					this.currentData.bookTitle = resp.data.seoulPublicLibraryInfo.row[0].lbrry_NAME;
-// 				});
-// 			},
+			findBook(){
+				const number = this.currentData.libBookNo;
+				axios({
+					url:"${pageContext.request.contextPath}/rest/book/" + number,
+					method:"get",
+					data: this.currentData,
+				})
+				.then((resp)=>{
+	            	console.log(resp.data.bookTitle);
+					this.currentData.bookTitle = resp.data.bookTitle;
+				});
+			},
 			
 			deleteItem(index){
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
@@ -207,6 +214,8 @@
 					libLibInfoNo:"",
 					libBookNo:"",
 					libAmount:"",
+					bookTitle:"",
+					libName:"",
 				}
 				this.index = -1;
 			},
@@ -235,8 +244,6 @@
 					}
 					else if(this.isEditMode){
 						this.bookList[this.index] = resp.data;
-						window.alert("수정 완료!");
-						window.alert("수정 완료!");
 						window.alert("수정 완료!");
 					}
 				});

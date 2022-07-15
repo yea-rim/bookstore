@@ -47,7 +47,7 @@
 		<div class="col-lg-6" style="width:100%; padding:10px;">
 		<div class="row input-group mb-3">
 		  <span class="input-group-text" id="basic-addon1">도서 번호</span>
-		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.storeBookNo" aria-describedby="basic-addon1">
+		  <input type="text" class="form-control" placeholder="도서 번호를 입력하세요." v-model.number="currentData.usedBookNo" aria-describedby="basic-addon1">
 		</div>
 			<button class="site-btn m-1 fill" v-on:click="findBook()">도서 선택</button>
 		</div>
@@ -75,7 +75,7 @@
 			</div>
 			
 			<div class="row input-group mb-3">
-			  <span class="input-group-text" id="basic-addon1">수량</span>
+			  <span class="input-group-text" id="basic-addon1">상태</span>
 			  <input type="text" class="form-control" placeholder="도서 상태(상, 중, 하) 입력하세요." aria-describedby="basic-addon1" v-model="currentData.usedStatus">
 			</div>
 
