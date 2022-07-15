@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/3.0.2/toastui-editor.min.css" >
 <div class="container w800 m30">
 	 
 	<div class="row">
@@ -16,7 +17,7 @@
 			</tr>
 			
 			<tr>
-				<td class="left">
+				<td class="left">	
 					<c:choose>
 						<c:when test="${boardDto.boardWriter == null}">
 							(탈퇴한 사용자)
@@ -33,6 +34,7 @@
 				내용 표시 영역 
 				(주의) pre 태그는 아무런 에디터도 쓰지 않았을 경우에만 사용
 			-->
+			
 			<tr height="250">
 				<td valign="top" class="left">
 				<div class="toast-custom-viewer"></div>
@@ -48,15 +50,15 @@
         const editor = toastui.Editor.factory({
             el : document.querySelector(".toast-custom-viewer"),
             viewer:true,
+        	initialEditType: "markdown",
             initialValue : "${boardDto.boardContent}"
         });
         
+        
     </script>
     
-    	<div class="row center m30">
-		<img src="${pageContext.request.contextPath}${boardAttachmentUrl}"
-				width="150" class="img img-circle img-shadow">
-	</div>
+    
+    
 				</td>
 			</tr>
 			

@@ -32,78 +32,83 @@
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
 	
 	<style>
-		div.fixed {
-			position: fixed;
-			bottom: 12px;
-			right: 12px;
-			width: 150px;
-		}
-		
-	    * {font-family: ‘SUIT’, sans-serif;}
+@media screen and (max-width: 1200px) {
+  .fixed, .modal_content {
+    display: none;
+  }
+} 
 
-		div.chat1 {
-			position: absolute;
-			bottom: 15px;
-			right: 130px;
-			width: 150px;
-		}
-		
-		div.chat2 {
-			position: absolute;
-			bottom: 15px;
-			right: 0px;
-			width: 70px;
-		}
-		
-		#modal {
-			display: none;
-			position: relative;
-			width: 0;
-			top: 0;
-			left: 79.1%;
-			height: 0;
-			z-index: 1;
-		}
-		
-		#modal h2 {
-			margin: 0;
-		}
-		
-		#modal button {
-			border: 1px solid gray;
-			border-radius: 0.25em;
-		}
-		
-		#modal .modal_content {
-			position: fixed;
-			width: 300px;
-			height: 400px;
-			top: 53.4%;
-			margin: 0;
-			background: #fff;
-			border: 1px solid #666;
-			border: 1px solid gray;
-			border-radius: 0.5em;
-		}
-		
-		#modal .modal_layer {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 0;
-			height: 0;
-			background: rgba(0, 0, 0, 0.5);
-			z-index: -1;
-		}
-		
-		.btn-chat {
-			border: 1px solid gray;
-			border-radius: 0.25em;
-			padding: 0.5em;
-			background-color: white;
-			cursor: pointer;
-			width: 300px;
-		}
+div.fixed{
+  position: fixed;
+  bottom: 12px;
+  right: 12px;
+  width: 150px;
+  z-index:8;
+}
+
+div.chat1 {
+  position: absolute;
+  bottom: 15px;
+  right: 130px;
+  width: 150px;
+}
+div.chat2 {
+  position: absolute;
+  bottom: 15px;
+  right: 0px;
+  width: 70px;
+}
+#modal {
+ display: none;
+position:relative;
+width:0;
+top:0;
+left:79.1%;
+height:0;
+z-index:9;
+}
+
+ #modal h2 {
+margin:0;
+ }
+#modal button {
+border:1px solid gray;
+border-radius: 0.25em;
+}
+        
+ #modal .modal_content {
+ position: fixed;
+ width:300px;
+ height:400px;
+ top:53.4%;
+  margin:0;
+ background:#fff;
+ border:1px solid #666;
+ border:1px solid gray;
+ border-radius: 0.5em;
+}
+        
+ #modal .modal_layer {
+ position:fixed;
+ top:0;
+  left:0;
+ width:0;
+ height:0;
+ background:rgba(0, 0, 0, 0.5);
+ z-index:9;
+ } 
+ 
+ .btn-chat {
+    border:1px solid gray;
+    border-radius: 0.25em;
+    padding:0.5em;
+
+    background-color: white;
+	
+    cursor: pointer;
+    width: 300px;
+}
+}
 </style>
 
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

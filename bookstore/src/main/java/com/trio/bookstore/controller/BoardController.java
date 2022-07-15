@@ -1,6 +1,5 @@
 package com.trio.bookstore.controller;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,20 +14,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import org.springframework.web.multipart.MultipartFile;
-
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.trio.bookstore.entity.BoardDto;
 import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.error.CannotFindException;
 import com.trio.bookstore.repository.AttachmentDao;
-import com.trio.bookstore.repository.BoardAttachmentDao;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
-
-import com.trio.bookstore.service.BoardService;
 
 @Controller
 @RequestMapping("/board")
@@ -42,12 +35,6 @@ public class BoardController {
 
 	@Autowired
 	private AttachmentDao attachmentDao;
-
-	@Autowired
-	private BoardAttachmentDao boardAttachmentDao;
-
-	@Autowired
-	private BoardService boardService;
 
 	@GetMapping("/list")
 	public String list(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
@@ -228,15 +215,6 @@ public class BoardController {
 
 		// 현재 글에 대한 댓글 목록을 조회(미구현)
 
-		int attachmentNo = boardAttachmentDao.info(boardNo);
-		if (attachmentNo == 0) {
-			model.addAttribute("boardAttachmentUrl", "/image/chat1.png");
-		} else {
-			model.addAttribute("boardAttachmentUrl", "/attachment/download?attachmentNo=" + attachmentNo);
-		}
-
-		// 현재 글에 대한 댓글 목록을 조회(미구현)
-
 		return "board/detail";
 	}
 
@@ -318,25 +296,14 @@ public class BoardController {
 
 	@PostMapping("/write")
 
-	public String write(@ModelAttribute BoardDto boardDto, @RequestParam MultipartFile boardAttachment,
-			HttpSession session, RedirectAttributes attr) throws IllegalStateException, IOException {
+	public String write(@ModelAttribute BoardDto boardDto, HttpSession session, RedirectAttributes attr) {
 
 		String memberId = (String) session.getAttribute("login");
 		boardDto.setBoardWriter(memberId);
 
 		int boardNo = boardDao.write(boardDto);
 
-		boardService.write(boardDto, boardAttachment);
-
 		attr.addAttribute("boardNo", boardNo);
-		return "redirect:detail";
-	}
-
-	@PostMapping("/file")
-	public String file(@ModelAttribute BoardDto boardDto, @RequestParam MultipartFile boardAttachment,
-
-			HttpSession session, RedirectAttributes attr) throws IllegalStateException, IOException {
-		boardService.write(boardDto, boardAttachment);
 		return "redirect:detail";
 	}
 
@@ -350,15 +317,12 @@ public class BoardController {
 
 	@PostMapping("/review_write")
 
-	public String write1(@ModelAttribute BoardDto boardDto, @RequestParam MultipartFile boardAttachment,
-			HttpSession session, RedirectAttributes attr) throws IllegalStateException, IOException {
+	public String write1(@ModelAttribute BoardDto boardDto, HttpSession session, RedirectAttributes attr) {
 
 		String memberId = (String) session.getAttribute("login");
 		boardDto.setBoardWriter(memberId);
 
 		int boardNo = boardDao.write(boardDto);
-
-		boardService.write(boardDto, boardAttachment);
 
 		attr.addAttribute("boardNo", boardNo);
 		return "redirect:detail";
