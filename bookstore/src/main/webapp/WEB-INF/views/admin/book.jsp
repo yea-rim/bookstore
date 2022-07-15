@@ -87,7 +87,8 @@
 			
 			<div class="row input-group mb-3">
 			  <span class="input-group-text" id="basic-addon1">표지</span>
-			  <input type="text" class="form-control" placeholder="표지 이미지 링크를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookImage">
+<!-- 			  <input type="text" class="form-control" placeholder="표지 이미지 링크를 입력하세요." aria-describedby="basic-addon1" v-model="currentData.bookImage"> -->
+			  <img :src="currentData.bookImage" onerror="this.src='https://via.placeholder.com/82X121.png?text=book'" width="82" height="121"/>
 			</div>
 	
 			<div class="row input-group mb-3">
@@ -219,6 +220,7 @@
 				<thead>
 					<tr>
 						<th>번호</th>
+						<th width="15%">표지</th>
 						<th>제목</th>
 						<th>저자</th>
 						<th>출판사</th>
@@ -230,6 +232,9 @@
 
 					<tr v-for="(book, index) in bookList" v-bind:key="index">
 						<td>{{book.bookNo}}</td>
+						<td>
+							<img :src="book.bookImage" width="82" height="121"/>
+						</td>
 						<td>{{book.bookTitle}}</td>
 						<td>{{book.bookAuth}}</td>
 						<td>{{book.bookPubl}}</td>
