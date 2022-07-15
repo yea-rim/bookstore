@@ -30,7 +30,7 @@ public class UsedBookRestController {
 
 	@GetMapping("/")
 	public List<UsedDto> list() {
-		return usedDao.list();
+		return usedDao.list1();
 	}
 
 	@PostMapping("/")

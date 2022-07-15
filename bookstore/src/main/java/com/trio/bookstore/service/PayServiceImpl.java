@@ -9,8 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import com.trio.bookstore.entity.PayDetailDto;
 import com.trio.bookstore.entity.PayDto;
 import com.trio.bookstore.entity.StoreDto;
+import com.trio.bookstore.entity.UsedDto;
 import com.trio.bookstore.repository2.PayDao;
 import com.trio.bookstore.repository2.StoreDao;
+import com.trio.bookstore.repository2.UsedDao;
+import com.trio.bookstore.vo.FinalStoreVO;
+import com.trio.bookstore.vo.FinalUsedVO;
 import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
 import com.trio.bookstore.vo.PurchaseVO;
 @Service
@@ -21,6 +25,8 @@ public class PayServiceImpl implements PayService {
 	 
 	@Autowired
 	private StoreDao storeDao;
+	@Autowired
+	private UsedDao usedDao;
 	 
 	@Transactional
 	@Override 
@@ -47,5 +53,47 @@ public class PayServiceImpl implements PayService {
 		}
 		
 	}
-	
+	@Override
+	public void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<FinalStoreVO> finalStoreList,
+			List<FinalUsedVO> finalUsedList) {
+			//결제 테이블에 데이터 넣기
+			PayDto payDto = PayDto.builder()
+						.payNo(payNo)
+							.payTid(responseVO.getTid())
+						.payName(responseVO.getItem_name())
+						.payTotal(responseVO.getAmount().getTotal())
+					.build();
+				payDao.insertPay(payDto);
+
+				//finalStoreList에 들어있는 상품 번호와 상품 수량을 토대로 상세 정보 등록
+				if(finalStoreList != null) {
+					
+				for(FinalStoreVO finalStoreVO : finalStoreList) {
+				StoreDto storeDto = storeDao.find(finalStoreVO.getStoreBookNo());
+				PayDetailDto payDetailDto = PayDetailDto.builder()
+											.payNo(payNo)
+											.payDetailName(storeDto.getBookTitle())
+											.payDetailPrice(storeDto.getStorePrice())
+											.payDetailQuantity(finalStoreVO.getQuantity())
+										.build();
+				payDao.insertPayDetail(payDetailDto);
+
+				}
+		}		
+				//finalUsedList 뽑아서 결제상세테이블에 넣기
+				if(finalUsedList != null) {
+					
+			
+				for(FinalUsedVO finalUsedVO : finalUsedList) {
+					UsedDto usedDto = usedDao.findUsed(finalUsedVO.getUsedNo());
+					PayDetailDto payDetailDto = PayDetailDto.builder()
+												.payNo(payNo)
+												.payDetailName(usedDto.getBookTitle())
+												.payDetailPrice(usedDto.getUsedPrice())
+												.payDetailQuantity(finalUsedVO.getQuantity())
+											.build();
+					payDao.insertPayDetail(payDetailDto);
+				}
+			}		
+	}
 }

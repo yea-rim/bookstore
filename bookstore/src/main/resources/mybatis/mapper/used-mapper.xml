@@ -4,20 +4,45 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="used">
-		
-		<select id = "list" resultType = "UsedDto">
+	
+ 
+	<!-- 도서번호에 맞는 중고 데이터 전체리스트 -->
+	<select id="list" parameterType="int" resultType="UsedDto">
+		select * from (
+			select rownum rn, TMP.* from(
+				select * from used where used_book_no = #{bookNo} order by used_price asc
+			)TMP
+		) where rn >= 2
+	</select>
+	<!-- 도서번호에 맞는 중고 데이터중 가장 싼거 -->
+	<select id = "cheap" parameterType="int" resultType="UsedDto">
+		select * from (
+			select rownum rn, TMP.* from(
+				select * from used where used_book_no = #{bookNo} order by used_price asc
+			)TMP
+		) where rn = 1
+	</select>
+	
+	<!-- 중고번호에 맞는 데이터 단일조회 -->
+	<select id="one" parameterType="int" resultType="UsedDto">
+		select * from used
+		inner join book on book.book_no = used.used_book_no 
+	    where used_no = #{usedNo}
+	
+	</select>
+		<select id = "list1" resultType = "UsedDto">
 			select * from used inner join book on book.book_no = used.used_book_no
 			order by used_book_no
 		</select>
 		
-		<!-- 도서번호로 도서테이블의 도서명도 같이 뽑기 -->
-		<select id = "one" resultType="UsedDto" parameterType="int">
+<!-- 		도서번호로 도서테이블의 도서명도 같이 뽑기  -->
+		<select id = "one1" resultType="UsedDto" parameterType="int">
 				select * from used 
 					inner join book on book.book_no = used.used_book_no
 				where used_book_no = #{usedBookNo}
 		</select>
-		
-		<!-- 예림 -->
+
+<!-- 예림 -->
 		   
 	   <delete id="delete" parameterType="int">
 	      delete used where used_book_no = #{usedBookNo}
@@ -41,5 +66,5 @@
 	         where
 	            used_no = #{usedNo}
 	   </update>
-
+	   
 </mapper> 
