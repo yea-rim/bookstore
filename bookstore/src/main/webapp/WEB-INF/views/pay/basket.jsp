@@ -24,7 +24,7 @@
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
-        <div id = "app" class="container" >
+        <div id = "app" class="container" width = "850px">
             <div class="row" >
                 <div class="col-lg-12" >
                     <div class="shoping__cart__table">
@@ -48,6 +48,7 @@
 								</td>
                                     <!-- 책제목 보여주는 칸 -->
                                   	<td  style = "text-align:left" width = "40%">
+                                  		<h5 v-if = "usedSeen(index)" >중고랍니다</h5>
 										<h5>{{basket.basketBookTitle}}</h5>
                                   	</td>  
                                     <td class="shoping__cart__price">
@@ -65,7 +66,7 @@
                                     	<h5>수량</h5>
                                     </td>
                                     <td class="shoping__cart__total">
-                                        <h5>선택 버튼</h5>
+                                        <a href = "#" v-on:click.prevent = "deleteItem(index);" class = "primary-btn">삭제</a> 
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
@@ -123,16 +124,38 @@
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
+         
                     dataList:[],
+                    //중고표시 보이는조건문
+                    
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
             // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
             computed:{
-                
+
+            	
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
+
+            	usedSeen(index){
+            		const basketUsedNo = this.dataList[index].basketUsedNo;
+            		return basketUsedNo != 0;
+            	},            	
+            	
+            	deleteItem(index) {
+            		
+            		const basketNo = this.dataList[index].basketNo;
+            		axios({
+            			url:"${pageContext.request.contextPath}/rest/basket/"+basketNo,
+            			method:"delete"
+            		})
+            		.then(()=>{
+            			this.dataList.splice(index,1);
+            			//+ 알람 (외부 API)
+            		});
+            	}
                 
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
