@@ -24,9 +24,9 @@
 
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
-        <div class="container" id = "app">
+        <div id = "app" class="container" >
             <div class="row" >
-                <div class="col-lg-12">
+                <div class="col-lg-12" >
                     <div class="shoping__cart__table">
                          <table>
                             <thead>
@@ -39,16 +39,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            	
                                 
-                                <tr v-for = "(basket, index) dataList" v-bind:key="index">
+                                <tr v-for = "(basket, index) in dataList" v-bind:key="index">
                                 <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">
-<!-- 									<img src="{{basket.basketBookImage }}"> -->
+									<img :src= "basket.basketBookImage"/>
+									
 								</td>
                                     <!-- 책제목 보여주는 칸 -->
                                   	<td  style = "text-align:left" width = "40%">
-<!-- 										<h5>{{basket.basketBookTitle}}</h5> -->
+										<h5>{{basket.basketBookTitle}}</h5>
                                   	</td>  
                                     <td class="shoping__cart__price">
                                        <h5>{{basket.basketPrice}}</h5>                                   
@@ -113,9 +113,9 @@
     
     
     <!-- vue js도 lazy loading을 사용한다 -->
-    <script src="https://unpkg.com/vue@next"></script>
+     <script src="https://unpkg.com/vue@next"></script>
    <!-- <script src="https://unpkg.com/vue@next/dist/vue.global.prod.js"></script> -->
-   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
     <script>
         //div[id=app]을 제어할 수 있는 Vue instance를 생성
