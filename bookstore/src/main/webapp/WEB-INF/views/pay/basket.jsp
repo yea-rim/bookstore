@@ -25,7 +25,8 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div id = "app" class="container" width = "850px">
-                    	<form action = "${pageContext.request.contextPath }/pay" method = "post">
+<%--                     	<form action = "${pageContext.request.contextPath }/pay" method = "post"> --%>
+			<form v-on:submit.prevent="submitForm">
             <div class="row" >
                 <div class="col-lg-12" >
                     <div class="shoping__cart__table">
@@ -45,11 +46,11 @@
                                 <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">                                   
                                    	<div>
-<%-- 									<c:set var="i" value = "index"/> --%>
-                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" >
-                                   	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
+<%-- 									<c:set var="i" :value = "index"/> --%>
+                                   	<input v-if = "storeSeen(index)" type = "checkbox" :value = "basket.basketBookNo" >
+                                   	<input v-if = "storeSeen(index)" type = "hidden" :value = "basket.basketAmount" >
 									
-									<input v-if = "usedSeen(index)" type = "checkbox" name = "used[].usedNo" :value = "basket.basketUsedNo">                                   	
+									<input v-if = "usedSeen(index)" type = "checkbox" :value = "basket.basketUsedNo">                                   	
                                    	</div>
 									<img :src= "basket.basketBookImage"/>
 								</td>
@@ -134,23 +135,45 @@
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
-         
+                	listVO:[],
                     dataList:[],
-                    //중고표시 보이는조건문
-                  	index:"2",
-                   
-                
+                    formData:[],
                 };
             },
-            //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
-            // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
             computed:{
-
-            	
             },
-            //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
-         
+            	
+//             	submitForm(){
+//     				axios({
+//     					url:"${pageContext.request.contextPath}/pay",
+//     					method:"post",
+//     					data: this.formData,
+//     				})
+//     				.then((resp)=>{
+//     	            	console.log(resp.data.items[0].title);
+// //     					this.formData = resp.data.items[0];
+//     					this.currentData.bookTitle = resp.data.items[0].title;
+//     					console.log(this.formData);
+//     				});
+//     			},
+            	
+            	submitForm(){
+            		console.log(this.dataList);
+            	      var url = 'http://localhost:8080/bookstore/pay';
+            	      var data = {
+            	    		  bookNo: this.username,
+            	    		  storeAmount: this.password,
+            	    		  listVO: this.listVO
+            	      }
+            	      axios.post(url, data)
+            	        .then(function(response){
+            	        console.log(response);
+            	       })
+            	        .catch(function(error){
+            	          console.log(error);
+            	        });
+            	},
             	
 				//쇼핑몰일떄만 보이게
 				storeSeen(index) {
@@ -179,38 +202,15 @@
             	}
                 
             },
-            //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
             watch:{
                 
             },
     		created(){
-//     			ajax 통신을 사용하여 exam list를 불러온다
-//     			1. jquery ajax를 이용하는 방법
-//     			const that = this;
-//     			$.ajax({
-//     				url:"${pageContext.request.contextPath}/rest/exam/",
-//     				type:"get",
-//     				dataType:"json",
-//     				success:function(resp){
-//     					//for(let i=0; i < resp.length; i++){
-//     					//	that.dataList.push(resp[i]);
-//     					//}
-//     					that.dataList.push(...resp);//javascript 전개 연산자(ES6)
-//     				},
-//     				error:function(e){
-//     					console.log("error");
-//     				},
-//     			});
-    			
-//     			2. axios 이용하는 방법
-//     			axios({옵션}).then(성공콜백).catch(에러콜백);
     				axios({
     					url:"${pageContext.request.contextPath}/rest/basket/",
     					method:"get"
     				})
     				.then((resp)=>{
-    					//console.log(resp);
-    					//console.log(resp.data);
     					this.dataList.push(...resp.data);
     				})
     		},

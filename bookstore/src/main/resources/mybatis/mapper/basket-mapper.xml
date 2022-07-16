@@ -39,6 +39,19 @@
 		<delete id="delete" parameterType="int">
 				delete basket where basket_no = #{basketNo}		
 		</delete> 
+		
+		
+			<select id="usedList" resultType="BasketDto">
+		select * from basket 
+			where basket_used_no is not null
+			 order by basket_no asc
+	</select>
+
+	
+		<select id="shopList" resultType="BasketDto">
+		select * from basket 
+			where basket_book_no is not null
+			 order by basket_no asc	</select>
 </mapper> 
 
 

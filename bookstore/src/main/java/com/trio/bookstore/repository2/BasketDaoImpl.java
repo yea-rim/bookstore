@@ -39,4 +39,17 @@ public class BasketDaoImpl implements BasketDao {
 	public void delete(int basketNo) {
 		sqlSession.delete("basket.delete",basketNo);
 	}
+	
+	// 추가
+	
+	@Override
+	public List<BasketDto> usedList() {
+		return sqlSession.selectList("basket.usedList");
+
+	}
+	@Override
+	public List<BasketDto> shopList() {
+		return sqlSession.selectList("basket.shopList");
+
+	}
 }

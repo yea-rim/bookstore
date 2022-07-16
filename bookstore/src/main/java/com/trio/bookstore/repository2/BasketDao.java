@@ -13,6 +13,8 @@ public interface BasketDao {
 	int sequence();
 	List<BasketDto> list();
 	void delete(int basketNo);
+	List<BasketDto> usedList();
+	List<BasketDto> shopList();
 
 		
 	

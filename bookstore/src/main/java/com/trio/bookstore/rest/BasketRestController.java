@@ -16,6 +16,8 @@ import com.trio.bookstore.repository2.BasketDao;
 @RequestMapping("/rest/basket")
 public class BasketRestController {
 	
+	// 한석님 굿
+	
 	@Autowired
 	private BasketDao basketDao;
 	
@@ -23,6 +25,17 @@ public class BasketRestController {
 	public List<BasketDto> list(){
 		return basketDao.list();
 	}
+	
+	@GetMapping("/used")
+	public List<BasketDto> usedList(){
+		return basketDao.usedList();
+	}
+	
+	@GetMapping("/shop")
+	public List<BasketDto> shopList(){
+		return basketDao.shopList();
+	}
+	
 	@DeleteMapping("/{basketNo}")
 	public void delete(@PathVariable int basketNo) {
 		basketDao.delete(basketNo);
