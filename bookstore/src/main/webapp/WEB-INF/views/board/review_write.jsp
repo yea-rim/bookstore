@@ -8,9 +8,9 @@
 <form action="write" method="post">
 	<input type="hidden" name="boardHead" value="감상평">
 
+
 	<div class="container w800 m30">
 		<div class="row center">
-			<h1>감상평 작성</h1>
 		</div>
 		<div class="row">
 			<label>제목</label> <input type="text" name="boardTitle"
