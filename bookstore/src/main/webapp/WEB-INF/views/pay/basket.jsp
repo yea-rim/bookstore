@@ -41,7 +41,7 @@
                             </thead>
                             <tbody>
                                 
-                                <tr v-for = "(basket, index) in dataList" v-bind:key="index">
+                                <tr v-for = "(basket, index) in dataList" >
                                 <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">                                   
                                    	<div>
@@ -49,7 +49,7 @@
                                    	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" >
                                    	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
 									
-									<input v-if = "usedSeen(index)" type = "checkbox" name = "used[].usedNo" :value = "basket.basketUsedNo">                                   	
+									<input v-if = "usedSeen(index)" type = "checkbox" name = "used[${index}].usedNo" :value = "basket.basketUsedNo">                                   	
                                    	</div>
 									<img :src= "basket.basketBookImage"/>
 								</td>
