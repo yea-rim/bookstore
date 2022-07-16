@@ -22,12 +22,6 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-	<div class="row center m30">
-	</div>
-	
-	<div class="row right">
-		<a href="review_write" class="link link-btn">글쓰기</a>
-	</div>		
 	
 	<div class="row">
 		<table class="table table-border">
@@ -83,7 +77,7 @@
 		</table>
 	</div>
 	
-	<div class="row center pagination">
+	<div align="center">
 	
 		<c:if test="${p > 1}">
 			<c:choose>
@@ -132,7 +126,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-	
 		<!-- 다음 버튼 영역 -->
 		<c:if test="${endBlock < lastPage}">
 			<c:choose>
@@ -144,7 +137,6 @@
 				</c:otherwise>
 			</c:choose>
 		</c:if>
-		
 		<c:if test="${p < lastPage}">
 			<c:choose>
 				<c:when test="${search1}">
@@ -155,23 +147,24 @@
 				</c:otherwise>
 			</c:choose>
 		</c:if>
-	
 	</div>
-	
-	<div class="row center">
+				<div align="right" >
+			<a href="review_write" class="btn btn-primary" >글쓰기</a>
+			</div>
 		<!-- 검색창 -->
+			<div align="left" >
 		<form action="review_list" method="get">
+		<div class="row center">
 			<select name="type" class="form-input input-round">
 				<option value="board_title" <c:if test="${type == 'board_title'}">selected</c:if>>제목</option>
 				<option value="board_content" <c:if test="${type == 'board_content'}">selected</c:if>>내용</option>
 				<option value="board_writer" <c:if test="${type == 'board_writer'}">selected</c:if>>작성자</option>
 			</select>
-			
 			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round" value="${keyword}">
-			
 			<input type="submit" value="검색" class="btn btn-primary">
-		</form>
-	</div>
+						</div>
+						</form>
+					</div>
 	
 </div>
 
