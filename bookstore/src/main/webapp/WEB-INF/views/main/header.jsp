@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main-style.css" type="text/css">
 
 <style>
-@media screen and (max-width: 1079px) {
+@media screen and (max-width: 1200px) {
   .fixed, .modal_content {
     display: none;
   }
