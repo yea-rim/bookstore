@@ -1706,9 +1706,10 @@ ol {
 	font-weight: 600;
 	margin-bottom: 15px;
 }
-
+	
 .product__details__text p {
-	margin-bottom: 45px;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 .product__details__text .primary-btn {
@@ -1726,9 +1727,9 @@ ol {
 }
 
 .product__details__text ul {
-	border-top: 1px solid #ebebeb;
-	padding-top: 40px;
-	margin-top: 50px;
+/* 	border-top: 1px solid #ebebeb; */
+/* 	padding-top: 40px; */
+/* 	margin-top: 50px; */
 }
 
 .product__details__text ul li {
@@ -1902,7 +1903,7 @@ ol {
 }
 
 .shoping__cart__table table thead th.shoping__product {
-	text-align: left;
+	text-align: center;
 }
 
 .shoping__cart__table table tbody tr td {
@@ -1912,10 +1913,10 @@ ol {
 }
 
 .shoping__cart__table table tbody tr td.shoping__cart__item {
-	width: 630px;
+	width: 110px; 
 	text-align: left;
 }
-
+<!-- 원래 630px였음 -->
 .shoping__cart__table table tbody tr td.shoping__cart__item img {
 	display: inline-block;
 	margin-right: 25px;

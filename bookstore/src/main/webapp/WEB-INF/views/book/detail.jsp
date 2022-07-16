@@ -1,8 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
    <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-    
+ <style>
+ 	.used-pay{
+ 		
+ 	}
+ </style>
   <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -58,19 +63,58 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${storeDto.storePrice }원</div>
                         <p>${bookDto.bookDescription }</p>
-                        <div class="product__details__quantity">
+						<hr>
+						<!-- 폼 시작!! -->
+						<form method = "post">
+						<input type = "hidden" name = "bookNo" value = "${bookDto.bookNo }">
+						판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
+						
+						 <!--판매가 주문 수량 -->
+						 &nbsp;  <div class="product__details__quantity">
                             <div class="quantity">
                                 주문 수량 &nbsp;&nbsp; <div class="pro-qty">                                    
-                               		 <input type="text" value="1">
+                               		 <input type="text" value="0" name = "storeAmount">
                                </div>
                             </div>
                         </div>
-                        <br><br>
-                        <a href="#" class="primary-btn">장바구니 담기</a>
-                        <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <p style="color:red;">* 쇼핑몰 원하시면 중고가 옆에 체크 후 구매버튼</p>
+                        <hr>
+                        
+                       <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
+                        <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
+                        
+						<ul class = "used-pay" >
+						<li>
+						더보기+
+						<ul style = "display: none;">
+								<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+       							
+       							<li>
+       							<div>
+       								중고가 : ${usedDto.usedPrice }원
+       								<input type = "checkbox" name = "used[${status.index+1}].usedNo" value = "${usedDto.usedNo}">
+       							</div>
+       							</li>
+       					</c:forEach>
+						</ul>
+					</li>
+				</ul>
+       				
+       					
+                    	 
+                  		<br>
+                  		<c:if test="${param.error != null}">
+                  			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
+                  			</c:if>
+<!--                         <a href="#" class="primary-btn">장바구니 담기</a> -->
+						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
+						<input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
+<%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
+                        <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
+                       	</form>
+                        
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -247,5 +291,17 @@
     </section>
     <!-- Related Product Section End -->
     
+    
+    
+ <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function(){
+		$(".used-pay").children("li").click(function(){
+			//this == <li>
+			$(this).children("ul").slideToggle();
+		});
+		
+	});
+</script>
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     
