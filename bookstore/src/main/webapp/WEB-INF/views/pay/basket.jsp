@@ -25,6 +25,7 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div id = "app" class="container" width = "850px">
+                    	<form action = "${pageContext.request.contextPath }/pay" method = "post">
             <div class="row" >
                 <div class="col-lg-12" >
                     <div class="shoping__cart__table">
@@ -42,9 +43,15 @@
                                 
                                 <tr v-for = "(basket, index) in dataList" v-bind:key="index">
                                 <!-- 책 이미지 보여주는 칸 -->
-                                    <td class="shoping__cart__item">
-									<img :src= "basket.basketBookImage"/>
+                                    <td class="shoping__cart__item">                                   
+                                   	<div>
+<%-- 									<c:set var="i" value = "index"/> --%>
+                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" >
+                                   	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
 									
+									<input v-if = "usedSeen(index)" type = "checkbox" name = "used[].usedNo" :value = "basket.basketUsedNo">                                   	
+                                   	</div>
+									<img :src= "basket.basketBookImage"/>
 								</td>
                                     <!-- 책제목 보여주는 칸 -->
                                   	<td  style = "text-align:left" width = "40%">
@@ -86,25 +93,28 @@
                             Upadate Cart</a>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="shoping__continue">
-                        <div class="shoping__discount">
-                            <h5>Discount Codes</h5>
-                            <form action="#">
-                                <input type="text" placeholder="Enter your coupon code">
-                                <button type="submit" class="site-btn">APPLY COUPON</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
+<!--                 <div class="col-lg-6"> -->
+<!--                     <div class="shoping__continue"> -->
+<!--                         <div class="shoping__discount"> -->
+<!--                             <h5>Discount Codes</h5> -->
+<!--                             <form action="#"> -->
+<!--                                 <input type="text" placeholder="Enter your coupon code"> -->
+<!--                                 <button type="submit" class="site-btn">APPLY COUPON</button> -->
+<!--                             </form> -->
+<!--                         </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+                <div class="col-lg-12">
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
                             <li>Subtotal <span>$454.98</span></li>
                             <li>Total <span>$454.98</span></li>
                         </ul>
-                        <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a>
+<!--                         <a href="#" class="primary-btn">주문하기</a> -->
+                      	<input type = "submit" value = "주문하기" class = "primary-btn">
+                      	</form>
+                        
                     </div>
                 </div>
             </div>
@@ -127,7 +137,9 @@
          
                     dataList:[],
                     //중고표시 보이는조건문
-                    
+                  	index:"2",
+                   
+                
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
@@ -138,7 +150,16 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
-
+         
+            	
+				//쇼핑몰일떄만 보이게
+				storeSeen(index) {
+					const basketBookNo = this.dataList[index].basketBookNo;
+					return basketBookNo != 0;
+				},
+            	
+            	
+            	//중고일떄만 보이게
             	usedSeen(index){
             		const basketUsedNo = this.dataList[index].basketUsedNo;
             		return basketUsedNo != 0;
