@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 
 	<div class="container w800 m30">
+	
 	    <div class="row center">
-	        <h1>1:1문의 작성</h1>
 	    </div>
 	    <div class="row">
 	        <label>제목</label>
