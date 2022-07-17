@@ -50,16 +50,19 @@ create sequence attachment_seq;
 	);
     
 -- 게시판 테이블 (board)
-drop table board;
 create table board(
 board_no number primary key,
 board_title varchar2(300) not null,
+board_head varchar2(9) check(board_head in ('공지', '감상평', '문의')) null,
 board_content varchar2(4000) not null,
 board_time date default sysdate not null,
 board_readcount number default 0 not null,
 board_writer references member(member_id) on delete set null
 );
 create sequence board_seq;
+create view board_notice as select * from board where board_head = '공지';
+create view board_qna as select * from board where board_head = '문의';
+create view board_review as select * from board where board_head = '감상평';
 
 -- 댓글 테이블 (reply)
 create table reply(
