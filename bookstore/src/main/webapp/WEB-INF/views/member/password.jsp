@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
+<c:set var="root" value="${pageContext.request.contextPath}/member"></c:set>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <form action="password" method="post">
@@ -24,18 +24,32 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    
-	    <div class="row">
-	        <label>현재 비밀번호</label>
-	        <input type="password" name="currentPw" required class="form-input fill input-round">
-	    </div>
-	    <div class="row">
-	        <label>바꿀 비밀번호</label>
-	        <input type="password" name="changePw" required class="form-input fill input-round">
-	    </div>
-	    <div class="row">
-	        <button type="submit" class="btn btn-primary fill">비밀번호 변경하기</button>
-	    </div>
+                            <nav class="text-center header__menu">
+                        <ul>
+                            <li><a href="${root}/mypage">내 정보</a></li>
+							<li><a href="${root}/information">개인정보 변경</a></li>
+							<li><a href="${root}/password">비밀번호 변경</a></li>
+							<li><a href="${root}/delivery">주문목록</a></li>
+							<li><a href="${root}/question">장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1 문의내역</a></li>
+                        </ul>
+                    </nav>
+   	<div class="row">
+		<table class="table table-border table-hover">
+		<tr>
+			<th>현재 비밀번호</th>
+	        <td><input type="password" name="currentPw" required class="form-input fill input-round"></td>
+	     </tr>
+		<tr>
+			<th>바꿀 비밀번호</th>
+	        <td><input type="password" name="changePw" required class="form-input fill input-round"></td>
+		</tr>
+		<tr>
+			<th></th>
+	      <td><div align="right"><button type="submit" class="btn btn-primary fill">비밀번호 변경하기</button></div></td>
+		</tr>
+		</table>
+	</div>
 	    
 		<c:if test="${param.error != null}">
 		<div class="row center">

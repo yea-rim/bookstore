@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
-	
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 	<style>
 @media screen and (max-width: 1200px) {
   .fixed, .modal_content {
@@ -110,8 +110,7 @@ border-radius: 0.25em;
 }
 }
 </style>
-
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 <script>
 	$(function() {
 		$("form").submit(function() {
@@ -125,7 +124,7 @@ border-radius: 0.25em;
 				$(this).val(encData);
 			});
 		});
-	});
+	})
 </script>
 </head>
 
