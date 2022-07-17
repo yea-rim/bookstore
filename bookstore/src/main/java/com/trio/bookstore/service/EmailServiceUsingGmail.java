@@ -49,7 +49,7 @@ public class EmailServiceUsingGmail implements EmailService {
 		log.debug("이메일 = {}", email);
 		log.debug("인증번호 = {}", certString);
 		
-		String title = "[KH정보교육원] 인증번호를 보내드립니다";
+		String title = "[BOOKSTORE] 인증번호를 보내드립니다";
 		String content = "인증번호 : "+certString;
 		
 		SimpleMailMessage message = new SimpleMailMessage();
@@ -78,7 +78,7 @@ public class EmailServiceUsingGmail implements EmailService {
 		MimeMessageHelper helper = new MimeMessageHelper(message, false, "UTF-8");
 		
 		helper.setTo(findDto.getMemberEmail());
-		helper.setSubject("[KH정보교육원] 비밀번호 재설정 메일입니다");
+		helper.setSubject("[BOOKSTORE] 비밀번호 재설정 메일입니다");
 		
 		int certNumber = r.nextInt(1000000);
 		String certString = f.format(certNumber);

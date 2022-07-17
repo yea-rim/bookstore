@@ -2,6 +2,8 @@ package com.trio.bookstore.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BoardDto;
+import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
 
@@ -34,9 +37,33 @@ public class AdminController {
 	public String book() {
 		return "admin/book";
 	}
+	@GetMapping("/book")
+	public String book(Model model, HttpSession session) {
+
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/book";
+	}
 	
 	@RequestMapping("/lib-book")
 	public String libBook() {
+		return "admin/lib-book";
+	}
+	@GetMapping("/lib-book")
+	public String libBook(Model model, HttpSession session) {
+
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
 		return "admin/lib-book";
 	}
 	
@@ -44,27 +71,82 @@ public class AdminController {
 	public String storeBook() {
 		return "admin/store-book";
 	}
-	
+	@GetMapping("/store-book")
+	public String storeBook(Model model, HttpSession session) {
+
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/store-book";
+	}
 	@RequestMapping("/used-book")
 	public String usedBook() {
 		return "admin/used-book";
 	}
+	@GetMapping("/used-book")
+	public String usedBook(Model model, HttpSession session) {
 
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/used-book";
+	}
 	@RequestMapping("/lib")
 	public String lib() {
 		return "admin/lib";
 	}
+	@GetMapping("/lib")
+	public String lib(Model model, HttpSession session) {
 
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/lib";
+	}
 	@RequestMapping("/member")
 	public String member() {
 		return "admin/member";
 	}
+	@GetMapping("/member")
+	public String member(Model model, HttpSession session) {
 
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/member";
+	}
 	@RequestMapping("/delivery")
 	public String delivery() {
 		return "admin/delivery";
 	}
+	@GetMapping("/delivery")
+	public String delivery(Model model, HttpSession session) {
 
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/delivery";
+	}
 	@RequestMapping("/question")
 	public String question() {
 		return "admin/question";
@@ -74,9 +156,33 @@ public class AdminController {
 	public String faq() {
 		return "admin/faq";
 	}
+	@GetMapping("/faq")
+	public String faq(Model model, HttpSession session) {
+
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
+		return "admin/faq";
+	}
 
 	@RequestMapping("/notice")
 	public String notice() {
+		return "admin/notice";
+	}
+	@GetMapping("/notice")
+	public String notice(Model model, HttpSession session) {
+
+		// 관리자인지 판정
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+
+		// 현재 글에 대한 댓글 목록을 조회(미구현)
+
 		return "admin/notice";
 	}
 	
@@ -110,4 +216,5 @@ public class AdminController {
 
 		return "admin/question";
 	}
+	
 }

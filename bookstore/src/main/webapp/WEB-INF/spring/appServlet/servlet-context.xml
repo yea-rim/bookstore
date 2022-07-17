@@ -56,6 +56,10 @@
 		<mvc:interceptor>
 			<mvc:mapping path="/member/**"/>
 			<mvc:mapping path="/board/**"/>
+			<mvc:mapping path="/admin/**"/>
+			<mvc:mapping path="/pay/**"/>
+			<mvc:mapping path="/pay1/**"/>
+			<mvc:mapping path="/pay2/**"/>
 			
 			<mvc:exclude-mapping path="/member/login"/>
 			<mvc:exclude-mapping path="/member/join*"/>
