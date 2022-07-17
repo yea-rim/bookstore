@@ -1,19 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
    <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-    
- <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="img/breadcrumb.jpg">
+ <style>
+ 	.used-pay{
+ 		
+ 	}
+ </style>
+  <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Vegetable’s Package</h2>
+                        <h2>도서 소개 </h2>
                         <div class="breadcrumb__option">
-                            <a href="./index.html">Home</a>
-                            <a href="./index.html">Vegetables</a>
-                            <span>Vegetable’s Package</span>
+                            <a href="${pageContext.request.contextPath }">Home</a>
+                            <span>북스토어</span>
+                          
                         </div>
                     </div>
                 </div>
@@ -26,11 +31,13 @@
     <section class="product-details spad">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-6">
+           	<div class = "col-lg-1 col-md-1">
+           	</div>
+                <div class="col-lg-2 col-md-6">
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="img/product/details/product-details-1.jpg" alt="">
+                                src="${bookDto.bookImage }"  alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -44,9 +51,10 @@
                         </div>
                     </div>
                 </div>
+             
                 <div class="col-lg-6 col-md-6">
-                    <div class="product__details__text">
-                        <h3>Vetgetable’s Package</h3>
+                   <div class="product__details__text" style="padding: 0px 0px 0px 40px;">
+                        <h3> &nbsp;${bookDto.bookTitle }</h3>
                         <div class="product__details__rating">
                             <i class="fa fa-star"></i>
                             <i class="fa fa-star"></i>
@@ -55,19 +63,58 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">$50.00</div>
-                        <p>Mauris blandit aliquet elit, eget tincidunt nibh pulvinar a. Vestibulum ac diam sit amet quam
-                            vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Vestibulum ac diam sit amet
-                            quam vehicula elementum sed sit amet dui. Proin eget tortor risus.</p>
-                        <div class="product__details__quantity">
+                        <p>${bookDto.bookDescription }</p>
+						<hr>
+						<!-- 폼 시작!! -->
+						<form method = "post">
+						<input type = "hidden" name = "bookNo" value = "${bookDto.bookNo }">
+						판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
+						
+						 <!--판매가 주문 수량 -->
+						 &nbsp;  <div class="product__details__quantity">
                             <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
-                                </div>
+                                주문 수량 &nbsp;&nbsp; <div class="pro-qty">                                    
+                               		 <input type="text" value="0" name = "storeAmount">
+                               </div>
                             </div>
                         </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        <p style="color:red;">* 쇼핑몰 원하시면 중고가 옆에 체크 후 구매버튼</p>
+                        <hr>
+                        
+                       <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
+                        <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
+                        
+						<ul class = "used-pay" >
+						<li>
+						더보기+
+						<ul style = "display: none;">
+								<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+       							
+       							<li>
+       							<div>
+       								중고가 : ${usedDto.usedPrice }원
+       								<input type = "checkbox" name = "used[${status.index+1}].usedNo" value = "${usedDto.usedNo}">
+       							</div>
+       							</li>
+       					</c:forEach>
+						</ul>
+					</li>
+				</ul>
+       				
+       					
+                    	 
+                  		<br>
+                  		<c:if test="${param.error != null}">
+                  			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
+                  			</c:if>
+<!--                         <a href="#" class="primary-b77tn">장바구니 담기</a> -->
+						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
+						<input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
+<%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
+                        <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
+                       	</form>
+                        
                         <ul>
                             <li><b>Availability</b> <span>In Stock</span></li>
                             <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
@@ -88,15 +135,15 @@
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
                                 <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
-                                    aria-selected="true">Description</a>
+                                    aria-selected="true">도서 목차</a>
                             </li>
-                            <li class="nav-item">
+                            <!--  li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-2" role="tab"
                                     aria-selected="false">Information</a>
-                            </li>
+                            </li-->
                             <li class="nav-item">
                                 <a class="nav-link" data-toggle="tab" href="#tabs-3" role="tab"
-                                    aria-selected="false">Reviews <span>(1)</span></a>
+                                    aria-selected="false">감상평 <span>(1)</span></a>
                             </li>
                         </ul>
                         <div class="tab-content">
@@ -167,7 +214,7 @@
         </div>
     </section>
     <!-- Product Details Section End -->
-	<img src = "https://bookthumb-phinf.pstatic.net/cover/159/865/15986525.jpg?type=m1=20211207"/>
+
     <!-- Related Product Section Begin -->
     <section class="related-product">
         <div class="container">
@@ -242,7 +289,19 @@
             </div>
         </div>
     </section>
+    <!-- Related Product Section End -->
     
+    
+    
+ <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script>
+	$(function(){
+		$(".used-pay").children("li").click(function(){
+			//this == <li>
+			$(this).children("ul").slideToggle();
+		});
+		
+	});
+</script>
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     
-    <!-- Related Product Section End -->

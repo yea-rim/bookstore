@@ -63,10 +63,11 @@ public class PayController2 {
 					  Model model
 			) {
 		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
+		
 		if(storeAmount == 0 && listVO.getUsed() == null) {
 			return "redirect:book/detail?error&bookNo="+bookNo;
 		}
-		
+		log.debug("hanseok = {}",listVO);
 
 
 		//쇼핑몰책 수량

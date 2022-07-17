@@ -48,7 +48,7 @@
                                 
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+                                        <img src="${storeDto.bookImage }">
                                     </td>
                                   	<td  style = "text-align:left">
 										<h5>${storeDto.bookTitle }</h5>
@@ -76,7 +76,7 @@
                                 <input type = "hidden" name = "finalUsed[${status.index }].usedNo" value = "${usedDto.usedNo }">
                                 <tr>
                                     <td class="shoping__cart__item">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+                                        <img src="${usedDto.bookImage }">
                                     </td>
                                   	<td  style = "text-align:left">
 										<h5>${usedDto.bookTitle }</h5>

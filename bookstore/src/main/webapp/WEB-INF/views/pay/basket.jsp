@@ -39,17 +39,17 @@
                                     <th>선택</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody >
                                 
-                                <tr v-for = "(basket, index) in dataList" >
+                                <tr v-for = "(basket, index) in dataList" v-bind:key="index" >
                                 <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">                                   
                                    	<div>
-<%-- 									<c:set var="i" value = "index"/> --%>
-                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" >
+<%-- 									<c:set var="i" value = "{{index}}"/> --%>
+                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" v-model="storeCheck" >
                                    	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
 									
-									<input v-if = "usedSeen(index)" type = "checkbox" name = "used[${index}].usedNo" :value = "basket.basketUsedNo">                                   	
+									<input v-if = "usedSeen(index)" type = "checkbox" :name = "used(index)" :value = "basket.basketUsedNo">                                   	
                                    	</div>
 									<img :src= "basket.basketBookImage"/>
 								</td>
@@ -100,7 +100,7 @@
 <!--                             <form action="#"> -->
 <!--                                 <input type="text" placeholder="Enter your coupon code"> -->
 <!--                                 <button type="submit" class="site-btn">APPLY COUPON</button> -->
-<!--                             </form> -->
+                            </form>
 <!--                         </div> -->
 <!--                     </div> -->
 <!--                 </div> -->
@@ -113,7 +113,7 @@
                         </ul>
 <!--                         <a href="#" class="primary-btn">주문하기</a> -->
                       	<input type = "submit" value = "주문하기" class = "primary-btn">
-                      	</form>
+<!--                       	</form> -->
                         
                     </div>
                 </div>
@@ -129,29 +129,42 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
     <script>
-        //div[id=app]을 제어할 수 있는 Vue instance를 생성
+        
+ 
+    //div[id=app]을 제어할 수 있는 Vue instance를 생성
         const app = Vue.createApp({
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
          
                     dataList:[],
-                    //중고표시 보이는조건문
-                  	index:"2",
-                   
+					//쇼핑몰에 체크여부 데이터
+                    storeCheck:false,         	
                 
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
             // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
             computed:{
-
             	
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
-         
+            	storeCheck(index){
+            		this.storeCheck.push(index);
+            	},
+            	//중고 input 에 네임 생성하기위한 코드
+				
+            	storeBuy(index){
+					const storeBuyNo = this.storeCheck[index]
+					return storeBuyNo>0;
+				},
+         		used(index) {
+         			return "used["+index+"].usedNo";
+         		},
             	
+         		//쇼핑몰이면서 체크박스에 체크되었을떄만
+         		
 				//쇼핑몰일떄만 보이게
 				storeSeen(index) {
 					const basketBookNo = this.dataList[index].basketBookNo;
