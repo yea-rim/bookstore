@@ -64,9 +64,9 @@
                     <div class="shoping__checkout">
                         <h5>결제정보</h5>
                         <ul>
-                            <li>상품금액 <span>${total}</span></li>
-                            <li>할인금액<span>#</span></li>
-                            <li>Total <span>total</span></li>
+                            <li>상품금액 <span>${total}원</span></li>
+                            <li>할인금액<span>적림금 안해줄거야</span></li>
+                            <li>Total <span>${total}원</span></li>
                         </ul>
                         <input type = "submit" class = "primary-btn" value = "결제하기">
 <!--                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a> -->
@@ -140,7 +140,7 @@
 <!--                                         </div> -->
                                     </td>
                                     <td class="shoping__cart__total">
-                                      ${usedDto.usedPrice }
+                                      ${usedDto.usedPrice }원
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
