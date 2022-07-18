@@ -242,7 +242,7 @@ border-radius: 0.25em;
 							src="${pageContext.request.contextPath}/image/logo.png" alt=""></a>
 					</div>
 				</div>
-				<div class="col-lg-6">
+				<div class="col-lg-7">
 					<nav class="header__menu">
 						<ul>
 							<li class="active"><a href="${root}/board/notice_list">공지사항</a></li>
@@ -253,10 +253,21 @@ border-radius: 0.25em;
 	                            	<li><a href="${root}/used/write">중고 판매신청</a></li>
 								</ul></li>
 							<li><a href="${root}/board/review_list">감상평</a></li>
+							<c:if test="${isAdmin}">
+							<li><a href="${root}/admin/book">관리자 페이지</a>
+							<ul class="header__menu__dropdown">
+							<li><a href="${root}/admin/book">도서 관리</a></li>
+							<li><a href="${root}/admin//lib">도서관 관리</a></li>
+							<li><a href="${root}/admin//member">회원 관리</a></li>
+							<li><a href="${root}/admin//delivery">배송 관리</a></li>
+							<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
+							<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
+							<li><a href="${root}/admin//faq">faq 관리</a></li>
+							</c:if>
 						</ul>
 					</nav>
 				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-2">
 					<div class="header__cart">
 						<ul>
 							<li><a href="${root}/"><i class="fa fa-heart"></i> <span>1</span></a></li>

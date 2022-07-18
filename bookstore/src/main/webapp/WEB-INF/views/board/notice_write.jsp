@@ -8,6 +8,7 @@
 <form action="write" method="post">
 	<input type="hidden" name="boardHead" value="공지">
 <c:if test="${isAdmin}">
+<c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -15,7 +16,7 @@
                     <div class="breadcrumb__text">
                         <h2>공지사항 관리 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
+							<a href="http://localhost:8080/bookstore/admin/book">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>
@@ -35,9 +36,9 @@
 							<li><a href="${root}/lib">도서관 관리</a></li>
 							<li><a href="${root}/member">회원 관리</a></li>
 							<li><a href="${root}/delivery">배송 관리</a></li>
-							<li><a href="${root}/question">1:1 관리</a></li>
+							<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
 							<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
-							<li><a href="/bookstore/board/qna_list">faq 관리</a></li>
+							<li><a href="${root}/faq">faq 관리</a></li>
                         </ul>
                     </nav>
 	<div class="container w800 m30">
