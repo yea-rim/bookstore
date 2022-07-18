@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("newLineChar", "\n"); %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/3.0.2/toastui-editor.min.css" >
 <div class="container w800 m30">
@@ -51,8 +52,8 @@
             el : document.querySelector(".toast-custom-viewer"),
             viewer:true,
         	initialEditType: "markdown",
-            initialValue : "${boardDto.boardContent}"
-        });
+            initialValue : "${fn:replace(boardDto.boardContent, newLineChar, "")}"
+        })
         
         
     </script>
@@ -66,7 +67,6 @@
 			<tr>
 				<td class="right">
 					<a href="${pageContext.request.contextPath}/board/write" class="link link-btn">글쓰기</a>
-					
 					<c:if test="${isOwner || isAdmin}">
 					<a href="${pageContext.request.contextPath}/board/edit?boardNo=${boardDto.boardNo}" class="link link-btn">수정</a>
 <!--					<a href="${pageContext.request.contextPath}/board/edit/${boardDto.boardNo}" class="link link-btn">수정</a>

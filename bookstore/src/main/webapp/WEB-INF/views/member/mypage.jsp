@@ -33,13 +33,14 @@
                     </nav>
 	
 	<!-- 프로필 이미지 -->
-	<div class="row center m30">
-		<img src="${pageContext.request.contextPath}${profileUrl}"
-				width="150" class="img img-circle img-shadow">
-	</div>
+
 	
 	<div class="row">
 		<table class="table table-border table-hover">
+		<tr>
+			<th>프로필 사진</th>
+				<td><img src="${pageContext.request.contextPath}${profileUrl}" width="150" class="img img-circle img-shadow"></td>
+		</tr>
 			<tr>
 				<th width="30%">아이디</th>
 				<td>${memberDto.memberId}</td>
@@ -87,18 +88,7 @@
 		</table>
 	</div>
 	
-	<div class="row center m30">
-		<h2><a href="password">비밀번호 변경</a></h2>
-	</div>
-	<div class="row center m30">
-		<h2><a href="information">개인정보 변경</a></h2>
-	</div>
-	<div class="row center m30">
-		<h2><a href="exit">탈퇴하기</a></h2>
-	</div>
-	<div class="row center m30">
-	<h2><a href="http://localhost:8080/bookstore/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1문의 내역</a>
-	</div>
+
 </div>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

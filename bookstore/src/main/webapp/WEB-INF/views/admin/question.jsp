@@ -4,7 +4,6 @@
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
 
 <jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
-
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -37,7 +36,7 @@
 							<li><a href="${root}/faq">faq 관리</a></li>
                         </ul>
                     </nav>
-
+<c:if test="${isAdmin}">
 <div class="container">
 	<div class="row">
 	<div class="col-lg-1"></div>
@@ -182,7 +181,7 @@
 		</div>
 
 	</div>
-
+</c:if>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 

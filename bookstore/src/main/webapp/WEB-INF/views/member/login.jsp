@@ -29,16 +29,16 @@
         </div>
     </section>
     <!-- Breadcrumb Section End -->
-    
-        <div class="row mt-3">
-            <label class="">아이디</label>
+    <br>
+            <div align="center">
+            <label>아이디　</label>
     		<input type="text" name="memberId" required class="form-input fill input-round" autocomplete="off" value="${cookie.saveId.value}">
         </div>
-        <div class="row">
+        <div align="center">
             <label>비밀번호</label>
             <input type="password" name="memberPw" required class="form-input fill input-round">
         </div>
-        <div class="row">
+        <div align="center">
         	<label>
         		<c:choose>
         			<c:when test="${saveIdExist}">
@@ -51,15 +51,16 @@
         		아이디 저장하기
         	</label>
         </div>
-        <div class="row">
+        <div align="center">
             <input type="submit" value="로그인" class="btn btn-primary fill">
         </div>
-        <div class="row center">
+        <div align="center">
             <a href="find_id" class="link">아이디가 기억나지 않아요</a>
         </div>
-        <div class="row center">
+        <div align="center">
             <a href="find_pw" class="link">비밀번호가 기억나지 않아요</a>
         </div>
+        <br>
         
 		<%-- 에러 표시가 있는 경우 메세지를 출력 --%>
 		<c:if test="${param.error != null}">
