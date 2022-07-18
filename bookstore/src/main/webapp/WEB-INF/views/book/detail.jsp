@@ -29,7 +29,7 @@
 
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
-        <div class="container">
+        <div class="container" id = "app">
             <div class="row">
            	<div class = "col-lg-1 col-md-1">
            	</div>
@@ -37,7 +37,7 @@
                     <div class="product__details__pic">
                         <div class="product__details__pic__item">
                             <img class="product__details__pic__item--large"
-                                src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"  alt="">
+                                src="${bookDto.bookImage }"  alt="">
                         </div>
                         <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
@@ -82,25 +82,16 @@
                         <hr>
                         
                        <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
-                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>&nbsp;       								
                         <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
+                        <div v-on:click = "showUsed =!showUsed">더보기+</div>
+                       	<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+                        <div v-show = "showUsed">
                         
-						<ul class = "used-pay" >
-						<li>
-						더보기+
-						<ul style = "display: none;">
-								<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
-       							
-       							<li>
-       							<div>
-       								중고가 : ${usedDto.usedPrice }원
-       								<input type = "checkbox" name = "used[${status.index+1}].usedNo" value = "${usedDto.usedNo}">
-       							</div>
-       							</li>
-       					</c:forEach>
-						</ul>
-					</li>
-				</ul>
+                        <label>중고가 : &nbsp; ${usedDto.usedPrice }원</label>&nbsp;
+                        <input type ="checkbox" name = "used[${status.index+1 }].usedNo" value = "${usedDto.usedNo }">
+                        </div>
+						</c:forEach>
        				
        					
                     	 
@@ -108,7 +99,7 @@
                   		<c:if test="${param.error != null}">
                   			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
                   			</c:if>
-<!--                         <a href="#" class="primary-btn">장바구니 담기</a> -->
+<!--                         <a href="#" class="primary-b77tn">장바구니 담기</a> -->
 						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
 						<input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
 <%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
@@ -291,17 +282,34 @@
     </section>
     <!-- Related Product Section End -->
     
-    
-    
- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	$(function(){
-		$(".used-pay").children("li").click(function(){
-			//this == <li>
-			$(this).children("ul").slideToggle();
-		});
-		
-	});
-</script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	
+	
+	 <script>
+        //div[id=app]을 제어할 수 있는 Vue instance를 생성
+        const app = Vue.createApp({
+            //data : 화면을 구현하는데 필요한 데이터를 작성한다.
+            data(){
+                return {
+                    showUsed:false,
+                };
+            },
+            //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
+            // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
+            computed:{
+                
+            },
+            //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
+            methods:{
+                
+            },
+            //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
+            watch:{
+                
+            },
+        });
+        app.mount("#app");
+    </script>
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     

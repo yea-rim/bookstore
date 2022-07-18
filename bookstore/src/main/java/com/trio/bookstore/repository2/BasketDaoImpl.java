@@ -35,4 +35,8 @@ public class BasketDaoImpl implements BasketDao {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("basket.list");
 	}
+	@Override
+	public void delete(int basketNo) {
+		sqlSession.delete("basket.delete",basketNo);
+	}
 }

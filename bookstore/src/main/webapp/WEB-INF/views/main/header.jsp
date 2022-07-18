@@ -251,7 +251,7 @@ border-radius: 0.25em;
 	                            <ul class="header__menu__dropdown">
 	                            	<li><a href="${root}/used/write">중고 판매신청</a></li>
 	                            	<li><a href="#">아니헤더에안들어가요</a></li>
-	                            	<li><a href="${root}/admin/">잠깐기생하는관리자페이지</a></li>
+	                            	<li><a href="${root}/admin">잠깐기생하는관리자페이지</a></li>
 	                            </ul>
                             </li>
                             <li><a href="${root}/board/review_list">감상평</a></li>

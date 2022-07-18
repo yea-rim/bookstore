@@ -85,12 +85,11 @@ public class BookController {
 		//도서번호에 맞는 중고 데이터중 가장 싼 값 불러오기
 		UsedDto usedCheap = usedDao.find(bookNo);
 		model.addAttribute("usedCheap",usedCheap);
-		
+		  
 		//도서번호에 맞는 도서테이블 데이터 불러오기
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
 		return "book/detail";
-		
-		
+
 	}
 }

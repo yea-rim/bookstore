@@ -12,6 +12,7 @@ public interface BasketDao {
 	
 	int sequence();
 	List<BasketDto> list();
+	void delete(int basketNo);
 
 		
 	

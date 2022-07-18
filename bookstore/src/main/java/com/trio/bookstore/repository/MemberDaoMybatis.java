@@ -121,5 +121,10 @@ public class MemberDaoMybatis implements MemberDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public MemberDto findId(String query) {
+		return sqlSession.selectOne("hanseok",query);
+	}
 	
 }

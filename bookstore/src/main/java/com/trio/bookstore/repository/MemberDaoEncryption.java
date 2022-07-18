@@ -135,6 +135,12 @@ public class MemberDaoEncryption implements MemberDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public MemberDto findId(String query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 	
 }
