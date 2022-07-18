@@ -52,7 +52,7 @@
      			  </td>
 			</tr>
 			<tr>
-				<th>닉네임</th>
+				<th>이름</th>
 				<td>
 	        	 <input type="text" v-model="memberNick" v-on:input="memberNick = $event.target.value" name="memberNick">
        			 <div>{{memberNickMessage}}</div>
@@ -132,7 +132,7 @@
                         return "";
                     }
                     else if(this.memberNickJudge){
-                        return "멋진 닉네임이네요!";
+                        return "멋진 이름이네요!";
                     }
                     else {
                         return "한글 또는 숫자 2~10자로 작성하세요";

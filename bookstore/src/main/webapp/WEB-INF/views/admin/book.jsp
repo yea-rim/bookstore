@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
 
-<jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 
 <c:if test="${isAdmin}">
@@ -14,7 +14,7 @@
                     <div class="breadcrumb__text">
                         <h2>도서 관리 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
+							<a href="http://localhost:8080/bookstore/admin/book">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>
@@ -472,4 +472,4 @@
 
 
 
-<jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include> 	
