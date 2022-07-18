@@ -198,12 +198,18 @@
 
                         // 마커 위에 인포윈도우를 표시합니다. 두번째 파라미터인 marker를 넣어주지 않으면 지도 위에 표시됩니다
                         infowindow.open(this.map, marker);
+
+                        // 마커에 클릭이벤트를 등록합니다
+                        kakao.maps.event.addListener(marker, 'click', function() {
+                            console.log(content);
+                            window.location.href = '#';
+                        });
                         
                         var infoTitle = document.querySelectorAll('.info-title');
 
                         infoTitle.forEach(function(e) {
                             var w = e.offsetWidth;
-                            var ml = w/2;
+                            var ml = w/2 - 5;
                             e.parentElement.style.top = "82px";
                             e.parentElement.style.left = "50%";
                             e.parentElement.style.marginLeft = -ml+"px";
