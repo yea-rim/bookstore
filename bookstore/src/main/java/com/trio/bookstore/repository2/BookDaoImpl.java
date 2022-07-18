@@ -85,4 +85,9 @@ public class BookDaoImpl implements BookDao {
 
 	}
 
+	@Override
+	public List<BookDto> bookType(int bookType) {
+		return sqlSession.selectList("book.bookType", bookType);
+	}
+
 }

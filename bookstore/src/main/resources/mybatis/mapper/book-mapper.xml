@@ -73,5 +73,11 @@
 			]]>
 		</if>
 	</select>
+	
+	<!-- 예림 -->
+	<!-- 목록에서 bookType 뽑아내는 구문 -->
+   <select id="bookType" resultType="BookDto">
+		select * from book where book_type = #{bookType} order by book_no asc
+   </select>
 
 </mapper> 
