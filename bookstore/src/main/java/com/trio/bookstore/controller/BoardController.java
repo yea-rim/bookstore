@@ -160,7 +160,9 @@ public class BoardController {
 		
 		String memberGrade = (String) session.getAttribute("auth");
 		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
 		model.addAttribute("isAdmin", isAdmin);
+		model.addAttribute("isUser", isUser);
 		return "board/qna_list";
 	}
 

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
-<jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
 
 <c:if test="${isAdmin}">
+<jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
+<c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -37,7 +37,39 @@
 							<li><a href="${root}/faq">faq 관리</a></li>
                         </ul>
                     </nav>
-<div class="container w950 m30">
+						</c:if>
+						<c:if test="${isUser}">
+						<c:set var="root" value="${pageContext.request.contextPath}/member"></c:set>
+						<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+						    <!-- Breadcrumb Section Begin -->
+						    <div class="container w950 m30">
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>1:1 문의내역</h2>
+                        <div class="breadcrumb__option">
+                            <a href="${root}/bookstore/">Home</a>
+                            <span>북스토어</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+                        <nav class="text-center header__menu">
+                        <ul>
+                            <li><a href="${root}/mypage">내 정보</a></li>
+							<li><a href="${root}/information">개인정보 변경</a></li>
+							<li><a href="${root}/password">비밀번호 변경</a></li>
+							<li><a href="${root}/delivery">주문목록</a></li>
+							<li><a href="${root}/question">장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1 문의내역</a></li>
+                        </ul>
+                    </nav>
+                    </c:if>
 	<div class="row">
 		<table class="table table-border">
 			<thead>
@@ -182,7 +214,6 @@
 		</form>
 	</div>
 </div>
-</c:if>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 
 

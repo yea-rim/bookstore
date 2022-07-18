@@ -36,25 +36,28 @@
 				(주의) pre 태그는 아무런 에디터도 쓰지 않았을 경우에만 사용
 			-->
 			
+			<textarea id="content" name=\"$id\" class=\"$tuieditor\" maxlength=\"65536\" style=\"width:100%;min-width:260px;height:300px\">${(boardDto.boardContent)}</textarea>
+
 			<tr height="250">
 				<td valign="top" class="left">
 				<div class="toast-custom-viewer"></div>
 <script src="https://uicdn.toast.com/editor/3.0.2/toastui-editor-all.min.js"></script>
     <script>
+var content = document.getElementById('content');
+
         //Viewer용 CDN을 사용할 경우
         // const editor = new toastui.Editor({
         //     el : document.querySelector(".toast-custom-viewer"),
         //     initialValue : "Hello toast ui editor~!"
         // });
-		
         //전체(ALL)용 CDN을 사용할 경우
         const editor = toastui.Editor.factory({
             el : document.querySelector(".toast-custom-viewer"),
             viewer:true,
         	initialEditType: "markdown",
-            initialValue : "${fn:replace(boardDto.boardContent, newLineChar, "")}"
+            initialValue : console.log(window['content'])
         })
-        
+
         
     </script>
     
