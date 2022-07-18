@@ -65,7 +65,7 @@
                         <th class="shoping__product" colspan="3" width="85%"> </th>
                         <th> </th>
                      </tr>
-                  </thead>
+                  </thead>  
 
                <c:forEach var="bookDto" items="${list}">
                
