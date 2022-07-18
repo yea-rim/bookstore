@@ -7,94 +7,105 @@
 
 <!-- 프로필 이미지를 추가하기 위해 enctype을 multipart/form-data로 변경 -->
 <form action="join" method="post" enctype="multipart/form-data">
-	<div class="container w450 m30" id="app">
-	
-<!--     Breadcrumb Section Begin -->
-<!--     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;"> -->
-<!--         <div class="container"> -->
-<!--             <div class="row"> -->
-<!--                 <div class="col-lg-12 text-center"> -->
-<!--                     <div class="breadcrumb__text"> -->
-<!--                         <h2>회원 가입</h2> -->
-<!--                         <div class="breadcrumb__option"> -->
-<%--                             <a href="${root}/bookstore/">Home</a> --%>
-<!--                             <span>북스토어</span> -->
-<!--                         </div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </div> -->
-<!--         </div> -->
-<!--     </section> -->
-<!--     Breadcrumb Section End -->
 
-	    <div class="row center">
-	        <h1>회원가입</h1>
-	    </div>
-		<div class="row mt-3">
-			<label> 아이디 <input type="text" v-model="memberId"
+	<div class="container w450 m30" id="app">
+	    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>회원가입</h2>
+                        <div class="breadcrumb__option">
+                            <a href="${root}/bookstore/">Home</a>
+                            <span>북스토어</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+	<div class="row">
+		<table class="table table-border table-hover">
+		<tr>
+			<th>아이디</th>
+			 <td><input type="text" v-model="memberId"
 				v-on:input="memberId = $event.target.value" name="memberId"
 				class="id-input">
-				<button class="idChk" type="button" id="idChk" onclick="fn_idChk();"
-					value="N">중복체크</button>
-				<div>{{memberIdMessage}}</div>
-			</label>
-		</div>
-
-	    <div class="row">
-	        <label>비밀번호
+				<input type = "button" type="button" id="idChk" onclick="fn_idChk();"
+					value="중복체크"></input>
+				<div>{{memberIdMessage}}</div></td>
+			</tr>
+			<tr>
+				<th>비밀번호</th>
+				<td>
 	                <input type="password" v-model="memberPw" v-on:input="memberPw = $event.target.value" name="memberPw">
      			  	<div>{{memberPwMessage}}</div>
-     			  	</label>
-	    </div>
-	    	    <div class="row">
-	        <label>비밀번호 확인
+     			  </td>
+			</tr>
+				<tr>
+				<th>비밀번호 확인</th>
+				<td>
 	                <input type="password" v-model="memberPwAgain" v-on:input="memberPwAgain = $event.target.value" >
      			  	<div>{{memberPwAgainMessage}}</div>
-     			  	</label>
-	    </div>
-	    <div class="row">
-	        <label>
-	            닉네임
+     			  </td>
+			</tr>
+			<tr>
+				<th>닉네임</th>
+				<td>
 	        	 <input type="text" v-model="memberNick" v-on:input="memberNick = $event.target.value" name="memberNick">
        			 <div>{{memberNickMessage}}</div>
-	        </label>
-	    </div>
-	    <div class="row">
-	        <label>생년월일</label><br>
+	        	</td>
+			</tr>
+			<tr>
+				<th>생년월일</th>
+				<td>
 	        <input type="date" name="memberBirth" required class="form-input input-round" autocomplete="off">
-	    </div>
-	    <div class="row">
-	        <label>전화번호</label>
+	    		</td>
+			</tr>
+			<tr>
+				<th>전화번호</th>
+				<td>
 	        <input type="tel" name="memberPhone" required placeholder="- 제외하고 입력" class="form-input fill input-round" autocomplete="off">
-	    </div>
-	    <div class="row">
-	이메일
+				</td>
+			</tr>
+			<tr>
+				<th>이메일</th>
+				<td>
 	<input type="email" name="memberEmail"  name="memberEmail" class="email-input fill input-round">
 	<input type="button" value="인증메일 보내기" class="btn-send-mail">
 	<div class="cert-area">
-		인증번호 입력
 		<input type="text" name="certNumber" class="number-input fill input-round">
 		<input type="button" value="인증하기" class="btn-cert-check">
-	</div>
-	    </div>
-	    <div class="row">
-	        <label>주소</label><br>
+		</div>
+				</td>
+			</tr>
+			<tr>
+				<th>주소</th>
+				<td>
 	        <input type="text" name="memberPost" size="6" maxlength="6" placeholder="우편번호" class="form-input input-round" autocomplete="off">
 	        <input type="button" class="address-find-btn btn" value="우편번호 찾기" >
-	    </div>
-	    <div class="row">
+				<br>
 	        <input type="text" name="memberBasicAddress" placeholder="기본주소" class="form-input fill input-round" autocomplete="off">
-	    </div>
-	    <div class="row">
+					<br>
 	        <input type="text" name="memberDetailAddress" placeholder="상세주소" class="form-input fill input-round" autocomplete="off">
-	    </div>
-	    <div class="row">
-	    	<label>프로필 이미지</label><br>
+				</td>
+			</tr>
+			<tr>
+				<th>프로필 이미지</th>
+				<td>
 	    	<input type="file" name="memberProfile" class="form-input input-round">
-	    </div>
-	    <div class="row">
-	        <button type="submit" class="btn btn-primary fill">회원가입</button>
-	    </div>
+				</td>
+			</tr>
+			<tr>
+				<th>
+				<td>
+	        	<div align="right" ><button type="submit" class="btn btn-primary fill">회원가입</button></div>
+	        </td>
+			</tr>
+			</table>
+	</div>
 	</div>
 </form>
 

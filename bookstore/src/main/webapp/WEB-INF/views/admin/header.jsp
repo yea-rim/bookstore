@@ -31,8 +31,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css" type="text/css">
     <link href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css" rel="stylesheet">
 	
-	<style>
-		div.fixed {
+    	<style>
+    
+   		div.fixed {
 			position: fixed;
 			bottom: 12px;
 			right: 12px;
@@ -121,6 +122,29 @@
 			});
 		});
 	});
+	</script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script>
+   /*
+      프론트엔드 암호화에 대한 계획
+      - 암호화 알고리즘은 상황에 맞게 선택
+      - input[type=password] 형태의 컬럼을 찾아서 전송 전에 암호화한 값으로 교체
+   */
+   $(function(){
+      $("form").submit(function(){
+         //this == form
+         $(this).find("input[type=password]").each(function(){
+            //this == 입력창
+            var rawData = $(this).val();
+            //var encData = 암호화(rawData);
+            var hash = CryptoJS.SHA1(rawData);//암호화
+            var encData = CryptoJS.enc.Hex.stringify(hash);//문자열화
+            $(this).val(encData);
+         });
+      });
+   });
+>>>>>>> refs/remotes/origin/main
 </script>
 </head>
 

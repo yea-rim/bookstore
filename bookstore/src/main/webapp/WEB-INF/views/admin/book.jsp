@@ -5,6 +5,8 @@
 
 <jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
 
+
+<c:if test="${isAdmin}">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -249,6 +251,7 @@
 			</table>
 		</div>
 	</div>
+	</c:if>
 	
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

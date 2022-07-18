@@ -90,7 +90,6 @@
 <!-- Footer Section End -->
 
 <!-- Js Plugins -->
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <script
 	src="${pageContext.request.contextPath}/js/jquery.nice-select.min.js"></script>

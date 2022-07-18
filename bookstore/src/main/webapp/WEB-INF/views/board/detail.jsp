@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<% pageContext.setAttribute("newLineChar", "\n"); %>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<link rel="stylesheet" href="https://uicdn.toast.com/editor/3.0.2/toastui-editor.min.css" >
 <div class="container w800 m30">
 	 
 	<div class="row">
@@ -16,7 +18,7 @@
 			</tr>
 			
 			<tr>
-				<td class="left">
+				<td class="left">	
 					<c:choose>
 						<c:when test="${boardDto.boardWriter == null}">
 							(탈퇴한 사용자)
@@ -33,6 +35,7 @@
 				내용 표시 영역 
 				(주의) pre 태그는 아무런 에디터도 쓰지 않았을 경우에만 사용
 			-->
+			
 			<tr height="250">
 				<td valign="top" class="left">
 				<div class="toast-custom-viewer"></div>
@@ -43,20 +46,20 @@
         //     el : document.querySelector(".toast-custom-viewer"),
         //     initialValue : "Hello toast ui editor~!"
         // });
-
+		
         //전체(ALL)용 CDN을 사용할 경우
         const editor = toastui.Editor.factory({
             el : document.querySelector(".toast-custom-viewer"),
             viewer:true,
-            initialValue : "${boardDto.boardContent}"
-        });
+        	initialEditType: "markdown",
+            initialValue : "${fn:replace(boardDto.boardContent, newLineChar, "")}"
+        })
+        
         
     </script>
     
-    	<div class="row center m30">
-		<img src="${pageContext.request.contextPath}${boardAttachmentUrl}"
-				width="150" class="img img-circle img-shadow">
-	</div>
+    
+    
 				</td>
 			</tr>
 			
@@ -64,7 +67,6 @@
 			<tr>
 				<td class="right">
 					<a href="${pageContext.request.contextPath}/board/write" class="link link-btn">글쓰기</a>
-					
 					<c:if test="${isOwner || isAdmin}">
 					<a href="${pageContext.request.contextPath}/board/edit?boardNo=${boardDto.boardNo}" class="link link-btn">수정</a>
 <!--					<a href="${pageContext.request.contextPath}/board/edit/${boardDto.boardNo}" class="link link-btn">수정</a>

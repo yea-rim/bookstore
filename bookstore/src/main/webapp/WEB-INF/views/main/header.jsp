@@ -25,9 +25,9 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/main-style.css" type="text/css">
-
+	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <style>
-@media screen and (max-width: 1079px) {
+@media screen and (max-width: 1200px) {
   .fixed, .modal_content {
     display: none;
   }
@@ -105,7 +105,7 @@ border-radius: 0.25em;
 }
 }
 </style>
-<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
 <script>
 	/*
 		프론트엔드 암호화에 대한 계획

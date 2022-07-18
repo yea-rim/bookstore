@@ -5,7 +5,23 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <div class="container w950 m30">
-	
+		    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>1:1 문의</h2>
+                        <div class="breadcrumb__option">
+                            <a href="${root}/bookstore/">Home</a>
+                            <span>북스토어</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
 	<div class="row center m30">
 		<h1>1:1문의</h1>
 	</div>
