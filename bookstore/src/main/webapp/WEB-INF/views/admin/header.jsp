@@ -292,6 +292,7 @@
 	</header>
 	<!-- Header Section End -->
 
+
 	<!-- 챗봇 -->
 	<div class="fixed">
 		<div id="modal_opne_btn" class="btn-connect">
@@ -299,6 +300,87 @@
 		</div>
 	</div>
 	<div id="modal">
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="header__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__left">
+                            <ul>
+                                <li><i class="fa fa-envelope"></i> hello@world.com</li>
+                                <li>3만원 이상 주문시 무료 배송</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="header__top__right">
+                            <div class="header__top__right__social">
+                                <a href="${root}/"><i class="fa fa-facebook"></i></a>
+                                <a href="${root}/"><i class="fa fa-twitter"></i></a>
+                                <a href="${root}/"><i class="fa fa-linkedin"></i></a>
+                                <a href="${root}/"><i class="fa fa-pinterest-p"></i></a>
+                            </div>
+          <c:choose>
+         <c:when test="${isLogin}">
+        <div class="humberger__menu__widget">
+            <div class="header__top__right__language">
+            <a href="${root}/member/mypage">마이페이지</a>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="${root}/member/logout"><i class="fa fa-user"></i> 로그아웃</a>
+            </div>
+             </c:when>
+           <c:otherwise>
+           <div class="header__top__right__language">
+            <a href="${root}/member/join">회원가입</a>
+            </div>
+            <div class="header__top__right__auth">
+                <a href="${root}/member/login"><i class="fa fa-user"></i> 로그인</a>
+            </div>
+            </c:otherwise>
+         </c:choose>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="header__logo">
+                        <a href="${root}/"><img src="${pageContext.request.contextPath}/image/logo.png"alt=""></a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <nav class="header__menu">
+                        <ul>
+                            <li class="active"><a href="${root}/board/notice_list">공지게시판</a></li>
+                            <li><a href="./shop-grid.html">도서관</a></li>
+                            <li><a href="${root }/book/list">북스토어</a></li>
+                            <li><a href="./blog.html">중고 거래</a>
+                             <ul class="header__menu__dropdown">
+                                    <li><a href="${root}/">중고 판매신청</a></li>
+                                   
+                                </ul>
+                            </li>
+                            <li><a href="${root}/board/review_list">감상평</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="col-lg-3">
+                    <div class="header__cart">
+                        <ul>
+                            <li><a href="${root}/"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="${root}/"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                        </ul>
+                </div>
+            </div>
+            <div class="humberger__open">
+                <i class="fa fa-bars"></i>
+            </div>
+        </div>
 
 		<div class="modal_content">
 

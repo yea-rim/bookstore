@@ -132,7 +132,7 @@ public class BoardController {
 	@GetMapping("/qna_list")
 	public String list3(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
 			@RequestParam(required = false, defaultValue = "1") int p,
-			@RequestParam(required = false, defaultValue = "10") int s, Model model) {
+			@RequestParam(required = false, defaultValue = "10") int s, Model model,HttpSession session) {
 		List<BoardDto> list3 = boardDao.list3(type, keyword, p, s);
 		model.addAttribute("list3", list3);
 
@@ -157,6 +157,12 @@ public class BoardController {
 		model.addAttribute("endBlock", endBlock);
 		model.addAttribute("lastPage", lastPage);
 
+		
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isAdmin", isAdmin);
+		model.addAttribute("isUser", isUser);
 		return "board/qna_list";
 	}
 
@@ -329,10 +335,14 @@ public class BoardController {
 	}
 
 	@GetMapping("/notice_write")
-	public String write2(@RequestParam(required = false, defaultValue = "0") int sn, Model model) {
+	public String write2(@RequestParam(required = false, defaultValue = "0") int sn, Model model, HttpSession session) {
 		if (sn > 0) {
 			model.addAttribute("sn", sn);
 		}
+		
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
 		return "board/notice_write";
 	}
 
@@ -367,4 +377,5 @@ public class BoardController {
 		attr.addAttribute("boardNo", boardNo);
 		return "redirect:detail";
 	}
+
 }
