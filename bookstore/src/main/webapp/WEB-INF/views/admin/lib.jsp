@@ -37,7 +37,35 @@
 							<li><a href="${root}/faq">faq 관리</a></li>
                         </ul>
                     </nav>
-
+                    </c:if>
+    <c:if test="${isBookAdmin}">
+        <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>도서관 관리 페이지</h2>
+                        <div class="breadcrumb__option">
+							<a href="http://localhost:8080/bookstore/admin/lib">Home</a>
+                            <span>관리자 페이지</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+                    <nav class="text-center header__menu">
+                        <ul>
+                            <li><a href="${root}/lib-book"> 도서 관리</a>
+			                    <ul class="header__menu__dropdown">
+									<li><a href="${root}/lib-book">도서 추가</a></li>
+									<li><a href="${root}/#">도서  반납</a></li>
+                      		  </ul>
+                        </li>
+                        <li class="active"><a href="${root}/lib">도서관 관리</a></li>
+                    </nav>
+</c:if>
+<c:if test="${isUser == false}">
 <div class="container">
 	<div class="row">
 	<div class="col-lg-1"></div>
@@ -140,7 +168,7 @@
 				</table>
 			</div>
 		</div>
-</c:if>
+		</c:if>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
  	<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -167,7 +195,6 @@
 				index:-1, //-1이면 등록, 0이상이면 수정
 			};
 		},
-
 		computed:{
 			mode(){
 				return this.index < 0 ? "등록" : "수정";
@@ -180,7 +207,6 @@
 			},
 		},
 		methods:{
-
 			findLib(){
 				const number = this.currentData.libInfoNo;
 				axios({
@@ -201,7 +227,6 @@
 					this.currentData.libraryYdnts = resp.data.seoulPublicLibraryInfo.row[0].ydnts;
 				});
 			},
-
 			deleteItem(index){
 				var choice = window.confirm("데이터를 정말 지우시겠습니까?");
 				if(choice == false) return;
@@ -270,7 +295,6 @@
 				});
 			},
 		},
-
 		created(){
 				axios({
 					url:"${pageContext.request.contextPath}/rest/lib/",
