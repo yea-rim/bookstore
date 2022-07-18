@@ -289,29 +289,31 @@ border-radius: 0.25em;
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
-					<div class="hero__categories">
-						<div class="hero__categories__all">
-							<i class="fa fa-bars"></i> <span>도서 분야보기</span>
-						</div>
-						<ul>
-							<li><a href="${root}/">소설</a></li>
-							<li><a href="${root}/">자기계발</a></li>
-							<li><a href="${root}/">시/에세이</a></li>
-							<li><a href="${root}/">인문</a></li>
-							<li><a href="${root}/">컴퓨터</a></li>
-							<li><a href="${root}/">참고서</a></li>
-							<li><a href="${root}/">어린이</a></li>
-							<li><a href="${root}/">취미</a></li>
-							<li><a href="${root}/">만화</a></li>
-						</ul>
-					</div>
-				</div>
+                    <div class="hero__categories">
+                        <div class="hero__categories__all">
+                            <i class="fa fa-bars"></i>
+                            <span class="m-4">도서 분야보기</span>
+                        </div>
+                        <ul>
+                            <li><a href="#">소설</a></li>
+                            <li><a href="#">자기계발</a></li>
+                            <li><a href="#">시/에세이</a></li>
+                            <li><a href="#">인문</a></li>
+                            <li><a href="#">컴퓨터</a></li>
+                            <li><a href="#">참고서</a></li>
+                            <li><a href="#">어린이</a></li>
+                            <li><a href="#">취미</a></li>
+                            <li><a href="#">만화</a></li>
+                        </ul>
+                    </div>
+                </div>
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form w-100">
 							<form action="#">
 								<div class="hero__search__categories">
-									All Categories <span class="arrow_carrot-down"></span>
+									도서관 | 북스토어 | 중고 통합 검색
+									<span class="arrow_carrot-down"></span>
 								</div>
 								<input type="text" placeholder="무슨 도서를 찾으시나요?">
 								<button type="submit" class="site-btn">검색</button>
