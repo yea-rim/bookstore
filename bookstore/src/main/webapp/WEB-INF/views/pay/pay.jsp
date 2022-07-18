@@ -26,8 +26,43 @@
     <section class="shoping-cart spad">
         <div class="container">
             <div class="row">
+               	<div class = "col-lg-8">
+               	    <div class="shoping__cart__table">
+               			<h3><배송정보></h3>
+               			<table>
+               				<thead>
+               					<tr>
+               						<th width = "30%"><h3>배송 정보</h3></th>
+               						<th></th>
+               						<th></th>
+               						<th></th>               						
+               					</tr>
+               				</thead>
+               				<tbody>
+               					<tr>
+               						<th><h5>이름 *</h5><th>
+               						<td><input type = "text" name = "memberName"></td>
+               					<tr>
+               					<tr>
+               						<th><h5>이름 *</h5><th>
+               						<td><input type = "text" name = "memberName"></td>
+               					<tr>
+               					<tr>
+               						<th><h5>이름 *</h5><th>
+               						<td><input type = "text" name = "memberName"></td>
+               					<tr>
+               					<tr>
+               						<th><h5>이름 *</h5><th>
+               						<td><input type = "text" name = "memberName"></td>
+               					<tr>
+               				</tbody>
+               			</table>
+               		</div>
+               	</div>
+               
                 <div class="col-lg-8">
                     <div class="shoping__cart__table">
+						<h3><주문상품></h3>
                         <table>
                             <thead>
                                 <tr>

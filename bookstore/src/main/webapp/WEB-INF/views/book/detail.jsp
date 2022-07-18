@@ -82,13 +82,16 @@
                         <hr>
                         
                        <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
-                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>&nbsp;       								
                         <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
-                        <div v-on:click = "showUsed =!showUsed">더보기</div>
+                        <div v-on:click = "showUsed =!showUsed">더보기+</div>
+                       	<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
                         <div v-show = "showUsed">
-                        중고가 : <input type ="checkbox" name = "used[${index }.usedNo]" value = "${usedDto.usedNo }">
+                        
+                        <label>중고가 : &nbsp; ${usedDto.usedPrice }원</label>&nbsp;
+                        <input type ="checkbox" name = "used[${status.index+1 }].usedNo" value = "${usedDto.usedNo }">
                         </div>
-					
+						</c:forEach>
        				
        					
                     	 
