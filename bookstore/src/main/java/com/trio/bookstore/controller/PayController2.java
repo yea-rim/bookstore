@@ -60,10 +60,12 @@ public class PayController2 {
 	public String pay(@RequestParam int bookNo,
 					  @RequestParam int storeAmount,
 					  @ModelAttribute UsedPayListVO listVO,
+					  HttpSession session,
 					  Model model
 			) {
 		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
-		
+		String login = (String)session.getAttribute("login");
+		model.addAttribute("login",login);
 		if(storeAmount == 0 && listVO.getUsed() == null) {
 			return "redirect:book/detail?error&bookNo="+bookNo;
 		}
