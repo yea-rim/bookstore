@@ -48,4 +48,9 @@ public class LibRestController {
 	public List<LibInfoDto> findLib(@PathVariable int libInfoNo) {
 		return libInfoDao.findLib(libInfoNo);
 	}
+	
+	@GetMapping("/gu/{libraryGu}")
+	public List<LibInfoDto> findLib(@PathVariable String libraryGu) {
+		return libInfoDao.findGu(libraryGu);
+	}
 }

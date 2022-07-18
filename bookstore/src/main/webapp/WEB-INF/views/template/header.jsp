@@ -269,7 +269,7 @@ border-radius: 0.25em;
 					<i class="fa fa-bars"></i>
 				</div>
 			</div>
-		</div>
+<!-- 		</div> -->
 	</header>
 	<!-- Header Section End -->
 
