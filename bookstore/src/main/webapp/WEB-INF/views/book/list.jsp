@@ -16,7 +16,7 @@
             <div class="breadcrumb__text">
                <h2>도서 목록</h2>
                <div class="breadcrumb__option">
-                  <a href="${root}/">Home</a> <span>북스토어</span>
+                  <a href="${root}/">Home</a> <span>북스토어</span> 
                </div>
             </div>
          </div>
