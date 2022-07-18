@@ -34,4 +34,8 @@ public interface MemberDao {
 	List<MemberDto> allList();
 
 	MemberDto update(MemberDto memberDto);
+
+	
+	//한석(아이디로 조회)
+	MemberDto findId(String query);
 }

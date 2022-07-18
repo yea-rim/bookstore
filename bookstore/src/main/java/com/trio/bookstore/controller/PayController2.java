@@ -71,7 +71,7 @@ public class PayController2 {
 		}
 		log.debug("hanseok = {}",listVO);
 
-
+		int total = 0;
 		//쇼핑몰책 수량
 		if(storeAmount>0) {
 			model.addAttribute("storeAmount",storeAmount);
@@ -81,6 +81,8 @@ public class PayController2 {
 		StoreDto storeDto = storeDao.find(bookNo);
 		model.addAttribute("storeDto",storeDto);
 		
+		total += storeDto.getStorePrice() * storeAmount;
+		log.debug("hanseok={}",total);
 		//중고책 가져오기
 		if(listVO.getUsed() != null) {
 			
@@ -89,11 +91,12 @@ public class PayController2 {
 			//중고테이블 기본키인 중고번호로 단일조회
 			UsedDto usedDto = usedDao.findUsed(usedPayVO.getUsedNo());
 			if(usedDto == null) continue;
-		
+			total+= usedDto.getUsedPrice();
 			//임의로 만든 중고 리스트에 추가
 			usedList.add(usedDto);
 		}
 		model.addAttribute("usedList",usedList);
+		model.addAttribute("total",total);
 		}
 
 		return "pay/pay";

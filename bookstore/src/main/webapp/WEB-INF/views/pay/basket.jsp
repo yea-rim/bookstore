@@ -46,7 +46,7 @@
                                     <td class="shoping__cart__item">                                   
                                    	<div>
 <%-- 									<c:set var="i" value = "{{index}}"/> --%>
-                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" v-model="storeCheck" >
+                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" v-model="storeCheck()" >
                                    	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
 									
 									<input v-if = "usedSeen(index)" type = "checkbox" :name = "used(index)" :value = "basket.basketUsedNo">                                   	

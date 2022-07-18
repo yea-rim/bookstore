@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trio.bookstore.entity.BasketDto;
+import com.trio.bookstore.entity.MemberDto;
+import com.trio.bookstore.repository.MemberDao;
 import com.trio.bookstore.repository2.BasketDao;
 
 @RestController
@@ -19,6 +21,10 @@ public class BasketRestController {
 	@Autowired
 	private BasketDao basketDao;
 	
+	@Autowired
+	private MemberDao memberDao;
+	
+	
 	@GetMapping("/")
 	public List<BasketDto> list(){
 		return basketDao.list();
@@ -26,5 +32,10 @@ public class BasketRestController {
 	@DeleteMapping("/{basketNo}")
 	public void delete(@PathVariable int basketNo) {
 		basketDao.delete(basketNo);
+	}
+	@GetMapping("/{query}")
+	public MemberDto findId(@PathVariable String query){
+		
+		return memberDao.findId(query);
 	}
 }

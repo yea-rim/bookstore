@@ -33,26 +33,27 @@
                				<tbody>
                					<tr style = "border-bottom:none;">
                						<th class = "col-lg-3"><h5>이름 *</h5></th>
-               						<td class = "col-lg-9"><input type = "text" name = "memberName" style = "width:150px;">
-              						&nbsp;<button class = "site-btn m-1" @click="autoName">내정보</button>
+               						<td class = "col-lg-9"><input type = "text" v-model = "currentData.memberName" style = "width:150px;">
+               						&nbsp;<button  v-on:click="readMember" style = "border:none; background:#F09F00; color:#ffffff; height:30px;">내정보</button>
                						
-               						</td>
+               							</td>
                					</tr>
                					<tr>
                						<th><h5>전화번호 *</h5></th>
-               						<td><input type = "text" name = "memberName"></td>
-               					</tr>
+               						<td><input type = "text" v-model = "currentData.memberPhone">
+               						</td>
+               				</tr>
                					<tr>
                						<th><h5>주소 *</h5></th>
-               						<td><input type = "text" name = "memberName" v-model= "used"style = "width:170px;"></td>
+               						<td><input type = "text" v-model = "currentData.memberPost" v-model= "used"style = "width:170px;"></td>
                					</tr> 
                					<tr>
                					    <th></th>
-               				     	<td><input type = "text" name = "memberName" style = "width:350px;"></td>
+               				     	<td><input type = "text" v-model = "currentData.memberBasicAddress" style = "width:350px;"></td>
                					</tr>
                					<tr>
                						<th></th>
-               						<td><input type = "text" name = "memberName" style = "width:350px;"></td>
+               						<td><input type = "text" v-model = "currentData.memberDetailAddress" style = "width:350px;"></td>
                					</tr>
                					
                				</tbody>
@@ -61,9 +62,9 @@
                	</div>
                <div class="col-lg-4">
                     <div class="shoping__checkout">
-                        <h5>Cart Total</h5>
+                        <h5>결제정보</h5>
                         <ul>
-                            <li>상품금액 <span>total</span></li>
+                            <li>상품금액 <span>${total}</span></li>
                             <li>할인금액<span>#</span></li>
                             <li>Total <span>total</span></li>
                         </ul>
@@ -82,7 +83,7 @@
 <!--                                     <th width = "630px">도서명</th> -->
                                     <th>판매가</th>
                                     <th>수량</th>
-                                    <th>Total</th>
+                                    <th>합계</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -101,7 +102,7 @@
 										<h5>${storeDto.bookTitle }</h5>
                                   	</td>  
                                     <td class="shoping__cart__price">
-                                        ${storeDto.storePrice }                                    </td>
+                                        ${storeDto.storePrice }원                                   </td>
                                     <td class="shoping__cart__quantity">
                                     	<h5>${storeAmount }개</h5>
 <!--                                         <div class="quantity"> -->
@@ -111,7 +112,7 @@
 <!--                                         </div> -->
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                        ${storeDto.storePrice*storeAmount }원
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
@@ -129,7 +130,7 @@
 										<h5>${usedDto.bookTitle }</h5>
                                   	</td>
                                     <td class="shoping__cart__price">
-                                        ${usedDto.usedPrice }                                    </td>
+                                        ${usedDto.usedPrice }원                                    </td>
                                     <td class="shoping__cart__quantity">
                                     	<h5>1개</h5>
 <!--                                         <div class="quantity"> -->
@@ -139,7 +140,7 @@
 <!--                                         </div> -->
                                     </td>
                                     <td class="shoping__cart__total">
-                                        $110.00
+                                      ${usedDto.usedPrice }
                                     </td>
                                     <td class="shoping__cart__item__close">
                                         <span class="icon_close"></span>
@@ -231,12 +232,13 @@
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
-                    memberInfo: {
-                    	name:"",
-                    	phone:"",
-                    	address1:"",
-                    	address2:"",
-                    	address3:"",
+                	memberList:[],
+                	currentData: {
+                    	memberName:"",
+                    	memberPhone:"",
+                    	memberPost:"",
+                    	memberBasicAddress:"",
+                    	memberDetailAddress:"",
                     },
                 };
             },
@@ -247,12 +249,25 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
-                autoName(){
-                		let number = "${login}";
-                		let name = this.memberInfo.name;
-                		name = number;
-                		console.log(this.memberInfo.name);
-                },
+                
+            	readMember(){
+    				const query = "testuser";
+    				axios({
+    					url:"${pageContext.request.contextPath}/rest/basket/" + query,
+    					method:"get",
+    					data: this.currentData,
+    				})
+    				.then((resp)=>{
+    	            	console.log(resp.data);
+//     					this.currentData = resp.data.items[0];
+    					this.currentData.memberName = resp.data.memberNick;
+    					this.currentData.memberPhone = resp.data.memberPhone;
+    					this.currentData.memberPost = resp.data.memberPost;
+    					this.currentData.memberBasicAddress = resp.data.memberBasicAddress;
+    					this.currentData.memberDetailAddress = resp.data.memberDetailAddress;
+    					console.log(this.currentData);
+    				});
+    			},
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
             watch:{

@@ -379,6 +379,11 @@
 		where member_id = #{memberId}
 	</update>
 
+	<!-- 한석 -->
+	<select id="hanseok" parameterType="String" resultType="MemberDto">
+		select * from member where member_id = #{query}
+	
+	</select>
 </mapper> 
 
 
