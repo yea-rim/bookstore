@@ -82,10 +82,34 @@
                         <hr>
                         
                        <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
+                        <c:choose>
+                        	<c:when test="${usedCheap == null}">
+                        		   중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">재고없음</div>&nbsp;       								
+                        	</c:when>
+                        	<c:otherwise>
+                        	
                         중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>&nbsp;       								
                         <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
-                        <div v-on:click = "showUsed =!showUsed">더보기+</div>
+                        	</c:otherwise>
+                        </c:choose>
+                          	<c:choose>
+                           	<c:when test="${usedCheap == null }">
+                           		
+                           	</c:when>
+                           <c:when test="${usedList.size() == 0 && usedCheap != null}">
+                              <div><input type = "button"  value = "추가재고없음" ></div>
+                           	</c:when>
+                           	<c:otherwise>
+                        <div><input type = "button" v-on:click = "showUsed =!showUsed" value = "중고+"></div>
+                              	</c:otherwise>    
+                          	</c:choose>
+                       	<!-- 조회구문에서 싼 값 다음번째 부터 나오는 리스트임 -->
                        	<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+<%--                         <c:if test="${usedList.length == 0}"> --%>
+<!--                         	<div v-show = "showUsed"> -->
+<!--                         		<p style="color:red;">중고 재고가 없습니다.</p> -->
+<!--                         	</div>	 -->
+<%--                         </c:if> --%>
                         <div v-show = "showUsed">
                         
                         <label>중고가 : &nbsp; ${usedDto.usedPrice }원</label>&nbsp;
@@ -107,9 +131,9 @@
                        	</form>
                         
                         <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>도서 저자</b> <span>${bookDto.bookAuth }</span></li>
+                            <li><b>도서 출판사</b> <span>${bookDto.bookPubl }</span></li>
+                            <li><b>ISBN</b> <span>${bookDto.bookIsbn }</span></li>
                             <li><b>Share on</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
