@@ -90,14 +90,18 @@ public class PayController2 {
 		for(UsedPayVO usedPayVO : listVO.getUsed()) {
 			//중고테이블 기본키인 중고번호로 단일조회
 			UsedDto usedDto = usedDao.findUsed(usedPayVO.getUsedNo());
-			if(usedDto == null) continue;
+			if(usedDto == null || usedDto.getUsedNo() == 0) continue;
 			total+= usedDto.getUsedPrice();
 			//임의로 만든 중고 리스트에 추가
+			log.debug("hanseok5={}",total);
+
 			usedList.add(usedDto);
 		}
+		log.debug("아니={}",usedList);
 		model.addAttribute("usedList",usedList);
-		model.addAttribute("total",total);
+
 		}
+		model.addAttribute("total",total);
 
 		return "pay/pay";
 	}
@@ -187,11 +191,11 @@ public class PayController2 {
 		int payNo = (int) session.getAttribute("payNo");
 		session.removeAttribute("payNo");
 		
-		
+		String memberId = (String)session.getAttribute("login");
 		requestVO.setPg_token(pg_token);
 		KakaoPayApproveResponseVO responseVO = kakaoPayService.approve(requestVO);
-		
-		payService.insert(payNo,responseVO,finalStoreList,finalUsedList);
+		log.debug("제발={}",memberId);
+		payService.insert(payNo,responseVO,finalStoreList,finalUsedList,memberId);
 		
 		return "redirect:finish";
 	}
