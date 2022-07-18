@@ -38,7 +38,7 @@
    	<div class="row">
 		<table class="table table-border table-hover">
 		<tr>
-	        <th>닉네임</th>
+	        <th>이름</th>
 	        <td><input type="text" name="memberNick" autocomplete="off" required class="form-input fill input-round" value="${memberDto.memberNick}"></td>
 	     </tr>
 		<tr>

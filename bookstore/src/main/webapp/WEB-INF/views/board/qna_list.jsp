@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:if test="${isAdmin}">
-<jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -12,7 +12,7 @@
                     <div class="breadcrumb__text">
                         <h2>1:1 문의 관리 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
+							<a href="http://localhost:8080/bookstore/admin/book">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>
@@ -38,11 +38,11 @@
                         </ul>
                     </nav>
 						</c:if>
+						<div class="container w950 m30">
 						<c:if test="${isUser}">
 						<c:set var="root" value="${pageContext.request.contextPath}/member"></c:set>
 						<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 						    <!-- Breadcrumb Section Begin -->
-						    <div class="container w950 m30">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">

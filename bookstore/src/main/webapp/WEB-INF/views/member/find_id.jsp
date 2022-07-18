@@ -26,7 +26,7 @@
     <!-- Breadcrumb Section End -->
     
 	    <div class="row">
-	        <label>닉네임</label>
+	        <label>이름</label>
 	        <input type="text" name="memberNick" autocomplete="off" required class="form-input fill input-round">
 	    </div>
 	    <div class="row">
