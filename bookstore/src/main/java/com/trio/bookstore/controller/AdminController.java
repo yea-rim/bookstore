@@ -61,6 +61,10 @@ public class AdminController {
 		String memberGrade = (String) session.getAttribute("auth");
 		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
 		model.addAttribute("isAdmin", isAdmin);
+		boolean isBookAdmin = memberGrade != null && memberGrade.equals("도서관리자");
+		model.addAttribute("isBookAdmin", isBookAdmin);
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isUser", isUser);
 
 		// 현재 글에 대한 댓글 목록을 조회(미구현)
 
@@ -110,6 +114,10 @@ public class AdminController {
 		String memberGrade = (String) session.getAttribute("auth");
 		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
 		model.addAttribute("isAdmin", isAdmin);
+		boolean isBookAdmin = memberGrade != null && memberGrade.equals("도서관리자");
+		model.addAttribute("isBookAdmin", isBookAdmin);
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isUser", isUser);
 
 		// 현재 글에 대한 댓글 목록을 조회(미구현)
 

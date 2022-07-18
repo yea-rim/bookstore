@@ -5,6 +5,7 @@
 <c:set var="memberId" value="${login}"></c:set>
 <c:set var="isLogin" value="${memberId != null}"></c:set>
 <c:set var="isAdmin" value="${auth == '관리자'}"></c:set>
+<c:set var="isBookAdmin" value="${auth == '도서관리자'}"></c:set>
 <c:set var="root" value="${pageContext.request.contextPath}"></c:set>
 
 <!DOCTYPE html>
@@ -37,7 +38,6 @@
     display: none;
   }
 } 
-
 div.fixed{
   position: fixed;
   bottom: 12px;
@@ -45,7 +45,6 @@ div.fixed{
   width: 150px;
   z-index:8;
 }
-
 div.chat1 {
   position: absolute;
   bottom: 15px;
@@ -67,7 +66,6 @@ left:79.1%;
 height:0;
 z-index:9;
 }
-
  #modal h2 {
 margin:0;
  }
@@ -102,7 +100,6 @@ border-radius: 0.25em;
     border:1px solid gray;
     border-radius: 0.25em;
     padding:0.5em;
-
     background-color: white;
 	
     cursor: pointer;
@@ -264,6 +261,12 @@ border-radius: 0.25em;
 							<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
 							<li><a href="${root}/admin//faq">faq 관리</a></li>
 							</c:if>
+							<c:if test="${isBookAdmin}">
+							<li><a href="${root}/admin/lib">도서 관리자</a>
+							<ul class="header__menu__dropdown">
+							<li><a href="${root}/admin/lib-book">도서 관리</a></li>
+							<li><a href="${root}/admin//lib">도서관 관리</a></li>
+							</c:if>
 						</ul>
 					</nav>
 				</div>
@@ -289,31 +292,29 @@ border-radius: 0.25em;
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3">
-                    <div class="hero__categories">
-                        <div class="hero__categories__all">
-                            <i class="fa fa-bars"></i>
-                            <span class="m-4">도서 분야보기</span>
-                        </div>
-                        <ul>
-                            <li><a href="#">소설</a></li>
-                            <li><a href="#">자기계발</a></li>
-                            <li><a href="#">시/에세이</a></li>
-                            <li><a href="#">인문</a></li>
-                            <li><a href="#">컴퓨터</a></li>
-                            <li><a href="#">참고서</a></li>
-                            <li><a href="#">어린이</a></li>
-                            <li><a href="#">취미</a></li>
-                            <li><a href="#">만화</a></li>
-                        </ul>
-                    </div>
-                </div>
+					<div class="hero__categories">
+						<div class="hero__categories__all">
+							<i class="fa fa-bars"></i> <span>도서 분야보기</span>
+						</div>
+						<ul>
+							<li><a href="${root}/">소설</a></li>
+							<li><a href="${root}/">자기계발</a></li>
+							<li><a href="${root}/">시/에세이</a></li>
+							<li><a href="${root}/">인문</a></li>
+							<li><a href="${root}/">컴퓨터</a></li>
+							<li><a href="${root}/">참고서</a></li>
+							<li><a href="${root}/">어린이</a></li>
+							<li><a href="${root}/">취미</a></li>
+							<li><a href="${root}/">만화</a></li>
+						</ul>
+					</div>
+				</div>
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form w-100">
 							<form action="#">
 								<div class="hero__search__categories">
-									도서관 | 북스토어 | 중고 통합 검색
-									<span class="arrow_carrot-down"></span>
+									All Categories <span class="arrow_carrot-down"></span>
 								</div>
 								<input type="text" placeholder="무슨 도서를 찾으시나요?">
 								<button type="submit" class="site-btn">검색</button>
@@ -355,10 +356,8 @@ border-radius: 0.25em;
 	<script>
 		$(function() {
 			disconnectOperation();//최초 상태 설정
-
 			//이전 질문으로 돌아가는 기능을 구현하기 위해 뭘 눌렀었는지 기록하도록 저장소 구현
 			var memory = [];
-
 			$(".btn-connect").click(
 					function() {
 						//주소 자동 계산
@@ -366,10 +365,8 @@ border-radius: 0.25em;
 						uri += location.host;
 						uri += "${pageContext.request.contextPath}";
 						uri += "/ws/chatbot";
-
 						//접속
 						socket = new WebSocket(uri);
-
 						socket.onopen = function(e) {
 							connectOperation();
 						};
@@ -383,16 +380,13 @@ border-radius: 0.25em;
 						};
 						socket.onmessage = function(e) {
 							$(".message-wrapper").empty();//다지워
-
 							//console.log(e.data);
 							//console.log(typeof e.data);
-
 							//서버에서 온 값이 string이므로 이를 자바스크립트 객체 형식으로 변환해야 한다
 							// - JSON.parse(문자열) --> 객체
 							// - JSON.stringify(객체) --> 문자열
 							var data = JSON.parse(e.data);
 							//console.log(data);
-
 							for (var i = 0; i < data.length; i++) {
 								//console.log(data[i]);
 								//태그를 만들어서 영역 내에 배치
@@ -412,13 +406,10 @@ border-radius: 0.25em;
 								$(".message-wrapper").append(button);
 							}
 						};
-
 					});
-
 			$(".btn-disconnect").click(function() {
 				socket.close();
 			});
-
 			$(".btn-prev").click(function() {
 				var chatbotNo = memory.pop();//pop()은 마지막 요소를 제거하여 반환
 				console.log(memory, memory.length);
@@ -429,7 +420,6 @@ border-radius: 0.25em;
 					sendMessage(0);
 				}
 			});
-
 			function sendMessage(text) {
 				if (text === "" || text === undefined || text === null)
 					return;
@@ -455,10 +445,7 @@ border-radius: 0.25em;
 		document.getElementById("modal_opne_btn").onclick = function() {
 			document.getElementById("modal").style.display = "block";
 		}
-
 		document.getElementById("modal_close_btn").onclick = function() {
 			document.getElementById("modal").style.display = "none";
 		}
 	</script>
-	
-	
