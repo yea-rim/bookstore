@@ -32,8 +32,8 @@
 							<li><a href="${root}/bookstore/admin/lib">도서관 관리</a></li>
 							<li><a href="${root}/bookstore/admin/member">회원 관리</a></li>
 							<li><a href="${root}/bookstore/admin/delivery">배송 관리</a></li>
-							<li><a href="${root}/bookstore/admin/question">1:1 관리</a></li>
-							<li><a href="${root}/bookstore/admin/notice">공지사항 관리</a></li>
+							<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
+							<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
 							<li><a href="${root}/bookstore/admin/faq">faq 관리</a></li>
                         </ul>
                     </nav>
