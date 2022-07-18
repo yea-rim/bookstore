@@ -5,311 +5,322 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <!--     Banner Begin -->
-    <div class="banner">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="image/banner/banner-1.jpg" alt="">
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-6 col-sm-6">
-                    <div class="banner__pic">
-                        <img src="image/banner/banner-2.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+
+<nav class="text-center header__menu">
+	<ul>
+		<li>
+		<a href="#">소설</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">로맨스 소설</a></li>
+				<li><a href="#">추리 소설</a></li>
+				<li><a href="#">전쟁/역사 소설</a></li>
+				<li><a href="#">공포/스릴러 소설</a></li>
+				<li><a href="#">판타지 소설</a></li>
+			</ul></li>
+		<li><a href="#">자기계발</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">경제/부동산</a></li>
+				<li><a href="#">시간 관리</a></li>
+				<li><a href="#">인간 관계</a></li>
+				<li><a href="#">대화/협상</a></li>
+			</ul></li>
+		<li><a href="#">시/에세이</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">한국시</a></li>
+				<li><a href="#">외국시</a></li>
+				<li><a href="#">성공 에세이</a></li>
+				<li><a href="#">여행 에세이</a></li>
+				<li><a href="#">연애 에세이</a></li>
+			</ul></li>
+		<li><a href="#">인문</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">시사/사회</a></li>
+				<li><a href="#">경제/경영</a></li>
+				<li><a href="#">종교</a></li>
+				<li><a href="#">행정/정치</a></li>
+			</ul></li>
+		<li><a href="#">컴퓨터</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">웹/홈페이지</a></li>
+				<li><a href="#">컴퓨터 입문/활용</a></li>
+				<li><a href="#">프로그래밍 언어</a></li>
+				<li><a href="#">개발/OS/데이터베이스</a></li>
+				<li><a href="#">네트워크 보안</a></li>
+				<li><a href="#">컴퓨터 공학</a></li>
+			</ul></li>
+		<li><a href="#">참고서</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">국어/문학</a></li>
+				<li><a href="#">외국어</a></li>
+				<li><a href="#">수학</a></li>
+				<li><a href="#">고시</a></li>
+				<li><a href="#">공무원</a></li>
+			</ul></li>
+		<li><a href="#">어린이</a></li>
+		<li><a href="#">취미</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">가정/육아</a></li>
+				<li><a href="#">건강</a></li>
+				<li><a href="#">여행</a></li>
+				<li><a href="#">요리</a></li>
+			</ul></li>
+		<li><a href="#">만화</a>
+			<ul class="header__menu__dropdown">
+				<li><a href="#">학원 만화</a></li>
+				<li><a href="#">스포츠 만화</a></li>
+				<li><a href="#">순정 만화</a></li>
+				<li><a href="#">기타 만화</a></li>
+			</ul></li>
+	</ul>
+</nav>
+
+<div class="banner m-3">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="banner__pic">
+					<img
+						src="https://blog.kakaocdn.net/dn/sAjmN/btrHEdCTlqx/bIMI1AHf1pvnWAe4Ry8Rg0/img.png"
+						alt="">
+				</div>
+			</div>
+			<div class="col-lg-6 col-md-6 col-sm-6">
+				<div class="banner__pic">
+					<img
+						src="https://blog.kakaocdn.net/dn/I6seM/btrHAIqRpgS/xHdkKRVueTe3wO6mqjUub1/img.png"
+						alt="">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 <!--     Banner End -->
 
-<!-- Categories Section Begin -->
-<!-- 도서  -->
-<!-- <section class="categories"> -->
-<!-- 	<div class="container"> -->
-<!-- 		<div class="row"> -->
-<!-- 			<div class="categories__slider owl-carousel"> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-1.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">소설</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-2.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">자기계발</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-3.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">시/에세이</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-4.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">인문</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">컴퓨터/IT</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">참고서</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">어린이</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">취미</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">만화</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </section> -->
-<!-- Categories Section End -->
-
-    <!-- Latest Product Section Begin -->
-    <section class="latest-product spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>도서관 랭킹</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>북스토어 랭킹</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="latest-product__text">
-                        <h4>중고도서 랭킹</h4>
-                        <div class="latest-product__slider owl-carousel">
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="latest-prdouct__slider__item">
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                                <a href="#" class="latest-product__item">
-                                    <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
-                                    </div>
-                                    <div class="latest-product__item__text">
-                                        <h6>Crab Pool Security</h6>
-                                        <span>$30.00</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Latest Product Section End -->
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="latest-product__text">
+					<h4>도서관 랭킹</h4>
+					<div class="latest-product__slider owl-carousel">
+						<div class="latest-prdouct__slider__item">
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+							
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+						</div>
+						<div class="latest-prdouct__slider__item">
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="latest-product__text">
+					<h4>북스토어 랭킹</h4>
+					<div class="latest-product__slider owl-carousel">
+						<div class="latest-prdouct__slider__item">
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+						</div>
+						<div class="latest-prdouct__slider__item">
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="latest-product__text">
+					<h4>중고도서 랭킹</h4>
+					<div class="latest-product__slider owl-carousel">
+						<div class="latest-prdouct__slider__item">
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+						</div>
+						<div class="latest-prdouct__slider__item">
+							<a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a> <a href="#" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>Crab Pool Security</h6>
+									<span>$30.00</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Latest Product Section End -->
 
 <!-- Featured Section Begin -->
 <section class="featured spad">
@@ -322,10 +333,9 @@
 				<div class="featured__controls">
 					<ul>
 						<li class="active" data-filter="*">전체 보기</li>
-						<li data-filter=".oranges">도서관</li>
-						<li data-filter=".fresh-meat">북스토어</li>
-						<li data-filter=".vegetables">중고 거래</li>
-						<!--                             <li data-filter=".fastfood">Fastfood</li> -->
+						<li data-filter=".lid">도서관</li>
+						<li data-filter=".store">북스토어</li>
+						<li data-filter=".used">중고 거래</li>
 					</ul>
 				</div>
 			</div>
@@ -335,8 +345,8 @@
 				<div class="col-lg-4 col-md-6 col-sm-6">
 					<div class="product__item">
 						<div class="product__item__pic set-bg"
-							data-setbg="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
-							<ul class="product__item__pic__hover">
+							data-setbg="${bookDto.bookImage}">
+							<ul class="product__item__pic__hover lib">
 								<!--  li><a href="${root}/"><i class="fa fa-heart"></i></a></li>-->
 								<li><a href="${root}/book/detail?bookNo=${bookDto.bookNo}"><i
 										class="fa fa-retweet"></i></a></li>

@@ -62,7 +62,6 @@ public class AttachmentController {
 	
 	@PostMapping("/upload")
 	public int save(@RequestParam MultipartFile attachment) throws IllegalStateException, IOException {
-		System.out.println("왔다");
 		return attachmentDao.save(attachment);
 	}
 }

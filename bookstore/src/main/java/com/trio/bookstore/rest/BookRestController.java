@@ -17,6 +17,8 @@ import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.repository2.BookDao;
 
+import oracle.net.aso.b;
+
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 @RestController
 @RequestMapping("/rest/book")
@@ -53,6 +55,11 @@ public class BookRestController {
 	@GetMapping("/{bookNo}")
 	public BookDto search(@PathVariable int bookNo) {
 		return bookDao.bookSearch(bookNo);
+	}
+	
+	@GetMapping("/type/{bookType}")
+	public List<BookDto> type(@PathVariable int bookType) {
+		return bookDao.bookType(bookType);
 	}
 
 }
