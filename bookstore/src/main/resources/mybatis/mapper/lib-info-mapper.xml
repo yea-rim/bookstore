@@ -60,4 +60,10 @@
 		select * from lib_info where lib_info_no = #{libInfoNo}
 	</select>
 	
+	<select id="findGu" resultType="libInfoDto" parameterType="String">
+		select * from lib_info 
+		where instr(library_gu, #{libraryGu}) > 0 
+		order by lib_info_no asc
+	</select>
+	
 </mapper> 

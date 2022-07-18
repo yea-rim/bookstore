@@ -52,7 +52,5 @@ public class UsedBookRestController {
 	public UsedDto search(@PathVariable int storeBookNo) {
 		return usedDao.search(storeBookNo);
 	}
-	
-	
 
 }

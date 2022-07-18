@@ -144,7 +144,6 @@
          });
       });
    });
->>>>>>> refs/remotes/origin/main
 </script>
 </head>
 
