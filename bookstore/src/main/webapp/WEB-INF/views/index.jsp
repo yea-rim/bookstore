@@ -10,102 +10,18 @@
             <div class="row">
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="image/banner/banner-1.jpg" alt="">
+                        <img src="https://blog.kakaocdn.net/dn/sAjmN/btrHEdCTlqx/bIMI1AHf1pvnWAe4Ry8Rg0/img.png" alt="">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="banner__pic">
-                        <img src="image/banner/banner-2.jpg" alt="">
+                        <img src="https://blog.kakaocdn.net/dn/I6seM/btrHAIqRpgS/xHdkKRVueTe3wO6mqjUub1/img.png" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </div>
 <!--     Banner End -->
-
-<!-- Categories Section Begin -->
-<!-- 도서  -->
-<!-- <section class="categories"> -->
-<!-- 	<div class="container"> -->
-<!-- 		<div class="row"> -->
-<!-- 			<div class="categories__slider owl-carousel"> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-1.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">소설</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-2.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">자기계발</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-3.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">시/에세이</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-4.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">인문</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">컴퓨터/IT</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">참고서</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">어린이</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">취미</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 				<div class="col-lg-3"> -->
-<!-- 					<div class="categories__item set-bg" -->
-<!-- 						data-setbg="image/categories/cat-5.jpg"> -->
-<!-- 						<h5> -->
-<!-- 							<a href="#">만화</a> -->
-<!-- 						</h5> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
-<!-- </section> -->
-<!-- Categories Section End -->
 
     <!-- Latest Product Section Begin -->
     <section class="latest-product spad">
@@ -118,7 +34,7 @@
                             <div class="latest-prdouct__slider__item">
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
+                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
@@ -127,7 +43,7 @@
                                 </a>
                                 <a href="#" class="latest-product__item">
                                     <div class="latest-product__item__pic">
-                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610" alt="">
+                                        <img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
                                     </div>
                                     <div class="latest-product__item__text">
                                         <h6>Crab Pool Security</h6>
