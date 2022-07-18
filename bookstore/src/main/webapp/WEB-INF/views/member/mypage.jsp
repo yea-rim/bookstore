@@ -46,7 +46,7 @@
 				<td>${memberDto.memberId}</td>
 			</tr>
 			<tr>
-				<th>닉네임</th>
+				<th>이름</th>
 				<td>${memberDto.memberNick}</td>
 			</tr>
 			<tr>

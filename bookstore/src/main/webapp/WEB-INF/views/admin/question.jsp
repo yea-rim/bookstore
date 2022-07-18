@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
 
-<jsp:include page="/WEB-INF/views/admin/header.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -11,7 +11,7 @@
                     <div class="breadcrumb__text">
                         <h2>1:1 문의 관리 페이지</h2>
                         <div class="breadcrumb__option">
-                            <a href="http://localhost:8080/bookstore/admin/">Home</a>
+   							<a href="http://localhost:8080/bookstore/admin/book">Home</a>
                             <span>관리자 페이지</span>
                         </div>
                     </div>
@@ -31,8 +31,8 @@
 							<li><a href="${root}/lib">도서관 관리</a></li>
 							<li><a href="${root}/member">회원 관리</a></li>
 							<li><a href="${root}/delivery">배송 관리</a></li>
-							<li><a href="${root}/question">1:1 관리</a></li>
-							<li><a href="${root}/notice">공지사항 관리</a></li>
+							<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
+							<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
 							<li><a href="${root}/faq">faq 관리</a></li>
                         </ul>
                     </nav>
@@ -206,4 +206,4 @@
 	});
 	app.mount("#app");
 </script>
-<jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include>
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

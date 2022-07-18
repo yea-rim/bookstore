@@ -16,4 +16,6 @@ public class ReplyDto {
 	private String replyContent;
 	private int replyTarget;
 	private Date replyTime;
+	private String replyWriter;
 }
+

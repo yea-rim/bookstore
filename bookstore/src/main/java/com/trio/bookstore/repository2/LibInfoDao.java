@@ -18,4 +18,6 @@ public interface LibInfoDao {
 
 	List<LibInfoDto> findLib(int libInfoNo);
 
+	List<LibInfoDto> findGu(String libraryGu);
+
 }

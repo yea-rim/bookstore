@@ -90,6 +90,6 @@ public class BookController {
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto",bookDto);
 		return "book/detail";
-		
+
 	}
 }
