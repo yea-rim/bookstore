@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BasketDto;
+import com.trio.bookstore.entity.PayDto;
 import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.entity.UsedDto;
 import com.trio.bookstore.repository2.BasketDao;
@@ -263,6 +264,21 @@ public class PayController2 {
 		}
 		
 		return "redirect: book/detail?ok&bookNo="+bookNo;
+	}
+	
+	//결제내역
+	@GetMapping("/payList")
+	public String payList(HttpSession session,Model model) {
+		String memberId = (String)session.getAttribute("login");
+		String auth = (String)session.getAttribute("auth");
+		model.addAttribute("login",memberId);
+		//로그인된 아이디(일반회원일때 결제내역에 기본주소 데이터 보내기
+		if(auth.equals("일반회원")) {
+			
+		List<PayDto> payList = payDao.find(memberId);
+		model.addAttribute("payList",payList);
+		}
+		return "pay/payList";
 	}
 
 }

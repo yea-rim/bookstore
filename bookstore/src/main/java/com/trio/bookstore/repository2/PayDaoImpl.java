@@ -82,4 +82,9 @@ public List<PayListVO> treeList() {
 	
 	return sqlSession.selectList("pay.treeSearch");
 }
+
+@Override
+public List<PayDto> find(String memberId) {
+	return sqlSession.selectList("pay.payList",memberId);
+}
 }

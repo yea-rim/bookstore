@@ -16,6 +16,11 @@ public class PayDto {
 	private Date payTime;
 	private String payTid;
 	private String payStatus;
-	
+	private String payDelivery;
+	//조인해서 멤버 주소 넣음
+	private String memberPost;
+	private String memberBasicAddress;
+	private String memberDetailAddress;
+
 }
 
