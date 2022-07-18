@@ -50,7 +50,7 @@
                					<tr>
                						<th><h5>이름 *</h5><th>
                						<td><input type = "text" name = "memberName"></td>
-               					<tr>
+               					<tr> 
                					<tr>
                						<th><h5>이름 *</h5><th>
                						<td><input type = "text" name = "memberName"></td>
