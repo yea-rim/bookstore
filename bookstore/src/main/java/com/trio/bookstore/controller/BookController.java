@@ -61,7 +61,7 @@ public class BookController {
 			endBlock = lastPage;
 		}
 
-		
+		model.addAttribute("count",count);
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
 		model.addAttribute("type", type);
@@ -72,45 +72,87 @@ public class BookController {
 
 		return "book/list";
 	}
-	//도서목록 페이지(도서분류로 조회할때)
-		@RequestMapping("/list1")
-		public String list1( 
-						@RequestParam(required = false, defaultValue = "1") int page,
-						@RequestParam(required = false, defaultValue = "10") int size,
-						@RequestParam(required = false, defaultValue = "0") int typeNumber1,
-						@RequestParam(required = false, defaultValue = "0") int typeNumber2,
-						Model model) {
-		
-			
-//			List<BookDto> list = bookDao.list(type, keyword, page, size);
-			List<BookDto> list = bookDao.list(typeNumber1,typeNumber2,page,size);
-			model.addAttribute("list", list);
 
-			//typeNumber1,2가 있다는조건문
-			boolean search = typeNumber1 > 0 && typeNumber2 > 0;
-			model.addAttribute("search", search);
-			
-			int count = bookDao.count(typeNumber1, typeNumber2);
-			int lastPage = (count + size - 1) / size;
+		//도서목록 페이지(대분류 가져오기)
+				@RequestMapping("/list1")
+				public String list2( 
+								@RequestParam(required = false, defaultValue = "1") int page,
+								@RequestParam(required = false, defaultValue = "10") int size,
+								@RequestParam(required = false, defaultValue = "0") int typeNumber1,
+								@RequestParam(required = false, defaultValue = "0") int typeNumber2,
+								Model model) {
+				
+					
+//					List<BookDto> list = bookDao.list(type, keyword, page, size);
+					List<BookDto> list = bookDao.list(typeNumber1,typeNumber2,page,size);
+					model.addAttribute("list", list);
 
-			int blockSize = 10;
-			int endBlock = (page + blockSize - 1) / blockSize * blockSize;
-			int startBlock = endBlock - (blockSize - 1);
-			if (endBlock > lastPage) {
-				endBlock = lastPage;
-			}
+					//typeNumber1,2가 있다는조건문
+					boolean search = typeNumber1 > 0 && typeNumber2 > 0;
+					model.addAttribute("search", search);
+					
+					int count = bookDao.count(typeNumber1, typeNumber2);
+					int lastPage = (count + size - 1) / size;
 
-			
-			model.addAttribute("page", page);
-			model.addAttribute("size", size);
-			model.addAttribute("typeNumber1", typeNumber1);
-			model.addAttribute("typeNumber2", typeNumber2);
-			model.addAttribute("startBlock", startBlock);
-			model.addAttribute("endBlock", endBlock);
-			model.addAttribute("lastPage", lastPage);
+					int blockSize = 10;
+					int endBlock = (page + blockSize - 1) / blockSize * blockSize;
+					int startBlock = endBlock - (blockSize - 1);
+					if (endBlock > lastPage) {
+						endBlock = lastPage;
+					}
 
-			return "book/list2";
-		}
+					
+
+					model.addAttribute("count",count);
+					model.addAttribute("page", page);
+					model.addAttribute("size", size);
+					model.addAttribute("typeNumber1", typeNumber1);
+					model.addAttribute("typeNumber2", typeNumber2);
+					model.addAttribute("startBlock", startBlock);
+					model.addAttribute("endBlock", endBlock);
+					model.addAttribute("lastPage", lastPage);
+
+					return "book/list2";
+				}
+				
+				//도서목록 페이지(도서분류로 조회할때-소분류)
+				@RequestMapping("/list2")
+				public String list1( 
+								@RequestParam(required = false, defaultValue = "1") int page,
+								@RequestParam(required = false, defaultValue = "10") int size,
+								@RequestParam(required = false, defaultValue = "0") int typeNumber1,
+								Model model) {
+				
+					
+//					List<BookDto> list = bookDao.list(type, keyword, page, size);
+					List<BookDto> list = bookDao.list(typeNumber1,page,size);
+					model.addAttribute("list", list);
+
+					//typeNumber1 있다는조건문
+					boolean search = typeNumber1 > 0 ;
+					model.addAttribute("search", search);
+					
+					int count = bookDao.count(typeNumber1);
+					int lastPage = (count + size - 1) / size;
+
+					int blockSize = 10;
+					int endBlock = (page + blockSize - 1) / blockSize * blockSize;
+					int startBlock = endBlock - (blockSize - 1);
+					if (endBlock > lastPage) {
+						endBlock = lastPage;
+					}
+
+
+					model.addAttribute("count",count);
+					model.addAttribute("page", page);
+					model.addAttribute("size", size);
+					model.addAttribute("typeNumber1", typeNumber1);
+					model.addAttribute("startBlock", startBlock);
+					model.addAttribute("endBlock", endBlock);
+					model.addAttribute("lastPage", lastPage);
+
+					return "book/list3";
+				}
 	@GetMapping("/detail")
 	public String detail(@RequestParam int bookNo, Model model) {
 

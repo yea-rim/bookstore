@@ -21,16 +21,22 @@ public interface BookDao {
 	List<BookDto> list(String type, String keyword, int page, int size);
 	//type,keyword
 	int count(String type, String keyword);
-	//도서 분류범위로 나오는 칼럼개수
+	//도서 분류범위로 나오는 칼럼개수(대분류)
 	int count(int typeNumber1, int typeNumber2);
-
+	//도서 분류번호로 나오는 칼럼개수(소분류)
+	int count(int typeNumber1);
+	
 	BookDto find(int bookNo);
 
 	BookDto bookSearch(int bookNo);
 
 	List<BookDto> bookType(int bookType);
-	//-도서 목록 조회(도서 분류로만 조회할때)
+	//-도서 목록 조회(도서 분류로만 조회할때- 대분류 10단위로)
 	List<BookDto> list(int typeNumber1, int typeNumber2,int page,int size);
+	//-도서 목록 조회(소분류)
+	List<BookDto> list(int typeNumber1, int page, int size);
+
+	
 
 
 }

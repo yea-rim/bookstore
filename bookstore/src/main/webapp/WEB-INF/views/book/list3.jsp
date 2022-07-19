@@ -103,10 +103,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list1?page=1&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&laquo;</a>
+									href="list2?page=1&size=${size}&typeNumber1=${typeNumber1}">&laquo;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list1?page=1&size=${size }">&laquo;</a>
+								<a href="list2?page=1&size=${size }">&laquo;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -115,10 +115,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list1?page=${startBlock-1}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&laquo;</a>
+									href="list2?page=${startBlock-1}&size=${size}&typeNumber1=${typeNumber1}">&laquo;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list1?page=${startBlock-1}&size=${size}">&laquo;</a>
+								<a href="list2?page=${startBlock-1}&size=${size}">&laquo;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -130,21 +130,21 @@
 								<c:choose>
 									<c:when test="${i == page}">
 										<a class="active"
-											href="list1?page=${i}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">${i}</a>
+											href="list2?page=${i}&size=${size}&typeNumber1=${typeNumber1}">${i}</a>
 									</c:when>
 									<c:otherwise>
 										<a
-											href="list1?page=${i}&s=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">${i}</a>
+											href="list2?page=${i}&s=${size}&typeNumber1=${typeNumber1}">${i}</a>
 									</c:otherwise>
 								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<c:choose>
 									<c:when test="${i == page}">
-										<a class="active" href="list1?page=${i}&size=${size}">${i}</a>
+										<a class="active" href="list2?page=${i}&size=${size}">${i}</a>
 									</c:when>
 									<c:otherwise>
-										<a href="list1?page=${i}&size=${size}">${i}</a>
+										<a href="list2?page=${i}&size=${size}">${i}</a>
 									</c:otherwise>
 								</c:choose>
 							</c:otherwise>
@@ -156,10 +156,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list1?page=${endBlock+1}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&gt;</a>
+									href="list2?page=${endBlock+1}&size=${size}&typeNumber1=${typeNumber1}">&gt;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list1?page=${endBlock+1}&size=${size}">&gt;</a>
+								<a href="list2?page=${endBlock+1}&size=${size}">&gt;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -168,10 +168,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list1?page=${lastPage}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&raquo;</a>
+									href="list2?page=${lastPage}&size=${size}&typeNumber1=${typeNumber1}">&raquo;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list1?page=${lastPage}&size=${size}">&raquo;</a>
+								<a href="list2?page=${lastPage}&size=${size}">&raquo;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
