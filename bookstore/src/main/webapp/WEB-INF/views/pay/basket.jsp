@@ -25,11 +25,11 @@
     <!-- Shoping Cart Section Begin -->
     <section class="shoping-cart spad">
         <div id = "app" class="container" width = "850px">
-                    	<form action = "${pageContext.request.contextPath }/pay" method = "post">
             <div class="row" >
+                    	<form @submit.prevent="sendPost" action = "${pageContext.request.contextPath }/pay2" method = "post">
                 <div class="col-lg-12" >
                     <div class="shoping__cart__table">
-                         <table>
+                     	 <table>
                             <thead>
                                 <tr>
                                     <th class="shoping__product" colspan = "2">상품정보</th>
@@ -40,16 +40,16 @@
                                 </tr>
                             </thead>
                             <tbody >
-                                
                                 <tr v-for = "(basket, index) in dataList" v-bind:key="index" >
                                 <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">                                   
                                    	<div>
 <%-- 									<c:set var="i" value = "{{index}}"/> --%>
-                                   	<input v-if = "storeSeen(index)" type = "hidden" name = "bookNo" :value = "basket.basketBookNo" v-model="storeCheck()" >
-                                   	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
+                                   	<input v-if = "storeSeen(index)" type = "hidden" :name = "store(index)" :value = "basket.basketBookNo" >
+                                   	<input v-if = "storeSeen(index)" type = "hidden" :name = "storeQuantity(index)" :value = "basket.basketAmount" >
 									
 									<input v-if = "usedSeen(index)" type = "hidden" :name = "used(index)" :value = "basket.basketUsedNo">                                   	
+									<input v-if = "usedSeen(index)" type = "hidden" :name = "usedQuantity(index)" :value = "basket.basketAmount">                                   	
                                    	</div>
 									<img :src= "basket.basketBookImage"/>
 								</td>
@@ -82,6 +82,8 @@
                                
                             </tbody>
                         </table>
+<!--                            </form> -->
+                        
                     </div>
                 </div>
             </div>
@@ -100,7 +102,7 @@
 <!--                             <form action="#"> -->
 <!--                                 <input type="text" placeholder="Enter your coupon code"> -->
 <!--                                 <button type="submit" class="site-btn">APPLY COUPON</button> -->
-                            </form>
+                            
 <!--                         </div> -->
 <!--                     </div> -->
 <!--                 </div> -->
@@ -113,10 +115,11 @@
                         </ul>
 <!--                         <a href="#" class="primary-btn">주문하기</a> -->
                       	<input type = "submit" value = "주문하기" class = "primary-btn">
-<!--                       	</form> -->
                         
                     </div>
                 </div>
+                
+           	</form>
             </div>
         </div>
     </section>
@@ -149,7 +152,9 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
-            	
+            	sendPost() {
+						axios.post('')
+            	},
 				
             	storeCheck(index){
             		this.storeCheck.push(index);
@@ -162,6 +167,15 @@
 				},
          		used(index) {
          			return "used["+index+"].usedNo";
+         		},
+         		usedQuantity(index) {
+         			return "used["+index+"].quantity";
+         		},
+         		store(index) {
+         			return "store["+index+"].storeNo";
+         		},
+         		storeQuantity(index) {
+         			return "store["+index+"].quantity";
          		},
             	
          		//쇼핑몰이면서 체크박스에 체크되었을떄만

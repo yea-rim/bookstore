@@ -123,8 +123,8 @@ public class MemberDaoMybatis implements MemberDao{
 	}
 
 	@Override
-	public MemberDto findId(String memberId) {
-		return sqlSession.selectOne("member.hanseok",memberId);
+	public MemberDto findId(String query) {
+		return sqlSession.selectOne("member.hanseok",query);
 	}
 	
 }

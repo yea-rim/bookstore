@@ -208,7 +208,7 @@
                      <ul>
 <%--                         <li>상품금액 <span>${total}원</span></li> --%>
 <!--                         <li>할인금액<span>적림금 안해줄거야</span></li> -->
-                        <li>Total <span>${total}원</span></li>
+                        <li>결제금액 <span>${total}원</span></li>
                      </ul>
                      <input type="submit" class="primary-btn" value="결제하기">
                   </div>
@@ -252,7 +252,7 @@
                readMember(){
                 const query = "${login}";
                 axios({
-                   url:"${pageContext.request.contextPath}/rest/basket/" + query,
+                   url:"${pageContext.request.contextPath}/rest/basket/member/" + query,
                    method:"get",
                    data: this.currentData,
                 })

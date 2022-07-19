@@ -81,9 +81,9 @@
 											<button class="btn site-btn m-2"><a href = ""></a>
 												<i class="fa fa-shopping-bag"></i>
 											</button>
-											<button class="btn site-btn m-2">
+											<a href = "${pageContext.request.contextPath}/pay?bookNo=${bookDto.bookNo}&storeAmount=1"><button class="btn site-btn m-2">
 												<i class="fa fa-credit-card"></i>
-											</button>
+											</button></a>
 										</td>
 									</tr>
 								</tbody>

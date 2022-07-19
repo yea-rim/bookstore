@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BasketDto;
@@ -32,6 +33,8 @@ import com.trio.bookstore.vo.KakaoPayApproveRequestVO;
 import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
 import com.trio.bookstore.vo.KakaoPayReadyRequestVO;
 import com.trio.bookstore.vo.KakaoPayReadyResponseVO;
+import com.trio.bookstore.vo.StorePayListVO;
+import com.trio.bookstore.vo.StorePayVO;
 import com.trio.bookstore.vo.UsedPayListVO;
 import com.trio.bookstore.vo.UsedPayVO;
 
@@ -57,7 +60,7 @@ public class PayController2 {
 	@Autowired
 	private PayService payService;
 	//결제 페이지로 가는컨트롤러
-	@PostMapping("/pay")
+	@RequestMapping("/pay")
 	public String pay(@RequestParam int bookNo,
 					  @RequestParam int storeAmount,
 					  @ModelAttribute UsedPayListVO listVO,
@@ -106,7 +109,70 @@ public class PayController2 {
 
 		return "pay/pay";
 	}
+	//장바구니에서 결제페이지로 가는 기능
+	@PostMapping("/pay2")
+	public String pay2(@ModelAttribute StorePayListVO basketStoreList,
+					  @ModelAttribute UsedPayListVO basketUsedList,
+					  HttpSession session,
+					  Model model
+			) {
+		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
+		String login = (String)session.getAttribute("login");
+		model.addAttribute("login",login);
+//		if(storeAmount == 0 && listVO.getUsed() == null) {
+//		}
+		log.debug("쇼핑몰 = {}",basketStoreList);
+		log.debug("중고 = {}",basketUsedList);
+		if(basketStoreList == null && basketUsedList == null) {
+			return "redirect:basket?error";
+		}
 
+		int total = 0;
+		//쇼핑몰책 수량
+//			model.addAttribute("storeList",basketStoreList);
+		if(basketStoreList.getStored() != null) {
+			List<StoreDto> storeList = new ArrayList<>();
+			for(StorePayVO storePayVO : basketStoreList.getStored()) {
+				//중고테이블 기본키인 중고번호로 단일조회
+				StoreDto storeDto = storeDao.find(storePayVO.getStoreNo());
+				if(storeDto == null || storeDto.getStoreBookNo() == 0) continue;
+				total+= storeDto.getStorePrice()*storePayVO.getQuantity();
+				//임의로 만든 중고 리스트에 추가
+				log.debug("hanseok5={}",total);
+
+				storeList.add(storeDto);
+			}
+			log.debug("쇼핑몰 리스트={}",storeList);
+			model.addAttribute("storeList",storeList);
+		}
+		//쇼핑몰책 데이터 가져오기
+//		StoreDto storeDto = storeDao.find(bookNo);
+//		model.addAttribute("storeDto",storeDto);
+		
+//		total += storeDto.getStorePrice() * storeAmount;
+		
+		//중고책 가져오기
+		if(basketUsedList.getUsed() != null) {
+			
+		List<UsedDto> usedList = new ArrayList<>();
+		for(UsedPayVO usedPayVO : basketUsedList.getUsed()) {
+			//중고테이블 기본키인 중고번호로 단일조회
+			UsedDto usedDto = usedDao.findUsed(usedPayVO.getUsedNo());
+			if(usedDto == null || usedDto.getUsedNo() == 0) continue;
+			total+= usedDto.getUsedPrice()*usedPayVO.getQuantity();
+			//임의로 만든 중고 리스트에 추가
+			log.debug("hanseok5={}",total);
+
+			usedList.add(usedDto);
+		}
+		log.debug("아니={}",usedList);
+		model.addAttribute("usedList",usedList);
+
+		}
+		model.addAttribute("total",total);
+
+		return "pay/pay";
+	}
 	//결제구현 컨트롤러
 	@GetMapping("/pay/purchase")
 	public String purchase(@ModelAttribute FinalStoreListVO storeListVO,
