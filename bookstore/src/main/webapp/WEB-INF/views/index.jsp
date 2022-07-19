@@ -11,65 +11,65 @@
 		<li>
 		<a href="${pageContext.request.contextPath}/book/list1?typeNumber1=10&typeNumber2=19">소설</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">로맨스 소설</a></li>
-				<li><a href="#">추리 소설</a></li>
-				<li><a href="#">전쟁/역사 소설</a></li>
-				<li><a href="#">공포/스릴러 소설</a></li>
-				<li><a href="#">판타지 소설</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=11">로맨스 소설</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=12">추리 소설</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=13">전쟁/역사 소설</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=14">공포/스릴러 소설</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=15">판타지 소설</a></li>
 			</ul></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=20&typeNumber2=29">자기계발</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">경제/부동산</a></li>
-				<li><a href="#">시간 관리</a></li>
-				<li><a href="#">인간 관계</a></li>
-				<li><a href="#">대화/협상</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=21">경제/부동산</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=22">시간 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=23">인간 관계</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=24">대화/협상</a></li>
 			</ul></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=30&typeNumber2=39">시/에세이</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">한국시</a></li>
-				<li><a href="#">외국시</a></li>
-				<li><a href="#">성공 에세이</a></li>
-				<li><a href="#">여행 에세이</a></li>
-				<li><a href="#">연애 에세이</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=31">한국시</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=32">외국시</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=33">성공 에세이</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=34">여행 에세이</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=35">연애 에세이</a></li>
 			</ul></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=40&typeNumber2=49">인문</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">시사/사회</a></li>
-				<li><a href="#">경제/경영</a></li>
-				<li><a href="#">종교</a></li>
-				<li><a href="#">행정/정치</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=41">시사/사회</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=42">경제/경영</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=43">종교</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=44">행정/정치</a></li>
 			</ul></li>  
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=50&typeNumber2=59">컴퓨터</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">웹/홈페이지</a></li>
-				<li><a href="#">컴퓨터 입문/활용</a></li>
-				<li><a href="#">프로그래밍 언어</a></li>
-				<li><a href="#">개발/OS/데이터베이스</a></li>
-				<li><a href="#">네트워크 보안</a></li>
-				<li><a href="#">컴퓨터 공학</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=51">웹/홈페이지</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=52">컴퓨터 입문/활용</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=53">프로그래밍 언어</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=54">개발/OS/데이터베이스</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=55">네트워크 보안</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=56">컴퓨터 공학</a></li>
 			</ul></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=60&typeNumber2=69">참고서</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">국어/문학</a></li>
-				<li><a href="#">외국어</a></li>
-				<li><a href="#">수학</a></li>
-				<li><a href="#">고시</a></li>
-				<li><a href="#">공무원</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=61">국어/문학</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=62">외국어</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=63">수학</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=64">고시</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=65">공무원</a></li>
 			</ul></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=70&typeNumber2=79">어린이</a></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=80&typeNumber2=89">취미</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">가정/육아</a></li>
-				<li><a href="#">건강</a></li>
-				<li><a href="#">여행</a></li>
-				<li><a href="#">요리</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=81">가정/육아</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=82">건강</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=83">여행</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=84">요리</a></li>
 			</ul></li>
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=90&typeNumber2=99">만화</a>
 			<ul class="header__menu__dropdown">
-				<li><a href="#">학원 만화</a></li>
-				<li><a href="#">스포츠 만화</a></li>
-				<li><a href="#">순정 만화</a></li>
-				<li><a href="#">기타 만화</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=91">학원 만화</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=92">스포츠 만화</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=93">순정 만화</a></li>
+				<li><a href="${pageContext.request.contextPath}/book/list2?typeNumber1=94">기타 만화</a></li>
 			</ul></li>
 	</ul>
 </nav>

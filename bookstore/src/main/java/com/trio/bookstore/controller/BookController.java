@@ -61,7 +61,7 @@ public class BookController {
 			endBlock = lastPage;
 		}
 
-		
+		model.addAttribute("count",count);
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
 		model.addAttribute("type", type);
@@ -102,6 +102,8 @@ public class BookController {
 					}
 
 					
+
+					model.addAttribute("count",count);
 					model.addAttribute("page", page);
 					model.addAttribute("size", size);
 					model.addAttribute("typeNumber1", typeNumber1);
@@ -114,7 +116,7 @@ public class BookController {
 				}
 				
 				//도서목록 페이지(도서분류로 조회할때-소분류)
-				@RequestMapping("/list1")
+				@RequestMapping("/list2")
 				public String list1( 
 								@RequestParam(required = false, defaultValue = "1") int page,
 								@RequestParam(required = false, defaultValue = "10") int size,
@@ -140,7 +142,8 @@ public class BookController {
 						endBlock = lastPage;
 					}
 
-					
+
+					model.addAttribute("count",count);
 					model.addAttribute("page", page);
 					model.addAttribute("size", size);
 					model.addAttribute("typeNumber1", typeNumber1);

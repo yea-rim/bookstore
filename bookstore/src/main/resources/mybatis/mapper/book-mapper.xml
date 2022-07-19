@@ -81,7 +81,7 @@
 		</if>
 	</select>
 	<!-- 도서분류 소분류로 구하기 -->
-	<select id="Hcount2" parameterType="int" resultType="int">
+	<select id="Hcount3" parameterType="int" resultType="int">
 		select count(*) from book
 		<if test = "typeNumber1 >0">
 				where book_type  = #{typeNumber1} 
