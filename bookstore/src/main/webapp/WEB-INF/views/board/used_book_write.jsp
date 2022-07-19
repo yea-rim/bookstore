@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
 	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 <form action="write" method="post">
-	<input type="hidden" name="boardHead" value="문의">
+	<input type="hidden" name="boardHead" value="중고">
 
 
 	<div class="container w800 m30">

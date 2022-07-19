@@ -101,7 +101,7 @@ public class BoardController {
 	@GetMapping("/notice_list")
 	public String list2(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
 			@RequestParam(required = false, defaultValue = "1") int p,
-			@RequestParam(required = false, defaultValue = "10") int s, Model model) {
+			@RequestParam(required = false, defaultValue = "10") int s, Model model,HttpSession session) {
 		List<BoardDto> list2 = boardDao.list2(type, keyword, p, s);
 		model.addAttribute("list2", list2);
 
@@ -125,6 +125,10 @@ public class BoardController {
 		model.addAttribute("startBlock", startBlock);
 		model.addAttribute("endBlock", endBlock);
 		model.addAttribute("lastPage", lastPage);
+		
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
 
 		return "board/notice_list";
 	}
@@ -164,6 +168,42 @@ public class BoardController {
 		model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("isUser", isUser);
 		return "board/qna_list";
+	}
+	@GetMapping("/used_book_list")
+	public String list4(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
+			@RequestParam(required = false, defaultValue = "1") int p,
+			@RequestParam(required = false, defaultValue = "10") int s, Model model,HttpSession session) {
+		List<BoardDto> list4 = boardDao.list4(type, keyword, p, s);
+		model.addAttribute("list4", list4);
+
+		boolean search = type != null && keyword != null;
+		model.addAttribute("search", search);
+
+		int count3 = boardDao.count4(type, keyword);
+		int lastPage = (count3 + s - 1) / s;
+
+		int blockSize = 10;// 블록 크기
+		int endBlock = (p + blockSize - 1) / blockSize * blockSize;
+		int startBlock = endBlock - (blockSize - 1);
+		if (endBlock > lastPage) {
+			endBlock = lastPage;
+		}
+
+		model.addAttribute("p", p);
+		model.addAttribute("s", s);
+		model.addAttribute("type", type);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("startBlock", startBlock);
+		model.addAttribute("endBlock", endBlock);
+		model.addAttribute("lastPage", lastPage);
+
+		
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isAdmin", isAdmin);
+		model.addAttribute("isUser", isUser);
+		return "board/used_book_list";
 	}
 
 	@GetMapping("/detail")
@@ -368,6 +408,26 @@ public class BoardController {
 
 	@PostMapping("/qna_write")
 	public String write3(@ModelAttribute BoardDto boardDto, HttpSession session, RedirectAttributes attr) {
+
+		String memberId = (String) session.getAttribute("login");
+		boardDto.setBoardWriter(memberId);
+
+		int boardNo = boardDao.write(boardDto);
+
+		attr.addAttribute("boardNo", boardNo);
+		return "redirect:detail";
+	}
+	
+	@GetMapping("/used_book_write")
+	public String write4(@RequestParam(required = false, defaultValue = "0") int sn, Model model) {
+		if (sn > 0) {
+			model.addAttribute("sn", sn);
+		}
+		return "board/used_book_write";
+	}
+
+	@PostMapping("/used_book_write")
+	public String write4(@ModelAttribute BoardDto boardDto, HttpSession session, RedirectAttributes attr) {
 
 		String memberId = (String) session.getAttribute("login");
 		boardDto.setBoardWriter(memberId);

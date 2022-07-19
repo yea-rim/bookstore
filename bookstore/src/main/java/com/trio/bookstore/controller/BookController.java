@@ -17,6 +17,9 @@ import com.trio.bookstore.repository2.BookDao;
 import com.trio.bookstore.repository2.StoreDao;
 import com.trio.bookstore.repository2.UsedDao;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RequestMapping("/book")
 @Controller
 public class BookController {
@@ -29,19 +32,25 @@ public class BookController {
 
 	@Autowired
 	private StoreDao storeDao;
-
+	
 	// 도서목록 페이지
 	@RequestMapping("/list")
-	public String list(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
-			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "10") int size, Model model) {
-
+	public String list(@RequestParam(required = false) String type, 
+					@RequestParam(required = false) String keyword,
+					@RequestParam(required = false, defaultValue = "1") int page,
+					@RequestParam(required = false, defaultValue = "10") int size,
+					Model model) {
+	
+		
 		List<BookDto> list = bookDao.list(type, keyword, page, size);
 		model.addAttribute("list", list);
 
+		//페이지쪽 데이터 생성하는것
+		//type keyword 있을때에 조건문이니 typeNumber1,2있을떄 에 조건도 보내는 거 맞지않을까?
+		//if문으로 해서 해볼까?
 		boolean search = type != null && keyword != null;
 		model.addAttribute("search", search);
-
+		
 		int count = bookDao.count(type, keyword);
 		int lastPage = (count + size - 1) / size;
 
@@ -52,6 +61,7 @@ public class BookController {
 			endBlock = lastPage;
 		}
 
+		
 		model.addAttribute("page", page);
 		model.addAttribute("size", size);
 		model.addAttribute("type", type);
@@ -62,7 +72,45 @@ public class BookController {
 
 		return "book/list";
 	}
+	//도서목록 페이지(도서분류로 조회할때)
+		@RequestMapping("/list1")
+		public String list1( 
+						@RequestParam(required = false, defaultValue = "1") int page,
+						@RequestParam(required = false, defaultValue = "10") int size,
+						@RequestParam(required = false, defaultValue = "0") int typeNumber1,
+						@RequestParam(required = false, defaultValue = "0") int typeNumber2,
+						Model model) {
+		
+			
+//			List<BookDto> list = bookDao.list(type, keyword, page, size);
+			List<BookDto> list = bookDao.list(typeNumber1,typeNumber2,page,size);
+			model.addAttribute("list", list);
 
+			//typeNumber1,2가 있다는조건문
+			boolean search = typeNumber1 > 0 && typeNumber2 > 0;
+			model.addAttribute("search", search);
+			
+			int count = bookDao.count(typeNumber1, typeNumber2);
+			int lastPage = (count + size - 1) / size;
+
+			int blockSize = 10;
+			int endBlock = (page + blockSize - 1) / blockSize * blockSize;
+			int startBlock = endBlock - (blockSize - 1);
+			if (endBlock > lastPage) {
+				endBlock = lastPage;
+			}
+
+			
+			model.addAttribute("page", page);
+			model.addAttribute("size", size);
+			model.addAttribute("typeNumber1", typeNumber1);
+			model.addAttribute("typeNumber2", typeNumber2);
+			model.addAttribute("startBlock", startBlock);
+			model.addAttribute("endBlock", endBlock);
+			model.addAttribute("lastPage", lastPage);
+
+			return "book/list2";
+		}
 	@GetMapping("/detail")
 	public String detail(@RequestParam int bookNo, Model model) {
 

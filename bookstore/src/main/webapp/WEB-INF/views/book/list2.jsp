@@ -96,17 +96,17 @@
 
 
 
-
+<!-- 				pagination -->
 				<!-- 타입이나 키워드 등 검색 조회 늘어나면 수정 할 수도 있음 -->
 				<div class="product__pagination text-center">
 					<c:if test="${page > 1 }">
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list?page=1&size=${size}&type=${type}&keyword=${keyword}">&laquo;</a>
+									href="list1?page=1&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&laquo;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list?page=1&size=${size }">&laquo;</a>
+								<a href="list1?page=1&size=${size }">&laquo;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -115,10 +115,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list?page=${startBlock-1}&size=${size}&type=${type}&keyword=${keyword}">&laquo;</a>
+									href="list1?page=${startBlock-1}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&laquo;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list?page=${startBlock-1}&size=${size}">&laquo;</a>
+								<a href="list1?page=${startBlock-1}&size=${size}">&laquo;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -130,21 +130,21 @@
 								<c:choose>
 									<c:when test="${i == page}">
 										<a class="active"
-											href="list?page=${i}&size=${size}&type=${type}&keyword=${keyword}">${i}</a>
+											href="list1?page=${i}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">${i}</a>
 									</c:when>
 									<c:otherwise>
 										<a
-											href="list?page=${i}&s=${size}&type=${type}&keyword=${keyword}">${i}</a>
+											href="list1?page=${i}&s=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">${i}</a>
 									</c:otherwise>
 								</c:choose>
 							</c:when>
 							<c:otherwise>
 								<c:choose>
 									<c:when test="${i == page}">
-										<a class="active" href="list?page=${i}&size=${size}">${i}</a>
+										<a class="active" href="list1?page=${i}&size=${size}">${i}</a>
 									</c:when>
 									<c:otherwise>
-										<a href="list?page=${i}&size=${size}">${i}</a>
+										<a href="list1?page=${i}&size=${size}">${i}</a>
 									</c:otherwise>
 								</c:choose>
 							</c:otherwise>
@@ -156,10 +156,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list?page=${endBlock+1}&size=${size}&type=${type}&keyword=${keyword}">&gt;</a>
+									href="list1?page=${endBlock+1}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&gt;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list?page=${endBlock+1}&size=${size}">&gt;</a>
+								<a href="list1?page=${endBlock+1}&size=${size}">&gt;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
@@ -168,10 +168,10 @@
 						<c:choose>
 							<c:when test="${search}">
 								<a
-									href="list?page=${lastPage}&size=${size}&type=${type}&keyword=${keyword}">&raquo;</a>
+									href="list1?page=${lastPage}&size=${size}&typeNumber1=${typeNumber1}&typeNumber2=${typeNumber2}">&raquo;</a>
 							</c:when>
 							<c:otherwise>
-								<a href="list?page=${lastPage}&size=${size}">&raquo;</a>
+								<a href="list1?page=${lastPage}&size=${size}">&raquo;</a>
 							</c:otherwise>
 						</c:choose>
 					</c:if>

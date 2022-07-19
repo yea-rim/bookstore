@@ -174,8 +174,8 @@ border-radius: 0.25em;
 		<div class="header__top__right__social">
 			<a href="${root}/"><i class="fa fa-facebook"></i></a> <a
 				href="${root}/"><i class="fa fa-twitter"></i></a> <a href="${root}/"><i
-				class="fa fa-linkedin"></i></a> <a href="${root}/"><i
-				class="fa fa-pinterest-p"></i></a>
+				class="fa fa-linkedin"></i></a> <a href="${root}/">
+				<i class="fa fa-pinterest-p"></i></a>
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
@@ -245,10 +245,7 @@ border-radius: 0.25em;
 							<li class="active"><a href="${root}/board/notice_list">공지사항</a></li>
 							<li><a href="${root}/lib/main">도서관</a></li>
 							<li><a href="${root}/book/list">북스토어</a></li>
-							<li><a href="${root}/used/list">중고 거래</a>
-								<ul class="header__menu__dropdown">
-	                            	<li><a href="${root}/used/write">중고 판매신청</a></li>
-								</ul></li>
+							<li><a href="${root}/board/used_book_write">중고 판매</a>
 							<li><a href="${root}/board/review_list">감상평</a></li>
 							<c:if test="${isAdmin}">
 							<li><a href="${root}/admin/book">관리자 페이지</a>
