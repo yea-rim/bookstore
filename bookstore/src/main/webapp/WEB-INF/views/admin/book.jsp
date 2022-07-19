@@ -35,7 +35,7 @@
 			<li><a href="${root}/member">회원 관리</a></li>
 			<li><a href="${root}/delivery">배송 관리</a></li>
 			<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
-			<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
+			<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
 			<li><a href="${root}/faq">faq 관리</a></li>
 		</ul>
 	</nav>

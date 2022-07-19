@@ -69,6 +69,19 @@ public class BoardDaoImpl implements BoardDao {
 		
 		return sqlSession.selectList("board.list3", param);
 	}
+	@Override
+	public List<BoardDto> list4(String type, String keyword, int page, int size) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		int end = page * size;
+		int begin = end - (size - 1);
+		param.put("begin", begin);
+		param.put("end", end);
+		
+		return sqlSession.selectList("board.list4", param);
+	}
 	
 	@Override
 	public int count(String type, String keyword) {
@@ -101,6 +114,14 @@ public class BoardDaoImpl implements BoardDao {
 		param.put("keyword", keyword);
 		
 		return sqlSession.selectOne("board.count3", param);
+	}
+	@Override
+	public int count4(String type, String keyword) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("type", type);
+		param.put("keyword", keyword);
+		
+		return sqlSession.selectOne("board.count4", param);
 	}
 	
 	@Override
