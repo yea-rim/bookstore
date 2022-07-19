@@ -31,9 +31,9 @@ public class BasketDaoImpl implements BasketDao {
 	}
 	
 	@Override
-	public List<BasketDto> list() {
+	public List<BasketDto> list(String memberId) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("basket.list");
+		return sqlSession.selectList("basket.list",memberId);
 	}
 	@Override
 	public void delete(int basketNo) {

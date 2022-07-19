@@ -5,8 +5,8 @@
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="basket">
 	<!-- 장바구니 목록 가져오기(시퀀스번호 오름차순)-->
-	<select id="list" resultType="BasketDto">
-		select * from basket order by basket_no asc
+	<select id="list" resultType="BasketDto" parameterType="String">
+		select * from basket where basket_member_id = #{memberId} order by basket_no asc
 	</select>
 	
 <!-- 	시퀀스 번호 생성 -->

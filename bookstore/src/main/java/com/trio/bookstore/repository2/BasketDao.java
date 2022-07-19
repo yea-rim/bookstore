@@ -11,7 +11,7 @@ public interface BasketDao {
 	void insert2(BasketDto basketDto);
 	
 	int sequence();
-	List<BasketDto> list();
+	List<BasketDto> list(String memberId);
 	void delete(int basketNo);
 
 		

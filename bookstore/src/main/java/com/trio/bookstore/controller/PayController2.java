@@ -206,7 +206,10 @@ public class PayController2 {
 	}
 	//장바구니 페이지 가는 기능
 	@GetMapping("/basket")
-	public String basket() {
+	public String basket(HttpSession session,
+						Model model) {
+		String memberId = (String)session.getAttribute("login");
+		model.addAttribute("memberId",memberId);
 		return "pay/basket";
 	}
 	

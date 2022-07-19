@@ -46,10 +46,10 @@
                                     <td class="shoping__cart__item">                                   
                                    	<div>
 <%-- 									<c:set var="i" value = "{{index}}"/> --%>
-                                   	<input v-if = "storeSeen(index)" type = "checkbox" name = "bookNo" :value = "basket.basketBookNo" v-model="storeCheck()" >
+                                   	<input v-if = "storeSeen(index)" type = "hidden" name = "bookNo" :value = "basket.basketBookNo" v-model="storeCheck()" >
                                    	<input v-if = "storeSeen(index)" type = "hidden" name = "storeAmount" :value = "basket.basketAmount" >
 									
-									<input v-if = "usedSeen(index)" type = "checkbox" :name = "used(index)" :value = "basket.basketUsedNo">                                   	
+									<input v-if = "usedSeen(index)" type = "hidden" :name = "used(index)" :value = "basket.basketUsedNo">                                   	
                                    	</div>
 									<img :src= "basket.basketBookImage"/>
 								</td>
@@ -136,11 +136,10 @@
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
-         
+         			memberId:"${memberId}",
                     dataList:[],
 					//쇼핑몰에 체크여부 데이터
                     storeCheck:false,         	
-                
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
@@ -150,6 +149,8 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
+            	
+				
             	storeCheck(index){
             		this.storeCheck.push(index);
             	},
@@ -196,7 +197,7 @@
             watch:{
                 
             },
-    		created(){
+            created(){
 //     			ajax 통신을 사용하여 exam list를 불러온다
 //     			1. jquery ajax를 이용하는 방법
 //     			const that = this;
@@ -218,7 +219,7 @@
 //     			2. axios 이용하는 방법
 //     			axios({옵션}).then(성공콜백).catch(에러콜백);
     				axios({
-    					url:"${pageContext.request.contextPath}/rest/basket/",
+    					url:"${pageContext.request.contextPath}/rest/basket/"+this.memberId,
     					method:"get"
     				})
     				.then((resp)=>{

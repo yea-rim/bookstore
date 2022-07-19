@@ -37,5 +37,5 @@ public interface MemberDao {
 
 	
 	//한석(아이디로 조회)
-	MemberDto findId(String query);
+	MemberDto findId(String memberId);
 }
