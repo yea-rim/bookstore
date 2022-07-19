@@ -203,8 +203,11 @@ border-radius: 0.25em;
 							<div class="header__top__right__social">
 								<a href="${root}/"><i class="fa fa-facebook"></i></a> <a
 									href="${root}/"><i class="fa fa-twitter"></i></a> <a
-									href="${root}/"><i class="fa fa-linkedin"></i></a> <a
-									href="${root}/"><i class="fa fa-pinterest-p"></i></a>
+									href="${root}/"><i class="fa fa-linkedin"></i></a>
+									<a href="${root}/"><i class="fa fa-pinterest-p"></i></a>
+									<a href="${root}/"><img src="https://blog.kakaocdn.net/dn/OcpVc/btrHHlioiV6/ALGCFcpLgHJsk4ZHdFWMQk/img.png" height="25px"> </i></a>
+									<a href="${root}/"><img src="https://blog.kakaocdn.net/dn/zEZRZ/btrHKcDZj7N/HXYMHqarSOktGKkxCTmIl0/img.png" height="20px"> </i></a>
+									<a href="${root}/"><img src="https://blog.kakaocdn.net/dn/b1t9yD/btrHKeaMB39/xiI9qixcQElnaPj3FntRt1/img.png" height="20px"> </i></a>
 							</div>
 							<c:choose>
 								<c:when test="${isLogin}">
