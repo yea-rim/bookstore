@@ -81,6 +81,12 @@ public class BookDaoImpl implements BookDao {
 
 		return sqlSession.selectOne("book.Hcount2", param);	
 	}
+	//도서분류 번호로 나오는 개수(소분류)
+	@Override
+	public int count(int typeNumber1) {
+			
+		return sqlSession.selectOne("book.Hcount3",typeNumber1);
+	}
 
 	@Override
 	public BookDto find(int bookNo) {
@@ -111,6 +117,19 @@ public class BookDaoImpl implements BookDao {
 		param.put("end", end);
 		
 		return sqlSession.selectList("book.han",param);
+	}
+	//소분류로 조회
+	@Override
+	public List<BookDto> list(int typeNumber1, int page, int size) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("typeNumber1", typeNumber1);
+		
+		int end = page * size;
+		int begin = end - (size - 1);
+
+		param.put("begin", begin);
+		param.put("end", end);
+		return sqlSession.selectList("book.han2",param);
 	}
 
 }

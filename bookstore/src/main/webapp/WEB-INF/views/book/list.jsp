@@ -43,7 +43,7 @@
 						<div class="col-lg-4 col-md-4">
 							<div class="filter__found">
 								<h6>
-									<span>16</span> Products found
+									<span>${count }</span> books found
 								</h6>
 							</div>
 						</div>
