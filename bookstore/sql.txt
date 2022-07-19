@@ -53,7 +53,7 @@ create sequence attachment_seq;
 create table board(
 board_no number primary key,
 board_title varchar2(300) not null,
-board_head varchar2(9) check(board_head in ('공지', '감상평', '문의')) null,
+board_head varchar2(9) check(board_head in ('공지', '감상평', '문의', '중고')) null,
 board_content varchar2(4000) not null,
 board_time date default sysdate not null,
 board_readcount number default 0 not null,
@@ -63,12 +63,15 @@ create sequence board_seq;
 create view board_notice as select * from board where board_head = '공지';
 create view board_qna as select * from board where board_head = '문의';
 create view board_review as select * from board where board_head = '감상평';
+create view board_used_book as select * from board where board_head = '감상평';
+
 
 -- 댓글 테이블 (reply)
 create table reply(
 reply_no number primary key,
 reply_content varchar2(600) not null,
 reply_time date default sysdate not null,
+reply_writer references member(member_id) on delete set null,
 reply_target references board(board_no) on delete cascade
 );
 create sequence reply_seq;
@@ -99,17 +102,11 @@ super_no references chatbot(chatbot_no) on delete cascade
 );
 create sequence chatbot_seq;
 
---게시판 파일 업로드 테이블 생성
-create table board_attachment (
-board_no references board(board_no) on delete cascade,
-attachment_no references attachment(attachment_no) on delete cascade,
-primary key(board_no, attachment_no)
-);
-
 --게시판 카테고리별 view
 create view board_notice as select * from board where board_head = '공지';
 create view board_qna as select * from board where board_head = '문의';
 create view board_review as select * from board where board_head = '감상평';
+create view board_usedbook as select * from board where board_head = '감상평';
 
 --
 

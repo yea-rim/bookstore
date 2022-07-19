@@ -10,10 +10,12 @@ public interface BoardDao {
 	List<BoardDto> list1(String type, String keyword, int page, int size);
 	List<BoardDto> list2(String type, String keyword, int page, int size);
 	List<BoardDto> list3(String type, String keyword, int page, int size);
+	List<BoardDto> list4(String type, String keyword, int page, int size);
 	int count(String type, String keyword);
 	int count1(String type, String keyword);
 	int count2(String type, String keyword);
 	int count3(String type, String keyword);
+	int count4(String type, String keyword);
 	
 	BoardDto info(int boardNo);
 	BoardDto read(int boardNo);
