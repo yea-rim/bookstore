@@ -29,8 +29,10 @@ public interface BookDao {
 	BookDto bookSearch(int bookNo);
 
 	List<BookDto> bookType(int bookType);
-	//-도서 목록 조회(도서 분류로만 조회할때)
+	//-도서 목록 조회(도서 분류로만 조회할때- 대분류 10단위로)
 	List<BookDto> list(int typeNumber1, int typeNumber2,int page,int size);
+	//-도서 목록 조회(소분류)
+	List<BookDto> list(int typeNumber1, int page, int size);
 
 
 }

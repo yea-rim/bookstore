@@ -112,5 +112,11 @@ public class BookDaoImpl implements BookDao {
 		
 		return sqlSession.selectList("book.han",param);
 	}
+	
+	@Override
+	public List<BookDto> list(int typeNumber1, int page, int size) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
