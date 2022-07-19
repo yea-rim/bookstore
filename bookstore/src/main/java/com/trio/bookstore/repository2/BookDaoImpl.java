@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.error.CannotFindException;
-import com.trio.bookstore.vo.LibBookVO;
 
 @Repository
 public class BookDaoImpl implements BookDao {
@@ -73,6 +72,15 @@ public class BookDaoImpl implements BookDao {
 
 		return sqlSession.selectOne("book.Hcount", param);
 	}
+	//도서분류 범위로 구한 개수
+	@Override
+	public int count(int typeNumber1, int typeNumber2) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("typeNumber1", typeNumber1);
+		param.put("typeNumber2", typeNumber2);
+
+		return sqlSession.selectOne("book.Hcount2", param);	
+	}
 
 	@Override
 	public BookDto find(int bookNo) {
@@ -88,6 +96,21 @@ public class BookDaoImpl implements BookDao {
 	@Override
 	public List<BookDto> bookType(int bookType) {
 		return sqlSession.selectList("book.bookType", bookType);
+	}
+	//도서 분류로만 조회할때
+	@Override
+	public List<BookDto> list(int typeNumber1, int typeNumber2,int page,int size) {
+		Map<String, Object> param = new HashMap<>();
+		param.put("typeNumber1", typeNumber1);
+		param.put("typeNumber2", typeNumber2);
+		
+		int end = page * size;
+		int begin = end - (size - 1);
+
+		param.put("begin", begin);
+		param.put("end", end);
+		
+		return sqlSession.selectList("book.han",param);
 	}
 
 }
