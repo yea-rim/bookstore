@@ -38,7 +38,7 @@
 				<li><a href="#">경제/경영</a></li>
 				<li><a href="#">종교</a></li>
 				<li><a href="#">행정/정치</a></li>
-			</ul></li>
+			</ul></li>  
 		<li><a href="${pageContext.request.contextPath}/book/list1?typeNumber1=50&typeNumber2=59">컴퓨터</a>
 			<ul class="header__menu__dropdown">
 				<li><a href="#">웹/홈페이지</a></li>
