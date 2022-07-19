@@ -314,7 +314,7 @@ border-radius: 0.25em;
 						<div class="hero__search__form w-100">
 							<form action="#">
 								<div class="hero__search__categories">
-									All Categories <span class="arrow_carrot-down"></span>
+									도서관 | 북스토어 | 중고 통합 검색 <span class="arrow_carrot-down"></span>
 								</div>
 								<input type="text" placeholder="무슨 도서를 찾으시나요?">
 								<button type="submit" class="site-btn">검색</button>

@@ -17,6 +17,11 @@ public class LibController {
 		return "lib/rental";
 	}
 	
+	@RequestMapping("/list")
+	public String list() {
+		return "lib/list";
+	}
+	
 	
 
 }
