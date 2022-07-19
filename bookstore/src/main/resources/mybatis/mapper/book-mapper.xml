@@ -80,6 +80,14 @@
 				where book_type  between #{typeNumber1}  and #{typeNumber2}
 		</if>
 	</select>
+	<!-- 도서분류 소분류로 구하기 -->
+	<select id="Hcount2" parameterType="int" resultType="int">
+		select count(*) from book
+		<if test = "typeNumber1 >0">
+				where book_type  = #{typeNumber1} 
+		</if>
+	</select>
+	
 	
 	<!--목록에 bookType 범위별로 리스트 뽑기 -->
 	<select id="han" parameterType="Map" resultType="bookDto">
@@ -88,6 +96,18 @@
 					select * from book 
 				<if test = "typeNumber1 >0 and typeNumber2 >0 ">
 						where book_type between #{typeNumber1}  and #{typeNumber2}
+					</if>
+				)TMP
+			) where rn between #{begin} and #{end} 
+	</select>
+	
+		<!--목록에 bookType 번호로(소분류) 리스트 뽑기 -->
+	<select id="han2" parameterType="Map" resultType="bookDto">
+	select * from (
+				select rownum rn, TMP.* from (
+					select * from book 
+				<if test = "typeNumber1 >0">
+						where book_type = #{typeNumber1}  
 					</if>
 				)TMP
 			) where rn between #{begin} and #{end} 
