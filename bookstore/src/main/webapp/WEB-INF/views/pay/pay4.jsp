@@ -1,84 +1,71 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-<!-- Breadcrumb Section Begin -->
-<section class="breadcrumb-section set-bg"
-   style="background-color: #F09F00;">
-
-   <div class="container">
-      <div class="row">
-         <div class="col-lg-12 text-center">
-            <div class="breadcrumb__text">
-               <h2>주문결제</h2>
-               <div class="breadcrumb__option">
-                  <a href="./index.html">Home</a> <span>주문 결제</span>
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-</section>
-<!-- Breadcrumb Section End -->
-
-<div class="container">
-   <section class="shoping-cart spad">
-      <!-- form(결제구현 )-->
+ <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+     <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
       
-         <div class="row">
-            <div class="col-lg-8">
-               <div class="row float-container mt-1">
-                  <div class="table" id="app">
-                    
-                     <h3>
-                        [배송정보]
-                     </h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>주문결제</h2>
+                        <div class="breadcrumb__option">
+                            <a href="./index.html">Home</a>
+                            <span>주문 결제</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
 
-                     <table>
-                        <tbody>
-                           <tr style="border-bottom: none;">
-                              <th class="col-lg-3"><h5>이름 *</h5></th>
-                              <td class="col-lg-9"><input type="text"
-                                 v-model="currentData.memberName" style="width: 150px;">
-                                 &nbsp;
-                                 <input type="button" v-on:click="readMember"
-                                    style="border: none; background: #F09F00; color: #ffffff; height: 30px;" value = "내정보">
-
-                              </td>
-                           </tr>
-                           <tr>
-                              <th><h5>전화번호 *</h5></th>
-                              <td><input type="text" v-model="currentData.memberPhone">
-                              </td>
-                           </tr>
-                           <tr>
-                              <th><h5>주소 *</h5></th>
-                              <td><input type="text" v-model="currentData.memberPost"
-                                 v-model="used" style="width: 170px;"></td>
-                           </tr>
-                           <tr>
-                              <th></th>
-                              <td><input type="text"
-                                 v-model="currentData.memberBasicAddress"
-                                 style="width: 350px;"></td>
-                           </tr>
-                           <tr>
-                              <th></th>
-                              <td><input type="text"
-                                 v-model="currentData.memberDetailAddress"
-                                 style="width: 350px;"></td>
-                           </tr>
-
-                        </tbody>
-                     </table>
-                  </div>
-                  <!-- 주문상품 -->
-                   <form action="${pageContext.request.contextPath }/pay/purchase" method="get">
-                  <div class="row float-container mt-1">
+    <!-- Shoping Cart Section Begin -->
+    <section class="shoping-cart spad">
+        <div class="container">
+            <div class="row col-lg-8">
+                          	<div class = "col-lg-8">
+               	    <div class="table">
+               			<h3><배송정보></h3>
+               		
+               			<table>
+               				<tbody>
+               					<tr style = "border-bottom:none;">
+               						<th class = "col-lg-3"><h5>이름 *</h5></th>
+               						<td class = "col-lg-9"><input type = "text" v-model = "currentData.memberName" style = "width:150px;">
+               						&nbsp;<button  v-on:click="readMember" style = "border:none; background:#F09F00; color:#ffffff; height:30px;">내정보</button>
+               						
+               							</td>
+               					</tr>
+               					<tr>
+               						<th><h5>전화번호 *</h5></th>
+               						<td><input type = "text" v-model = "currentData.memberPhone">
+               						</td>
+               				</tr>
+               					<tr>
+               						<th><h5>주소 *</h5></th>
+               						<td><input type = "text" v-model = "currentData.memberPost" v-model= "used"style = "width:170px;"></td>
+               					</tr> 
+               					<tr>
+               					    <th></th>
+               				     	<td><input type = "text" v-model = "currentData.memberBasicAddress" style = "width:350px;"></td>
+               					</tr>
+               					<tr>
+               						<th></th>
+               						<td><input type = "text" v-model = "currentData.memberDetailAddress" style = "width:350px;"></td>
+               					</tr>
+               					
+               				</tbody>
+               			</table>
+               		</div>
+               	</div>
                   
-                         <div class="shoping__cart__table">
-                  <h3>[주문상품]</h3>
+               
+                <div class="col-lg-8">
+                    <div class="shoping__cart__table">
+                  <h3><주문상품></h3>
                         <table>
                             <thead>
                                 <tr>
@@ -98,10 +85,10 @@
                         <input type = "hidden" name = "finalStore[${0 }].quantity" value = "${storeAmount }">
                                 
                                 <tr>
-                                    <td class="shoping__cart__item" width = "10%">
+                                    <td class="shoping__cart__item">
                                         <img src="${storeDto.bookImage }">
                                     </td>
-                                     <td  style = "text-align:left" width="50%">
+                                     <td  style = "text-align:left">
                               <h5>${storeDto.bookTitle }</h5>
                                      </td>  
                                     <td class="shoping__cart__price">
@@ -197,47 +184,44 @@
                             </tbody>
                         </table>
                     </div>
-                  </div>
-               </div>
+                </div>
+                
+<!--            	결제빼고나오는곳 여기까지 -->
             </div>
-            <div class="col-lg-4">
-               <div class="shoping__cart__table">
-
-                  <div class="shoping__checkout">
-                     <h5>결제정보</h5>
-                     <ul>
-<%--                         <li>상품금액 <span>${total}원</span></li> --%>
-<!--                         <li>할인금액<span>적림금 안해줄거야</span></li> -->
-                        <li>Total <span>${total}원</span></li>
-                     </ul>
-                     <input type="submit" class="primary-btn" value="결제하기">
-                  </div>
-               </div>
-            </div>
-         </div>
-      </form>
-   </section>
-</div>
-
-<!-- Shoping Cart Section End -->
-<script src="https://unpkg.com/vue@next"></script>
-<!-- <script src="https://unpkg.com/vue@next/dist/vue.global.prod.js"></script> -->
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-<!-- Shoping Cart Section End -->
-<script>
+             <div class="row col-lg-4">
+                    <div class="shoping__checkout">
+                        <h5>결제정보</h5>
+                        <ul>
+                            <li>상품금액 <span>${total}원</span></li>
+                            <li>할인금액<span>적림금 안해줄거야</span></li>
+                            <li>Total <span>${total}원</span></li>
+                        </ul>
+                        <input type = "submit" class = "primary-btn" value = "결제하기">
+<!--                         <a href="#" class="primary-btn">PROCEED TO CHECKOUT</a> -->
+                    </div>
+                </form>
+                </div>
+                   </div>
+    </section>
+    <!-- Shoping Cart Section End -->
+      <script src="https://unpkg.com/vue@next"></script>
+   <!-- <script src="https://unpkg.com/vue@next/dist/vue.global.prod.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    
+    <!-- Shoping Cart Section End -->
+     <script>
         //div[id=app]을 제어할 수 있는 Vue instance를 생성
         const app = Vue.createApp({
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
-                   memberList:[],
-                   currentData: {
-                       memberName:"",
-                       memberPhone:"",
-                       memberPost:"",
-                       memberBasicAddress:"",
-                       memberDetailAddress:"",
+                	memberList:[],
+                	currentData: {
+                    	memberName:"",
+                    	memberPhone:"",
+                    	memberPost:"",
+                    	memberBasicAddress:"",
+                    	memberDetailAddress:"",
                     },
                 };
             },
@@ -249,24 +233,24 @@
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
                 
-               readMember(){
-                const query = "${login}";
-                axios({
-                   url:"${pageContext.request.contextPath}/rest/basket/" + query,
-                   method:"get",
-                   data: this.currentData,
-                })
-                .then((resp)=>{
-                      console.log(resp.data);
-//                    this.currentData = resp.data.items[0];
-                   this.currentData.memberName = resp.data.memberNick;
-                   this.currentData.memberPhone = resp.data.memberPhone;
-                   this.currentData.memberPost = resp.data.memberPost;
-                   this.currentData.memberBasicAddress = resp.data.memberBasicAddress;
-                   this.currentData.memberDetailAddress = resp.data.memberDetailAddress;
-                   console.log(this.currentData);
-                });
-             },
+            	readMember(){
+    				const query = "testuser";
+    				axios({
+    					url:"${pageContext.request.contextPath}/rest/basket/" + query,
+    					method:"get",
+    					data: this.currentData,
+    				})
+    				.then((resp)=>{
+    	            	console.log(resp.data);
+//     					this.currentData = resp.data.items[0];
+    					this.currentData.memberName = resp.data.memberNick;
+    					this.currentData.memberPhone = resp.data.memberPhone;
+    					this.currentData.memberPost = resp.data.memberPost;
+    					this.currentData.memberBasicAddress = resp.data.memberBasicAddress;
+    					this.currentData.memberDetailAddress = resp.data.memberDetailAddress;
+    					console.log(this.currentData);
+    				});
+    			},
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
             watch:{
@@ -276,4 +260,5 @@
         
         app.mount("#app");
     </script>
-<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
+    

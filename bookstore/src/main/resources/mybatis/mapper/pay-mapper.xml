@@ -11,10 +11,10 @@
 		
 		<insert id ="insert" parameterType ="PayDto">
 			insert into pay(
-					pay_no,pay_tid,pay_total,pay_name,pay_time,pay_status
+					pay_no,pay_tid,pay_total,pay_name,pay_time,pay_status,pay_member_id
 				)
 				values(
-					#{payNo},#{payTid},#{payTotal},#{payName},sysdate,'승인'
+					#{payNo},#{payTid},#{payTotal},#{payName},sysdate,'승인',#{payMemberId}
 				)
 				
 		</insert>
@@ -95,6 +95,12 @@
 		order by pay_detail_no asc
 	</select>
 		
+		
+	<!-- 멤버아이디로 결제한 내역 조회+조인해서 멤버 주소 가져오기 -->
+	<select id="payList" parameterType="String" resultType="PayDto">
+		select * from pay inner join member on member.member_id = pay.pay_member_id
+		where pay_member_id = #{memberId} 	
+		</select>
 </mapper> 
 
 
