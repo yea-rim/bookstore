@@ -30,8 +30,8 @@
 		select reply_seq.nextval from dual
 	</select>
 	<insert id="insert" parameterType="ReplyDto">
-		insert into reply(reply_no, reply_content, reply_time, reply_target)
-		values(#{replyNo}, #{replyContent}, sysdate, #{replyTarget})
+		insert into reply(reply_no, reply_content, reply_time, reply_target, reply_writer)
+		values(#{replyNo}, #{replyContent}, sysdate, #{replyTarget}, #{replyWriter})
 	</insert>
 	<select id="one" resultType="ReplyDto" parameterType="int">
 		select * from reply where reply_no = #{replyNo}
@@ -61,11 +61,4 @@
 	</update>
 	
 </mapper> 
-
-
-
-
-
-
-
 

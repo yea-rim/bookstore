@@ -70,13 +70,16 @@
 	    	<input type="file" name="boardAttachment" class="form-input input-round">	
 	    </div>
 	     -->
-		<div class="row">
+	     <tr>
+				<td class="right">
+				<div align="right" >
+				<a href="list" class="link link-btn fill">　　목록　　</a>
 			<button type="submit" class="btn btn-primary fill">등록</button>
-		</div>
-		<div class="row">
-			<a href="list" class="link link-btn fill">목록</a>
-		</div>
-	</div>
+			<label>  　 　 </label>
+			</div>
+				</td>
+			</tr>
+			</div>
 </form>
 
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

@@ -52,6 +52,18 @@
 							)TMP
 		) where rn between #{begin} and #{end}
 	</select>
+			<select id="list4" parameterType="Map" resultType="BoardDto">
+		select * from (
+			select rownum rn, TMP.* from (
+			
+				select * from board_used_book
+				<if test="type != null and keyword != null">
+					<![CDATA[ where instr(${type}, #{keyword}) > 0 	]]>
+				</if>
+				order by board_no desc
+							)TMP
+		) where rn between #{begin} and #{end}
+	</select>
 	
 	<select id="count" parameterType="Map" resultType="int">
 		select count(*) from board
@@ -82,6 +94,15 @@
 	
 		<select id="count3" parameterType="Map" resultType="int">
 		select count(*) from board_qna
+		<if test="type != null and keyword != null">
+			<![CDATA[
+			where instr(${type}, #{keyword}) > 0
+			]]>
+		</if>
+	</select>
+	
+			<select id="count4" parameterType="Map" resultType="int">
+		select count(*) from board_used_book
 		<if test="type != null and keyword != null">
 			<![CDATA[
 			where instr(${type}, #{keyword}) > 0

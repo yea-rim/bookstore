@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<c:set var="root" value="${pageContext.request.contextPath}"></c:set>
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/3.0.2/toastui-editor.min.css" >
 
@@ -25,6 +25,9 @@
 	.reply-header .fa-solid:hover {
 		color:red;
 	} 
+	.reply1{
+		width: 1025px;
+	}
 </style>
 <body>
 <div id="app" class="container w800 m30">
@@ -92,23 +95,27 @@
 			<!-- 버튼 영역 -->
 			<tr>
 				<td class="right">
-					<a href="${pageContext.request.contextPath}/board/write" class="link link-btn">글쓰기</a>
+				<div align="right" >
+					<a href="${pageContext.request.contextPath}/board/write" class="link link-btn">글쓰기 </a>
 					<c:if test="${isOwner || isAdmin}">
-					<a href="${pageContext.request.contextPath}/board/edit?boardNo=${boardDto.boardNo}" class="link link-btn">수정</a>
+					<a href="${pageContext.request.contextPath}/board/edit?boardNo=${boardDto.boardNo}" class="link link-btn">수정 </a>
 <!--					<a href="${pageContext.request.contextPath}/board/edit/${boardDto.boardNo}" class="link link-btn">수정</a>
--->					<a href="${pageContext.request.contextPath}/board/delete?boardNo=${boardDto.boardNo}" class="link link-btn">삭제</a>
+-->					<a href="${pageContext.request.contextPath}/board/delete?boardNo=${boardDto.boardNo}" class="link link-btn">삭제 </a>
 <!-- 			<a href="${pageContext.request.contextPath}/board/delete/${boardDto.boardNo}" class="link link-btn">삭제</a>
 -->							</c:if>
 					<a href="${pageContext.request.contextPath}/board/list" class="link link-btn">목록</a>
+					</div>
 				</td>
 			</tr>
 			
 			<!-- 댓글 작성란 -->
 			<tr>
-				<td>
-					<textarea class="form-input fill" rows="5" :disabled="isAnonymous" :placeholder="textareaPlaceholder" v-model="boardContent"></textarea>
-					<button class="btn btn-primary fill" :disabled="isAnonymous" @click="addReply">{{buttonPlaceholder}}</button>
-				</td>
+			<td>
+			<div class="row">
+					<textarea class="reply1" rows="5" :disabled="isAnonymous" :placeholder="textareaPlaceholder" v-model="boardContent"  style= float:left;></textarea>
+					<button class="btn btn-primary fill" :disabled="isAnonymous" @click="addReply" style= float:right;>{{buttonPlaceholder}}</button>
+			</div>
+			</td>
 			</tr>
 
 			<!-- 댓글 목록 -->
@@ -122,8 +129,8 @@
 								<span>{{reply.replyWriter}}</span>
 								<span>{{convertTime(reply.replyTime)}}</span>
 								<span v-if="isEditAndDeleteAvailable(reply.replyWriter)">
-									<i v-if="!isAdmin" class="fa-solid fa-pen-to-square" @click="changeEditMode(index);"></i>
-									<i class="fa-solid fa-trash" @click="deleteReply(index);"></i>
+									<img src="${pageContext.request.contextPath}/image/edit.png"  width="25"  v-if="!isAdmin"  @click="changeEditMode(index);">
+									<img src="${pageContext.request.contextPath}/image/delet-button.png" @click="deleteReply(index);" width="25">
 								</span>
 							</div>
 							<!-- 두 번째 줄 : 내용 -->
@@ -133,11 +140,11 @@
 						</div>
 						<!-- 수정화면 -->
 						<div class="right" v-else>
-<!-- 							<textarea class="form-input fill" rows="5" :disabled="isAnonymous" placeholder="수정 댓글 작성" v-model="reply.replyContent"></textarea> -->
-							<textarea class="form-input fill" rows="5" :disabled="isAnonymous" placeholder="수정 댓글 작성" v-model="replyList[index].replyContent"></textarea>
-							<button class="btn btn-secondary" :disabled="isAnonymous" @click="changeDisplayMode(index);">취소</button>
-							&nbsp;
-							<button class="btn btn-primary" :disabled="isAnonymous" @click="editReply(index);">수정</button>
+						<label>　　　　　　　</label>
+							<textarea class="reply1" rows="5" :disabled="isAnonymous" placeholder="수정 댓글 작성" v-model="replyList[index].replyContent" style= float:left;></textarea>
+							<br><br><br>
+							<button class="btn btn-secondary" :disabled="isAnonymous" @click="changeDisplayMode(index);" style= float:right;>취소</button>
+							<button class="btn btn-primary" :disabled="isAnonymous" @click="editReply(index);" style= float:right;>수정</button>
 						</div>
 					</div>
 				</td>
