@@ -96,4 +96,49 @@ public class PayServiceImpl implements PayService {
 				}
 			}		
 	}
+	//최종
+	@Override
+	public void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<FinalStoreVO> finalStoreList,
+			List<FinalUsedVO> finalUsedList, String memberId) {
+		//결제 테이블에 데이터 넣기
+		PayDto payDto = PayDto.builder()
+					.payNo(payNo)
+						.payTid(responseVO.getTid())
+					.payName(responseVO.getItem_name())
+					.payTotal(responseVO.getAmount().getTotal())
+					.payMemberId(memberId)
+				.build();
+			payDao.insertPay(payDto);
+
+			//finalStoreList에 들어있는 상품 번호와 상품 수량을 토대로 상세 정보 등록
+			if(finalStoreList != null) {
+				
+			for(FinalStoreVO finalStoreVO : finalStoreList) {
+			StoreDto storeDto = storeDao.find(finalStoreVO.getStoreBookNo());
+			PayDetailDto payDetailDto = PayDetailDto.builder()
+										.payNo(payNo)
+										.payDetailName(storeDto.getBookTitle())
+										.payDetailPrice(storeDto.getStorePrice())
+										.payDetailQuantity(finalStoreVO.getQuantity())
+									.build();
+			payDao.insertPayDetail(payDetailDto);
+
+			}
+	}		
+			//finalUsedList 뽑아서 결제상세테이블에 넣기
+			if(finalUsedList != null) {
+				
+		
+			for(FinalUsedVO finalUsedVO : finalUsedList) {
+				UsedDto usedDto = usedDao.findUsed(finalUsedVO.getUsedNo());
+				PayDetailDto payDetailDto = PayDetailDto.builder()
+											.payNo(payNo)
+											.payDetailName(usedDto.getBookTitle())
+											.payDetailPrice(usedDto.getUsedPrice())
+											.payDetailQuantity(finalUsedVO.getQuantity())
+										.build();
+				payDao.insertPayDetail(payDetailDto);
+			}
+		}				
+	}
 }

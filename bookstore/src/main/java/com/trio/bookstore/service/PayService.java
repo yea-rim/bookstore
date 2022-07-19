@@ -12,5 +12,8 @@ public interface PayService {
 
 	void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<FinalStoreVO> finalStoreList,
 			List<FinalUsedVO> finalUsedList);
+	//최종
+	void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<FinalStoreVO> finalStoreList,
+			List<FinalUsedVO> finalUsedList, String memberId);
 
 }
