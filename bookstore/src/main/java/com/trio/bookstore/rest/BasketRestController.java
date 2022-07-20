@@ -15,14 +15,14 @@ import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.repository.MemberDao;
 import com.trio.bookstore.repository2.BasketDao;
 
-//@CrossOrigin(
-//		origins = {"http://127.0.0.1:5500"}
+@CrossOrigin(
+		origins = {"http://127.0.0.1:5500"}
 //		,methods = {
 //				RequestMethod.GET, RequestMethod.POST, 
 //				RequestMethod.PUT, RequestMethod.DELETE
 //		}
 //		, maxAge = 3600L
-//)
+)
 @RestController
 @RequestMapping("/rest/basket")
 public class BasketRestController {

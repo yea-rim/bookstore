@@ -16,5 +16,6 @@ public class BookingDto {
 	private int bookingBookNo;
 	private String bookingDate;
 	private String bookingLibrary;
+	private String bookingBookTitle;
 
 }

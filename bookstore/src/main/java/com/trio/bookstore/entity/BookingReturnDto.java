@@ -15,5 +15,6 @@ public class BookingReturnDto {
 	private int bookingReturnBookNo;
 	private String bookingReturnDate;
 	private String bookingReturnLibrary;
+	private String bookingReturnBookTitle;
 
 }
