@@ -3,7 +3,29 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<style>
+.inner {
+	position: absolute;
+	left: 75%;
+	transform: translateX(-50%);
+	z-index: 999;
+}
 
+.board1 {
+	width: 400px;
+}
+
+/* absolute */
+.outer, .inner {
+	position: relative
+}
+
+.absolute1 {
+	position: absolute;
+	bottom: 0;
+	right: 50
+}
+</style>
 <div class="container w950 m30">
 	    <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
@@ -153,25 +175,32 @@
 			</c:choose>
 		</c:if>
 	</div>
+	<br>
 <c:if test="${isAdmin}">
 					<div align="right" >
 			<a href="review_write" class="btn btn-primary" >글쓰기</a>
 			</div>
 </c:if>
 		<!-- 검색창 -->
-			<div align="left" >
-		<form action="review_list" method="get">
-		<div class="row center">
+	<form action="review_list" method="get">
+	  <div class="outer">
+    <div class="inner">
+		<div class="absolute1">
 			<select name="type" class="form-input input-round">
-				<option value="board_title" <c:if test="${type == 'board_title'}">selected</c:if>>제목</option>
-				<option value="board_content" <c:if test="${type == 'board_content'}">selected</c:if>>내용</option>
-				<option value="board_writer" <c:if test="${type == 'board_writer'}">selected</c:if>>작성자</option>
-			</select>
-			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round" value="${keyword}">
-			<input type="submit" value="검색" class="btn btn-primary">
-						</div>
-						</form>
-					</div>
+				<option value="board_title"
+					<c:if test="${type == 'board_title'}">selected</c:if>>제목</option>
+				<option value="board_content"
+					<c:if test="${type == 'board_content'}">selected</c:if>>내용</option>
+				<option value="board_writer"
+					<c:if test="${type == 'board_writer'}">selected</c:if>>작성자</option>
+			</select> <input type="text" name="keyword" autocomplete="off"
+				placeholder="검색어 입력" required class="board1"
+				value="${keyword}"> <input type="submit" value="검색"
+				class="btn btn-primary">
+		</div>
+		</div>
+		</div>
+	</form>
 	
 </div>
 

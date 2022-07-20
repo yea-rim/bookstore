@@ -50,4 +50,9 @@ public class LibDaoImpl implements LibDao {
 	public List<LibDto> shSearch(int libNo) {
 		return sqlSession.selectOne("lib.sh", libNo);
 	}
+
+	@Override
+	public List<LibDto> findBook(int libBookNo) {
+		return sqlSession.selectList("lib.findBook", libBookNo);
+	}
 }

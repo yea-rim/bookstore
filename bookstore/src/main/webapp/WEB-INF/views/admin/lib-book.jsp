@@ -139,8 +139,8 @@
 				<tbody>
 					<tr v-for="(book, index) in bookList" v-bind:key="index">
 						<td>{{book.libNo}}</td>
-						<td>{{book.libLibInfoNo}}</td>
-						<td>{{book.libBookNo}}</td>
+						<td>{{book.libName}}</td>
+						<td>{{book.bookTitle}}</td>
 						<td>{{book.libAmount}}권</td>
 						<td>
 							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
@@ -170,6 +170,7 @@
 					libAmount:"",
 					bookTitle:"",
 					libName:"",
+					libGu:"",
 				},
 				index:-1,
 			};
@@ -197,8 +198,12 @@
 					data: this.currentData,
 				})
 				.then((resp)=>{
+					
 	            	console.log(resp.data[0].libraryName);
+	            	console.log(resp.data[0].libraryGu);
 					this.currentData.libName = resp.data[0].libraryName;
+					this.currentData.libGu = resp.data[0].libraryGu;
+					console.log(this.currentData);
 				});
 			},
 			findBook(){
@@ -242,6 +247,7 @@
 					libAmount:"",
 					bookTitle:"",
 					libName:"",
+					libGu:"",
 				}
 				this.index = -1;
 			},

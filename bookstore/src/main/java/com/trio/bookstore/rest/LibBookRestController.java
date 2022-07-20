@@ -53,5 +53,10 @@ public class LibBookRestController {
 	public List<LibDto> shSearch(@PathVariable int libNo) {
 		return libDao.shSearch(libNo);
 	}
+	
+	@GetMapping("/book/{libBookNo}")
+	public List<LibDto> findBook(@PathVariable int libBookNo) {
+		return libDao.findBook(libBookNo);
+	}
 
 }

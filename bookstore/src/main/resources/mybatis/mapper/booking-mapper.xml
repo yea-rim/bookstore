@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="booking">
+   
+   <select id = "sequence" resultType = "int">
+      select booking_seq.nextval from dual
+   </select>
+   
+   <select id="list" resultType="BookingDto">
+      select * from booking order by booking_no asc
+   </select>
+   
+   <delete id="return" parameterType="int">
+      delete booking where booking_no = #{bookingNo}
+   </delete>
+   
+   <insert id="rental" parameterType="BookingDto">
+      insert into booking(
+            booking_no, booking_id, booking_book_no, booking_date, booking_library
+         ) values (
+            #{bookingNo}, #{bookingId}, #{bookingBookNo}, #{bookingDate},
+            #{bookingLibrary}
+         )
+   </insert>
+   
+   <update id="extend" parameterType="BookingDto">
+      update booking
+         set
+            booking_no = #{bookingNo},
+            booking_id = #{bookingId},
+            booking_book_no = #{bookingBookNo},
+            booking_date = #{bookingDate},
+            booking_library = #{bookingLibrary}
+         where
+            booking_no = #{bookingNo}
+   </update>
+   
+   <select id="one" resultType="BookingDto" parameterType="int">
+      select * from booking where booking_no = #{bookingNo}
+   </select>
+
+</mapper> 

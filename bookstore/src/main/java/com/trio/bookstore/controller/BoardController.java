@@ -284,7 +284,7 @@ public class BoardController {
 		if (success) {
 //			return "redirect:../list";
 
-			return "redirect:/board/list";
+			return "redirect:/board/review_list";
 		} else {
 			throw new CannotFindException();
 		}

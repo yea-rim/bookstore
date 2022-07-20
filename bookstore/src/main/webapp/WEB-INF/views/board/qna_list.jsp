@@ -1,7 +1,29 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<style>
+.inner {
+	position: absolute;
+	left: 75%;
+	transform: translateX(-50%);
+	z-index: 999;
+}
 
+.board1 {
+	width: 400px;
+}
+
+/* absolute */
+.outer, .inner {
+	position: relative
+}
+
+.absolute1 {
+	position: absolute;
+	bottom: 0;
+	right: 50
+}
+</style>
 <c:if test="${isAdmin}">
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
@@ -66,6 +88,7 @@
 							<li><a href="${root}/password">비밀번호 변경</a></li>
 							<li><a href="${root}/delivery">주문목록</a></li>
 							<li><a href="${root}/question">장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/used_book_list?type=board_writer&keyword=${memberDto.memberId}">중고 판매 내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1 문의내역</a></li>
                         </ul>
                     </nav>
@@ -196,23 +219,27 @@
 				</c:otherwise>
 			</c:choose>
 		</c:if>
-	
 	</div>
+	<br>
 	<c:if test="${isUser == false}">
-	<div class="row center">
-		<!-- 검색창 -->
-		<form action="qna_list" method="get">
+	<form action="review_list" method="get">
+	  <div class="outer">
+    <div class="inner">
 			<select name="type" class="form-input input-round">
-				<option value="board_title" <c:if test="${type == 'board_title'}">selected</c:if>>제목</option>
-				<option value="board_content" <c:if test="${type == 'board_content'}">selected</c:if>>내용</option>
-				<option value="board_writer" <c:if test="${type == 'board_writer'}">selected</c:if>>작성자</option>
-			</select>
-			
-			<input type="search" name="keyword" placeholder="검색어 입력" required class="form-input input-round" value="${keyword}">
-			
-			<input type="submit" value="검색" class="btn btn-primary">
-		</form>
-	</div>
+				<option value="board_title"
+					<c:if test="${type == 'board_title'}">selected</c:if>>제목</option>
+				<option value="board_content"
+					<c:if test="${type == 'board_content'}">selected</c:if>>내용</option>
+				<option value="board_writer"
+					<c:if test="${type == 'board_writer'}">selected</c:if>>작성자</option>
+			</select> <input type="text" name="keyword" autocomplete="off"
+				placeholder="검색어 입력" required class="board1"
+				value="${keyword}"> <input type="submit" value="검색"
+				class="btn btn-primary">
+		</div>
+		</div>
+		</div>
+	</form>
 	</c:if>
 </div>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

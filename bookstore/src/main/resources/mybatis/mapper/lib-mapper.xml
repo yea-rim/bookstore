@@ -19,9 +19,11 @@
    
    <insert id="insert" parameterType="LibDto">
       insert into lib(
-            lib_no, lib_book_no, lib_lib_info_no, lib_amount
+            lib_no, lib_book_no, lib_lib_info_no, lib_amount,
+            book_title, lib_name, lib_gu
          ) values (
-            #{libNo}, #{libBookNo}, #{libLibInfoNo}, #{libAmount}
+            #{libNo}, #{libBookNo}, #{libLibInfoNo}, #{libAmount},
+            #{bookTitle}, #{libName}, #{libGu}
          )
    </insert>
    
@@ -31,7 +33,10 @@
          	lib_no = #{libNo},
             lib_book_no = #{libBookNo},
             lib_lib_info_no = #{libLibInfoNo},
-            lib_amount = #{libAmount}
+            lib_amount = #{libAmount},
+            book_title = #{bookTitle},
+            lib_name = #{libName},
+            lib_gu = #{libGu}
          where
             lib_no = #{libNo}
    </update>
@@ -51,13 +56,17 @@
    
    <!-- 상혁님이 짜주신 코드!! -->
    <select id="sh" resultType="LibDto" parameterType="int">
-        select linfo.library_name, b.book_title
+        select linfo.lib_name, b.book_title
         from lib_info linfo, book b, lib l
         where l.lib_book_no = b.book_no
         and
         linfo.lib_info_no = l.lib_lib_info_no
         and
         l.lib_no = #{libNo};
+   </select>
+   
+    <select id="findBook" resultType="LibDto" parameterType="int">
+		select * from lib where lib_book_no= #{libBookNo} order by lib_gu asc
    </select>
 
 </mapper> 
