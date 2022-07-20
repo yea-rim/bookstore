@@ -43,7 +43,7 @@
 						<div class="col-lg-4 col-md-4">
 							<div class="filter__found">
 								<h6>
-									<span>16</span> Products found
+									<span>${count }</span> books found
 								</h6>
 							</div>
 						</div>
@@ -66,7 +66,7 @@
 									<th></th>
 								</tr>
 							</thead>
-
+						
 							<c:forEach var="bookDto" items="${list}">
 								<tbody>
 									<tr>
@@ -78,7 +78,7 @@
 											<h6 class="m-3">${bookDto.bookDescription}</h6>
 										</td>
 										<td class="text-center">
-											<button class="btn site-btn m-2">
+											<button class="btn site-btn m-2"><a href = ""></a>
 												<i class="fa fa-shopping-bag"></i>
 											</button>
 											<button class="btn site-btn m-2">
@@ -91,11 +91,15 @@
 						</table>
 					</div>
 
+
 				</div>
+
+
+
 
 				<!-- 타입이나 키워드 등 검색 조회 늘어나면 수정 할 수도 있음 -->
 				<div class="product__pagination text-center">
-					<c:if test="${p > 1 }">
+					<c:if test="${page > 1 }">
 						<c:choose>
 							<c:when test="${search}">
 								<a
@@ -126,7 +130,7 @@
 								<c:choose>
 									<c:when test="${i == page}">
 										<a class="active"
-											href="list?page=${i}&size=${s}&type=${type}&keyword=${keyword}">${i}</a>
+											href="list?page=${i}&size=${size}&type=${type}&keyword=${keyword}">${i}</a>
 									</c:when>
 									<c:otherwise>
 										<a
