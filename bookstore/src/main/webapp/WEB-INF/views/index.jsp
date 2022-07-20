@@ -105,66 +105,66 @@
 					<h4>도서관 랭킹</h4>
 					<div class="latest-product__slider owl-carousel">
 						<div class="latest-prdouct__slider__item">
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=11" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>인플레이션에서 살아남기</h6>
+									<span>20000원</span>
 								</div>
 							</a>
 							
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=25" class="latest-product__item">
 								<div class="latest-product__item__pic">
-									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/863/22486331.jpg?type=m1&udate=20220609">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>개발자가 되기 위해 꼭 알아야 하는 IT 용어</h6>
+									<span>15000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=27" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/175/913/17591325.jpg?type=m1&udate=20211207"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>자바 개발자를 위한 97가지 제안</h6>
+									<span>17000원</span>
 								</div>
 							</a>
 						</div>
 						<div class="latest-prdouct__slider__item">
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=28" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/159/865/15986525.jpg?type=m1&udate=20211207"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6> IT 개발자의 영어 필살기</h6>
+									<span>30000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=82" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/224/859/22485918.jpg?type=m1&udate=20220706"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>역행자</h6>
+									<span>21000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/224/529/22452981.jpg?type=m1&udate=20220610"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>세상의 마지막 기차역</h6>
+									<span>14000원</span>
 								</div>
 							</a>
 						</div>
@@ -176,68 +176,66 @@
 					<h4>북스토어 랭킹</h4>
 					<div class="latest-product__slider owl-carousel">
 						<div class="latest-prdouct__slider__item">
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=11" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>인플레이션에서 살아남기</h6>
+									<span>20000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/224/529/22452981.jpg?type=m1&udate=20220610"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>세상의 마지막 기차역</h6>
+									<span>14000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=21" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/213/679/21367904.jpg?type=m1&udate=20211217"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
-								</div>
-							</a> <a href="#" class="latest-product__item">
-								<div class="latest-product__item__pic">
-									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
-										alt="">
-								</div>
-								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>개발자로 살아남기</h6>
+									<span>10000원</span>
 								</div>
 							</a>
 						</div>
 						<div class="latest-prdouct__slider__item">
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=62" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/225/379/22537949.jpg?type=m1&udate=20220712"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>감정와해기법</h6>
+									<span>16000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=28" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/159/865/15986525.jpg?type=m1&udate=20211207"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6> IT 개발자의 영어 필살기</h6>
+									<span>30000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=82" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/224/859/22485918.jpg?type=m1&udate=20220706"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>역행자</h6>
+									<span>21000원</span>
 								</div>
 							</a>
 						</div>
@@ -249,68 +247,66 @@
 					<h4>중고도서 랭킹</h4>
 					<div class="latest-product__slider owl-carousel">
 						<div class="latest-prdouct__slider__item">
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=113" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/225/453/22545323.jpg?type=m1&udate=20220701"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>원피스 102 (천왕산)</h6>
+									<span>8500원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=126" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/225/696/22569622.jpg?type=m1&udate=20220705"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>나 혼자만 레벨업 6(만화) (만화)</h6>
+									<span>11000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/224/529/22452981.jpg?type=m1&udate=20220610"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>세상의 마지막 기차역</h6>
+									<span>14000원</span>
 								</div>
 							</a>
 						</div>
 						<div class="latest-prdouct__slider__item">
-							<a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=139" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/225/056/22505675.jpg?type=m1&udate=20220705"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>너무 잘하려고 애쓰지 마라</h6>
+									<span>15000원</span>
 								</div>
-							</a> <a href="#" class="latest-product__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=25" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/863/22486331.jpg?type=m1&udate=20220609">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>개발자가 되기 위해 꼭 알아야 하는 IT 용어</h6>
+									<span>15000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=27" class="latest-product__item">
 								<div class="latest-product__item__pic">
 									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
+										src="https://bookthumb-phinf.pstatic.net/cover/175/913/17591325.jpg?type=m1&udate=20211207"
 										alt="">
 								</div>
 								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
-								</div>
-							</a> <a href="#" class="latest-product__item">
-								<div class="latest-product__item__pic">
-									<img
-										src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610"
-										alt="">
-								</div>
-								<div class="latest-product__item__text">
-									<h6>Crab Pool Security</h6>
-									<span>$30.00</span>
+									<h6>자바 개발자를 위한 97가지 제안</h6>
+									<span>17000원</span>
 								</div>
 							</a>
 						</div>
@@ -382,54 +378,51 @@
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<div class="blog__item">
 					<div class="blog__item__pic">
-						<img src="image/blog/blog-1.jpg" alt="">
+						<img src="http://localhost:8080/bookstore/attachment/download?attachmentNo=112" alt="" Height ="300px">
 					</div>
 					<div class="blog__item__text">
 						<ul>
-							<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-							<li><i class="fa fa-comment-o"></i> 5</li>
+							<li><i class="fa fa-calendar-o"></i> 2022.07.20</li>
+							<li><i class="fa fa-comment-o"></i> 2</li>
 						</ul>
 						<h5>
-							<a href="#">Cooking tips make cooking simple</a>
+							<a href="http://localhost:8080/bookstore/board/detail/3">인플레이션에서 살아남기를 읽고</a>
 						</h5>
-						<p>Sed quia non numquam modi tempora indunt ut labore et
-							dolore magnam aliquam quaerat</p>
+						<p>이번에 같이 경제책 읽는 모임에서 읽게 된 책은 오건영 저자님의 "인플레이션에서 살아남기"이다. 그간의 책을 언뜻 본 것 같기는 한데 그동안 쓰신 책을 제대로 읽어본 적은 없었는데...</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<div class="blog__item">
 					<div class="blog__item__pic">
-						<img src="image/blog/blog-2.jpg" alt="">
+						<img src="http://localhost:8080/bookstore/attachment/download?attachmentNo=121" alt="" Height ="300px">
 					</div>
 					<div class="blog__item__text">
 						<ul>
-							<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-							<li><i class="fa fa-comment-o"></i> 5</li>
+							<li><i class="fa fa-calendar-o"></i> 2022.07.20</li>
+							<li><i class="fa fa-comment-o"></i> 2</li>
 						</ul>
 						<h5>
-							<a href="#">6 ways to prepare breakfast for 30</a>
+							<a href="http://localhost:8080/bookstore/board/detail/21">(리뷰) 박종천 님의 『개발자로 살아남기』를 읽고</a>
 						</h5>
-						<p>Sed quia non numquam modi tempora indunt ut labore et
-							dolore magnam aliquam quaerat</p>
+						<p>안녕하세요. 지난 12월에 '박종천 님의 『개발자로 살아남기』 리뷰 이벤트' 에 응모 후 당첨되어 책을 선물 받았습니다.한 달 내에 책을 읽고 리뷰를 써야 하는 미션이 있어 리뷰를 남겨...</p>
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-4 col-sm-6">
 				<div class="blog__item">
 					<div class="blog__item__pic">
-						<img src="image/blog/blog-3.jpg" alt="">
+						<img src="http://localhost:8080/bookstore/attachment/download?attachmentNo=122" alt="" Height ="300px">
 					</div>
 					<div class="blog__item__text">
 						<ul>
-							<li><i class="fa fa-calendar-o"></i> May 4,2019</li>
-							<li><i class="fa fa-comment-o"></i> 5</li>
+							<li><i class="fa fa-calendar-o"></i> 2022.07.20</li>
+							<li><i class="fa fa-comment-o"></i> 1</li>
 						</ul>
 						<h5>
-							<a href="#">Visit the clean farm in the US</a>
+							<a href="http://localhost:8080/bookstore/board/detail/22">[역행자]를 읽고 진짜 역행자가 되려합니다.</a>
 						</h5>
-						<p>Sed quia non numquam modi tempora indunt ut labore et
-							dolore magnam aliquam quaerat</p>
+						<p>이 책은 어떤 책인가? 사전 지식 없이 책을 접하는 사람을 위하여 먼저 읽은 느낌을 적어본다. 쉽다. 구체적이다. 가르치려 들지 않는다. 저자의 실제 사례를 쓴 논픽션이다. 솔직하게...</p>
 					</div>
 				</div>
 			</div>

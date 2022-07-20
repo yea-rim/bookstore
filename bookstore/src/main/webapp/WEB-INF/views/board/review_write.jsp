@@ -2,22 +2,31 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
+
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.css" />
 	<link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
+	
+	<style>
+		.board1{
+		width: 1105px;
+	}
+	</style>
+	
+	
 <form action="write" method="post">
 	<input type="hidden" name="boardHead" value="감상평">
 
 
-	<div class="container w800 m30">
+	<div class="container w1000 m30">
 		<div class="row center">
+		
 		</div>
-		<div class="row">
-			<label>제목</label> <input type="text" name="boardTitle"
-				autocomplete="off" required class="form-input fill input-round">
-		</div>
-		<div class="row">
-			<label>내용</label>
+		<div align="right">
+		제목
+		 <input type="text" name="boardTitle"
+				autocomplete="off" required class="board1" >
+				</div>
 			<div id="editor"></div>
 			<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 			<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>	
@@ -63,6 +72,15 @@
 			</script>
 
 			<input type="hidden" name="boardContent">
+			
+				     <tr>
+				<td class="right">
+				<div align="right" >
+				<a href="review_list" class="link link-btn fill">　　목록　　</a>
+			<button type="submit" class="btn btn-primary fill">등록</button>
+			</div>
+				</td>
+			</tr>
 		</div>
 		<!-- 
 	    <div class="row">
@@ -70,15 +88,7 @@
 	    	<input type="file" name="boardAttachment" class="form-input input-round">	
 	    </div>
 	     -->
-	     <tr>
-				<td class="right">
-				<div align="right" >
-				<a href="list" class="link link-btn fill">　　목록　　</a>
-			<button type="submit" class="btn btn-primary fill">등록</button>
-			<label>  　 　 </label>
-			</div>
-				</td>
-			</tr>
+
 			</div>
 </form>
 
