@@ -26,7 +26,7 @@
 	right: 50
 }
 </style>
-<div class="container w950 m30">
+	<div class="container w1000 m30">
 	    <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">

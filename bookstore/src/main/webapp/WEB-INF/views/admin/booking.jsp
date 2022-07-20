@@ -4,6 +4,7 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <!-- Breadcrumb Section Begin -->
+	<div class="container w1000 m30">
 <section class="breadcrumb-section set-bg"
    style="background-color: #F09F00;">
 
