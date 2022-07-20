@@ -168,7 +168,7 @@
                   			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
                   			</c:if>
 <!--                         <a href="#" class="primary-b77tn">장바구니 담기</a> -->
-						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
+						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;" id="demo">
 						<input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
 <%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
                         <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
@@ -354,7 +354,7 @@
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	
-	
+
 	 <script>
         //div[id=app]을 제어할 수 있는 Vue instance를 생성
         const app = Vue.createApp({
@@ -466,5 +466,11 @@
         });
         app.mount("#app");
     </script>
-    
+    	 <script type = "text/javascript">
+	document.getElementById("demo").addEventListener('click', function () {
+		
+		alert("장바구니에 등록되었습니다.");
+	});
+	</script>
+   
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
