@@ -78,7 +78,7 @@
 											<h6 class="m-3">${bookDto.bookDescription}</h6>
 										</td>
 										<td class="text-center">
-											<a href = "${pageContext.request.contextPath}/basket2?bookNo=${bookDto.bookNo}&storeAmount=1" id="demo"><button  class="btn site-btn m-2">
+											<a href = "${pageContext.request.contextPath}/basket2?bookNo=${bookDto.bookNo}&storeAmount=1" onclick="OK()"><button   class="btn site-btn m-2">
 												<i class="fa fa-shopping-bag"></i>
 											</button></a>
 											<a href = "${pageContext.request.contextPath}/pay?bookNo=${bookDto.bookNo}&storeAmount=1"><button class="btn site-btn m-2">
@@ -188,11 +188,14 @@
 </section>
 <!-- Product Section End -->
 	<script type = "text/javascript">
-	document.getElementById("demo").addEventListener('click', function () {
+// 	document.getElementByClass("demo").addEventListener('click', function () {
 
-		alert("장바구니에 등록되었습니다.");
+// 		alert("장바구니에 등록되었습니다.");
 
-		});
+// 		});
+		function OK(){
+			alert("장바구니에 등록되었습니다.");
+		}
 	</script>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 

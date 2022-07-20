@@ -291,21 +291,24 @@ public class PayController2 {
 	public String basket(@RequestParam int bookNo,
 						 @RequestParam int storeAmount,
 						 @ModelAttribute UsedPayListVO listVO,
-						 Model model
+						 Model model,
+						 HttpSession session
+						 
 						 ) {
 		
 		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
 		if(storeAmount == 0 && listVO.getUsed() == null) {
 			return "redirect:book/detail?error&bookNo="+bookNo;
 		}
-		
+		String memberId = (String)session.getAttribute("login");
+
 		//쇼핑몰수량 있으면 장바구니 테이블에 넣기
 		if(storeAmount > 0) {
 			StoreDto storeDto = storeDao.find(bookNo);
 			log.debug("hanseok = {}",storeDto);
 			BasketDto basketDto = BasketDto.builder()
 							// 장바구니 번호는 mapper에서 시퀀스로
-							.basketMemberId("qwer1234")
+							.basketMemberId(memberId)
 							//아이디 세션으로 넣어주기
 							.basketBookNo(bookNo)
 							.basketAmount(storeAmount)
@@ -347,21 +350,22 @@ public class PayController2 {
 						 @RequestParam int storeAmount,
 						 @ModelAttribute UsedPayListVO listVO,
 						 Model model,
-						 HttpServletRequest request
+						 HttpServletRequest request,
+						 HttpSession session
 						 ) {
 		
 		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
 		if(storeAmount == 0 && listVO.getUsed() == null) {
 			return "redirect:book/detail?error&bookNo="+bookNo;
 		}
-		
+		String memberId = (String)session.getAttribute("login");
 		//쇼핑몰수량 있으면 장바구니 테이블에 넣기
 		if(storeAmount > 0) {
 			StoreDto storeDto = storeDao.find(bookNo);
 			log.debug("hanseok = {}",storeDto);
 			BasketDto basketDto = BasketDto.builder()
 							// 장바구니 번호는 mapper에서 시퀀스로
-							.basketMemberId("qwer1234")
+							.basketMemberId(memberId)
 							//아이디 세션으로 넣어주기
 							.basketBookNo(bookNo)
 							.basketAmount(storeAmount)
