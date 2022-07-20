@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BasketDto;
+import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.entity.PayDto;
 import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.entity.UsedDto;
@@ -184,6 +185,7 @@ public class PayController2 {
 	@GetMapping("/pay/purchase")
 	public String purchase(@ModelAttribute FinalStoreListVO storeListVO,
 						   @ModelAttribute FinalUsedListVO usedListVO,
+						   @ModelAttribute MemberDto memberDto,
 						   HttpSession session) throws URISyntaxException {
 		log.debug("storeListVO = {}",storeListVO);
 //		if((storeListVO == null || storeListVO.getFinalStore() ==null) && (usedListVO == null || usedListVO.getFinalUsed() == null)) {
@@ -244,6 +246,8 @@ public class PayController2 {
 					session.setAttribute("finalStore", storeListVO.getFinalStore());//실제 쇼핑몰 구매 상품 명단
 					session.setAttribute("finalUsed", usedListVO.getFinalUsed());//실제 중고 구매 상품 명단
 					
+					//결제때 받아온 배송정보 주기
+					session.setAttribute("payMember", memberDto);
 
 				//결제 번호도 세션으로 전달
 						session.setAttribute("payNo", payNo);
@@ -265,11 +269,15 @@ public class PayController2 {
 		int payNo = (int) session.getAttribute("payNo");
 		session.removeAttribute("payNo");
 		
+		//결제 배송정보에 있는거 뽑아옴
+		MemberDto memberDto = (MemberDto)session.getAttribute("payMember");
+		session.removeAttribute("payMember");
+		
 		String memberId = (String)session.getAttribute("login");
 		requestVO.setPg_token(pg_token);
 		KakaoPayApproveResponseVO responseVO = kakaoPayService.approve(requestVO);
 		log.debug("제발={}",memberId);
-		payService.insert(payNo,responseVO,finalStoreList,finalUsedList,memberId);
+		payService.insert(payNo,responseVO,finalStoreList,finalUsedList,memberDto,memberId);
 		
 		return "redirect:payList";
 	}

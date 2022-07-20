@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.entity.PayDetailDto;
 import com.trio.bookstore.entity.PayDto;
 import com.trio.bookstore.entity.StoreDto;
@@ -17,7 +18,10 @@ import com.trio.bookstore.vo.FinalStoreVO;
 import com.trio.bookstore.vo.FinalUsedVO;
 import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
 import com.trio.bookstore.vo.PurchaseVO;
+
+import lombok.extern.slf4j.Slf4j;
 @Service
+@Slf4j
 public class PayServiceImpl implements PayService {
 
 	@Autowired
@@ -99,14 +103,18 @@ public class PayServiceImpl implements PayService {
 	//최종
 	@Override
 	public void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<FinalStoreVO> finalStoreList,
-			List<FinalUsedVO> finalUsedList, String memberId) {
+			List<FinalUsedVO> finalUsedList, MemberDto memberDto, String memberId) {
 		//결제 테이블에 데이터 넣기
+		log.debug("합치기전={}",memberDto.getMemberDetailAddress());
+		String post = memberDto.getMemberPost() + memberDto.getMemberBasicAddress() + memberDto.getMemberDetailAddress(); 
+		log.debug("합치기후={}",post);
 		PayDto payDto = PayDto.builder()
 					.payNo(payNo)
 						.payTid(responseVO.getTid())
 					.payName(responseVO.getItem_name())
 					.payTotal(responseVO.getAmount().getTotal())
 					.payMemberId(memberId)
+					.payPost(post)
 				.build();
 			payDao.insertPay(payDto);
 
