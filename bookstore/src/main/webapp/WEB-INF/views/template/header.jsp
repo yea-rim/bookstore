@@ -307,11 +307,12 @@ border-radius: 0.25em;
 				<div class="col-lg-9">
 					<div class="hero__search">
 						<div class="hero__search__form w-100">
-							<form action="#">
+							<form action="${root }/book/list" method = "post">
 								<div class="hero__search__categories">
 									도서관 | 북스토어 | 중고 통합 검색 <span class="arrow_carrot-down"></span>
 								</div>
-								<input type="text" placeholder="무슨 도서를 찾으시나요?">
+								<input type="text" name = "keyword" placeholder="무슨 도서를 찾으시나요?">
+								<input type = "hidden" name = "type" value = "book_title">
 								<button type="submit" class="site-btn">검색</button>
 							</form>
 						</div>

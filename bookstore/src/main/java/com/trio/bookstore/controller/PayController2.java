@@ -218,7 +218,7 @@ public class PayController2 {
 		log.debug("totalPrice ={}",totalPrice);
 		log.debug("itemNames ={}",itemName);
 
-		
+		   
 		//결제 준비 요청
 				int payNo = payDao.sequence();
 				KakaoPayReadyRequestVO requestVO = 

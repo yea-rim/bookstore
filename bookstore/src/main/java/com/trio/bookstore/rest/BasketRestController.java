@@ -15,6 +15,8 @@ import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.repository.MemberDao;
 import com.trio.bookstore.repository2.BasketDao;
 
+import lombok.extern.slf4j.Slf4j;
+
 @CrossOrigin(
 		origins = {"http://127.0.0.1:5500"}
 //		,methods = {
@@ -25,6 +27,7 @@ import com.trio.bookstore.repository2.BasketDao;
 )
 @RestController
 @RequestMapping("/rest/basket")
+@Slf4j
 public class BasketRestController {
 	
 	@Autowired
@@ -46,6 +49,9 @@ public class BasketRestController {
 	//아이디로 장바구니 총가격 주기
 	@GetMapping("/total/{memberId}")
 	public int total(@PathVariable String memberId) {
+		
+		int total =	basketDao.total(memberId);
+		log.debug("hans={}",total);
 		return basketDao.total(memberId);
 	}
 	
