@@ -21,22 +21,23 @@
             </div>
         </div>
     </section>
-	<nav class="text-center header__menu">
-		<ul>
-			<li class="active"><a href="${root}/book">도서 관리</a>
-				<ul class="header__menu__dropdown">
-					<li><a href="${root}/lib-book">도서관 도서</a></li>
-					<li><a href="${root}/store-book">스토어 도서</a></li>
-					<li><a href="${root}/used-book">중고 도서</a></li>
-					<li><a href="${root}/return">도서 반납</a></li>
-				</ul></li>
-			<li><a href="${root}/lib">도서관 관리</a></li>
-			<li><a href="${root}/member">회원 관리</a></li>
-			<li><a href="${root}/delivery">배송 관리</a></li>
-			<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
-			<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
-		</ul>
-	</nav>	
+
+                    <nav class="text-center header__menu">
+                        <ul>
+                            <li><a href="${root}/book">도서 관리</a>
+			                    <ul class="header__menu__dropdown">
+									<li><a href="${root}/lib-book">도서관 도서</a></li>
+									<li><a href="${root}/store-book">스토어 도서</a></li>
+									<li><a href="${root}/used-book">중고 도서</a></li>
+			                    </ul>
+			                </li>	
+						<li><a href="${root}/lib">도서관 관리</a></li>
+						<li><a href="${root}/member">회원 관리</a></li>
+						<li class="active"><a href="${root}/delivery">배송 관리</a></li>
+						<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
+						<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
+					</ul>
+				</nav>		
 
 <div class="container">
 	<div class="row">
@@ -48,22 +49,26 @@
 			<table class="table table-border">
 				<thead>
 					<tr>
-						<th>아이디</th>
-						<th>이름</th>
-						<th>전화번호</th>
-						<th>이메일</th>
-						<th>포인트</th>
-						<th>등급</th>
+						<th>번호</th>
+						<th>상품명</th>
+						<th>금액</th>
+						<th>회원 아이디</th>
+						<th>상태</th>
+						<th>출고처리</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(member, index) in memberList" v-bind:key="index">
-						<td>{{member.memberId}}</td>
-						<td>{{member.memberNick}}</td>
-						<td>{{member.memberPhone}}</td>
-						<td>{{member.memberEmail}}</td>
-						<td>{{member.memberPoint}}</td>
-						<td>{{member.memberGrade}}</td>
+					<tr v-for="(pay, index) in payList" v-bind:key="index">
+						<td>{{pay.payNo}}</td>
+						<td>{{pay.payName}}</td>
+						<td>{{pay.payTotal}}원</td>
+						<td>{{pay.payMemberId}}</td>
+						<td>{{pay.payDelivery}}</td>
+						<td>
+<%-- 				<c:if test="'payList[index].payDelivery' eq '출고준비'">		 --%>
+				<button class="site-btn m-1" v-on:click="delivery(index);">✓</button>
+<%-- 				</c:if> --%>
+						</td>
 					</tr>
 				</tbody>
 			</table>
@@ -77,33 +82,40 @@
 	const app = Vue.createApp({
 		data(){
 			return {
-				memberList:[],
-				
-				currentData:{
-					memberId:"",
-					memberNick:"",
-					memberPhone:"",
-					memberEmail:"",
-					memberPoint:"",
-					memberGrade:"",
-				},
+				payList:[],
 			};
 		},
 		computed:{
 
 		},
 		methods:{
-
-		},
-		created(){
+			delivery(index){
+				const payNo = this.payList[index].payNo;
+				
 				axios({
-					url:"${pageContext.request.contextPath}/rest/member/",
-					method:"get"
+					url:"${pageContext.request.contextPath}/rest/pay/" + payNo,
+					method:"put",
+					data: payNo,
 				})
 				.then((resp)=>{
 					console.log(resp.data);
-					this.memberList.push(...resp.data);
+					var choice = window.confirm("출고가 완료됐습니까?");
+					if(choice == false) return;
+
+					this.payList[index] = resp.data;
+					window.alert("출고 처리했습니다.");
+		            axios.get("http://localhost:8080/bookstore/rest/pay/")
+		            .then(resp=>{
+		                this.payList = resp.data;
+		            });
 				})
+			},
+		},
+		created(){
+            axios.get("http://localhost:8080/bookstore/rest/pay/")
+            .then(resp=>{
+                this.payList = resp.data;
+            });
 		},
 	});
 	app.mount("#app");

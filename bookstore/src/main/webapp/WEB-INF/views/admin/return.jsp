@@ -4,7 +4,6 @@
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
-<c:if test="${isAdmin}">
 	<div class="container w1000 m30">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -23,18 +22,8 @@
     </section>
 	<nav class="text-center header__menu">
 		<ul>
-			<li class="active"><a href="${root}/book">도서 관리</a>
-				<ul class="header__menu__dropdown">
-					<li><a href="${root}/lib-book">도서관 도서</a></li>
-					<li><a href="${root}/store-book">스토어 도서</a></li>
-					<li><a href="${root}/used-book">중고 도서</a></li>
-					<li><a href="${root}/return">도서 반납</a></li>
-				</ul></li>
-			<li><a href="${root}/lib">도서관 관리</a></li>
-			<li><a href="${root}/member">회원 관리</a></li>
-			<li><a href="${root}/delivery">배송 관리</a></li>
-			<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
-			<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
+			<li><a href="${root}/lib-book">도서 관리</a></li>
+			<li class="active"><a href="${root}/return">반납 관리</a></li>
 		</ul>
 	</nav>
 
@@ -48,60 +37,77 @@
 			<table class="table table-border">
 				<thead>
 					<tr>
+						<th>대여 번호</th>
 						<th>아이디</th>
-						<th>이름</th>
-						<th>전화번호</th>
-						<th>이메일</th>
-						<th>포인트</th>
-						<th>등급</th>
+						<th>대여일</th>
+						<th>제목</th>
+						<th>반납 처리</th>
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(book, index) in bookList" v-bind:key="index">
-						<td>{{member.memberId}}</td>
-						<td>{{member.memberNick}}</td>
-						<td>{{member.memberPhone}}</td>
-						<td>{{member.memberEmail}}</td>
-						<td>{{member.memberPoint}}</td>
-						<td>{{member.memberGrade}}</td>
+					<tr v-for="(book, index) in bookingList" v-bind:key="index">
+						<td>{{book.bookingNo}}</td>
+						<td>{{book.bookingId}}</td>
+						<td>{{book.bookingDate}}</td>
+						<td>{{book.bookingBookTitle}}</td>
+						<td>
+				<button class="site-btn m-1" v-on:click="re(index);">✓</button>
+						</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
-</c:if>
+
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script>
 	const app = Vue.createApp({
 		data(){
 			return {
-				memberList:[],
-				
-				currentData:{
-					memberId:"",
-					memberNick:"",
-					memberPhone:"",
-					memberEmail:"",
-					memberPoint:"",
-					memberGrade:"",
-				},
+				bookingList:[],
+
 			};
 		},
 		computed:{
 
 		},
 		methods:{
-
+			
+			re(index){
+				var choice = window.confirm("반납이 완료됐습니까?");
+				if(choice == false) return;
+				const bookingNo = this.bookingList[index].bookingNo;
+				console.log(bookingNo);
+				console.log(bookingNo);
+				console.log(bookingNo);
+				console.log(bookingNo);
+				console.log(bookingNo);
+				
+				axios({
+					url:"${pageContext.request.contextPath}/rest/booking/" + bookingNo,
+					method:"delete",
+					data: bookingNo,
+				})
+				.then((resp)=>{
+					this.bookingList[index] = resp.data;
+					window.alert("반납 처리했습니다.");
+		            axios.get("http://localhost:8080/bookstore/rest/booking/")
+		            .then(resp=>{
+		                this.booking = resp.data;
+		            });
+		            
+				})
+			},
 		},
 		created(){
 				axios({
-					url:"${pageContext.request.contextPath}/rest/member/",
+					url:"${pageContext.request.contextPath}/rest/booking/",
 					method:"get"
 				})
 				.then((resp)=>{
 					console.log(resp.data);
-					this.memberList.push(...resp.data);
+					this.bookingList.push(...resp.data);
 				})
 		},
 	});

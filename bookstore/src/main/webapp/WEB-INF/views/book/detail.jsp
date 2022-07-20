@@ -554,6 +554,7 @@
                    bookingId:"",
                    bookingBookNo:"",
                    bookingLibrary:"",
+                   bookingBookTitle:"",
                 },
                 currentData:{
                    libNo:"",
@@ -617,6 +618,7 @@
                 this.bookingData.bookingId = '${login}';
                 this.bookingData.bookingBookNo = ${bookDto.bookNo};
                 this.bookingData.bookingLibrary = this.yesList[index].libName;
+                this.bookingData.bookingBookTitle = '${bookDto.bookTitle}';
                 
                 console.log(this.bookingData);
                 

@@ -101,6 +101,11 @@
 		select * from pay inner join member on member.member_id = pay.pay_member_id
 		where pay_member_id = #{memberId} 	
 		</select>
+		
+		<update id="update" parameterType="int">
+			update pay set pay_delivery = '출고완료' where pay_no = #{payNo}
+		</update>
+
 </mapper> 
 
 

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trio.bookstore.entity.PayDetailDto;
 import com.trio.bookstore.entity.PayDto;
+import com.trio.bookstore.error.CannotFindException;
 import com.trio.bookstore.vo.PayListVO;
 @Repository
 public class PayDaoImpl implements PayDao {
@@ -87,4 +88,10 @@ public List<PayListVO> treeList() {
 public List<PayDto> find(String memberId) {
 	return sqlSession.selectList("pay.payList",memberId);
 }
+
+@Override
+public void update(int payNo) {
+	sqlSession.update("pay.update", payNo);
+}
+
 }
