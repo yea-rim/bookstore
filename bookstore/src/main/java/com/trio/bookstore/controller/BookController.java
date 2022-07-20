@@ -1,7 +1,8 @@
 package com.trio.bookstore.controller;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.trio.bookstore.entity.BookDto;
 import com.trio.bookstore.entity.StoreDto;
 import com.trio.bookstore.entity.UsedDto;
+import com.trio.bookstore.repository.MemberDao;
 import com.trio.bookstore.repository2.BookDao;
 import com.trio.bookstore.repository2.StoreDao;
 import com.trio.bookstore.repository2.UsedDao;
@@ -28,6 +30,9 @@ public class BookController {
 	private UsedDao usedDao;
 
 	@Autowired
+	private MemberDao memberDao;
+	
+	@Autowired
 	private BookDao bookDao;
 
 	@Autowired
@@ -39,7 +44,7 @@ public class BookController {
 					@RequestParam(required = false) String keyword,
 					@RequestParam(required = false, defaultValue = "1") int page,
 					@RequestParam(required = false, defaultValue = "10") int size,
-					Model model) {
+					Model model,HttpSession session) {
 	
 		
 		List<BookDto> list = bookDao.list(type, keyword, page, size);
@@ -70,6 +75,14 @@ public class BookController {
 		model.addAttribute("endBlock", endBlock);
 		model.addAttribute("lastPage", lastPage);
 
+		
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		boolean isBookAdmin = memberGrade != null && memberGrade.equals("도서관리자");
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isAdmin", isAdmin);
+		model.addAttribute("isBookAdmin", isBookAdmin);
+		model.addAttribute("isUser", isUser);
 		return "book/list";
 	}
 
@@ -154,7 +167,7 @@ public class BookController {
 					return "book/list3";
 				}
 	@GetMapping("/detail")
-	public String detail(@RequestParam int bookNo, Model model) {
+	public String detail(@RequestParam int bookNo, Model model,HttpSession session) {
 
 		// 도서테이블 가져오기
 		// 도서번호에 맞는 쇼핑몰테이블 데이터 불러오기
@@ -169,9 +182,18 @@ public class BookController {
 		UsedDto usedCheap = usedDao.find(bookNo);
 		model.addAttribute("usedCheap", usedCheap);
 
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		boolean isBookAdmin = memberGrade != null && memberGrade.equals("도서관리자");
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isAdmin", isAdmin);
+		model.addAttribute("isBookAdmin", isBookAdmin);
+		model.addAttribute("isUser", isUser);
+		
 		// 도서번호에 맞는 도서테이블 데이터 불러오기
 		BookDto bookDto = bookDao.find(bookNo);
 		model.addAttribute("bookDto", bookDto);
 		return "book/detail";
+		
 	}
 }

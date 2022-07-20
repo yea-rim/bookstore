@@ -141,7 +141,6 @@
 								</div>
 								<div class="latest-product__item__text">
 									<h6> IT 개발자의 영어 필살기</h6>
-									<span>30000원</span>
 								</div>
 							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=82" class="latest-product__item">
 								<div class="latest-product__item__pic">
@@ -151,7 +150,6 @@
 								</div>
 								<div class="latest-product__item__text">
 									<h6>역행자</h6>
-									<span>21000원</span>
 								</div>
 							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
 								<div class="latest-product__item__pic">
@@ -161,7 +159,6 @@
 								</div>
 								<div class="latest-product__item__text">
 									<h6>세상의 마지막 기차역</h6>
-									<span>14000원</span>
 								</div>
 							</a>
 						</div>

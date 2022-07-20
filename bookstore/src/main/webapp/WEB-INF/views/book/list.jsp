@@ -8,6 +8,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <!-- Breadcrumb Section Begin -->
+	<div class="container w1000 m30">
 <section class="breadcrumb-section set-bg"
 	style="background-color: #F09F00;">
 	<div class="container">
@@ -186,6 +187,7 @@
 		</div>
 	</div>
 </section>
+<c:if test="${isUser or isAdmin or isBookAdmin == true}">
 <!-- Product Section End -->
 	<script type = "text/javascript">
 // 	document.getElementByClass("demo").addEventListener('click', function () {
@@ -197,5 +199,6 @@
 			alert("장바구니에 등록되었습니다.");
 		}
 	</script>
+</c:if>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
 

@@ -4,6 +4,7 @@
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+	<div class="container w1000 m30">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">

@@ -10,6 +10,7 @@
  </style>
  
   <!-- Breadcrumb Section Begin -->
+  	<div class="container w1000 m30">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -64,9 +65,11 @@
                                        <tr v-for="(yes, index) in yesList" v-bind:key="index">
                                           <td>{{yes.libGu}}</td>
                                           <td>{{yes.libName}} <a v-on:click="libInfo(index)">ℹ️</a></td>
+                                          <c:if test="${isUser or isAdmin or isBookAdmin == true}">
                                           <td>
                                              <button class="site-btn m-1" style="padding: 5px 10px 5px;" v-on:click="rental(index)" >✓</button>
                                           </td>
+                                          </c:if>
                                        </tr>
 
                                     </tbody>
@@ -312,82 +315,221 @@
         </div>
     </section>
     <!-- Product Details Section End -->
-
-    <!-- Related Product Section Begin -->
-    <section class="related-product">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title related__product__title">
-                        <h2>Related Product</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
-                            <ul class="product__item__pic__hover">
-                                <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6><a href="#">Crab Pool Security</a></h6>
-                            <h5>$30.00</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Related Product Section End -->
+<!-- Latest Product Section Begin -->
+<section class="latest-product spad">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6">
+				<div class="latest-product__text">
+					<h4>도서관 랭킹</h4>
+					<div class="latest-product__slider owl-carousel">
+						<div class="latest-prdouct__slider__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=11" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>인플레이션에서 살아남기</h6>
+								</div>
+							</a>
+							
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=25" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/863/22486331.jpg?type=m1&udate=20220609">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>개발자가 되기 위해 꼭 알아야 하는 IT 용어</h6>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=27" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/175/913/17591325.jpg?type=m1&udate=20211207"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>자바 개발자를 위한 97가지 제안</h6>
+								</div>
+							</a>
+						</div>
+						<div class="latest-prdouct__slider__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=28" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/159/865/15986525.jpg?type=m1&udate=20211207"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6> IT 개발자의 영어 필살기</h6>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=82" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/859/22485918.jpg?type=m1&udate=20220706"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>역행자</h6>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/529/22452981.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>세상의 마지막 기차역</h6>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="latest-product__text">
+					<h4>북스토어 랭킹</h4>
+					<div class="latest-product__slider owl-carousel">
+						<div class="latest-prdouct__slider__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=11" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/583/22458391.jpg?type=m1&udate=20220610">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>인플레이션에서 살아남기</h6>
+									<span>20000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/529/22452981.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>세상의 마지막 기차역</h6>
+									<span>14000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=21" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/213/679/21367904.jpg?type=m1&udate=20211217"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>개발자로 살아남기</h6>
+									<span>10000원</span>
+								</div>
+							</a>
+						</div>
+						<div class="latest-prdouct__slider__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=62" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/225/379/22537949.jpg?type=m1&udate=20220712"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>감정와해기법</h6>
+									<span>16000원</span>
+								</div>
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=28" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/159/865/15986525.jpg?type=m1&udate=20211207"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6> IT 개발자의 영어 필살기</h6>
+									<span>30000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=82" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/859/22485918.jpg?type=m1&udate=20220706"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>역행자</h6>
+									<span>21000원</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-4 col-md-6">
+				<div class="latest-product__text">
+					<h4>중고도서 랭킹</h4>
+					<div class="latest-product__slider owl-carousel">
+						<div class="latest-prdouct__slider__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=113" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/225/453/22545323.jpg?type=m1&udate=20220701"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>원피스 102 (천왕산)</h6>
+									<span>8500원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=126" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/225/696/22569622.jpg?type=m1&udate=20220705"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>나 혼자만 레벨업 6(만화) (만화)</h6>
+									<span>11000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=91" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/224/529/22452981.jpg?type=m1&udate=20220610"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>세상의 마지막 기차역</h6>
+									<span>14000원</span>
+								</div>
+							</a>
+						</div>
+						<div class="latest-prdouct__slider__item">
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=139" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/225/056/22505675.jpg?type=m1&udate=20220705"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>너무 잘하려고 애쓰지 마라</h6>
+									<span>15000원</span>
+								</div>
+							<a href="http://localhost:8080/bookstore/book/detail?bookNo=25" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img src="https://bookthumb-phinf.pstatic.net/cover/224/863/22486331.jpg?type=m1&udate=20220609">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>개발자가 되기 위해 꼭 알아야 하는 IT 용어</h6>
+									<span>15000원</span>
+								</div>
+							</a> <a href="http://localhost:8080/bookstore/book/detail?bookNo=27" class="latest-product__item">
+								<div class="latest-product__item__pic">
+									<img
+										src="https://bookthumb-phinf.pstatic.net/cover/175/913/17591325.jpg?type=m1&udate=20211207"
+										alt="">
+								</div>
+								<div class="latest-product__item__text">
+									<h6>자바 개발자를 위한 97가지 제안</h6>
+									<span>17000원</span>
+								</div>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Latest Product Section End -->
     
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -530,11 +672,12 @@
         });
         app.mount("#app");
     </script>
+    <c:if test="${isUser or isAdmin or isBookAdmin == true}">
     <script type = "text/javascript">
    document.getElementById("demo").addEventListener('click', function () {
       
-      alert("장바구니에 등록하시겠습니까?.");
+      alert("장바구니에 등록하시겠습니까?");
    });
    </script>
-   
+   </c:if>
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
