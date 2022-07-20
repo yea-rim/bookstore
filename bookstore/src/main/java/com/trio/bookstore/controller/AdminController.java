@@ -13,15 +13,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BoardDto;
-import com.trio.bookstore.entity.MemberDto;
+import com.trio.bookstore.entity.BookingDto;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
+import com.trio.bookstore.repository2.BookingDao;
+import com.trio.bookstore.repository2.BookingDao;
 
 @CrossOrigin
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
+	
+	@Autowired
+	private BookingDao bookingDao;
+	
 	@Autowired
 	private BoardDao boardDao;
 
@@ -232,11 +237,13 @@ public class AdminController {
 	}
 	
 	//대여 목록 가는 메소드
-//	@GetMapping("/booking")
-//	public String booking(HttpSession session) {
-//		String memberId = (String)session.getAttribute("login");
-//		//대여목록 조회(해당아이디만)
-//		boardDao.hanList(memberId);
-//		return "admin/booking.jsp";
-//	}
+	@GetMapping("/booking")
+	public String booking(HttpSession session,
+				Model model) {
+		String memberId = (String)session.getAttribute("login");
+		//대여목록 조회(해당아이디만)
+		List<BookingDto> bookingList = bookingDao.hanList(memberId);
+		model.addAttribute(bookingList);
+		return "admin/booking.jsp";
+	}
 }

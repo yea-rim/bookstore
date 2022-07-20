@@ -40,5 +40,10 @@ public class BookingDaoImpl implements BookingDao {
 			throw new CannotFindException();
 		return sqlSession.selectOne("booking.one", bookingDto.getBookingNo());
 	}
+	
 
+	@Override
+	public List<BookingDto> hanList(String memberId) {
+		return sqlSession.selectList("booking.han1",memberId);
+	}
 }

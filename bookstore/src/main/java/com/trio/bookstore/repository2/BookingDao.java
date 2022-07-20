@@ -16,5 +16,7 @@ public interface BookingDao {
 
 	// 업데이트
 	BookingDto extend(BookingDto bookingDto);
+	//대여목록 조회(해당아이디만)
+	List<BookingDto> hanList(String memberId);
 
 }

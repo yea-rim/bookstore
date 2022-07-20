@@ -43,5 +43,9 @@
    <select id="one" resultType="BookingDto" parameterType="int">
       select * from booking where booking_no = #{bookingNo}
    </select> 
+<!--    해당 아이디인 목록 조회 -->
+   <select id = "han1" resultType="BookingDto" parameterType="String">
+   	select * from booking where booking_id = #{bookingId}
+   </select>
 
 </mapper> 

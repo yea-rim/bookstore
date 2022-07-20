@@ -13,7 +13,7 @@
             <div class="breadcrumb__text">
                <h2>결제 내역</h2>
                <div class="breadcrumb__option">
-                  <a href="./index.html">Home</a> <span>결제 내역</span>
+                  <a href="./index.html">Home</a> <span>대여 목록</span>
                </div>
             </div>
          </div>
