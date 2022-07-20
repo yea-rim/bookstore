@@ -271,7 +271,7 @@ public class PayController2 {
 		log.debug("제발={}",memberId);
 		payService.insert(payNo,responseVO,finalStoreList,finalUsedList,memberId);
 		
-		return "redirect:finish";
+		return "redirect:payList";
 	}
 	@GetMapping("/pay/finish")
 	public String payFinish() {
@@ -405,7 +405,7 @@ public class PayController2 {
 	}
 	
 	//결제내역
-	@GetMapping("/payList")
+	@GetMapping("/pay/payList")
 	public String payList(HttpSession session,Model model) {
 		String memberId = (String)session.getAttribute("login");
 		String auth = (String)session.getAttribute("auth");

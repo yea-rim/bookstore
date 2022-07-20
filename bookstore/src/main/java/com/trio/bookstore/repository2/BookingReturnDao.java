@@ -12,4 +12,6 @@ public interface BookingReturnDao {
 	// 추가
 	BookingReturnDto bookReturn(BookingReturnDto bookingReturnDto);
 
+	List<BookingReturnDto> hanList(String memberId);
+
 }
