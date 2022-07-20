@@ -66,6 +66,7 @@
 		data(){
 			return {
 				bookingList:[],
+				returnData:{},
 
 			};
 		},
@@ -78,11 +79,6 @@
 				var choice = window.confirm("반납이 완료됐습니까?");
 				if(choice == false) return;
 				const bookingNo = this.bookingList[index].bookingNo;
-				console.log(bookingNo);
-				console.log(bookingNo);
-				console.log(bookingNo);
-				console.log(bookingNo);
-				console.log(bookingNo);
 				
 				axios({
 					url:"${pageContext.request.contextPath}/rest/booking/" + bookingNo,
@@ -92,10 +88,24 @@
 				.then((resp)=>{
 					this.bookingList[index] = resp.data;
 					window.alert("반납 처리했습니다.");
-		            axios.get("http://localhost:8080/bookstore/rest/booking/")
-		            .then(resp=>{
-		                this.booking = resp.data;
+
+					this.returnData.bookingReturnId = this.bookingList[index].bookingId;
+					this.returnData.bookingReturnBookNo = this.bookingList[index].bookingBookNo;
+					this.returnData.bookingReturnDate = this.bookingList[index].bookingDate;
+					this.returnData.bookingReturnLibrary = this.bookingList[index].bookingLibrary;
+					this.returnData.bookingReturnBookTitle = this.bookingList[index].bookingBookTitle;
+
+					console.log(this.returnData);
+					axios({
+						url:"${pageContext.request.contextPath}/rest/booking-return/",
+						method:"post",
+						data: this.returnData,
+					})
+					.then(resp=>{
+		                console.log("잘 돌아갑니다~~!");
+						console.log(this.returnData);
 		            });
+					console.log(this.returnData);
 		            
 				})
 			},
