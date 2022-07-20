@@ -247,6 +247,7 @@
     			
 //     			2. axios 이용하는 방법
 //     			axios({옵션}).then(성공콜백).catch(에러콜백);
+    				
     				axios({
     					url:"${pageContext.request.contextPath}/rest/basket/"+this.memberId,
     					method:"get"
@@ -256,7 +257,6 @@
     					//console.log(resp.data);
     					this.dataList.push(...resp.data);
     				}),
-    				
     				axios({
     					url:"${pageContext.request.contextPath}/rest/basket/total/"+this.memberId,
     					method:"get"
@@ -266,6 +266,7 @@
     					//console.log(resp.data);
     					this.total = resp.data;
     				})
+    					
     		},
         });
         app.mount("#app");
