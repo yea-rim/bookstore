@@ -29,7 +29,7 @@
 
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
-        <div class="container">
+        <div class="container" id = "app">
             <div class="row">
            	<div class = "col-lg-1 col-md-1">
            	</div>
@@ -82,25 +82,40 @@
                         <hr>
                         
                        <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
-                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>       								
+                        <c:choose>
+                        	<c:when test="${usedCheap == null}">
+                        		   중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">재고없음</div>&nbsp;       								
+                        	</c:when>
+                        	<c:otherwise>
+                        	
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>&nbsp;       								
                         <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
+                        	</c:otherwise>
+                        </c:choose>
+                          	<c:choose>
+                           	<c:when test="${usedCheap == null }">
+                           		
+                           	</c:when>
+                           <c:when test="${usedList.size() == 0 && usedCheap != null}">
+                              <div><input type = "button"  value = "추가재고없음" ></div>
+                           	</c:when>
+                           	<c:otherwise>
+                        <div><input type = "button" v-on:click = "showUsed =!showUsed" value = "중고+"></div>
+                              	</c:otherwise>    
+                          	</c:choose>
+                       	<!-- 조회구문에서 싼 값 다음번째 부터 나오는 리스트임 -->
+                       	<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+<%--                         <c:if test="${usedList.length == 0}"> --%>
+<!--                         	<div v-show = "showUsed"> -->
+<!--                         		<p style="color:red;">중고 재고가 없습니다.</p> -->
+<!--                         	</div>	 -->
+<%--                         </c:if> --%>
+                        <div v-show = "showUsed">
                         
-						<ul class = "used-pay" >
-						<li>
-						더보기+
-						<ul style = "display: none;">
-								<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
-       							
-       							<li>
-       							<div>
-       								중고가 : ${usedDto.usedPrice }원
-       								<input type = "checkbox" name = "used[${status.index+1}].usedNo" value = "${usedDto.usedNo}">
-       							</div>
-       							</li>
-       					</c:forEach>
-						</ul>
-					</li>
-				</ul>
+                        <label>중고가 : &nbsp; ${usedDto.usedPrice }원</label>&nbsp;
+                        <input type ="checkbox" name = "used[${status.index+1 }].usedNo" value = "${usedDto.usedNo }">
+                        </div>
+						</c:forEach>
        				
        					
                     	 
@@ -116,9 +131,9 @@
                        	</form>
                         
                         <ul>
-                            <li><b>Availability</b> <span>In Stock</span></li>
-                            <li><b>Shipping</b> <span>01 day shipping. <samp>Free pickup today</samp></span></li>
-                            <li><b>Weight</b> <span>0.5 kg</span></li>
+                            <li><b>도서 저자</b> <span>${bookDto.bookAuth }</span></li>
+                            <li><b>도서 출판사</b> <span>${bookDto.bookPubl }</span></li>
+                            <li><b>ISBN</b> <span>${bookDto.bookIsbn }</span></li>
                             <li><b>Share on</b>
                                 <div class="share">
                                     <a href="#"><i class="fa fa-facebook"></i></a>
@@ -291,17 +306,34 @@
     </section>
     <!-- Related Product Section End -->
     
-    
-    
- <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-<script>
-	$(function(){
-		$(".used-pay").children("li").click(function(){
-			//this == <li>
-			$(this).children("ul").slideToggle();
-		});
-		
-	});
-</script>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	
+	
+	 <script>
+        //div[id=app]을 제어할 수 있는 Vue instance를 생성
+        const app = Vue.createApp({
+            //data : 화면을 구현하는데 필요한 데이터를 작성한다.
+            data(){
+                return {
+                    showUsed:false,
+                };
+            },
+            //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
+            // - 3줄보다 많다면 사용하지 않는 것을 권장한다(복잡한 계산 시 성능 저하가 발생)
+            computed:{
+                
+            },
+            //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
+            methods:{
+                
+            },
+            //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
+            watch:{
+                
+            },
+        });
+        app.mount("#app");
+    </script>
     <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     

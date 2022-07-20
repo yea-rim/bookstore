@@ -70,4 +70,4 @@
 	});
 	app.mount("#app");
 </script>
-			<jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include>
+<%-- 			<jsp:include page="/WEB-INF/views/admin/footer.jsp"></jsp:include> --%>
