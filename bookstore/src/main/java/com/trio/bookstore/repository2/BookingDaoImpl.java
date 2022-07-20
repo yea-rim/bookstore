@@ -24,6 +24,7 @@ public class BookingDaoImpl implements BookingDao {
 		int sequence = sqlSession.selectOne("booking.sequence");
 		bookingDto.setBookingNo(sequence);
 		sqlSession.insert("booking.rental", bookingDto);
+		sqlSession.update("lib.rental", bookingDto.getBookingBookNo());
 		return bookingDto;
 	}
 
