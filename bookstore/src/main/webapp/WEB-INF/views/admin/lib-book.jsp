@@ -198,10 +198,12 @@
 					data: this.currentData,
 				})
 				.then((resp)=>{
+					
 	            	console.log(resp.data[0].libraryName);
 	            	console.log(resp.data[0].libraryGu);
 					this.currentData.libName = resp.data[0].libraryName;
 					this.currentData.libGu = resp.data[0].libraryGu;
+					console.log(this.currentData);
 				});
 			},
 			findBook(){

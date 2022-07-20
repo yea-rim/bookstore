@@ -27,7 +27,7 @@
 
 <!-- Product Section Begin -->
 <section class="product spad">
-	<div class="container">
+	<div class="container" id="app">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
 
@@ -88,6 +88,9 @@
 		methods:{
 			
 			rental(){
+				var choice = window.confirm("해당 도서관에서 책을 대여하시겠습니까?");
+				if(choice == false) return;
+				
 				axios({
 					url:"${pageContext.request.contextPath}/rest/booking/",
 					method:POST,
@@ -95,7 +98,7 @@
 				})
 				.then((resp)=>{
 					this.bookingList.push(resp.data);
-					window.alert("대여 완료!");
+					window.alert("대여가 완료됐습니다. 당일 내에 해당 도서관에서 책을 수령해 주세요.");
 					}
 				});
 			},
