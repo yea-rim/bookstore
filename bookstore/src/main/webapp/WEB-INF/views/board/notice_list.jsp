@@ -178,7 +178,7 @@
 	<br>
 <c:if test="${isAdmin}">
 					<div align="right" >
-			<a href="review_write" class="btn btn-primary" >글쓰기</a>
+			<a href="notice_write" class="btn btn-primary" >글쓰기</a>
 			</div>
 </c:if>
 		<!-- 검색창 -->

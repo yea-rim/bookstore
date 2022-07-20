@@ -101,7 +101,7 @@
 			<tr>
 				<th>
 				<td>
-	        	<div align="right" ><button type="submit" class="btn btn-primary fill">회원가입</button></div>
+	        	<div align="right" ><button type="submit" class="btn btn-primary fill" id="demo">회원가입</button></div>
 	        </td>
 			</tr>
 			</table>
