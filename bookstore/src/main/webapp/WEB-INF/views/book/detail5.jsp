@@ -531,7 +531,7 @@
     <script type = "text/javascript">
 	document.getElementById("demo").addEventListener('click', function () {
 		
-		alert("장바구니에 등록하시겠습니까?.");
+		alert("장바구니에 등록되었습니다.");
 	});
 	</script>
    

@@ -225,4 +225,12 @@ public class AdminController {
 		return "admin/question";
 	}
 	
+	//대여 목록 가는 메소드
+//	@GetMapping("/booking")
+//	public String booking(HttpSession session) {
+//		String memberId = (String)session.getAttribute("login");
+//		//대여목록 조회(해당아이디만)
+//		boardDao.hanList(memberId);
+//		return "admin/booking.jsp";
+//	}
 }
