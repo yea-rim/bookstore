@@ -32,7 +32,7 @@ public class BookController {
 
 	@Autowired
 	private StoreDao storeDao;
-	
+	  
 	// 도서목록 페이지
 	@RequestMapping("/list")
 	public String list(@RequestParam(required = false) String type, 

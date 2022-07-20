@@ -31,12 +31,18 @@ public class BasketDaoImpl implements BasketDao {
 	}
 	
 	@Override
-	public List<BasketDto> list() {
+	public List<BasketDto> list(String memberId) {
 		// TODO Auto-generated method stub
-		return sqlSession.selectList("basket.list");
+		return sqlSession.selectList("basket.list",memberId);
 	}
 	@Override
 	public void delete(int basketNo) {
 		sqlSession.delete("basket.delete",basketNo);
+	}
+	//멤버아이디로 장바구니 총가격 가져오기
+	@Override
+	public int total(String memberId) {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne("basket.total",memberId);
 	}
 }
