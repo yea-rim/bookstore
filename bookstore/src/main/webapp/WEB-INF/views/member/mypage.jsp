@@ -26,7 +26,12 @@
                             <li class="active"><a href="${root}/mypage">내 정보</a></li>
 							<li><a href="${root}/information">개인정보 변경</a></li>
 							<li><a href="${root}/password">비밀번호 변경</a></li>
-							<li><a href="${pageContext.request.contextPath}/payList">주문목록</a></li>
+							<li><a href="${pageContext.request.contextPath}/pay/payList">주문목록</a>
+								<ul class="header__menu__dropdown">
+										<li><a href="${pageContext.request.contextPath}/admin/booking1">대여 목록</a></li>
+										<li><a href="${pageContext.request.contextPath}/admin/booking2">반납 목록</a></li>
+									</ul>
+							</li>
 							<li><a href="${root}/question">장바구니</a></li>
 							<li><a href="${pageContext.request.contextPath}/board/used_book_list?type=board_writer&keyword=${memberDto.memberId}">중고 판매 내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1 문의내역</a></li>

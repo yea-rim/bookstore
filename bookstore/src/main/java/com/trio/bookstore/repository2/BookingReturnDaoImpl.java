@@ -25,4 +25,8 @@ public class BookingReturnDaoImpl implements BookingReturnDao {
 		sqlSession.insert("bookingReturn.rental", bookingReturnDto);
 		return bookingReturnDto;
 	}
+	@Override
+	public List<BookingReturnDto> hanList(String memberId) {
+		return sqlSession.selectList("bookingReturn.han",memberId);
+	}
 }
