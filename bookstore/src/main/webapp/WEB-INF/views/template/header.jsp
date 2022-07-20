@@ -179,8 +179,8 @@ border-radius: 0.25em;
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
-				<li><i class="fa fa-envelope"></i> hello@world.com</li>
-				<li>3만원 이상 주문시 무료 배송</li>
+<!-- 				<li><i class="fa fa-envelope"></i> hello@world.com</li> -->
+<!-- 				<li>3만원 이상 주문시 무료 배송</li> -->
 			</ul>
 		</div>
 	</div>
@@ -193,8 +193,8 @@ border-radius: 0.25em;
 					<div class="col-lg-6 col-md-6">
 						<div class="header__top__left">
 							<ul>
-								<li><i class="fa fa-envelope"></i> hello@world.com</li>
-								<li>3만원 이상 주문시 무료 배송</li>
+<%-- 								<li><i class="fa fa-envelope"></i> ${n}</li> --%>
+<!-- 								<li>3만원 이상 주문시 무료 배송</li> -->
 							</ul>
 						</div>
 					</div>
