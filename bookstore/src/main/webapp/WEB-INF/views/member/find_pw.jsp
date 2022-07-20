@@ -23,25 +23,30 @@
     </section>
     <!-- Breadcrumb Section End -->
     
-	    <div class="row">
-	        <label>아이디</label>
-	        <input type="text" name="memberId" autocomplete="off" required class="form-input fill input-round">
-	    </div>
-	    <div class="row">
-	        <label>이름</label>
-	        <input type="text" name="memberNick" autocomplete="off" required class="form-input fill input-round">
-	    </div>
-	    <div class="row">
-	        <label>전화번호</label>
-	        <input type="tel" name="memberPhone" autocomplete="off" required class="form-input fill input-round">
-	    </div>
-	    <div class="row">
-	        <label>생년월일</label><br>
-	        <input type="date" name="memberBirth" autocomplete="off" required class="form-input input-round">
-	    </div>
-	    <div class="row">
-	        <button type="submit" class="btn btn-primary fill">비밀번호 찾기</button>
-	    </div>
+	<div class="row">
+		<table class="table table-border table-hover">
+		<tr>
+			<th>아이디</th>
+	        <td><input type="text" name="memberId" autocomplete="off" required class="form-input fill input-round"></td>
+		</tr>
+			<tr>
+			<th>이름</th>
+	        <td><input type="text" name="memberNick" autocomplete="off" required class="form-input fill input-round"></td>
+		</tr>
+			<tr>
+			<th>전화번호</th>
+	        <td><input type="tel" name="memberPhone" autocomplete="off" required class="form-input fill input-round"></td>
+		</tr>
+			<tr>
+			<th>생년월일</th>
+	        <td><input type="date" name="memberBirth" autocomplete="off" required class="form-input input-round"></td>
+		</tr>
+			<tr>
+			<th></th>
+			<td><div align="right"><button type="submit" class="btn btn-primary fill">비밀번호 찾기</button></div></td>
+	        </tr>
+		</table>
+	</div>
 		<%-- 에러 표시가 있는 경우 메세지를 출력 --%>
 		<% if(request.getParameter("error") != null) { %>
 		<div class="row center">
