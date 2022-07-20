@@ -60,7 +60,7 @@
 											${payDto.payPost }
 											</div>
 										</td>
-										<td>
+										<td> 
 											<strong >${payDto.payDelivery }</strong>
 										</td>
 									</tr>
