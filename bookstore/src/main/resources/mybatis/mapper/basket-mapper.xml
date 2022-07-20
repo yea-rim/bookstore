@@ -13,7 +13,7 @@
 	<select id="sequence" resultType="int">
 		select basket_seq.nextVal from dual;
 	</select>
-	
+	  
 	<insert id="insert" parameterType="BasketDto">
 <!-- 		도서번호만 왔을떄 조건식 -->
 		insert into basket(
