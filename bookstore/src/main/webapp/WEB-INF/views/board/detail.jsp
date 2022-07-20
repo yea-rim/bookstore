@@ -169,7 +169,7 @@ const app = Vue.createApp({
     data(){
         return {
         	//서버에서 전달된 정보
-            memberId:"${boardDto.boardWriter}",
+            memberId:"${login}",
             memberGrade:"${auth}",
             boardNo:${boardDto.boardNo},
             

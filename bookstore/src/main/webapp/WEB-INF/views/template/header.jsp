@@ -172,10 +172,10 @@ border-radius: 0.25em;
 		</nav>
 		<div id="mobile-menu-wrap"></div>
 		<div class="header__top__right__social">
-			<a href="${root}/"><i class="fa fa-facebook"></i></a> <a
-				href="${root}/"><i class="fa fa-twitter"></i></a> <a href="${root}/"><i
-				class="fa fa-linkedin"></i></a> <a href="${root}/">
-				<i class="fa fa-pinterest-p"></i></a>
+						<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> <a
+							href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a> <a
+							href="https://twitter.com/"><i class="fa fa-twitter"></i></a> <a
+							href="https://www.pinterest.co.kr/"><i class="fa fa-pinterest"></i></a>
 		</div>
 		<div class="humberger__menu__contact">
 			<ul>
@@ -201,10 +201,6 @@ border-radius: 0.25em;
 					<div class="col-lg-6 col-md-6">
 						<div class="header__top__right">
 							<div class="header__top__right__social">
-								<a href="${root}/"><i class="fa fa-facebook"></i></a> <a
-<%-- 									href="${root}/"><i class="fa fa-twitter"></i></a> <a --%>
-									href="${root}/"><i class="fa fa-linkedin"></i></a>
-<%-- 									<a href="${root}/"><i class="fa fa-pinterest-p"></i></a> --%>
 									<a href="${root}/"><img src="https://blog.kakaocdn.net/dn/OcpVc/btrHHlioiV6/ALGCFcpLgHJsk4ZHdFWMQk/img.png" height="25px"> </i></a>
 									<a href="${root}/"><img src="https://blog.kakaocdn.net/dn/zEZRZ/btrHKcDZj7N/HXYMHqarSOktGKkxCTmIl0/img.png" height="20px"> </i></a>
 									<a href="${root}/"><img src="https://blog.kakaocdn.net/dn/b1t9yD/btrHKeaMB39/xiI9qixcQElnaPj3FntRt1/img.png" height="20px"> </i></a>
