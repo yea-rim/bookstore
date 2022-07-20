@@ -40,11 +40,11 @@
 						<li><a
 							href="${pageContext.request.contextPath}/board/qna_write">1:1
 								문의</a></li>
-						<li><a href="#">자주 묻는 질문</a></li>
-						<li><a href="#">회원가입</a></li>
-						<li><a href="#">도서관</a></li>
-						<li><a href="#">쇼핑</a></li>
-						<li><a href="#">중고 도서</a></li>
+						<li><a href="http://localhost:8080/bookstore/chatbot">자주 묻는 질문</a></li>
+						<li><a href="http://localhost:8080/bookstore/member/join">회원가입</a></li>
+						<li><a href="http://localhost:8080/bookstore/lib/main">도서관</a></li>
+						<li><a href="http://localhost:8080/bookstore/book/list">북스토어</a></li>
+						<li><a href="http://localhost:8080/bookstore/book/list">중고 도서</a></li>
 					</ul>
 				</div>
 			</div>
@@ -57,10 +57,10 @@
 						<button type="submit" class="site-btn">구독하기</button>
 					</form>
 					<div class="footer__widget__social">
-						<a href="${root}/"><i class="fa fa-facebook"></i></a> <a
-							href="${root}/"><i class="fa fa-instagram"></i></a> <a
-							href="${root}/"><i class="fa fa-twitter"></i></a> <a
-							href="${root}/"><i class="fa fa-pinterest"></i></a>
+						<a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a> <a
+							href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a> <a
+							href="https://twitter.com/"><i class="fa fa-twitter"></i></a> <a
+							href="https://www.pinterest.co.kr/"><i class="fa fa-pinterest"></i></a>
 					</div>
 				</div>
 			</div>
