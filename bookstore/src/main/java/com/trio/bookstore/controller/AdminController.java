@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BoardDto;
 import com.trio.bookstore.entity.BookingDto;
+import com.trio.bookstore.entity.BookingReturnDto;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
 import com.trio.bookstore.repository2.BookingDao;
-import com.trio.bookstore.repository2.BookingDao;
+import com.trio.bookstore.repository2.BookingReturnDao;
 
 @CrossOrigin
 @Controller
@@ -26,7 +27,8 @@ public class AdminController {
 	
 	@Autowired
 	private BookingDao bookingDao;
-	
+	@Autowired
+	private BookingReturnDao bookingReturnDao;
 	@Autowired
 	private BoardDao boardDao;
 
@@ -244,13 +246,23 @@ public class AdminController {
 	}
 	
 	//대여 목록 가는 메소드
-	@GetMapping("/booking")
+	@GetMapping("/booking1")
 	public String booking(HttpSession session,
 				Model model) {
 		String memberId = (String)session.getAttribute("login");
 		//대여목록 조회(해당아이디만)
 		List<BookingDto> bookingList = bookingDao.hanList(memberId);
-		model.addAttribute(bookingList);
-		return "admin/booking.jsp";
+		model.addAttribute("bookingList",bookingList);
+		return "admin/booking";
 	}
+	//반납 목록 가는 메소드
+		@GetMapping("/booking2")
+		public String booking2(HttpSession session,
+					Model model) {
+			String memberId = (String)session.getAttribute("login");
+			//대여목록 조회(해당아이디만)
+			List<BookingReturnDto> bookingList = bookingReturnDao.hanList(memberId);
+			model.addAttribute("bookingList",bookingList);
+			return "admin/bookingReturn";
+		}
 }

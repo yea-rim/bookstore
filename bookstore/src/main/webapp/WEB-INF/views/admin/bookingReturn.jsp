@@ -4,7 +4,6 @@
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <!-- Breadcrumb Section Begin -->
-	<div class="container w1000 m30">
 <section class="breadcrumb-section set-bg"
    style="background-color: #F09F00;">
 
@@ -12,9 +11,9 @@
       <div class="row">
          <div class="col-lg-12 text-center">
             <div class="breadcrumb__text">
-               <h2>대여 목록</h2>
+               <h2>반납 목록</h2>
                <div class="breadcrumb__option">
-                  <a href="./index.html">Home</a> <span>대여 목록</span>
+                  <a href="./index.html">Home</a> <span>반납 목록</span>
                </div>
             </div>
          </div>
@@ -37,25 +36,25 @@
 								<tr>
 									<th class="shoping__product" colspan = "2" width="20%">도서명</th>
 <!-- 									<th></th> -->
-									<th>대여날짜</th>
+									<th>반납날짜</th>
 									<th>도서관명</th>
 								</tr>
 							</thead>
 
 								<tbody>
 								<!-- payList 반복문 -->
-								<c:forEach var="bookingDto" items="${bookingList }">
+								<c:forEach var="bookingReturnDto" items="${bookingList }">
 									<tr>
 										<td style="text-align: left">
-											<strong>${bookingDto.bookingBookTitle }</strong>
+											<strong>${bookingReturnDto.bookingReturnTitle }</strong>
 										</td>
 										<td>
 										</td>
 										<td class="text-center">
-											<h5>${bookingDto.bookingDate }</h5>
+											<h5>${bookingDto.bookingReturnDate }</h5>
 										</td>
 										<td class="text-center" width="30%">
-												${bookingDto.bookingLibrary }
+												${bookingDto.bookingReturnLibrary }
 										</td>
 									</tr>
 									</c:forEach>										
