@@ -42,6 +42,6 @@
    
    <select id="one" resultType="BookingDto" parameterType="int">
       select * from booking where booking_no = #{bookingNo}
-   </select>
+   </select> 
 
 </mapper> 
