@@ -24,7 +24,7 @@
 	right: 50
 }
 </style>
-<c:if test="${isAdmin}">
+<c:if test="${isUser}">
 	<div class="container w1000 m30">
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 <c:set var="root" value="${pageContext.request.contextPath}/admin"></c:set>
@@ -61,7 +61,7 @@
 	</nav>
 						</c:if>
 						<div class="container w950 m30">
-						<c:if test="${isUser}">
+						<c:if test="${isAdmin}">
 						<c:set var="root" value="${pageContext.request.contextPath}/member"></c:set>
 						<jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 						    <!-- Breadcrumb Section Begin -->
@@ -96,15 +96,16 @@
 	<div class="row">
 		<table class="table table-border">
 			<thead>
-			<tbody align="center">
+			
 				<tr>
 					<th width="50%">제목</th>
 					<th>작성자</th>
 					<th>작성일</th>
 					<th>조회수</th>
 				</tr>
-			</thead>
-				<c:forEach var="boardDto" items="${list3}">
+	
+				<tbody align="center">
+				<c:forEach var="boardDto" items="${list4}">
 				<tr>
 					<td class="left">
 					

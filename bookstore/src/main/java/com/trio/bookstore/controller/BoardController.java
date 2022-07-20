@@ -23,6 +23,8 @@ import com.trio.bookstore.repository.AttachmentDao;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
 @RequestMapping("/board")
 public class BoardController {
@@ -173,7 +175,12 @@ public class BoardController {
 	public String list4(@RequestParam(required = false) String type, @RequestParam(required = false) String keyword,
 			@RequestParam(required = false, defaultValue = "1") int p,
 			@RequestParam(required = false, defaultValue = "10") int s, Model model,HttpSession session) {
-		List<BoardDto> list4 = boardDao.list4(type, keyword, p, s);
+		String memberId = (String)session.getAttribute("login");
+		
+		log.debug("hanseok={}",memberId);
+		
+		List<BoardDto> list4 = boardDao.list4(type, keyword,memberId, p, s);
+		model.addAttribute("memberId",memberId);
 		model.addAttribute("list4", list4);
 
 		boolean search = type != null && keyword != null;
@@ -188,7 +195,7 @@ public class BoardController {
 		if (endBlock > lastPage) {
 			endBlock = lastPage;
 		}
-
+	
 		model.addAttribute("p", p);
 		model.addAttribute("s", s);
 		model.addAttribute("type", type);
@@ -199,8 +206,8 @@ public class BoardController {
 
 		
 		String memberGrade = (String) session.getAttribute("auth");
-		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
-		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("도서관리자");
+		boolean isUser = memberGrade != null && memberGrade.equals("관리자");
 		model.addAttribute("isAdmin", isAdmin);
 		model.addAttribute("isUser", isUser);
 		return "board/used_book_list";
