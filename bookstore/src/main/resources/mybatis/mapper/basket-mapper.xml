@@ -42,7 +42,7 @@
 		
 		<select id="total" parameterType="String" resultType="int">
 		 select sum(basket_price) from basket where basket_member_id = #{memberId}
-		</select>
+		</select> 
 </mapper> 
 
 
