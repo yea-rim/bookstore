@@ -61,7 +61,7 @@
 											상세주소 : ${payDto.memberDetailAddress }
 											</div>
 										</td>
-										<td>
+										<td>  
 											<strong >${payDto.payDelivery }</strong>
 										</td>
 									</tr>
