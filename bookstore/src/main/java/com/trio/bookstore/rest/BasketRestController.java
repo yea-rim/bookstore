@@ -38,9 +38,15 @@ public class BasketRestController {
 	public List<BasketDto> list(@PathVariable String memberId){
 		return basketDao.list(memberId);
 	}
+	
 	@DeleteMapping("/{basketNo}")
 	public void delete(@PathVariable int basketNo) {
 		basketDao.delete(basketNo);
+	}
+	//아이디로 장바구니 총가격 주기
+	@GetMapping("/total/{memberId}")
+	public int total(@PathVariable String memberId) {
+		return basketDao.total(memberId);
 	}
 	
 	@GetMapping("/member/{query}")

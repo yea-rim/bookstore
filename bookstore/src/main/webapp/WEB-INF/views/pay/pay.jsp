@@ -91,7 +91,7 @@
                             </thead>
                             <tbody>
                                <!-- form(결제구현 )-->
-                               <form action="${pageContext.request.contextPath }/pay/purchase" method = "get">
+<%--                                <form action="${pageContext.request.contextPath }/pay/purchase" method = "get"> --%>
                                 <!-- 쇼핑몰책 먼저 보이게 하기(수량이 0보다 클때만 나오게) -->
                                   <c:if test="${storeAmount>0}">
                         <input type = "hidden" name = "finalStore[${0 }].storeBookNo" value = "${storeDto.storeBookNo }">

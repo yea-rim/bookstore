@@ -10,10 +10,10 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="breadcrumb__text">
-                        <h2>Shopping Cart</h2>
+                        <h2>장바구니 목록</h2>
                         <div class="breadcrumb__option">
                             <a href="./index.html">Home</a>
-                            <span>Shopping Cart</span>
+                            <span>내 장바구니</span>
                         </div>
                     </div>
                 </div>
@@ -23,23 +23,27 @@
     <!-- Breadcrumb Section End -->
 
     <!-- Shoping Cart Section Begin -->
+<%-- 	<form @submit.prevent="sendPost" action = "${pageContext.request.contextPath }/pay2" method = "post"> --%>
+    <form action = "${pageContext.request.contextPath }/pay2" method = "post">
     <section class="shoping-cart spad">
-        <div id = "app" class="container" width = "850px">
+        <div id = "app" class="container">
             <div class="row" >
-                    	<form @submit.prevent="sendPost" action = "${pageContext.request.contextPath }/pay2" method = "post">
+				
                 <div class="col-lg-12" >
                     <div class="shoping__cart__table">
                      	 <table>
                             <thead>
                                 <tr>
                                     <th class="shoping__product" colspan = "2">상품정보</th>
-                                    <th>판매가</th>
+                                    <th>새상품/중고</th>
                                     <th>수량</th>
                                     <th>합계</th>
                                     <th>선택</th>
                                 </tr>
                             </thead>
                             <tbody >
+                           		<input type = "hidden" name = "total" :value = "total">
+                            	
                                 <tr v-for = "(basket, index) in dataList" v-bind:key="index" >
                                 <!-- 책 이미지 보여주는 칸 -->
                                     <td class="shoping__cart__item">                                   
@@ -59,10 +63,11 @@
 										<h5>{{basket.basketBookTitle}}</h5>
                                   	</td>  
                                     <td class="shoping__cart__price">
-                                       <h5>{{basket.basketPrice}}</h5>                                   
+                                       <h5 v-if = "usedSeen(index)">중고도서</h5>                                   
+                                       <h5 v-if = "storeSeen(index)">새도서</h5>                                   
                                         </td>
                                     <td class="shoping__cart__quantity">
-                                    	<h5>{{basket.basketAmount}}</h5>
+                                    	<h5>{{basket.basketAmount}}개</h5>
 <!--                                         <div class="quantity"> -->
 <!--                                             <div class="pro-qty"> -->
 <!--                                                 <input type="text" value="1"> -->
@@ -70,7 +75,7 @@
 <!--                                         </div> -->
                                     </td>
                                     <td class = "shoping_cart_quantity">
-                                    	<h5>수량</h5>
+                                    	<h5>{{basket.basketPrice}}원</h5>
                                     </td>
                                     <td class="shoping__cart__total">
                                         <a href = "#" v-on:click.prevent = "deleteItem(index);" class = "primary-btn">삭제</a> 
@@ -90,9 +95,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="shoping__cart__btns">
-                        <a href="#" class="primary-btn cart-btn">CONTINUE SHOPPING</a>
+                        <a href="${pageContext.request.contextPath }/book/list" class="primary-btn cart-btn">도서목록으로 가기</a>
                         <a href="#" class="primary-btn cart-btn cart-btn-right"><span class="icon_loading"></span>
-                            Upadate Cart</a>
+                           	${login }님의 장바구니</a>
                     </div>
                 </div>
 <!--                 <div class="col-lg-6"> -->
@@ -110,19 +115,18 @@
                     <div class="shoping__checkout">
                         <h5>Cart Total</h5>
                         <ul>
-                            <li>Subtotal <span>$454.98</span></li>
-                            <li>Total <span>$454.98</span></li>
+                            <li> <span></span></li>
+                            <li>총 결제금액<span>{{total}}원</span></li>
                         </ul>
 <!--                         <a href="#" class="primary-btn">주문하기</a> -->
                       	<input type = "submit" value = "주문하기" class = "primary-btn">
                         
                     </div>
                 </div>
-                
-           	</form>
-            </div>
-        </div>
+        	</div>
+       </div>
     </section>
+    </form>
     <!-- Shoping Cart Section End -->
     
     
@@ -142,7 +146,8 @@
          			memberId:"${memberId}",
                     dataList:[],
 					//쇼핑몰에 체크여부 데이터
-                    storeCheck:false,         	
+                    storeCheck:false,  
+                    total:"",
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
@@ -204,6 +209,16 @@
             			this.dataList.splice(index,1);
             			//+ 알람 (외부 API)
             		});
+            		//삭제시 총금액 동기화
+            		axios({
+    					url:"${pageContext.request.contextPath}/rest/basket/total/"+this.memberId,
+    					method:"get"
+    				})
+    				.then((resp)=>{
+    					//console.log(resp);
+    					console.log(resp.data);
+    					this.total = resp.data;
+    				});
             	}
                 
             },
@@ -240,6 +255,16 @@
     					//console.log(resp);
     					//console.log(resp.data);
     					this.dataList.push(...resp.data);
+    				}),
+    				
+    				axios({
+    					url:"${pageContext.request.contextPath}/rest/basket/total/"+this.memberId,
+    					method:"get"
+    				})
+    				.then((resp)=>{
+    					//console.log(resp);
+    					//console.log(resp.data);
+    					this.total = resp.data;
     				})
     		},
         });

@@ -13,6 +13,7 @@ public interface BasketDao {
 	int sequence();
 	List<BasketDto> list(String memberId);
 	void delete(int basketNo);
+	int total(String memberId);
 
 		
 	

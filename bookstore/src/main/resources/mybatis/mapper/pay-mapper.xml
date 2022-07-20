@@ -11,10 +11,10 @@
 		
 		<insert id ="insert" parameterType ="PayDto">
 			insert into pay(
-					pay_no,pay_tid,pay_total,pay_name,pay_time,pay_status,pay_member_id
+					pay_no,pay_tid,pay_total,pay_name,pay_time,pay_status,pay_member_id,pay_delivery
 				)
 				values(
-					#{payNo},#{payTid},#{payTotal},#{payName},sysdate,'승인',#{payMemberId}
+					#{payNo},#{payTid},#{payTotal},#{payName},sysdate,'승인',#{payMemberId},'출고준비'
 				)
 				
 		</insert>

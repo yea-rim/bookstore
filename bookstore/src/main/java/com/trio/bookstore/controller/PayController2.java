@@ -4,6 +4,7 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +35,6 @@ import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
 import com.trio.bookstore.vo.KakaoPayReadyRequestVO;
 import com.trio.bookstore.vo.KakaoPayReadyResponseVO;
 import com.trio.bookstore.vo.StorePayListVO;
-import com.trio.bookstore.vo.StorePayVO;
 import com.trio.bookstore.vo.UsedPayListVO;
 import com.trio.bookstore.vo.UsedPayVO;
 
@@ -113,65 +113,72 @@ public class PayController2 {
 	@PostMapping("/pay2")
 	public String pay2(@ModelAttribute StorePayListVO basketStoreList,
 					  @ModelAttribute UsedPayListVO basketUsedList,
+					  @RequestParam int total,
 					  HttpSession session,
 					  Model model
 			) {
+		
 		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
 		String login = (String)session.getAttribute("login");
+		List<BasketDto> basket = basketDao.list(login);
+		model.addAttribute("basket",basket);
+		model.addAttribute("total",total);
 		model.addAttribute("login",login);
 //		if(storeAmount == 0 && listVO.getUsed() == null) {
 //		}
+		model.addAttribute("basketStoreList",basketStoreList);
+		model.addAttribute("basketUsedList",basketUsedList);
 		log.debug("쇼핑몰 = {}",basketStoreList);
 		log.debug("중고 = {}",basketUsedList);
 		if(basketStoreList == null && basketUsedList == null) {
 			return "redirect:basket?error";
 		}
 
-		int total = 0;
-		//쇼핑몰책 수량
-//			model.addAttribute("storeList",basketStoreList);
-		if(basketStoreList.getStored() != null) {
-			List<StoreDto> storeList = new ArrayList<>();
-			for(StorePayVO storePayVO : basketStoreList.getStored()) {
-				//중고테이블 기본키인 중고번호로 단일조회
-				StoreDto storeDto = storeDao.find(storePayVO.getStoreNo());
-				if(storeDto == null || storeDto.getStoreBookNo() == 0) continue;
-				total+= storeDto.getStorePrice()*storePayVO.getQuantity();
-				//임의로 만든 중고 리스트에 추가
-				log.debug("hanseok5={}",total);
+//		int total = 0;
+//		//쇼핑몰책 수량
+////			model.addAttribute("storeList",basketStoreList);
+//		if(basketStoreList.getStored() != null) {
+//			List<StoreDto> storeList = new ArrayList<>();
+//			for(StorePayVO storePayVO : basketStoreList.getStored()) {
+//				//중고테이블 기본키인 중고번호로 단일조회
+//				StoreDto storeDto = storeDao.find(storePayVO.getStoreNo());
+//				if(storeDto == null || storeDto.getStoreBookNo() == 0) continue;
+//				total+= storeDto.getStorePrice()*storePayVO.getQuantity();
+//				//임의로 만든 중고 리스트에 추가
+//				log.debug("hanseok5={}",total);
+//
+//				storeList.add(storeDto);
+//			}
+//			log.debug("쇼핑몰 리스트={}",storeList);
+//			model.addAttribute("storeList",storeList);
+//		}
+//		//쇼핑몰책 데이터 가져오기
+////		StoreDto storeDto = storeDao.find(bookNo);
+////		model.addAttribute("storeDto",storeDto);
+//		
+////		total += storeDto.getStorePrice() * storeAmount;
+//		
+//		//중고책 가져오기
+//		if(basketUsedList.getUsed() != null) {
+//			
+//		List<UsedDto> usedList = new ArrayList<>();
+//		for(UsedPayVO usedPayVO : basketUsedList.getUsed()) {
+//			//중고테이블 기본키인 중고번호로 단일조회
+//			UsedDto usedDto = usedDao.findUsed(usedPayVO.getUsedNo());
+//			if(usedDto == null || usedDto.getUsedNo() == 0) continue;
+//			total+= usedDto.getUsedPrice()*usedPayVO.getQuantity();
+//			//임의로 만든 중고 리스트에 추가
+//			log.debug("hanseok5={}",total);
+//
+//			usedList.add(usedDto);
+//		}
+//		log.debug("아니={}",usedList);
+//		model.addAttribute("usedList",usedList);
+//
+//		}
+//		model.addAttribute("total",total);
 
-				storeList.add(storeDto);
-			}
-			log.debug("쇼핑몰 리스트={}",storeList);
-			model.addAttribute("storeList",storeList);
-		}
-		//쇼핑몰책 데이터 가져오기
-//		StoreDto storeDto = storeDao.find(bookNo);
-//		model.addAttribute("storeDto",storeDto);
-		
-//		total += storeDto.getStorePrice() * storeAmount;
-		
-		//중고책 가져오기
-		if(basketUsedList.getUsed() != null) {
-			
-		List<UsedDto> usedList = new ArrayList<>();
-		for(UsedPayVO usedPayVO : basketUsedList.getUsed()) {
-			//중고테이블 기본키인 중고번호로 단일조회
-			UsedDto usedDto = usedDao.findUsed(usedPayVO.getUsedNo());
-			if(usedDto == null || usedDto.getUsedNo() == 0) continue;
-			total+= usedDto.getUsedPrice()*usedPayVO.getQuantity();
-			//임의로 만든 중고 리스트에 추가
-			log.debug("hanseok5={}",total);
-
-			usedList.add(usedDto);
-		}
-		log.debug("아니={}",usedList);
-		model.addAttribute("usedList",usedList);
-
-		}
-		model.addAttribute("total",total);
-
-		return "pay/pay";
+		return "pay/pay2";
 	}
 	//결제구현 컨트롤러
 	@GetMapping("/pay/purchase")
@@ -179,10 +186,10 @@ public class PayController2 {
 						   @ModelAttribute FinalUsedListVO usedListVO,
 						   HttpSession session) throws URISyntaxException {
 		log.debug("storeListVO = {}",storeListVO);
-		if((storeListVO == null || storeListVO.getFinalStore() ==null) && (usedListVO == null || usedListVO.getFinalUsed() == null)) {
-			//상품을 구매한 것이 없을때 우선 메인으로 가게해놓음
-			return "redirect:/";
-		}
+//		if((storeListVO == null || storeListVO.getFinalStore() ==null) && (usedListVO == null || usedListVO.getFinalUsed() == null)) {
+//			//상품을 구매한 것이 없을때 우선 메인으로 가게해놓음
+//			return "redirect:/";
+//		}
 		
 		int totalPrice = 0;
 		List<String> itemNames = new ArrayList<>();
@@ -268,7 +275,7 @@ public class PayController2 {
 	}
 	@GetMapping("/pay/finish")
 	public String payFinish() {
-		return "pay/finish";
+		return "pay/payList";
 	}
 	//장바구니 페이지 가는 기능
 	@GetMapping("/basket")
@@ -333,6 +340,64 @@ public class PayController2 {
 		}
 		
 		return "redirect: book/detail?ok&bookNo="+bookNo;
+	}
+	//목록리스트에서 장바구니 넣을떄
+	@GetMapping("/basket2") 
+	public String basket2(@RequestParam int bookNo,
+						 @RequestParam int storeAmount,
+						 @ModelAttribute UsedPayListVO listVO,
+						 Model model,
+						 HttpServletRequest request
+						 ) {
+		
+		//쇼핑몰도 안사고 중고도 안사면 현재페이지로 가게하기
+		if(storeAmount == 0 && listVO.getUsed() == null) {
+			return "redirect:book/detail?error&bookNo="+bookNo;
+		}
+		
+		//쇼핑몰수량 있으면 장바구니 테이블에 넣기
+		if(storeAmount > 0) {
+			StoreDto storeDto = storeDao.find(bookNo);
+			log.debug("hanseok = {}",storeDto);
+			BasketDto basketDto = BasketDto.builder()
+							// 장바구니 번호는 mapper에서 시퀀스로
+							.basketMemberId("qwer1234")
+							//아이디 세션으로 넣어주기
+							.basketBookNo(bookNo)
+							.basketAmount(storeAmount)
+							.basketPrice(storeDto.getStorePrice()*storeAmount)
+							.basketBookTitle(storeDto.getBookTitle())
+							.basketBookImage(storeDto.getBookImage())
+							.build();
+			log.debug("hanseok2 = {}",basketDto);
+			basketDao.insert(basketDto);
+		}
+		
+		//중고장바구니 넣는 기능
+		if(listVO.getUsed() !=null) {
+			
+			for(UsedPayVO usedPayVO : listVO.getUsed()) {
+				if(usedPayVO.getUsedNo()!=0) {
+					
+				UsedDto usedDto = usedDao.findUsed(usedPayVO.getUsedNo());
+				BasketDto basketDto = BasketDto.builder()
+						// 장바구니 번호는 mapper에서 시퀀스로
+						.basketMemberId("qwer1234")
+						//아이디 세션으로 넣어주기
+						.basketUsedNo(usedDto.getUsedNo())
+						.basketAmount(usedPayVO.getQuantity())
+						.basketPrice(usedDto.getUsedPrice()*usedPayVO.getQuantity())
+						.basketBookTitle(usedDto.getBookTitle())
+						.basketBookImage(usedDto.getBookImage())
+						.build();
+				basketDao.insert2(basketDto);
+				}
+			}
+		}
+		log.debug("전페이지={}",request.getHeader("Referer"));
+			return "redirect:" + request.getHeader("Referer");
+		
+			
 	}
 	
 	//결제내역

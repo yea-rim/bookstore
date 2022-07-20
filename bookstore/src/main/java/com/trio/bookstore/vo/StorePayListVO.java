@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 
 @Data @NoArgsConstructor @AllArgsConstructor @Builder
 public class StorePayListVO {
-	private List<StorePayVO> stored;
+	private List<StorePayVO> store;
 }

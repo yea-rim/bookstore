@@ -4,10 +4,11 @@
 
    <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
  <style>
- 	.used-pay{
- 		
- 	}
+    .used-pay{
+    }
+    
  </style>
+ 
   <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -30,16 +31,97 @@
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container" id = "app">
+  
             <div class="row">
-           	<div class = "col-lg-1 col-md-1">
-           	</div>
+              <div class = "col-lg-1 col-md-1">
+              </div>
                 <div class="col-lg-2 col-md-6">
                     <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="${bookDto.bookImage }"  alt="">
+               <div class="product__details__pic__item text-center">
+                  <img class="product__details__pic__item--large"
+                     src="${bookDto.bookImage }" alt="">
+                  <button class="site-btn m-2" @click="handle_toggle">도서관 조회</button>
+                  
+                  
+                  <!-- 모달창 도전 !! -->
+                  <div>
+                     <div v-show="is_show" style="position: absolute; left: 30px; top: 300px; z-index: 300; border: solid #F09F00 3px; background-color: #FFFFFF;" class="m-1">
+                        <div style="width: 650px;">
+                           <div class="p-3" style="text-align: left; padding: 5px; background-color:#F09F00;">
+                              <button style="padding: 0px 0px 5px;" class="site-btn">도서관 재고 및 대여</button>
+                           </div>
+                           <div class="p-3">
+                              <div>
+                                 <table class="table table-border">
+                                    <thead>
+                                       <tr>
+                                          <th>지역</th>
+                                          <th width="50%">도서관명</th>
+                                          <th>대여</th>
+                                       </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr v-for="(yes, index) in yesList" v-bind:key="index">
+                                          <td>{{yes.libGu}}</td>
+                                          <td>{{yes.libName}} <a v-on:click="libInfo(index)">ℹ️</a></td>
+                                          <td>
+                                             <button class="site-btn m-1" style="padding: 5px 10px 5px;" v-on:click="rental(index)" >✓</button>
+                                          </td>
+                                       </tr>
+
+                                    </tbody>
+                                 </table>
+                              </div>
+   
+                              <button @click="handle_toggle" class="site-btn">닫기</button>
+                           </div>
                         </div>
-                        <div class="product__details__pic__slider owl-carousel">
+                     </div>
+                  </div>
+                  <div v-show="is_show2" style="position: absolute; left: 700px; top: 300px; z-index: 400; border: solid #F09F00 3px; background-color: #FFFFFF;" class="m-1">
+                        <div style="width: 450px;">
+                           <div class="p-3" style="text-align: left; padding: 5px; background-color:#F09F00;">
+                              <button style="padding: 0px 0px 5px;" class="site-btn">도서관 정보</button>
+                           </div>
+                           <div class="p-3">
+                              <div>
+                                 <table class="table table-border">
+                                    <tbody>
+                                       <tr>
+                                          <td>도서관명</td>
+                                          <td width="75%">{{libData.libraryName}}</td>
+                                       </tr>
+                                       <tr>
+                                          <td>주소</td>
+                                          <td width="75%">{{libData.libraryAddress}}</td>
+                                       </tr>
+                                       <tr>
+                                          <td>전화번호</td>
+                                          <td width="75%">{{libData.libraryTel}}</td>
+                                       </tr>
+                                       <tr>
+                                          <td>운영시간</td>
+                                          <td width="75%">{{libData.libraryTime}}</td>
+                                       </tr>
+                                       <tr>
+                                          <td>휴일</td>
+                                          <td width="75%">{{libData.libraryCloseDate}}</td>
+                                       </tr>                                       <tr>
+                                          <td>사이트</td>
+                                          <td width="75%">{{libData.libraryUrl}}</td>
+                                       </tr>
+                                    </tbody>
+                                 </table>
+                              </div>
+   
+                              <button @click="handle_toggle2" class="site-btn">닫기</button>
+                           </div>
+                        </div>
+                     </div>
+               </div>
+               
+               
+               <div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-3.jpg"
@@ -64,17 +146,17 @@
                             <span>(18 reviews)</span>
                         </div>
                         <p>${bookDto.bookDescription }</p>
-						<hr>
-						<!-- 폼 시작!! -->
-						<form method = "post">
-						<input type = "hidden" name = "bookNo" value = "${bookDto.bookNo }">
-						판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
-						
-						 <!--판매가 주문 수량 -->
-						 &nbsp;  <div class="product__details__quantity">
+                  <hr>
+                  <!-- 폼 시작!! -->
+                  <form method = "post">
+                  <input type = "hidden" name = "bookNo" value = "${bookDto.bookNo }">
+                  판매가 : &nbsp; <div class="product__details__price" style = "display:inline;">  ${storeDto.storePrice }원</div>
+                  
+                   <!--판매가 주문 수량 -->
+                   &nbsp;  <div class="product__details__quantity">
                             <div class="quantity">
                                 주문 수량 &nbsp;&nbsp; <div class="pro-qty">                                    
-                               		 <input type="text" value="0" name = "storeAmount">
+                                      <input type="text" value="0" name = "storeAmount">
                                </div>
                             </div>
                         </div>
@@ -83,52 +165,52 @@
                         
                        <!--  좀 문제가 있을 수 있어서 시간있으면 좀 더 생각해보기(show-hide로 바꾸고 list를 처음부터 뽑아낼수 있을듯?) -->
                         <c:choose>
-                        	<c:when test="${usedCheap == null}">
-                        		   중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">재고없음</div>&nbsp;       								
-                        	</c:when>
-                        	<c:otherwise>
-                        	
-                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>&nbsp;       								
+                           <c:when test="${usedCheap == null}">
+                                 중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">재고없음</div>&nbsp;                               
+                           </c:when>
+                           <c:otherwise>
+                           
+                        중고(최저가) : &nbsp; <div class="product__details__price" style = "display:inline;">${usedCheap.usedPrice }원</div>&nbsp;                               
                         <input type = "checkbox" name = "used[${0}].usedNo" value = "${usedCheap.usedNo }">
-                        	</c:otherwise>
+                           </c:otherwise>
                         </c:choose>
-                          	<c:choose>
-                           	<c:when test="${usedCheap == null }">
-                           		
-                           	</c:when>
+                             <c:choose>
+                              <c:when test="${usedCheap == null }">
+                                 
+                              </c:when>
                            <c:when test="${usedList.size() == 0 && usedCheap != null}">
                               <div><input type = "button"  value = "추가재고없음" ></div>
-                           	</c:when>
-                           	<c:otherwise>
+                              </c:when>
+                              <c:otherwise>
                         <div><input type = "button" v-on:click = "showUsed =!showUsed" value = "중고+"></div>
-                              	</c:otherwise>    
-                          	</c:choose>
-                       	<!-- 조회구문에서 싼 값 다음번째 부터 나오는 리스트임 -->
-                       	<c:forEach var="usedDto" items = "${usedList }" varStatus="status">
+                                 </c:otherwise>    
+                             </c:choose>
+                          <!-- 조회구문에서 싼 값 다음번째 부터 나오는 리스트임 -->
+                          <c:forEach var="usedDto" items = "${usedList }" varStatus="status">
 <%--                         <c:if test="${usedList.length == 0}"> --%>
-<!--                         	<div v-show = "showUsed"> -->
-<!--                         		<p style="color:red;">중고 재고가 없습니다.</p> -->
-<!--                         	</div>	 -->
+<!--                            <div v-show = "showUsed"> -->
+<!--                               <p style="color:red;">중고 재고가 없습니다.</p> -->
+<!--                            </div>    -->
 <%--                         </c:if> --%>
                         <div v-show = "showUsed">
                         
                         <label>중고가 : &nbsp; ${usedDto.usedPrice }원</label>&nbsp;
                         <input type ="checkbox" name = "used[${status.index+1 }].usedNo" value = "${usedDto.usedNo }">
                         </div>
-						</c:forEach>
-       				
-       					
-                    	 
-                  		<br>
-                  		<c:if test="${param.error != null}">
-                  			     <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
-                  			</c:if>
+                  </c:forEach>
+                   
+                      
+                        
+                        <br>
+                        <c:if test="${param.error != null}">
+                                <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
+                           </c:if>
 <!--                         <a href="#" class="primary-b77tn">장바구니 담기</a> -->
-						<input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
-						<input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
+                  <input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;">
+                  <input type = "submit" class = "primary-btn" value = "바로구매" formaction = "${pageContext.request.contextPath }/pay"  style="border:none;">
 <%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
                         <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
-                       	</form>
+                          </form>
                         
                         <ul>
                             <li><b>도서 저자</b> <span>${bookDto.bookAuth }</span></li>
@@ -145,6 +227,7 @@
                         </ul>
                     </div>
                 </div>
+                                               
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -308,15 +391,37 @@
     
     <script src="https://unpkg.com/vue@next"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	
-	
-	 <script>
+   
+   
+    <script>
         //div[id=app]을 제어할 수 있는 Vue instance를 생성
         const app = Vue.createApp({
             //data : 화면을 구현하는데 필요한 데이터를 작성한다.
             data(){
                 return {
                     showUsed:false,
+                    is_show: false,
+                    is_show2: false,
+                    
+                    libData:{},
+                bookList:[],
+                yesList:[],
+
+                bookingData:{
+                   bookingNo:"",
+                   bookingId:"",
+                   bookingBookNo:"",
+                   bookingLibrary:"",
+                },
+                currentData:{
+                   libNo:"",
+                   libLibInfoNo:"",
+                   libBookNo:"",
+                   libAmount:"",
+                   bookTitle:"",
+                   libName:"",
+                   libGu:"",
+                },
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
@@ -326,14 +431,102 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
+
+                // this와 바인딩 되지 않는다. 
+                arrow_function: () => {  
+                  console.log(this.is_show); // undefined
+                },
+
+                // bind로 묶어도 마찬가지다.
+                bind_function: (() => { 
+                  console.log(this.is_show); // undefined
+                }).bind(this),
+
+                // 정상적으로 동작한다.
+                it_is_work: function(){
+                  this.is_show = !this.is_show;
+                },
                 
+                handle_toggle: function(){ 
+                    this.is_show = !this.is_show; // #2, #3
+                  },
+                  
+                  handle_toggle2: function(){ 
+                      this.is_show2 = !this.is_show2; // #2, #3
+                    },
+                 
+             yesBook(){
+                const number = this.currentData.libBookNo;
+                axios({
+                   url:"${pageContext.request.contextPath}/rest/book/" + number,
+                   method:"get",
+                   data: this.currentData,
+                })
+                .then((resp)=>{
+                      console.log(resp.data.bookTitle);
+                   this.currentData.bookTitle = resp.data.bookTitle;
+                });
+             },
+             
+             rental(index){
+                var choice = window.confirm("해당 도서관에서 책을 대여하시겠습니까?");
+                if(choice == false) return;
+                
+                this.bookingData.bookingId = '${login}';
+                this.bookingData.bookingBookNo = ${bookDto.bookNo};
+                this.bookingData.bookingLibrary = this.yesList[index].libName;
+                
+                console.log(this.bookingData);
+                
+                axios({
+                   url:"${pageContext.request.contextPath}/rest/booking/",
+                   method:"post",
+                   data: this.bookingData,
+                })
+                .then((resp)=>{
+                   window.alert("대여가 완료됐습니다. 당일 내에 해당 도서관에서 책을 찾아주세요.");
+               });
+            },
+            
+             libInfo(index){
+                const libInfoNo = this.yesList[index].libLibInfoNo;
+                console.log(libInfoNo);
+                
+                    axios.get("http://localhost:8080/bookstore/rest/lib/" + libInfoNo)
+                    .then(resp=>{
+                        this.libData = resp.data;
+                        this.libData.libraryName = resp.data[0].libraryName;
+                        this.libData.libraryAddress = resp.data[0].libraryAddress;
+                        this.libData.libraryTel = resp.data[0].libraryTel;
+                        this.libData.libraryTime = resp.data[0].libraryTime;
+                        this.libData.libraryAddress = resp.data[0].libraryAddress;
+                        this.libData.libraryCloseDate = resp.data[0].libraryCloseDate;
+                        this.libData.libraryUrl = resp.data[0].libraryUrl;
+                        this.is_show2 = !this.is_show2;
+                    });
+            },
+             
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
             watch:{
                 
             },
+            created(){
+            axios({
+               url:"${pageContext.request.contextPath}/rest/lib-book/",
+               method:"get"
+            })
+            .then((resp)=>{
+               this.bookList.push(...resp.data);
+            })
+            
+                axios.get("http://localhost:8080/bookstore/rest/lib-book/book/" + ${bookDto.bookNo})
+                .then(resp=>{
+                    this.yesList = resp.data;
+                });
+            },
         });
         app.mount("#app");
     </script>
-    <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
