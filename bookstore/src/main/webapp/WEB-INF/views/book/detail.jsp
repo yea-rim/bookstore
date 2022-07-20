@@ -428,7 +428,7 @@
     			rental(index){
     				const libNo = this.yesList[index].libNo;
     				console.log(libNo);
-    				window.open("${pageContext.request.contextPath}/lib/rental/" + libNo);
+    				location.replace("${pageContext.request.contextPath}/lib/rental?libNo=" + libNo);
     			},
     			
             },

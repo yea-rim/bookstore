@@ -27,7 +27,7 @@
 
 <!-- Product Section Begin -->
 <section class="product spad">
-	<div class="container">
+	<div class="container" id="app">
 		<div class="row">
 			<div class="col-lg-12 col-md-12">
 
