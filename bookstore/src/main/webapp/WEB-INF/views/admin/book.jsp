@@ -296,7 +296,17 @@
 				.then(()=>{
 					this.bookList.splice(index, 1);
 					//+ 알람(외부 API)
+									axios({
+					url:"${pageContext.request.contextPath}/rest/book/",
+					method:"get"
+				})
+				.then((resp)=>{
+					//console.log(resp);
+					//console.log(resp.data);
+					this.bookList.push(...resp.data);
+				})
 				});
+				
 			},
 			
 			selectItem(index){
@@ -349,6 +359,15 @@
 						this.bookList[this.index] = resp.data;
 						window.alert("수정 완료!");
 					}
+					axios({
+						url:"${pageContext.request.contextPath}/rest/book/",
+						method:"get"
+					})
+					.then((resp)=>{
+						//console.log(resp);
+						//console.log(resp.data);
+						this.bookList.push(...resp.data);
+					})
 				});
 			},
 		},

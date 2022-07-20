@@ -227,6 +227,13 @@
 				.then(()=>{
 					this.bookList.splice(index, 1);
 					//+ 알람(외부 API)
+									axios({
+					url:"${pageContext.request.contextPath}/rest/lib-book/",
+					method:"get"
+				})
+				.then((resp)=>{
+					this.bookList.push(...resp.data);
+				})
 				});
 			},
 			
@@ -273,6 +280,14 @@
 					else if(this.isEditMode){
 						this.bookList[this.index] = resp.data;
 						window.alert("수정 완료!");
+						
+						axios({
+							url:"${pageContext.request.contextPath}/rest/lib-book/",
+							method:"get"
+						})
+						.then((resp)=>{
+							this.bookList.push(...resp.data);
+						})
 					}
 				});
 			},
