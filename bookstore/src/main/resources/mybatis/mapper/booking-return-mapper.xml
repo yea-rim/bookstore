@@ -23,5 +23,8 @@
    <select id="one" resultType="BookingDto" parameterType="int">
       select * from booking where booking_no = #{bookingNo}
    </select>
-
+	
+	<select id="han" resultType="BookingReturnDto" parameterType="String">
+		select * from booking_return where booking_return_id = #{memberId}
+	</select>
 </mapper> 
