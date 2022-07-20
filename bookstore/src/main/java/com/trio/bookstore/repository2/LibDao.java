@@ -18,4 +18,6 @@ public interface LibDao {
 
 	List<LibDto> shSearch(int libNo);
 
+	List<LibDto> findBook(int libBookNo);
+
 }

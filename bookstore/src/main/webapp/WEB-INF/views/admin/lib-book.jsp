@@ -139,8 +139,8 @@
 				<tbody>
 					<tr v-for="(book, index) in bookList" v-bind:key="index">
 						<td>{{book.libNo}}</td>
-						<td>{{book.libLibInfoNo}}</td>
-						<td>{{book.libBookNo}}</td>
+						<td>{{book.libName}}</td>
+						<td>{{book.bookTitle}}</td>
 						<td>{{book.libAmount}}권</td>
 						<td>
 							<button class="site-btn m-1" v-on:click="selectItem(index);">✓</button>
