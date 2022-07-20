@@ -220,12 +220,13 @@
                             <li><b>도서 출판사</b> <span>${bookDto.bookPubl }</span></li>
                             <li><b>ISBN</b> <span>${bookDto.bookIsbn }</span></li>
                             <li><b>Share on</b>
-                                <div class="share">
-                                    <a href="#"><i class="fa fa-facebook"></i></a>
-                                    <a href="#"><i class="fa fa-twitter"></i></a>
-                                    <a href="#"><i class="fa fa-instagram"></i></a>
-                                    <a href="#"><i class="fa fa-pinterest"></i></a>
-                                </div>
+               
+									<img src="https://blog.kakaocdn.net/dn/OcpVc/btrHHlioiV6/ALGCFcpLgHJsk4ZHdFWMQk/img.png" height="25px" style="height: 25px;" class="m-2">
+									<img src="https://blog.kakaocdn.net/dn/zEZRZ/btrHKcDZj7N/HXYMHqarSOktGKkxCTmIl0/img.png" height="20px" style="height: 20px;" class="m-2"> 
+									<img src="https://blog.kakaocdn.net/dn/b1t9yD/btrHKeaMB39/xiI9qixcQElnaPj3FntRt1/img.png" height="20px" style="height: 20px;" class="m-2"> 
+									<img src="https://blog.kakaocdn.net/dn/bDqBnZ/btrHKpc5ZWT/jxMkDtAHl5dkF8s8WkSkT1/img.png" height="20px" style="height: 20px;" class="m-2"> 
+									<img src="https://blog.kakaocdn.net/dn/6a7uM/btrHOcKoJRg/R8bKxYYnJkvlkLYABgXi00/img.png" height="25px" style="height: 25px;" class="m-2"> 
+						
                             </li>
                         </ul>
                     </div>
