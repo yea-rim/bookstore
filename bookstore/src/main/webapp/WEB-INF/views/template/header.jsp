@@ -260,10 +260,10 @@ border-radius: 0.25em;
 							<li><a href="${root}/admin//faq">faq 관리</a></li>
 							</c:if>
 							<c:if test="${isBookAdmin}">
-							<li><a href="${root}/admin/lib">도서 관리자</a>
+							<li><a href="${root}/admin/lib-book">도서 관리자</a>
 							<ul class="header__menu__dropdown">
 							<li><a href="${root}/admin/lib-book">도서 관리</a></li>
-							<li><a href="${root}/admin//lib">도서관 관리</a></li>
+							<li><a href="${root}/admin//return">도서관 관리</a></li>
 							</c:if>
 						</ul>
 					</nav>
