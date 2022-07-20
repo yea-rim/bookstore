@@ -31,13 +31,13 @@
 					<li><a href="${root}/lib-book">도서관 도서</a></li>
 					<li><a href="${root}/store-book">스토어 도서</a></li>
 					<li><a href="${root}/used-book">중고 도서</a></li>
+					<li><a href="${root}/return">도서 반납</a></li>
 				</ul></li>
 			<li><a href="${root}/lib">도서관 관리</a></li>
 			<li><a href="${root}/member">회원 관리</a></li>
 			<li><a href="${root}/delivery">배송 관리</a></li>
 			<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
 			<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
-			<li><a href="${root}/faq">faq 관리</a></li>
 		</ul>
 	</nav>
 
