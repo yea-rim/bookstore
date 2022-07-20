@@ -41,8 +41,11 @@
 		</delete> 
 		
 		<select id="total" parameterType="String" resultType="int">
-		 select sum(basket_price) from basket where basket_member_id = #{memberId}
-		</select>
+		 select nvl(sum_data,0) from(
+		 select sum(basket_price)as sum_data 
+		 from basket 
+		 where basket_member_id = #{memberId})
+		</select> 
 </mapper> 
 
 
