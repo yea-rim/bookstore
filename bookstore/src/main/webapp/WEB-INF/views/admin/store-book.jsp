@@ -20,23 +20,22 @@
             </div>
         </div>
     </section>
-                    <nav class="text-center header__menu">
-                        <ul>
-                            <li class="active"><a href="${root}/book">도서 관리</a>
-			                    <ul class="header__menu__dropdown">
-									<li><a href="${root}/lib-book">도서관 도서</a></li>
-									<li><a href="${root}/store-book">스토어 도서</a></li>
-									<li><a href="${root}/used-book">중고 도서</a></li>
-			                    </ul>
-			                </li>	
-						<li><a href="${root}/lib">도서관 관리</a></li>
-						<li><a href="${root}/member">회원 관리</a></li>
-						<li><a href="${root}/delivery">배송 관리</a></li>
-						<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
-						<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
-						<li><a href="${root}/faq">faq 관리</a></li>
-					</ul>
-				</nav>
+	<nav class="text-center header__menu">
+		<ul>
+			<li class="active"><a href="${root}/book">도서 관리</a>
+				<ul class="header__menu__dropdown">
+					<li><a href="${root}/lib-book">도서관 도서</a></li>
+					<li><a href="${root}/store-book">스토어 도서</a></li>
+					<li><a href="${root}/used-book">중고 도서</a></li>
+					<li><a href="${root}/return">도서 반납</a></li>
+				</ul></li>
+			<li><a href="${root}/lib">도서관 관리</a></li>
+			<li><a href="${root}/member">회원 관리</a></li>
+			<li><a href="${root}/delivery">배송 관리</a></li>
+			<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
+			<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
+		</ul>
+	</nav>
 
 <div class="container">
 	<div class="row">

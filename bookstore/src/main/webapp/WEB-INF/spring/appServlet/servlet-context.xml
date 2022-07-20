@@ -60,6 +60,7 @@
 			<mvc:mapping path="/pay/**"/>
 			<mvc:mapping path="/pay1/**"/>
 			<mvc:mapping path="/pay2/**"/>
+			<mvc:mapping path="/basket"/>
 			
 			<mvc:exclude-mapping path="/member/login"/>
 			<mvc:exclude-mapping path="/member/join*"/>
