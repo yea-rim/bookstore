@@ -25,5 +25,4 @@ public class BookingReturnDaoImpl implements BookingReturnDao {
 		sqlSession.insert("bookingReturn.rental", bookingReturnDto);
 		return bookingReturnDto;
 	}
-
 }
