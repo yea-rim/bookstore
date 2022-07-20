@@ -57,7 +57,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr v-for="(member, index) in memberList" v-bind:key="index">
+					<tr v-for="(book, index) in bookList" v-bind:key="index">
 						<td>{{member.memberId}}</td>
 						<td>{{member.memberNick}}</td>
 						<td>{{member.memberPhone}}</td>

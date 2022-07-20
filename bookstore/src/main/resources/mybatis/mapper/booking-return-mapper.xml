@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookingReturn">
+
+   <select id="list" resultType="BookingReturnDto">
+      select * from booking_return order by booking_return_library asc
+   </select>
+
+   
+   <insert id="bookReturn" parameterType="BookingReturnDto">
+      insert into booking_return(
+            booking_return_id, booking_return_book_no, booking_return_date,
+            booking_return_library, booking_return_book_title
+         ) values (
+            #{bookingReturnId}, #{bookingReturnBookNo}, sysdate,
+            #{bookingReturnLibrary}, #{bookingReturnBookTitle}
+         )
+   </insert>
+   
+   <select id="one" resultType="BookingDto" parameterType="int">
+      select * from booking where booking_no = #{bookingNo}
+   </select>
+
+</mapper> 

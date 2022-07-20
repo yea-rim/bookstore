@@ -164,6 +164,12 @@ public class AdminController {
 	public String faq() {
 		return "admin/faq";
 	}
+	
+	@RequestMapping("/return")
+	public String re() {
+		return "admin/return";
+	}
+	
 	@GetMapping("/faq")
 	public String faq(Model model, HttpSession session) {
 
