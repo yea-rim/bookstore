@@ -55,14 +55,10 @@
         </div>
     </section>
                     <nav class="text-center header__menu">
-                        <ul>
-                            <li><a href="${root}/lib-book"> 도서 관리</a>
-			                    <ul class="header__menu__dropdown">
+                        		<ul>
 									<li><a href="${root}/lib-book">도서 추가</a></li>
 									<li><a href="${root}/#">도서  반납</a></li>
                       		  </ul>
-                        </li>
-                        <li class="active"><a href="${root}/lib">도서관 관리</a></li>
                     </nav>
                     </c:if>
 <c:if test="${isUser == false}">

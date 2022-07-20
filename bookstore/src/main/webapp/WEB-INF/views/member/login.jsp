@@ -5,6 +5,24 @@
 <c:set var="saveIdExist" value="${cookie.saveId != null}"></c:set>
 
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
+<style>
+#content1{
+float:left;
+width:60%
+
+}
+#sidebar1{
+float:right;
+width:40%
+
+}
+#footer1{
+clear:both;
+}
+.hight1{
+ Hight= 200;
+ }
+</style>
 
 
 <form action="login" method="post">
@@ -30,14 +48,24 @@
     </section>
     <!-- Breadcrumb Section End -->
     <br>
-            <div align="center">
+    	
+		<div id="wrap">
+		<div id="content1">
+		<div align="right">
             <label>아이디　</label>
     		<input type="text" name="memberId" required class="form-input fill input-round" autocomplete="off" value="${cookie.saveId.value}">
         </div>
-        <div align="center">
+        <div align="right">
             <label>비밀번호</label>
             <input type="password" name="memberPw" required class="form-input fill input-round">
         </div>
+        </div>
+        <div id="sidebar1">
+        
+        <input type="submit" value="로그인" class="btn btn-primary fill" style="WIDTH: 50pt; HEIGHT: 50pt"; float:left;>
+        </div>
+        </div>
+        <div id="footer1">
         <div align="center">
         	<label>
         		<c:choose>
@@ -51,8 +79,6 @@
         		아이디 저장하기
         	</label>
         </div>
-        <div align="center">
-            <input type="submit" value="로그인" class="btn btn-primary fill">
         </div>
         <div align="center">
             <a href="find_id" class="link">아이디가 기억나지 않아요</a>
