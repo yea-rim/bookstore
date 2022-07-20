@@ -22,4 +22,6 @@ public interface PayDao {
 		List<PayListVO> treeList();
 		//결제아이디로 조회
 		List<PayDto> find(String memberId);
+		
+		void update(int payNo);
 }

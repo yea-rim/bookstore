@@ -9,6 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -168,6 +171,24 @@ public class AdminController {
 	@RequestMapping("/return")
 	public String re() {
 		return "admin/return";
+	}
+	
+	@RequestMapping("/imformation")
+	public String imformation() {
+		return "admin/imformation";
+	}
+	
+	@GetMapping("/information")
+	public String information(@PathVariable String memberId, Model model) {
+		MemberDto memberDto = memberDao.info(memberId);
+		model.addAttribute("memberDto", memberDto);
+		return "admin/information";
+	}
+	
+	@PostMapping("/information")
+	public String information(@PathVariable String memberId, @ModelAttribute MemberDto memberDto) {
+		memberDto.setMemberId(memberId);
+		return "admin/information";
 	}
 	
 	@GetMapping("/faq")

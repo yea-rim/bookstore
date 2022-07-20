@@ -54,6 +54,7 @@
 						<th>이메일</th>
 						<th>포인트</th>
 						<th>등급</th>
+						<th>처리</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -64,6 +65,7 @@
 						<td>{{member.memberEmail}}</td>
 						<td>{{member.memberPoint}}</td>
 						<td>{{member.memberGrade}}</td>
+						<td style="text-align: center;"><a href="http://localhost:8080/bookstore/admin/information">ℹ️</a></td>
 					</tr>
 				</tbody>
 			</table>
