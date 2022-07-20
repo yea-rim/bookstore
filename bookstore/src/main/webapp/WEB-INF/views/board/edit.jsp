@@ -9,9 +9,6 @@
 <link rel="stylesheet" href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css" />
 
 	<div class="container w800 m30">
-	    <div class="row center">
-	        <h1>게시글 수정</h1>
-	    </div>
 	    <div class="row">
 	        <label>제목</label>
 	        <input type="text" name="boardTitle" autocomplete="off" required class="form-input fill input-round" value="${boardDto.boardTitle}">
