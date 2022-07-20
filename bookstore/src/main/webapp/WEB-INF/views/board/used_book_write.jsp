@@ -18,8 +18,9 @@
 
 
 	<div class="container w1000 m30">
+	
 		<div class="row center">
-		
+		<a href="http://localhost:8080/bookstore/board/detail?boardNo=43"><img src="${pageContext.request.contextPath}/image/used_book.png"></a>
 		</div>
 		<div align="right">
 		제목

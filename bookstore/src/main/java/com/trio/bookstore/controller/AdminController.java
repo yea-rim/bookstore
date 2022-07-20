@@ -173,7 +173,14 @@ public class AdminController {
 	}
 	
 	@RequestMapping("/return")
-	public String re() {
+	public String re(Model model,HttpSession session) {
+		String memberGrade = (String) session.getAttribute("auth");
+		boolean isAdmin = memberGrade != null && memberGrade.equals("관리자");
+		model.addAttribute("isAdmin", isAdmin);
+		boolean isBookAdmin = memberGrade != null && memberGrade.equals("도서관리자");
+		model.addAttribute("isBookAdmin", isBookAdmin);
+		boolean isUser = memberGrade != null && memberGrade.equals("일반회원");
+		model.addAttribute("isUser", isUser);
 		return "admin/return";
 	}
 	

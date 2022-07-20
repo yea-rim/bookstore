@@ -5,6 +5,7 @@
 <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
 <form action="write" method="post">
+	<div class="container w1000 m30">
 	<input type="hidden" name="boardHead" value="중고">
 
 	<section class="breadcrumb-section set-bg"

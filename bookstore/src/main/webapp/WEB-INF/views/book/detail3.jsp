@@ -9,6 +9,7 @@
  	}
  </style>
   <!-- Breadcrumb Section Begin -->
+  	<div class="container w1000 m30">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
