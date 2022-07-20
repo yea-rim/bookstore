@@ -21,7 +21,7 @@
       insert into booking(
             booking_no, booking_id, booking_book_no, booking_date, booking_library
          ) values (
-            #{bookingNo}, #{bookingId}, #{bookingBookNo}, #{bookingDate},
+            #{bookingNo}, #{bookingId}, #{bookingBookNo}, sysdate,
             #{bookingLibrary}
          )
    </insert>

@@ -68,5 +68,13 @@
     <select id="findBook" resultType="LibDto" parameterType="int">
 		select * from lib where lib_book_no= #{libBookNo} order by lib_gu asc
    </select>
+   
+      <update id="rental" parameterType="int">
+      update lib
+         set
+            lib_amount = 1
+         where
+            lib_no = #{libNo}
+   </update>
 
 </mapper> 
