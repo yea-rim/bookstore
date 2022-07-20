@@ -67,7 +67,7 @@
 														<td>{{yes.libAmount}}권</td>
 														<td>
 															<button class="site-btn m-1" style="padding: 5px 10px 5px;" v-on:click="rental(index)" >✓</button>
-<%-- 															<button class="site-btn m-1" style="padding: 5px 10px 5px;" onClick="location.href='${pageContext.request.contextPath }/lib/rental'" >✓</button> --%>
+														</form>
 														</td>
 													</tr>
 
@@ -366,6 +366,8 @@
                     
     				bookList:[],
     				yesList:[],
+
+    				bookingData:{},
     				currentData:{
     					libNo:"",
     					libLibInfoNo:"",
@@ -425,11 +427,22 @@
     				});
     			},
     			
-    			rental(index){
-    				const libNo = this.yesList[index].libNo;
-    				console.log(libNo);
-    				location.replace("${pageContext.request.contextPath}/lib/rental?libNo=" + libNo);
-    			},
+    			rental(){
+    				var choice = window.confirm("해당 도서관에서 책을 대여하시겠습니까?");
+    				if(choice == false) return;
+    				
+    				console.log(${login});
+    				
+    				axios({
+    					url:"${pageContext.request.contextPath}/rest/booking/",
+    					method:POST,
+    					data: this.bookingData,
+    				})
+    				.then((resp)=>{
+    					this.bookingList.push(resp.data);
+    					window.alert("대여가 완료됐습니다. 당일 내에 해당 도서관에서 책을 찾아주세요.");
+					});
+				},
     			
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
