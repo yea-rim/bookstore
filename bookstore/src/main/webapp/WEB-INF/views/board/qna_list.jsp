@@ -66,6 +66,7 @@
 							<li><a href="${root}/password">비밀번호 변경</a></li>
 							<li><a href="${root}/delivery">주문목록</a></li>
 							<li><a href="${root}/question">장바구니</a></li>
+							<li><a href="${pageContext.request.contextPath}/board/used_book_list?type=board_writer&keyword=${memberDto.memberId}">중고 판매 내역</a></li>
 							<li><a href="${pageContext.request.contextPath}/board/qna_list?type=board_writer&keyword=${memberDto.memberId}">1:1 문의내역</a></li>
                         </ul>
                     </nav>

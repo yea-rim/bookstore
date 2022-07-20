@@ -11,7 +11,7 @@
 <div class="message-wrapper"></div>
 <button class="btn-prev">뒤로가기</button>
 
-
+ 
 <style>
 	.btn-message {
 		display:block;
