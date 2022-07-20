@@ -157,6 +157,7 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
+            
             	sendPost() {
 						axios.post('')
             	},
