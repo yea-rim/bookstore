@@ -67,4 +67,8 @@
 	            used_no = #{usedNo}
 	   </update>
 	   
+	<select id = "sequence" resultType = "int">
+      select used_seq.nextval from dual
+   </select>
+	   
 </mapper> 

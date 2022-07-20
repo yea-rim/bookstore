@@ -42,6 +42,8 @@ public List<UsedDto> list(int bookNo) {
 		// 예림
 		@Override
 		public UsedDto insert(UsedDto usedDto) {
+			int sequence = sqlSession.selectOne("used.sequence");
+			usedDto.setUsedNo(sequence);
 			sqlSession.insert("used.insert", usedDto);
 			return usedDto;
 		}
