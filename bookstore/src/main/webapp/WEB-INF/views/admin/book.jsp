@@ -59,18 +59,9 @@
 						<button class="site-btn m-1 fill"
 							v-on:click="readIsbn(currentData.bookIsbn)">ISBN 조회 등록</button>
 
-						<div class="row mt-2">
-							<label>11 로맨스 소설, 12 추리 소설, 13 전쟁/역사, 14 공포/스릴러, 15 판타지
-								소설</label> <label>21 경제/부동산, 22 시간 관리, 23 인간관계, 24 대화/협상</label> <label>31
-								한국시, 32외국시, 33 성공 에세이, 34 여행 에세이, 35 연애 에세이</label> <label>41
-								시사/사회, 42 경제/경영, 43 종교, 44 행정/정치</label> <label>51 웹/홈페이지, 52
-								컴퓨터입문/활용, 53 프로그래밍언어, 54 개발/OS/데이터베이스, 55 네트워크보안, 56 컴퓨터공학</label> <label>61
-								국어/문학, 62 외국어, 63 수학, 64 고시, 65 공무원</label>
-						</div>
-						<div class="row mt-2">
-							<label>71 어린이, 81 가정/육아, 82 건강, 83 여행, 84 요리</label> <label>91
-								학원만화, 92 스포츠만화, 93 순정만화, 94 기타만화</label>
-						</div>
+<div>
+<img src="https://blog.kakaocdn.net/dn/QvcRL/btrHPfOzHi9/ezKZ0uKRpFOGfgRP0EsgC1/img.png" style="max-width: 97%;">
+</div>
 
 					</div>
 
