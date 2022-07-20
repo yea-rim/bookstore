@@ -100,10 +100,13 @@
 					console.log(resp.data);
 					var choice = window.confirm("출고가 완료됐습니까?");
 					if(choice == false) return;
-					this.payList[this.index] = resp.data;
+
 					this.payList[index] = resp.data;
 					window.alert("출고 처리했습니다.");
-					
+		            axios.get("http://localhost:8080/bookstore/rest/pay/")
+		            .then(resp=>{
+		                this.payList = resp.data;
+		            });
 				})
 			},
 		},

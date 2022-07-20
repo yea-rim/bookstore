@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.trio.bookstore.entity.BoardDto;
 import com.trio.bookstore.entity.BookingDto;
+import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.repository.BoardDao;
 import com.trio.bookstore.repository.MemberDao;
 import com.trio.bookstore.repository2.BookingDao;

@@ -257,13 +257,12 @@ border-radius: 0.25em;
 							<li><a href="${root}/admin//delivery">배송 관리</a></li>
 							<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
 							<li><a href="/bookstore/board/notice_write">공지사항 관리</a></li>
-							<li><a href="${root}/admin//faq">faq 관리</a></li>
 							</c:if>
 							<c:if test="${isBookAdmin}">
 							<li><a href="${root}/admin/lib-book">도서 관리자</a>
 							<ul class="header__menu__dropdown">
 							<li><a href="${root}/admin/lib-book">도서 관리</a></li>
-							<li><a href="${root}/admin//return">도서관 관리</a></li>
+							<li><a href="${root}/admin//return">반납 관리</a></li>
 							</c:if>
 						</ul>
 					</nav>
