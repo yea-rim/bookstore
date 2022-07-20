@@ -20,6 +20,7 @@
             </div>
         </div>
     </section>
+
                     <nav class="text-center header__menu">
                         <ul>
                             <li><a href="${root}/book">도서 관리</a>
@@ -34,7 +35,6 @@
 						<li class="active"><a href="${root}/delivery">배송 관리</a></li>
 						<li><a href="/bookstore/board/qna_list">1:1 관리</a></li>
 						<li><a href="/bookstore/board/used_book_list">중고 도서 등록</a></li>
-						<li><a href="${root}/faq">faq 관리</a></li>
 					</ul>
 				</nav>		
 

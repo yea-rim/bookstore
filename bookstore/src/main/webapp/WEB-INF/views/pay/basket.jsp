@@ -157,6 +157,7 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
+            
                sendPost() {
                   axios.post('')
                },
@@ -247,6 +248,7 @@
              
 //              2. axios 이용하는 방법
 //              axios({옵션}).then(성공콜백).catch(에러콜백);
+                
                 axios({
                    url:"${pageContext.request.contextPath}/rest/basket/"+this.memberId,
                    method:"get"
@@ -256,16 +258,16 @@
                    //console.log(resp.data);
                    this.dataList.push(...resp.data);
                 }),
-                
                 axios({
                    url:"${pageContext.request.contextPath}/rest/basket/total/"+this.memberId,
                    method:"get"
                 })
                 .then((resp)=>{
                    //console.log(resp);
-                   console.log(resp.data);
+                   //console.log(resp.data);
                    this.total = resp.data;
                 })
+                   
           },
         });
         app.mount("#app");

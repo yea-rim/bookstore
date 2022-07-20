@@ -203,7 +203,7 @@
                         
                         <br>
                         <c:if test="${param.error != null}">
-                                <p style="color:blue;">* 결제(장바구니) 상품이 없습니다.(수량을 확인하세요!)</p>
+                                <p style="color:blue;">* 결제 상품이 없습니다.(결제 수량을 확인하세요!)</p>
                            </c:if>
 <!--                         <a href="#" class="primary-b77tn">장바구니 담기</a> -->
                   <input type = "submit" class = "primary-btn" value = "장바구니 담기" formaction = "${pageContext.request.contextPath }/basket" style="border:none;" id="demo">
@@ -412,7 +412,6 @@
                    bookingId:"",
                    bookingBookNo:"",
                    bookingLibrary:"",
-                   bookingBookTitle:"",
                 },
                 currentData:{
                    libNo:"",
@@ -476,7 +475,6 @@
                 this.bookingData.bookingId = '${login}';
                 this.bookingData.bookingBookNo = ${bookDto.bookNo};
                 this.bookingData.bookingLibrary = this.yesList[index].libName;
-                this.bookingData.bookingBookTitle = '${bookDto.bookTitle}';
                 
                 console.log(this.bookingData);
                 
@@ -531,10 +529,10 @@
         app.mount("#app");
     </script>
     <script type = "text/javascript">
-   document.getElementById("demo").addEventListener('click', function () {
-      
-      alert("장바구니에 등록하시겠습니까?.");
-   });
-   </script>
+	document.getElementById("demo").addEventListener('click', function () {
+		
+		alert("장바구니에 등록되었습니다.");
+	});
+	</script>
    
 <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
