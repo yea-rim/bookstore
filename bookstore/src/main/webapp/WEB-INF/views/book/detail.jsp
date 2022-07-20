@@ -5,9 +5,9 @@
    <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
  <style>
  	.used-pay{
- 		
  	}
  </style>
+ 
   <!-- Breadcrumb Section Begin -->
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
@@ -30,16 +30,60 @@
     <!-- Product Details Section Begin -->
     <section class="product-details spad">
         <div class="container" id = "app">
+  
             <div class="row">
            	<div class = "col-lg-1 col-md-1">
            	</div>
                 <div class="col-lg-2 col-md-6">
                     <div class="product__details__pic">
-                        <div class="product__details__pic__item">
-                            <img class="product__details__pic__item--large"
-                                src="${bookDto.bookImage }"  alt="">
-                        </div>
-                        <div class="product__details__pic__slider owl-carousel">
+					<div class="product__details__pic__item text-center">
+						<img class="product__details__pic__item--large"
+							src="${bookDto.bookImage }" alt="">
+						<button class="site-btn m-2" @click="handle_toggle">도서관 조회</button>
+						
+						
+						<!-- 모달창 도전 !! -->
+						<div>
+							<div v-show="is_show" style="position: absolute; left: 30px; top: 300px; z-index: 300; border: solid #F09F00 3px; background-color: #FFFFFF;" class="m-1">
+								<div style="width: 650px;">
+									<div class="p-3" style="text-align: left; padding: 5px; background-color:#F09F00;">
+										<button style="padding: 0px 0px 5px;" class="site-btn">도서관 재고 및 대여</button>
+									</div>
+									<div class="p-3">
+										<div>
+											<table class="table table-border">
+												<thead>
+													<tr>
+														<th>지역</th>
+														<th width="50%">도서관명</th>
+														<th>재고</th>
+														<th>대여</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr v-for="(yes, index) in yesList" v-bind:key="index">
+														<td>{{yes.libGu}}</td>
+														<td>{{yes.libName}}</td>
+														<td>{{yes.libAmount}}권</td>
+														<td>
+															<button class="site-btn m-1" style="padding: 5px 10px 5px;" v-on:click="rental(index)" >✓</button>
+<%-- 															<button class="site-btn m-1" style="padding: 5px 10px 5px;" onClick="location.href='${pageContext.request.contextPath }/lib/rental'" >✓</button> --%>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+	
+										<button @click="handle_toggle" class="site-btn">닫기</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="product__details__pic__slider owl-carousel">
                             <img data-imgbigurl="img/product/details/product-details-2.jpg"
                                 src="img/product/details/thumb-1.jpg" alt="">
                             <img data-imgbigurl="img/product/details/product-details-3.jpg"
@@ -145,6 +189,7 @@
                         </ul>
                     </div>
                 </div>
+                                               
                 <div class="col-lg-12">
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
@@ -317,6 +362,19 @@
             data(){
                 return {
                     showUsed:false,
+                    is_show: false,
+                    
+    				bookList:[],
+    				yesList:[],
+    				currentData:{
+    					libNo:"",
+    					libLibInfoNo:"",
+    					libBookNo:"",
+    					libAmount:"",
+    					bookTitle:"",
+    					libName:"",
+    					libGu:"",
+    				},
                 };
             },
             //computed : data를 기반으로 하여 실시간 계산이 필요한 경우 작성한다.
@@ -326,14 +384,74 @@
             },
             //methods : 애플리케이션 내에서 언제든 호출 가능한 코드 집합이 필요한 경우 작성한다.
             methods:{
+
+                // this와 바인딩 되지 않는다. 
+                arrow_function: () => {  
+                  console.log(this.is_show); // undefined
+                },
+
+                // bind로 묶어도 마찬가지다.
+                bind_function: (() => { 
+                  console.log(this.is_show); // undefined
+                }).bind(this),
+
+                // 정상적으로 동작한다.
+                it_is_work: function(){
+                  this.is_show = !this.is_show;
+                },
                 
+                handle_toggle: function(){ 
+                    this.is_show = !this.is_show; // #2, #3
+                  },
+                
+                  removeHidden(){
+              		this.isHidden["hidden"] = false;
+              	},
+              	
+              	addHidden(){
+              		this.isHidden["hidden"] = true; 
+              	},
+              	
+    			yesBook(){
+    				const number = this.currentData.libBookNo;
+    				axios({
+    					url:"${pageContext.request.contextPath}/rest/book/" + number,
+    					method:"get",
+    					data: this.currentData,
+    				})
+    				.then((resp)=>{
+    	            	console.log(resp.data.bookTitle);
+    					this.currentData.bookTitle = resp.data.bookTitle;
+    				});
+    			},
+    			
+    			rental(index){
+    				const libNo = this.yesList[index].libNo;
+    				console.log(libNo);
+    				window.open("${pageContext.request.contextPath}/lib/rental/" + libNo);
+    			},
+    			
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
             watch:{
                 
             },
+            created(){
+				axios({
+					url:"${pageContext.request.contextPath}/rest/lib-book/",
+					method:"get"
+				})
+				.then((resp)=>{
+					this.bookList.push(...resp.data);
+				})
+				
+                axios.get("http://localhost:8080/bookstore/rest/lib-book/book/" + ${bookDto.bookNo})
+                .then(resp=>{
+                    this.yesList = resp.data;
+                });
+            },
         });
         app.mount("#app");
     </script>
-    <jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>
     
+<jsp:include page="/WEB-INF/views/template/footer.jsp"></jsp:include>

@@ -62,6 +62,7 @@
 						<button class="btn site-btn m-2" @click="btn3">강북구</button>
 						<button class="btn site-btn m-2" @click="btn4">강서구</button>
 						<button class="btn site-btn m-2" @click="btn5">관악구</button>
+						<button class="btn site-btn m-2" @click="btn25">광진구</button>
 						<button class="btn site-btn m-2" @click="btn6">구로구</button>
 						<button class="btn site-btn m-2" @click="btn7">금천구</button>
 						<button class="btn site-btn m-2" @click="btn8">노원구</button>
@@ -146,6 +147,7 @@
                     gu22:{},
                     gu23:{},
                     gu24:{},
+                    gu25:{},
 
                     hospitalList:[],
                     map:null,
@@ -388,6 +390,12 @@
                     this.map.setLevel(5);
                     this.map.setCenter(moveLocation);//순간이동
                 },
+                
+                btn25(){
+                    const moveLocation = new kakao.maps.LatLng(this.gu25.libraryXcnts, this.gu25.libraryYdnts);
+                    this.map.setLevel(5);
+                    this.map.setCenter(moveLocation);//순간이동
+                },
             },
             //watch : 특정 data를 감시하여 연계 코드를 실행하기 위해 작성한다
             watch:{
@@ -527,6 +535,12 @@
                 .then(resp=>{
                     this.gu24 = resp.data[0];
                 });
+                
+                axios.get("http://localhost:8080/bookstore/rest/lib/gu/광진구")
+                .then(resp=>{
+                    this.gu25 = resp.data[0];
+                });
+                
             },
             mounted(){
                 //지도 생성
