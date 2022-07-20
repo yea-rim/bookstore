@@ -7,7 +7,7 @@
 	<div class="container w1000 m30">
 <section class="breadcrumb-section set-bg"
    style="background-color: #F09F00;">
-
+      
    <div class="container">
       <div class="row">
          <div class="col-lg-12 text-center">
@@ -26,6 +26,7 @@
 <div class="container">
    <section class="shoping-cart spad">
       <!-- form(결제구현 )-->
+          <form action="${pageContext.request.contextPath }/pay/purchase" method="get">
       
          <div class="row">
             <div class="col-lg-8">
@@ -40,7 +41,7 @@
                         <tbody>
                            <tr style="border-bottom: none;">
                               <th class="col-lg-3"><h5>이름 *</h5></th>
-                              <td class="col-lg-9"><input type="text"
+                              <td class="col-lg-9"><input type="text" name ="memberId"
                                  v-model="currentData.memberName" style="width: 150px;">
                                  &nbsp;
                                  <input type="button" v-on:click="readMember"
@@ -50,24 +51,24 @@
                            </tr>
                            <tr>
                               <th><h5>전화번호 *</h5></th>
-                              <td><input type="text" v-model="currentData.memberPhone">
+                              <td><input type="text" v-model="currentData.memberPhone" name ="memberPhone">
                               </td>
                            </tr>
                            <tr>
                               <th><h5>주소 *</h5></th>
-                              <td><input type="text" v-model="currentData.memberPost"
-                                 v-model="used" style="width: 170px;"></td>
+                              <td><input type="text" v-model="currentData.memberPost" name ="memberPost"
+                                  style="width: 170px;"></td>
                            </tr>
                            <tr>
                               <th></th>
                               <td><input type="text"
-                                 v-model="currentData.memberBasicAddress"
+                                 v-model="currentData.memberBasicAddress" name = "memberBasicAddress"
                                  style="width: 350px;"></td>
                            </tr>
                            <tr>
                               <th></th>
                               <td><input type="text"
-                                 v-model="currentData.memberDetailAddress"
+                                 v-model="currentData.memberDetailAddress" name="memberDetailAddress"
                                  style="width: 350px;"></td>
                            </tr>
 
@@ -75,7 +76,7 @@
                      </table>
                   </div>
                   <!-- 주문상품 -->
-                   <form action="${pageContext.request.contextPath }/pay/purchase" method="get">
+<%--                    <form action="${pageContext.request.contextPath }/pay/purchase" method="get"> --%>
                   <div class="row float-container mt-1">
                   
                          <div class="shoping__cart__table">

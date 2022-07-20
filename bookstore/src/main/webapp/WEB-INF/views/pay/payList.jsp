@@ -57,9 +57,7 @@
 										</td>
 										<td class="text-center" width="30%">
 											<div style="text-align:left;">
-											우편번호 : ${payDto.memberPost }<br>
-											기본주소 : ${payDto.memberBasicAddress}<br>
-											상세주소 : ${payDto.memberDetailAddress }
+											${payDto.payPost }
 											</div>
 										</td>
 										<td>

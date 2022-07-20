@@ -22,7 +22,7 @@
 	position: absolute;
 	bottom: 0;
 	right: 50
-}
+} 
 </style>
 <c:if test="${isUser}">
 	<div class="container w1000 m30">

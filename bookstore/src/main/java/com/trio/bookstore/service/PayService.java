@@ -2,6 +2,7 @@ package com.trio.bookstore.service;
 
 import java.util.List;
 
+import com.trio.bookstore.entity.MemberDto;
 import com.trio.bookstore.vo.FinalStoreVO;
 import com.trio.bookstore.vo.FinalUsedVO;
 import com.trio.bookstore.vo.KakaoPayApproveResponseVO;
@@ -14,6 +15,6 @@ public interface PayService {
 			List<FinalUsedVO> finalUsedList);
 	//최종
 	void insert(int payNo, KakaoPayApproveResponseVO responseVO, List<FinalStoreVO> finalStoreList,
-			List<FinalUsedVO> finalUsedList, String memberId);
+			List<FinalUsedVO> finalUsedList, MemberDto memberDto, String memberId);
 
 }
