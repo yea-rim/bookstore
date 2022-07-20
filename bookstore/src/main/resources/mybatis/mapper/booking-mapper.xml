@@ -19,10 +19,11 @@
    
    <insert id="rental" parameterType="BookingDto">
       insert into booking(
-            booking_no, booking_id, booking_book_no, booking_date, booking_library
+            booking_no, booking_id, booking_book_no, booking_date,
+            booking_library, booking_book_title
          ) values (
             #{bookingNo}, #{bookingId}, #{bookingBookNo}, sysdate,
-            #{bookingLibrary}
+            #{bookingLibrary}, #{bookingBookTitle}
          )
    </insert>
    
@@ -34,12 +35,13 @@
             booking_book_no = #{bookingBookNo},
             booking_date = #{bookingDate},
             booking_library = #{bookingLibrary}
+            booking_book_title = #{bookingBookTitle}
          where
             booking_no = #{bookingNo}
    </update>
    
    <select id="one" resultType="BookingDto" parameterType="int">
       select * from booking where booking_no = #{bookingNo}
-   </select>
+   </select> 
 
 </mapper> 
