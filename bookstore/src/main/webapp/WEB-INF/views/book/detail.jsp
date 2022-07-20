@@ -173,7 +173,7 @@
 <%--                         <a href="${pageContext.request.contextPath }/pay" class="primary-btn">바로구매</a> --%>
                         <p style="color:red;">* 중고 구매를 원하시면 중고가 옆에 체크 후 구매버튼</p>
                        	</form>
-                        
+                          
                         <ul>
                             <li><b>도서 저자</b> <span>${bookDto.bookAuth }</span></li>
                             <li><b>도서 출판사</b> <span>${bookDto.bookPubl }</span></li>
