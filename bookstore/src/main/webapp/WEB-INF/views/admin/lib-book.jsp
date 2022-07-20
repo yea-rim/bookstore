@@ -170,6 +170,7 @@
 					libAmount:"",
 					bookTitle:"",
 					libName:"",
+					libGu:"",
 				},
 				index:-1,
 			};
@@ -198,7 +199,9 @@
 				})
 				.then((resp)=>{
 	            	console.log(resp.data[0].libraryName);
+	            	console.log(resp.data[0].libraryGu);
 					this.currentData.libName = resp.data[0].libraryName;
+					this.currentData.libGu = resp.data[0].libraryGu;
 				});
 			},
 			findBook(){
@@ -242,6 +245,7 @@
 					libAmount:"",
 					bookTitle:"",
 					libName:"",
+					libGu:"",
 				}
 				this.index = -1;
 			},

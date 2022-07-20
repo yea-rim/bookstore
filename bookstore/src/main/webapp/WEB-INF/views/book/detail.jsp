@@ -66,7 +66,8 @@
 														<td>{{yes.libName}}</td>
 														<td>{{yes.libAmount}}권</td>
 														<td>
-															<button class="site-btn m-1" style="padding: 5px 10px 5px;" v-on:click="rental(index)">✓</button>
+															<button class="site-btn m-1" style="padding: 5px 10px 5px;" v-on:click="rental(index)" >✓</button>
+<%-- 															<button class="site-btn m-1" style="padding: 5px 10px 5px;" onClick="location.href='${pageContext.request.contextPath }/lib/rental'" >✓</button> --%>
 														</td>
 													</tr>
 
@@ -427,6 +428,7 @@
     			rental(index){
     				const libNo = this.yesList[index].libNo;
     				console.log(libNo);
+    				window.open("${pageContext.request.contextPath}/lib/rental/" + libNo);
     			},
     			
             },
