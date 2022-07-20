@@ -5,7 +5,7 @@
  <jsp:include page="/WEB-INF/views/template/header.jsp"></jsp:include>
 
  <!-- Breadcrumb Section Begin -->
- 	<div class="container w1000 m30">
+    <div class="container w1000 m30">
     <section class="breadcrumb-section set-bg" style="background-color: #F09F00;">
         <div class="container">
             <div class="row">
@@ -220,6 +220,17 @@
                    //console.log(resp);
                    console.log(resp.data);
                    this.total = resp.data;
+                   
+                   axios.get("${pageContext.request.contextPath}/rest/basket/" + this.memberId)
+                  .then(resp=>{
+                      this.dataList = resp.data;
+                  });
+                   
+                   axios.get("${pageContext.request.contextPath}/rest/basket/total/" + this.memberId)
+                  .then(resp=>{
+                      this.total = resp.data;
+                  });
+                   
                 });
                }
                 
@@ -257,15 +268,17 @@
                 .then((resp)=>{
                    //console.log(resp);
                    //console.log(resp.data);
+                   if(resp == null) return;
                    this.dataList.push(...resp.data);
                 }),
                 axios({
                    url:"${pageContext.request.contextPath}/rest/basket/total/"+this.memberId,
-                   method:"get"
+                   method:"get",
                 })
                 .then((resp)=>{
                    //console.log(resp);
                    //console.log(resp.data);
+                  
                    this.total = resp.data;
                 })
                    

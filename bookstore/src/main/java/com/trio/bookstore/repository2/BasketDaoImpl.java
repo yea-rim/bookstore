@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.trio.bookstore.entity.BasketDto;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Repository
 public class BasketDaoImpl implements BasketDao {
 	
@@ -42,7 +44,8 @@ public class BasketDaoImpl implements BasketDao {
 	//멤버아이디로 장바구니 총가격 가져오기
 	@Override
 	public int total(String memberId) {
-		// TODO Auto-generated method stub
+		int total = sqlSession.selectOne("basket.total",memberId);
+		log.debug("제발={}",total);
 		return sqlSession.selectOne("basket.total",memberId);
 	}
 }
